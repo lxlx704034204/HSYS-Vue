@@ -1,0 +1,63 @@
+// 清除浮动
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.myorder {
+    .mybill-search{
+        padding: 20px 0;
+    }
+    .mybill-table{
+        text-align: center;
+        background:red;
+        width: 100%;
+        .find-btn{
+          cursor: pointer;
+          color: #009fe2;
+
+        }
+        .el-table_1_column_17  {
+          div{
+            padding:0;
+          }
+        }
+    }
+    .el-table  {
+       text-align: center;
+    }
+    .mybill-fenye{
+        float: right;
+        padding: 10px;
+    }
+    .dingdan{
+        color: #009fe2;
+        cursor: pointer;
+    }
+    .sy-pagination {
+        float: right;
+        .btn-prev,
+        .btn-next {
+          padding: 0 13px !important;
+        }
+        .el-pager .number,
+        .el-pager .more {
+          padding: 0 11px !important;
+          border: 1px solid #e6e6e6 !important;
+          background-color: #fff !important;
+        }
+        .el-pager .more{
+          border-color: #fff !important;
+        }
+      
+        .el-pager li.active {
+          background-color:#009FE2 !important;
+          color: #fff !important;
+          border-color: #009FE2 !important;
+        }
+      }
+}
+
+

@@ -1,0 +1,36 @@
+<section class="register">
+    <div class="regis_bg">
+        <div class="regis_content ">
+            <div class="regis_top">
+                <span>注册</span>
+            </div>
+            <form action="" :model="ruleForm" ref="ruleForm">
+                <div class="regis_con">
+                    <input type="text" class="regis_input regis_name" v-model="ruleForm.login" @blur="corporatename" placeholder="请输入账户">
+                    <span class="regis_prompt regis_prompt1"></span>
+                    <input type="password" class="regis_input regis_psd" v-model="ruleForm.password" @blur="pwd" placeholder="请输入您的密码">
+                    <span class="regis_prompt regis_prompt2"></span>
+                    <input type="password" class="regis_input regis_psd2" v-model="ruleForm.confirmPassword" @blur="pwds" placeholder="请再次确认密码">
+                    <span class="regis_prompt regis_prompt3"></span>
+                    <input type="text" class="regis_input regis_phooe" v-model="ruleForm.mobileNo" @blur="phone" placeholder="请输入手机号码">
+                    <span class="regis_prompt regis_prompt4"></span>
+                    <div class="regis_div clearfix">
+                        <input type="text" class="regis_check" v-model="ruleForm.verificationCode" @blur="verif" placeholder="请输入验证码">
+                        <button :disabled="disabled" type="button" class="regis_btn" id="fg" @click="sendcode" ref='sendcodebtn'>{{btntxt}}</button>
+                    </div>
+                    <span class="regis_prompt regis_prompt5"></span>
+                    <p class="regis_p1 clearfix">
+                        <label>
+                        	<input type="checkbox" v-model="ruleForm.checkbox" class="regis_chec">我已看过并同意
+                        </label>
+                        <router-link class="regis_agree" to="protocol" target="_blank">《用户注册协议》</router-link>
+                    </p>
+                    <el-button class="regis_btn2" @click="submitForm()" type="submit">立即注册</el-button>
+                    <p class="regis_p2 ">已有账户
+                        <router-link to="/login" class="regis_sub">立即登录</router-link>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

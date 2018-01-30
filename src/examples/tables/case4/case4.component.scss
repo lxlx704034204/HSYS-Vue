@@ -1,0 +1,84 @@
+.case-4 {
+  margin-top: 21px;
+}
+
+// 搜索框查询
+.search-box {
+  margin-top: 20px;
+  height: 60px;
+  background: #f5f5f7;
+  width: 100%;
+  line-height: 60px;
+  .select-box{
+    width:75%;
+  }
+  .center {
+    text-align: center;
+  }
+  .label {
+    color: #666666;
+  }
+  .page-no-box {
+    font-size: 13px;
+    font-weight: bold;
+    span {
+      color: #009ee1;
+    }
+  }
+}
+
+.filter-ul li {
+  margin-left: 0 !important;
+  margin-right: 10px;
+}
+
+.typelist .typetable .content ul li {
+  cursor: pointer;
+}
+
+
+/* 分类 */
+
+.category-box {
+  margin-top: -1px;
+  display: flex;
+  background: #f5f5f7;
+  border: 1px solid #e6e6e6;
+  line-height: 49px;
+  min-height: 49px;
+  .box-left {
+    width: 118px;
+    text-indent: 15px;
+    color:#666;
+  }
+  .box-right {
+    flex: 1;
+    background: #fff;
+    padding-left:14px;
+    font-size:0;
+    .item{
+      display: inline-block;
+      margin-right: 15px;
+      color: #009ee1;
+      font-size:16px;
+      cursor: pointer;
+    }
+    .all-item{
+      color:#666;
+      margin-right: 5px;
+    }
+    .select-text{
+      color: #009ee1;
+    }
+  }
+}
+
+.city-box{
+  position: relative;
+  .show-more-city{
+    position: absolute;
+    right: 20px;
+    bottom:0px;
+  }
+
+}

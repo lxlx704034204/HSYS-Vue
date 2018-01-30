@@ -1,0 +1,185 @@
+.bidding {
+    font-size: 14px;
+    font-family: "微软雅黑";
+    .height {
+        height: 0px;
+        padding: 0;
+    }
+    .border-bottom {
+        border-bottom: 1px dashed #ccc;
+        padding-left: -88px;
+    }
+    .height45 {
+        height: 45px;
+    }
+    .height30 {
+        height: 30px;
+    }
+    .height22 {
+        height: 22px;
+    }
+    .pnameShow {
+        color: #fa5555;
+        margin-right: 4px;
+    }
+    // 面包屑
+    .bidding-bread-first {
+        color: #999999;
+    }
+    .bidding-bread-info {
+        color: #333333;
+    }
+    // 发布产品基本信息
+    .bidding-content {
+        margin-top: 32px;
+        width: 976px;
+        border: 1px solid #ccc;
+        position: relative;
+        .bidding-content-info {
+            border-bottom: 1px dashed #ccc;
+            margin-bottom: 45px;
+        }
+        // 标题
+        .bidding-title {
+            height: 56px;
+            line-height: 56px;
+            color: #333333;
+            font-weight: bold;
+            padding-left: 20px;
+            font-size: 18px;
+        }
+        // 
+        .bidding-form {
+            padding: 10px 20px 10px 10px;
+            border-bottom: 1px dashed #eee;
+            color: #666666;
+        }
+        .bidding-upload {
+            padding: 10px 20px 10px 20px;
+            display: flex;
+            .left-labe {
+                width: 75px;
+            }
+        }
+        .edit_container {
+            padding: 30px 20px 10px 20px;
+            display: flex;
+            .left-labe {
+                width: 100px;
+            }
+        }
+        .operationBtn {
+            text-align: center;
+            padding: 20px;
+        }
+        .pt10 {
+            padding-top: 10px
+        }
+        .pl10 {
+            padding-left: 10px
+        }
+        .add-line {
+            cursor: pointer;
+            color: #009FE2;
+            font-size: 20px
+        }
+        .width-100 {
+            width: 100px;
+        }
+        .width-300 {
+            width: 300px;
+        }
+        .unit {
+            line-height: 40px;
+        }
+        .padding-30 {
+            padding-left: 30px
+        }
+        .form-red {
+            color: red;
+        }
+    }
+    // 产品属性
+    .padding130 {
+        padding-right: 130px;
+    }
+    .el-checkbox {
+        margin-left: 0;
+        margin-right: 24px;
+    }
+    .content-nature {
+        padding-right: 136px !important;
+    }
+    // 产品详情	product details
+    // .product-details
+    .product-updated {
+        height: 62px;
+        line-height: 62px;
+        color: #666666;
+        font-size: 12px;
+    }
+    .product-pho {
+        // height: 50px;
+        // line-height: 50px;
+        margin: 30px 0 20px 0;
+    }
+    .bidding-upload {
+        height: 150px;
+        overflow: hidden;
+    }
+    // 
+    .product-details {
+        display: flex;
+        // height: 130px;
+        // margin-bottom: 20px;
+        .product-flex {
+            height: 169px;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+        .upload-demo .el-upload {
+            border: 1px dashed #cccccc;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .upload-demo .el-upload:hover {
+            border-color: #009FE2;
+        }
+        .avatar-uploader-icon {
+            border: 1px dashed #ccc;
+            font-size: 28px;
+            color: #8c939d;
+            width: 158px;
+            height: 118px;
+            line-height: 118px;
+            text-align: center;
+        }
+        .avatar {
+            width: 178px;
+            height: 178px;
+            display: block;
+        }
+    }
+    .pho-textarea {
+        width: 850px;
+        height: 600px;
+        margin-bottom: 20px;
+        .el-textarea__inner {
+            resize: none;
+        }
+    }
+    // 保存按钮
+    .product-sub {
+        position: absolute;
+        bottom: 67px;
+        right: 36px;
+        .el-button {
+            margin-right: 36px;
+            &.el-button:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,240 @@
+<section class="order inner-1200">
+  <div class="order_title">
+    <p class="order_title_slogan">填写并核对订单信息</p>
+  </div>
+  <div class="order_msg">
+    <span class="order_user_message">
+      <span style="color: red;">*</span>收货人信息</span>
+    <span v-if='!molist' class="adress-span">请新增地址</span>
+    <ul class="order_user_msglist" v-if='molist'>
+      <li class="user_bg">{{molist.userName}}</li>
+      <li :title='molist.address' class="user_address">{{molist.provinceName}}{{molist.cityName}}{{molist.areaName}}{{molist.address}}</li>
+      <li>{{molist.primaryPhone}}</li>
+    </ul>
+    <span class="order_user_message order_user_edit">
+
+      <!-- 修改信息 -->
+      <template class="changeInf">
+        <el-button type="text" class="order_hover changebtn" @click="changemsg()" v-if='molist'>修改收货信息</el-button>
+        <el-dialog title="修改收货信息" :visible.sync="dialogFormVisible1" id="rec_mes" center>
+          <el-form :model="ruleForm1" ref="ruleForm1">
+
+            <el-form-item label="收货人" :label-width="formLabelWidth" prop="userName" :rules="[
+              {required: true, message: '请输入收货人', trigger: 'blur,change'},
+              ]">
+              <el-input v-model="ruleForm1.userName" auto-complete="off"></el-input>
+            </el-form-item>
+            <span class="order_span order_span2"></span>
+            <el-form-item label="联系电话" :label-width="formLabelWidth" prop="primaryPhone" :rules="[
+            {required: true, message: '请输入联系电话', trigger: 'blur,change'},
+            { validator: checkPhone, trigger: 'change' }
+            ]">
+              <el-input v-model="ruleForm1.primaryPhone" auto-complete="off"></el-input>
+            </el-form-item>
+            <span class="order_span order_span3"></span>
+
+            <el-form-item label="省/直辖市" prop="areaArr" :rules="[
+            {required: true, message: '请选择地区', trigger: 'blur,change'},
+            ]">
+              <el-cascader :options="producingArea" @active-item-change="handleAreaChange" v-model="ruleForm1.areaArr" :props="props" class="width-300"></el-cascader>
+            </el-form-item>
+
+            <span class="order_span order_span4"></span>
+            <el-form-item label="详细地址" :label-width="formLabelWidth" prop="address" :rules="[
+            {required: true, message: '请输入详细地址', trigger: 'blur,change'},
+            ]">
+              <el-input type='textarea' v-model="ruleForm1.address" auto-complete="off"></el-input>
+            </el-form-item>
+            <input type="hidden" v-model='ruleForm1.id'>
+          </el-form>
+
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible1 = false">取 消</el-button>
+            <el-button type="primary" @click="submitForm1()">确 定</el-button>
+          </div>
+        </el-dialog>
+      </template>
+
+      <!-- 切换地址 -->
+      <template>
+        <el-button type="text" class="order_hover changebtn" @click="shamsg()" v-if='molist'>切换地址</el-button>
+        <el-dialog title="选择收货地址" :visible.sync="dialogFormVisible2" center>
+          <div class="adress_list">
+            <div class="adress_list_card adress_list_card1 clearfixed" @click="orderClick(index)" v-for="(list,index) in adrlist" :key="index"
+              ref="cha2" :data='list.id'>
+              <ul class="card_list cha2">
+                <li>{{list.userName}}</li>
+                <li>{{list.primaryPhone}}</li>
+                <li>{{list.provinceName}}{{list.cityName}}{{list.areaName}}{{list.address}}</li>
+              </ul>
+            </div>
+          </div>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible2 = false">取 消</el-button>
+            <el-button type="primary" @click="submitForm3()">确 定</el-button>
+          </div>
+        </el-dialog>
+      </template>
+      <!-- 新增地址 -->
+      <template>
+        <el-button type="text" class="order_hover changebtn" @click="newadd">新增收货地址</el-button>
+        <el-dialog id="ad_rec" title="新增收货地址" :visible.sync="dialogFormVisible3" center>
+          <el-form :model="ruleForm2" ref="ruleForm2">
+            <el-form-item label="收货人" :label-width="formLabelWidth" prop="userName" :rules="[
+            {required: true, message: '请输入收货人', trigger: 'change'},
+            ]">
+              <el-input v-model="ruleForm2.userName" auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="联系电话" :label-width="formLabelWidth" prop="primaryPhone" :rules="[
+            {required: true, message: '请输入联系电话', trigger: 'change'},
+            { validator: checkPhone, trigger: 'change' }
+            ]">
+              <el-input v-model="ruleForm2.primaryPhone" auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="省/直辖市" prop="areaArr" :rules="[
+            {required: true, message: '请选择地区', trigger: 'change'},
+            ]">
+              <el-cascader :options="producingArea" @active-item-change="handleAreaChange" v-model="ruleForm2.areaArr" :props="props" class="width-300"></el-cascader>
+            </el-form-item>
+            <el-form-item label="详细地址" :label-width="formLabelWidth" prop="address" :rules="[
+            {required: true, message: '请输入详细地址', trigger: 'change'},
+            ]">
+              <el-input type='textarea' v-model="ruleForm2.address" auto-complete="off"></el-input>
+            </el-form-item>
+          </el-form>
+
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible3 = false">取 消</el-button>
+            <el-button type="primary" @click="submitForm2()">确 定</el-button>
+          </div>
+        </el-dialog>
+      </template>
+
+    </span>
+  </div>
+
+  <div class="order_payment">
+    <div class="order_payment_all">
+      <div class="order_payment_row">
+        <el-form :model="allForm" ref="allForm">
+          <div class="way-box pay-way">
+            <label style="margin-right: 40px;">支付方式</label>
+            <span @click="changeWay('payWay',0)" :class="{clickactive: payWay === 0? true:false}">先款后货</span>
+            <span @click="changeWay('payWay',1)" :class="{clickactive: payWay === 1? true:false}">货到付款</span>
+            <input type="hidden" v-model='allForm.paymentMethod' name='paymentMethod'>
+          </div>
+          <div class="way-box send-way">
+            <label style="margin-right: 40px;">配送方式</label>
+            <span @click="changeWay('sendWay',1)" :class="{clickactive: sendWay === 1? true:false}">自提</span>
+            <span @click="changeWay('sendWay',0)" :class="{clickactive: sendWay === 0? true:false}" v-if='sendother'>配送</span>
+            <input type="hidden" v-model='allForm.shippingMethod' name='shippingMethod'>
+          </div>
+          <div class="way-box spend-way">
+            <label style="margin-right: 40px;">运费结算方式</label>
+            <span @click="changeWay('endWay',0)" :class="{clickactive: endWay === 0? true:false}">一票制</span>
+            <input type="hidden" v-model='allForm.endway' name='shippingPaymentMethod'>
+          </div>
+        </el-form>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="order_productlist">
+    <p class="order_productlist_slogan">产品清单</p>
+  </div>
+  <div class="order_productlist_table">
+    <template>
+      <el-table style="width: 100%" :data="buylist">
+        <el-table-column prop="product.name" label="产品名称">
+        </el-table-column>
+        <el-table-column label="规格/牌号">
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{scope.row.product.gradeCode}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="产地">
+          <template slot-scope="scope">
+            <span>{{getCdName(scope.row.product.manufacturerCode)}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="库别">
+          <template slot-scope="scope">
+            <span>{{getIoName(scope.row.warehouseCode)}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="单位">
+          <template slot-scope="scope">
+            <span>{{getDwName(scope.row.unitCode)}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="数量*">
+          <template slot-scope="scope">
+            <input type="number" v-model='orderNum' @change='chageNum' class='orderNum' name='quantiy'>
+          </template>
+        </el-table-column>
+        <el-table-column label="价格*">
+          <template slot-scope="scope">
+            <span>{{salePrice.toFixed(2)}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="业务员">
+          <template slot-scope="scope">
+            <span>{{admin}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="总金额(元)">
+          <template slot-scope="scope">
+            <span>{{allPrice.toFixed(2)}}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+    </template>
+  </div>
+  <div class="ord_sub">
+  	<div class="ord_sub1">开票信息</div>
+  	<div class="ord_sub2">
+  		<div class="ord_sub3">开票公司名称：{{companyName}}</div>
+  		<div class="ord_sub4">统一信用社会代码：{{bizcode}}</div>
+  	</div>
+  	<div class="ord_sub5">
+  		订单备注
+  	</div>
+  	<div class="ord_sub6">
+      <!-- <textarea class="ord_sub7" placeholder="订单备注：限50字以内"></textarea> -->
+      <el-input type="textarea" :rows="2" autosize placeholder="限50字以内" v-model="ordertext" @input='textaretorder' :maxlength='maxlength'>
+      </el-input>
+  	</div>
+  	<div class="ord_sub9">¥&nbsp;{{allPrice.toFixed(2)}}</div>
+  	<div class="ord_sub8">应付总额</div>
+  </div>
+  <!--下面是写法二，先注释-->
+  <!--<div style="height: 64px;line-height: 64px;">
+    <div style="float: right;color: #009FE2;font-size: 18px;font-weight: blod;margin-left:10px;margin-right:10px;">¥ {{allPrice.toFixed(2)}}</div>
+    <div style="float: right;font-size: 14px;color: #333;">应付总额</div>
+  </div>-->
+  <!--下方订单备注部分-->
+  <!--<div class="ord_xiu">
+    <div class="ord_xiu1">
+      <div class="ord_xiu2">订单备注</div>
+      <el-col :span="18">
+        <div class="remarks_right">
+          <el-input type="textarea" :rows="3" placeholder="限50字以内" v-model="ordertext" @input='textaretorder' :maxlength='maxlength'>
+          </el-input>
+        </div>
+      </el-col>
+    </div>
+    <div class="ord_xiu4">
+      <div class="ord_xiu5">
+        开票公司名称：{{companyName}}
+      </div>
+      <div class="ord_xiu6">
+        统一信用社会代码：{{bizcode}}
+      </div>
+    </div>
+  </div>-->
+  <div class="subBtn">
+    <button type="button" @click='submitOrder'>提交订单</button>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+.bidsuccess{
+	.addID{
+	    .new-ruleForm{
+	    	width: 374px;
+	    	margin:auto;
+		    .el-form-item{
+		        margin-bottom: 9px;
+		        label{
+		        	width: 100%!important;
+		        	float: none;
+		        }
+		        .el-form-item__content{
+		        	margin-left: 0!important;
+		        	.el-input__inner{
+		        		height: 38px;
+		        	}
+		        	.el-select{
+		        		width: 121px;
+		        	}
+					textarea{
+						resize: none;
+					}
+		        }
+		    }
+		    .resetbtn{
+        		text-align: center;
+
+        	}
+	    } 
+	}
+}
+.bidsuccess .cell{
+    text-align: center;
+}
+.bidsuccess .has-gutter .is-leaf{
+    background: #e5e6e6;
+    border-color: #e0e0e0;
+}
+.bidsuccess .changeadd .el-dialog--center{
+    border-radius: 10px;
+}
+.bidsuccess .changeadd  .el-dialog__header{
+    border-radius: 10px 10px 0 0 ;
+    padding: 0;
+    height: 52px;
+    line-height: 52px;
+}
+.bidsuccess .el-dialog__headerbtn .el-dialog__close{
+    color: #FFF;
+}
+.bidsuccess .changeadd  .el-dialog__header .el-dialog__title{
+    font-size: 14px
+
+}
+.bidsuccess .changeadd .el-button:focus, .el-button:hover{
+	background: #009fe2;
+    color: #fff;
+}
+.bidsuccess .changeadd .el-button{
+	background: #009fe2;
+    border-color: #009fe2;
+    color: #fff;
+}
+.bidsuccess .el-dialog--center .el-dialog__body{
+	padding: 25px 60px 30px;
+}
+.bidsuccess .el-dialog__body{
+	height: 430px;
+	overflow-y:auto;
+}
+
+ 

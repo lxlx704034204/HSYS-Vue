@@ -1,0 +1,140 @@
+<section>
+  <el-carousel height="420px">
+    <el-carousel-item v-for="(item,index) in banner" :key="index">
+      <img class="banner-img" :src="item.img">
+    </el-carousel-item>
+  </el-carousel>
+  <div class="inner-1200  case-2">
+    <div class="tabs-custom">
+      <el-tabs type="border-card">
+        <el-tab-pane label="自选产品清单">
+          <!-- 列表 -->
+          <el-table :data="tableData" row-class-name="row-60" ref="myTable">
+            <el-table-column prop="type" label="分类"></el-table-column>
+            <el-table-column class-name="mark-num-color" prop="marknum" label="牌号"></el-table-column>
+            <el-table-column prop="company" label="厂家"></el-table-column>
+            <el-table-column prop="num" label="数量（吨）" width="110px">
+              <template slot-scope="scope">
+                <!-- <span v-if="scope.row.num === '无货'" class="nothing-color">{{scope.row.num}}</span>
+                  <span v-else>{{scope.row.num}}</span> -->
+                <span :class="{'nothing-color': scope.row.num === '无货' ? true : false}">{{scope.row.num}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="address" label="发货地"></el-table-column>
+            <el-table-column prop="sendway" label="交互方式"></el-table-column>
+            <el-table-column prop="updatetime" label="更新时间" sortable width="120px">
+              <template slot-scope="scope">
+                {{scope.row.updatetime}}分钟前
+              </template>
+            </el-table-column>
+            <el-table-column prop="price" label="价格（元）" width="150px" sortable>
+              <template slot-scope="scope">
+                <p class="price-color">
+                  ￥{{scope.row.price}}/吨
+                  <img src="./trend.png">
+                </p>
+                <div slot="reference" class="name-wrapper">
+                  <el-tooltip class="item" size="mini" effect="dark" content="满10000返1000元代金券" placement="top">
+                    <el-tag size="mini" type="warning">返券</el-tag>
+                  </el-tooltip>
+                  <el-tooltip class="item" size="mini" effect="dark" content="满10000减999元" placement="top">
+                    <el-tag size="mini" type="danger">满减</el-tag>
+                  </el-tooltip>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="涨价" align="center">
+              <template slot-scope="scope">
+                <p class="up-color" v-if="scope.row.updown && scope.row.updown.indexOf('↑') > -1 ">{{ scope.row.updown }}</p>
+                <p class="down-color" v-else>{{ scope.row.updown }}</p>
+              </template>
+            </el-table-column>
+            <el-table-column width="220px">
+              <template slot-scope="scope">
+                <span class="btn-add-selector">加入选择</span>
+                <el-tooltip popper-class="sy-tooltip-custom" size="mini" effect="light" placement="bottom">
+                  <div slot="content">
+                    <div class="sy-tipbox">
+                      <div class="left weixin-info">
+                        <img src="./weixin.png" alt="">
+                        <p>扫码加微信咨询</p>
+                      </div>
+                      <div class="right card-info">
+                        <h3>王大力</h3>
+                        <p class="position">华北区销售经理</p>
+                        <p>手机：18201030698
+                          <a class="call-color" tel="18201030698">免费拨电话</a>
+                        </p>
+                        <p>邮箱：daxiang@daxiangclass.com</p>
+                        <p>微信：suyun</p>
+                        <span class="qq">
+                          <img src="./qq.png" alt="">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="btn-service">
+                    <img src="./service.png" alt="">
+                  </span>
+                </el-tooltip>
+                <el-button size="small" type="primary">立即采购</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+
+        </el-tab-pane>
+        <el-tab-pane label="HDPE">HDPE</el-tab-pane>
+        <el-tab-pane label="LDPE">LDPE</el-tab-pane>
+        <el-tab-pane label="LLDPE">LLDPE</el-tab-pane>
+        <el-tab-pane label="PP均聚">PP均聚</el-tab-pane>
+      </el-tabs>
+    </div>
+
+    <div class="tabs-custom">
+      <el-tabs type="border-card">
+        <el-tab-pane label="最新公司">
+          <el-row>
+            <el-col :span="12" v-for="(item,index) in companyList.slice(0,4)" :key="index">
+              <div class="company-box">
+                <div class="logo-box">
+                  <img :src="item.logo">
+                </div>
+                <div class="company-info">
+                  <h2>{{item.name}}</h2>
+                  <span></span>
+                  <p>{{item.address}}</p>
+                  <p>{{item.employees}}</p>
+                  <p>{{item.category}}</p>
+                  <p>{{item.product}}</p>
+                  <el-button type="default">查看详情</el-button>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
+        </el-tab-pane>
+        <el-tab-pane label="通用塑料">通用塑料</el-tab-pane>
+        <el-tab-pane label="工程塑料">工程塑料</el-tab-pane>
+        <el-tab-pane label="特种工程塑料">特种工程塑料</el-tab-pane>
+      </el-tabs>
+    </div>
+    <div class="tabs-custom">
+      <el-tabs type="border-card">
+        <el-tab-pane label="最新专家">
+          <el-row>
+            <el-col :span="6" v-for="(item,index) in expertList" :key="index">
+              <h2>{{item.name}}</h2>
+              <img :src="item.expertImg" alt="">
+            </el-col>
+          </el-row>
+        </el-tab-pane>
+        <el-tab-pane label="挤出成型">挤出成型</el-tab-pane>
+        <el-tab-pane label="注塑成型">滚塑成型</el-tab-pane>
+        <el-tab-pane label="泡沫成型">泡沫成型</el-tab-pane>
+        <el-tab-pane label="热成型">热成型</el-tab-pane>
+        <el-tab-pane label="专用料">专用料</el-tab-pane>
+        <el-tab-pane label="橡胶类">橡胶类</el-tab-pane>
+        <el-tab-pane label="热塑性弹性体类">热塑性弹性体类</el-tab-pane>
+      </el-tabs>
+    </div>
+  </div>
+</section>

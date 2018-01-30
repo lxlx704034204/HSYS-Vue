@@ -1,0 +1,55 @@
+<section class="con_our">
+	<div class="consultation-index inner-1200 clearfix">
+	  <div class="custom_main">
+	    <my-sidebar></my-sidebar>
+	    <div class="customcontact-wrap">
+	      <div class="customcontact-one customcontact">
+	        <div class="con_our1">
+	        	<div class="con_our2">
+	        		<img src="./images/icon_4.png" />
+	        	</div>
+	        	<div class="con_our3">
+	        		联系我们
+	        	</div>
+	        </div>
+	        <div class="infor-wrap">
+	          <ul class="clearfixed">
+	            <li>公司名称</li>
+	            <li>{{cinf.name}}</li>
+	          </ul>
+	          <ul class="clearfixed">
+	            <li>联系人</li>
+	            <li>{{cinf.linker}}</li>
+	          </ul>
+	          <ul class="clearfixed">
+	            <li>联系电话</li>
+	            <li>{{cinf.primaryPhone}}</li>
+	          </ul>
+	          <ul class="clearfixed">
+	            <li>传真</li>
+	            <li>{{cinf.fax}}</li>
+	          </ul>
+	          <ul class="clearfixed">
+	            <li>地址</li>
+	            <li ref='custommap'>{{provinces}}{{cinf.address}}</li>
+	          </ul>
+	        </div>
+	      </div>
+	      <div class="customcontact customcontact-two">
+	        <div style="height: 59px;">
+	        	<div class="con_our4">
+	        		<img src="./images/icon_5.png" />
+	        	</div>
+	        	<div class="con_our5">企业地理位置</div>
+	        </div>
+	        <div id="custommap" ref='mapcustom' class="custommap">
+	    
+	        </div>
+	        <div style="height: 25px;"></div>
+	        <!-- </div> -->
+	      </div>
+	    </div>
+	  </div>
+  </div>
+  <div style="height: 112px;overflow: hidden;"></div>
+</section>

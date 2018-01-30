@@ -1,0 +1,106 @@
+// 清除浮动
+.clearfix {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    content: "";
+}
+
+.bidsuccess {
+    .nav {
+        line-height: 58px;
+    }
+    .main {
+        width: 960px;
+        /* height: 530px; */
+        margin-top: 8px;
+        border: 1px solid #ccc;
+        .myaddress {
+            height: 70px;
+            margin: 0 9px;
+            position: relative;
+            border-bottom: 1px dashed #ccc;
+            div {
+                margin-left: 9px;
+                font-size: 14px;
+                line-height: 70px;
+                .changebtn {
+                    position: absolute;
+                    display: inline-block;
+                    color: #009fe2;
+                    left: 827px;
+                    top: 0px;
+                }
+            }
+            span {
+                color: #f56c6c;
+                display: inline-block;
+                position: absolute;
+                left: -5px;
+                top: 18px;
+            }
+        }
+        .adds {
+            margin-top: 30px;
+            .address {
+                width: 942px;
+                margin: 10px 9px;
+                border: 1px solid #b0e6fe;
+                .addressinfo {
+                    float: left;
+                    height: 93px;
+                    font-size: 14px;
+                    line-height: 30px;
+                    border: 1px solid #fffff0;
+                    // box-shadow: 0 10px 0 #b0e6fe
+                    div {
+                        margin-left: 15px;
+                    }
+                }
+                .changebtn {
+                    float: right;
+                    margin-top: 25px;
+                    margin-right: 42px;
+                    color: #009fe2;
+                }
+            }
+        }
+        .add {
+            .address {
+                width: 942px;
+                margin: 10px 9px;
+                box-shadow: 0 1px 3px 0 #b0e6fe;
+                .addressinfo {
+                    float: left;
+                    height: 93px;
+                    font-size: 14px;
+                    line-height: 30px;
+                    border: 1px solid #fffff0;
+                    // box-shadow: 0 10px 0 #b0e6fe
+                    div {
+                        margin-left: 15px;
+                    }
+                }
+                .changebtn {
+                    float: right;
+                    margin-top: 25px;
+                    margin-right: 42px;
+                    color: #009fe2;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    // el-dialog {
+    //   width: 523px;
+    //   line-height: 30px;
+    // }
+    // .el-dialog--center .el-dialog__header {
+    //   height: 30px;
+    //   line-height: 30px;
+    // }
+}
+
+.order_hover {
+    cursor: pointer;
+}

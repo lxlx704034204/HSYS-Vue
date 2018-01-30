@@ -1,0 +1,169 @@
+<section class="myfirm">
+    <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/companycenter/myfirm' }">企业中心</el-breadcrumb-item>
+        <el-breadcrumb-item>我的企业</el-breadcrumb-item>
+    </el-breadcrumb>
+    <div class="my-firm">
+        <el-row :gutter="22">
+            <el-col :span="12">
+                <div class="company-box">
+                    <div class="logo-box">
+                        <img v-if="imageUrl" :src="imageUrl" />
+                        <img v-else src="./images/companylogin.jpg" alt="" />
+                    </div>
+                    <div class="myfirm-messages" style="margin-top: 20px;">
+                        <div class="myf_xiu1" style="" @click="tomyc()" v-show="auth">进入我的公司></div>
+                        <p class="myf_xiu" v-model="name">{{name}}</p>
+                        <p v-show="auth">
+                            <img src="./images/verfiied.png" alt="">
+                        </p>
+                        <br>
+                        <p v-show="auth1">
+                            <img src="./images/frozen.png" alt="">已冻结</p>
+                        <p v-show="auth5">
+                            <span class="myfirm-span3" style="color:red"> 您的账号已被冻结，请联系客服解冻 </span>
+                        </p>
+                        <!-- <span class="myfirm-span3" style="color:red"> 您的账号已被冻结，请联系客服解冻 </span> -->
+                        <!-- <router-link class="dingdan" :to="{path: '/companycenter/publish'}" tag="span"> -->
+                        <!-- <span class="myfirm-span3" style="cursor:pointer; color:red"> 您的账号已被冻结，请联系客服解冻 </span> -->
+                        <!-- </router-link> -->
+                        <p v-show="auth2">
+                            <img src="./images/notthrough.png" alt="">审核未通过
+                            <router-link class="dingdan" :to="{path: '/companycenter/publish'}" tag="span">
+                                <span class="myfirm-span3" style="cursor:pointer; color:red"> 查看未通过原因 </span>
+                            </router-link>
+                        </p>
+                        <p v-show="auth3">
+                            <img src="./images/unauthenticated.png" alt="">待审核</p>
+                        <p v-show="auth4">
+                            <img src="./images/unauthenticated.png" alt="">未认证</p>
+                        <div class="div" v-show="auth6">
+                            <router-link class="dingdan" to="/companycenter/publish" tag="span">
+                                <span class="myfirm-span3">{{ auth ? '查看企业信息' : '完善企业信息'}}></span>
+                            </router-link>
+                        </div>
+                        <div class="div" v-show="auth7">
+                            <router-link class="dingdan" to="/companycenter/publish" tag="span">
+                                <span class="myfirm-span3">{{'查看企业信息'}}></span>
+                            </router-link>
+                        </div>
+                        <span class="myfirm-span2" style="font-size: 12px;">{{ auth ? '您的企业已通过审核，可以前往产品管理发布您的产品，获取更多商机' : '完善公司信息将获得更多的商业机会'}}</span>
+                    </div>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+
+    <span class="myfirm-order">订单</span>
+
+    <div class="myfirm-orderList">
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="今天">
+                <template>
+          <div class="list">
+            <div class="list-div">
+              <img src="./images/money.png" alt="">
+              <div class="title">订单总额</div>
+              <div class="number">{{money}}</div>
+            </div>
+            <div class="list-div">
+              <img src="./images/ordernum.png" alt="">
+              <div class="title">订单数</div>
+              <div class="number">{{ordernum}}</div>
+            </div>
+            <div class="list-div">
+              <img style="margin-left:88px" src="./images/pendingpayment.png" alt="">
+              <div class="title">待付款</div>
+              <div class="number">{{pendingpayment}}</div>
+            </div>
+            <div class="list-div">
+              <img style="margin-left:90px" src="./images/pendingdelivery.png" alt="">
+              <div class="title">待发货</div>
+              <div class="number">{{pendingdelivery}}</div>
+            </div>
+          </div>
+        </template>
+            </el-tab-pane>
+            <el-tab-pane label="本周">
+                <template>
+          <div class="list">
+            <div class="list-div">
+              <img src="./images/money.png" alt="">
+              <div class="title">订单总额</div>
+              <div class="number">{{money}}</div>
+            </div>
+            <div class="list-div">
+              <img src="./images/ordernum.png" alt="">
+              <div class="title">订单数</div>
+              <div class="number">{{ordernum}}</div>
+            </div>
+            <div class="list-div">
+              <img style="margin-left:88px" src="./images/pendingpayment.png" alt="">
+              <div class="title">待付款</div>
+              <div class="number">{{pendingpayment}}</div>
+            </div>
+            <div class="list-div">
+              <img style="margin-left:90px" src="./images/pendingdelivery.png" alt="">
+              <div class="title">待发货</div>
+              <div class="number">{{pendingdelivery}}</div>
+            </div>
+          </div>
+        </template>
+            </el-tab-pane>
+            <el-tab-pane label="本月">
+                <template>
+          <div class="list">
+            <div class="list-div">
+              <img src="./images/money.png" alt="">
+              <div class="title">订单总额</div>
+              <div class="number">{{money}}</div>
+            </div>
+            <div class="list-div">
+              <img src="./images/ordernum.png" alt="">
+              <div class="title">订单数</div>
+              <div class="number">{{ordernum}}</div>
+            </div>
+            <div class="list-div">
+              <img style="margin-left:88px" src="./images/pendingpayment.png" alt="">
+              <div class="title">待付款</div>
+              <div class="number">{{pendingpayment}}</div>
+            </div>
+            <div class="list-div">
+              <img style="margin-left:90px" src="./images/pendingdelivery.png" alt="">
+              <div class="title">待发货</div>
+              <div class="number">{{pendingdelivery}}</div>
+            </div>
+          </div>
+        </template>
+            </el-tab-pane>
+            <el-tab-pane label="全部">
+                <template>
+          <div class="list">
+            <div class="list-div">
+              <img src="./images/money.png" alt="">
+              <div class="title">订单总额</div>
+              <div class="number">{{money}}</div>
+            </div>
+            <div class="list-div">
+              <img src="./images/ordernum.png" alt="">
+              <div class="title">订单数</div>
+              <div class="number">{{ordernum}}</div>
+            </div>
+            <div class="list-div">
+              <img style="margin-left:88px" src="./images/pendingpayment.png" alt="">
+              <div class="title">待付款</div>
+              <div class="number">{{pendingpayment}}</div>
+            </div>
+            <div class="list-div">
+              <img style="margin-left:90px" src="./images/pendingdelivery.png" alt="">
+              <div class="title">待发货</div>
+              <div class="number">{{pendingdelivery}}</div>
+            </div>
+          </div>
+        </template>
+            </el-tab-pane>
+
+        </el-tabs>
+    </div>
+
+</section>

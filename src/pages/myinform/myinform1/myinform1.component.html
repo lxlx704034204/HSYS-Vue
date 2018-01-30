@@ -1,0 +1,46 @@
+<section class="myinform">
+    <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/companycenter/myinform' }">企业中心</el-breadcrumb-item>
+        <el-breadcrumb-item>个人信息</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-form ref="form" class="from-one" :model="form">
+        <el-form-item>
+            <template slot-scope="scope">
+        <div class="label">
+          <span>用户名:</span>
+        </div>
+        <el-input class="bidding-pname name" v-model="name" disabled>
+        </el-input>
+      </template>
+        </el-form-item>
+        <el-form-item>
+            <template slot-scope="scope">
+        <!-- <div class="label">
+          <span>旧手机号码:</span>
+        </div>
+        <el-input class="bidding-pname phone" v-model="phonea" @blur="ph">
+        </el-input> -->
+        <div class="label">
+          <span>旧手机号码:</span>
+        </div>
+        <el-input class="bidding-pname num" v-model="phonea" disabled>
+        </el-input>
+        <p class="p-one" v-show="phones">{{phonea}}</p>
+      </template>
+        </el-form-item>
+        <el-form-item>
+            <template slot-scope="scope">
+        <div class="label">
+          <span>验证码:</span>
+        </div>
+        <el-input class="bidding-pname code" v-model="verif">
+        </el-input>
+        <button class="span" type="button" id="fg" :disabled="disabled" @click="code" ref='sendcodebtn'>{{btntxt}}</button>
+        <p class="p-two" v-show="verifs">{{verifa}}</p>
+      </template>
+        </el-form-item>
+        <el-button type="primary" class="but" @click="cancel">取消</el-button>
+        <el-button type="primary" class="but" @click="nextstep">下一步</el-button>
+    </el-form>
+
+</section>

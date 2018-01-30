@@ -1,0 +1,38 @@
+// 清除浮动
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.myserver {
+    .mybill-search{
+        padding: 20px 0;
+    }
+    .mybill-table{
+        text-align: center;
+        .dingdan{
+            color: #009fe2;
+        }
+    }
+    .el-table thead{
+        align: center;
+        background: #E5E6E6;
+    }
+    .el-table  {
+       text-align: center;
+    }
+    table{
+        align: center;
+    }
+    .mybill-fenye{
+        float: right;
+        padding: 10px;
+    }
+    .dingdan{
+        color: #97D8F3;
+        cursor: pointer;
+    }
+}
+

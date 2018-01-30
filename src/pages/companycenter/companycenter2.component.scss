@@ -1,0 +1,15 @@
+.el-submenu .el-submenu__title .el-icon-arrow-down::before {
+    content: "";
+}
+
+.el-submenu .el-menu {
+    // display: block !important;
+}
+
+.el-main {
+    padding: 20px 0 0 20px;
+}
+
+.el-message-box__title {
+    font-size: 16px !important;
+}

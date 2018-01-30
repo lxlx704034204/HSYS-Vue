@@ -1,0 +1,64 @@
+<section class="enchashment">
+  <div class="put_moy">
+  	<!--提现信息-->
+  	<div class="put_moy1">
+  		<div class="put_moy11">提现信息</div>
+  		<div class="put_moy12">
+  			申请提现后我们将在一个工作日内把对应的金额打到您的账户中
+  		</div>
+  		<div class="put_moy18">账户可用余额：{{avaliableAmount}}元</div>
+  	</div>
+  	<!--表格-->
+  	<div class="put_moy13">
+  		<!--第一行-->
+  		<div class="put_moy14">
+  			<div class="put_moy15"style="overflow: hidden;">
+  				<div class="put_moy16">收款银行</div>
+  			</div>
+  			<div class="put_moy17">{{bank}}</div>
+  		</div>
+  		<!--第二行-->
+  		<div class="put_moy14">
+  			<div class="put_moy15">
+  				<div class="put_moy16">开户名</div>
+  			</div>
+  			<div class="put_moy17">{{accountName}}</div>
+  		</div>
+  		<!--第三行-->
+  		<div class="put_moy14">
+  			<div class="put_moy15">
+  				<div class="put_moy16">银行账号</div>
+  			</div>
+  			<div class="put_moy17">{{accountNo}}</div>
+  		</div>
+  		<!--第四行-->
+  		<div class="put_moy14">
+  			<div class="put_moy15">
+  				<div class="put_moy16">提现金额</div>
+  			</div>
+  			<div class="put_moy17"><span>*&nbsp;</span><input id="input_enc" placeholder="提现金额" v-model="needMoy" @blur="inputmon" />元</div>
+  		</div>
+  		<!--提示框-->
+  		<div id="notice_enc">
+  		  {{notices}}
+  		</div>
+  	</div>
+  	<!--表格下方-->
+  	<div class="put_moy19">手机号：{{phone}}</div>
+  	<!--验证码-->
+  	<div class="put_moy2">
+  		<div class="put_moy21" >
+  			<input type="text" class="put_moy22" v-model="codenum" placeholder="请在此输入验证码" />
+  		</div>
+  		<div class="put_moy23">
+  			<button id="btn_enc" class="put_moy24" @click="sendcode()" :disabled = "disabled">{{btntxt}}</button>
+  		</div>
+      
+  	</div>
+  	<div class='put_remind'>{{putremind}}</div>
+  	<div class="enc_xiu">
+  		<button class="put_moy25" type="button" @click='withdrap'>申请提现</button>
+  	</div>
+  </div>
+  <div style="height: 537px;"></div>
+</section>

@@ -1,0 +1,75 @@
+<section class="addstaff">
+  <el-breadcrumb separator="/">
+    <el-breadcrumb-item :to="{ path: '/companycenter/mystaff' }">企业中心</el-breadcrumb-item>
+    <el-breadcrumb-item>员工信息</el-breadcrumb-item>
+  </el-breadcrumb>
+  <div class="addstaff-form">
+    <el-form ref="form" label-width="80px">
+      <el-form-item>
+        <template slot-scope="scope">
+          <div class="label">
+            <p>
+              <span>*</span>姓名:</p>
+          </div>
+          <el-input class="bidding-pname phone" v-model="name" @blur="names">
+          </el-input>
+          <p class="p-one" v-show="namez">{{namea}}</p>
+        </template>
+      </el-form-item>
+      <el-form-item>
+        <template slot-scope="scope">
+          <div class="label">
+            <p>
+              <span>*</span>手机号码:</p>
+          </div>
+          <el-input class="bidding-pname phone" v-model="phone" @blur="phones">
+          </el-input>
+          <p class="p-one" v-show="phonez">{{phonea}}</p>
+        </template>
+      </el-form-item>
+      <el-form-item>
+        <template slot-scope="scope">
+          <div class="label">
+            <p>
+              <span>*</span>职位:</p>
+          </div>
+          <el-input class="bidding-pname phone" v-model="position" @blur="positions">
+          </el-input>
+          <p class="p-one" v-show="positionz">{{positionx}}</p>
+        </template>
+      </el-form-item>
+      <el-form-item>
+        <template slot-scope="scope">
+          <div class="label">
+            <p>
+                <span>*</span>邮箱:</p>
+          </div>
+          <el-input class="bidding-pname phone" v-model="email" @blur="emails">
+          </el-input>
+          <p class="p-one" v-show="emailz">{{emaila}}</p>
+        </template>
+      </el-form-item>
+      <el-form-item>
+        <template slot-scope="scope">
+          <div class="label">
+            <p>状态:</p>
+          </div>
+          <el-switch v-model="value3" active-text="启用">
+          </el-switch>
+        </template>
+      </el-form-item>
+      <el-form-item>
+        <template slot-scope="scope">
+          <div class="label">
+            <p>企业联系人:</p>
+          </div>
+          <el-switch v-model="value4" active-text="启用">
+          </el-switch>
+        </template>
+      </el-form-item>
+      <button type='submit' v-if='submit'  class="preservation" @click="onSubmit">立即创建</button>
+      <button type='submit'  v-else class="preservation"  @click="onSubmit2">确认修改</button>
+
+    </el-form>
+  </div>
+</section>

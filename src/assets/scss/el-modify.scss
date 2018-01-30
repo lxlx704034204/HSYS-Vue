@@ -1,0 +1,132 @@
+// 修复下标滚动条问题
+.el-table__body-wrapper {
+  width: 101%;
+}
+
+// 自定义poper箭头颜色
+.sy-tooltip-custom.is-light[x-placement^=bottom] .popper__arrow {
+  border-bottom-color: #ddd !important;
+}
+
+.sy-tooltip-custom.is-light[x-placement^=top] .popper__arrow {
+  border-top-color: #ddd !important;
+}
+
+.sy-tooltip-custom.is-light[x-placement^=left] .popper__arrow {
+  border-left-color: #ddd !important;
+}
+
+.sy-tooltip-custom.is-light[x-placement^=right] .popper__arrow {
+  border-right-color: #ddd !important;
+}
+
+
+/* 控制tabs */
+
+@mixin tabs-custom($activeColor:#009FE2, $bdrColor:#3a8ee6, $bgHeaderColor:#fff) {
+  .el-tabs__nav {
+    padding-left: 15px;
+  }
+  .el-tabs--border-card {
+    border: none;
+    box-shadow: 0 0;
+  }
+  .el-tabs--border-card>.el-tabs__header {
+    background: $bgHeaderColor;
+    border-bottom: 2px solid $bdrColor;
+  }
+  .el-tabs__nav-wrap {
+    margin-bottom: -2px;
+  }
+  .el-tabs--border-card>.el-tabs__header .el-tabs__item {
+    border-width: 2px;
+    font-size: 16px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 26px;
+    color: #333;
+  }
+  .el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active {
+    color: $activeColor;
+    border-top-color: $bdrColor;
+    border-right-color: $bdrColor;
+    border-left-color: $bdrColor;
+  }
+  .el-tabs--border-card>.el-tabs__header .el-tabs__item {
+    margin: 0;
+  }
+}
+
+.tabs-custom {
+  $myActiveColor: #009fe2;
+  $myBdrColor: #009fe2;
+  @include tabs-custom($myActiveColor, $myBdrColor);
+}
+
+
+/* 导航按钮 */
+
+.el-aside {
+  overflow: hidden;
+}
+
+.el-aside>.el-menu {
+  border: solid 1px #e6e6e6;
+}
+
+.el-aside>.el-menu>.el-submenu {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.el-menu-item.is-active {
+  background: #009fe2;
+  .sy-sub-item {
+    color: #fff;
+  }
+}
+
+
+/* tabs切换内部宽度 */
+
+.modify-grid .el-tabs--border-card>.el-tabs__content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+/* 修改登录tabs */
+
+.login {
+  .el-tabs__active-bar {
+    width: 146px !important; // transform: translateX(146px);
+  }
+  .el-tabs__nav-wrap.is-scrollable {
+    padding: 0 !important;
+  }
+  .el-tabs__nav-prev,
+  .el-tabs__nav-next {
+    display: none;
+  }
+  .el-tabs__item {
+    padding: 0 !important;
+  }
+  .translateX150 {
+    transform: translateX(150px) !important;
+  }
+}
+
+
+.trand-cell{
+
+}
+.trend-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .chart-box{
+    position: absolute;
+    left:0;
+    bottom:0;
+    z-index: 100;
+  }
+}

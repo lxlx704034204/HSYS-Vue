@@ -1,0 +1,63 @@
+<section class="myserver">
+    <el-breadcrumb separator="/">
+      <el-breadcrumb-item :to="{ path: '/' }">订单管理</el-breadcrumb-item>
+      <el-breadcrumb-item>我的订单</el-breadcrumb-item>
+    </el-breadcrumb>
+  <div class="mybill-search clearfix">
+      <el-select class="myorder_input" v-model="value"  filterable remote reserve-keyword placeholder="请输入关键词" >
+      <el-option v-for="item in option" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select>
+    <el-button class="myorder_btn" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
+  </div>
+ 
+  <div class="mybill-table">
+    <el-table :data="myservertable" border style="width: 100%">
+      <el-table-column prop="number" label="订单编号" width="180">
+          <template slot-scope="scope">
+              <span class="dingdan">{{scope.row.number}}</span>
+            </router-link>
+          </template>
+      </el-table-column>
+      <el-table-column prop="time" label="创建日期" width="180">
+      </el-table-column>
+      <el-table-column prop="name" label="专家姓名">
+      </el-table-column>
+      <el-table-column prop="type" label="服务类型">
+      </el-table-column>
+      <el-table-column prop="price" label="实付金额">
+      </el-table-column>
+      <el-table-column prop="status" label="状态">
+      </el-table-column>
+      <el-table-column prop="number" label="更新日期">
+      </el-table-column>
+      <el-table-column  label="操作" width="100">
+        <template slot-scope="scope">
+          <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+          <el-button type="text" size="small">付款</el-button>
+        </template>
+        <!-- <template slot-scope="scope" v-if="status == '待安排'">
+            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+            <el-button type="text" size="small">取消</el-button>
+          </template>
+          <template slot-scope="scope" v-if="status == '已安排' || status == '已完成'">
+              <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+          </template> -->
+      </el-table-column>
+    </el-table>
+    <div class="pagebox clearfix">
+        <div style="height: 30px;"></div>
+        <!-- 翻页效果 -->
+        <div class="sy-pagination">
+          <el-pagination background  @current-change="pageChange" prev-text="上一页" next-text="下一页"   :page-size="pageSize" 
+            layout="prev,pager,next,total,jumper,slot" :total="total" :current-page="pageNum">
+            <slot>
+              <button class="btn-next">确定</button>
+            </slot>
+          </el-pagination>
+        </div>
+      </div>
+</div>
+
+  </div>
+</section>

@@ -1,0 +1,15 @@
+{
+  "name": "dxEluiDev",
+  "homepage": "https://github.com/xiangjun9988/dx-el-ui-dev",
+  "version": "2.0.1",
+  "_release": "2.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.1",
+    "commit": "3a686eac20a7913c81b431ecfc6888ea5e0c47c1"
+  },
+  "_source": "https://github.com/xiangjun9988/dx-el-ui-dev.git",
+  "_target": "^2.0.1",
+  "_originalSource": "dxEluiDev",
+  "_direct": true
+}

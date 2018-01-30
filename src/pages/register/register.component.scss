@@ -1,0 +1,144 @@
+.clearfix {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    content: "";
+}
+
+.register {
+    .regis_bg {
+        position: relative;
+        width: 100%;
+        height: 688px;
+        overflow: hidden;
+        background: url("./images/reg_bg.png") repeat center top;
+        background-size: 100%;
+        .regis_content {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            width: 797px;
+            height: 618px;
+            transform: translateX(-50%);
+            border-radius: 7px;
+            background: #fff;
+            .regis_top {
+                height: 57px;
+                line-height: 57px;
+                text-align: center;
+                border-bottom: 1px solid #dddedf;
+                border-radius: 7px 7px 0 0;
+                background-color: #009FE2;
+                span {
+                    font-size: 18px;
+                    color: #fff;
+                }
+            }
+            .regis_con {
+                width: 440px;
+                margin: 11px auto 0;
+                .regis_prompt {
+                    display: block;
+                    height: 22px;
+                    margin-left: 10px;
+                    font-size: 14px;
+                    color: #d81919;
+                }
+                .regis_input {
+                    width: 398px;
+                    height: 40px;
+                    padding-left: 40px;
+                    border: 1px solid #bfbfbf;
+                    border-radius: 4px;
+                }
+                .regis_name {
+                    margin-top: 33px;
+                    background: url("./images/person.png")no-repeat 9px;
+                }
+                .regis_psd {
+                    background: url("./images/pwd.png")no-repeat 9px;
+                }
+                .regis_psd2 {
+                    width: 420px;
+                    padding-left: 17px;
+                }
+                .regis_phooe {
+                    background: url("./images/phone.png")no-repeat 9px;
+                }
+                .regis_div {
+                    .regis_check {
+                        width: 310px;
+                        height: 40px;
+                        padding-left: 17px;
+                        border: 1px solid #bfbfbf;
+                        border-radius: 4px;
+                    }
+                    .regis_btn {
+                        float: right;
+                        width: 98px;
+                        height: 42px;
+                        padding: 0;
+                        cursor: pointer;
+                        color: #fff;
+                        border: none;
+                        border-color: #009FE2;
+                        border-radius: 4px;
+                        background: #009FE2;
+                    }
+                }
+                .regis_p1 {
+                    font-size: 14px;
+                    .regis_chec {
+                        float: left;
+                        margin: 4px 5px 0;
+                        border-radius: 4px;
+                    }
+                    .regis_agree {
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: #009fe2;
+                    }
+                }
+                .regis_btn2 {
+                    width: 100%;
+                    margin-top: 26px;
+                    background: #009FE2;
+                    border-color: #009FE2;
+                }
+                .regis_btn2:hover {
+                    border-color: #009FE2;
+                }
+                .regis_p2 {
+                    margin-top: 38px;
+                    font-size: 14px;
+                    text-align: center;
+                    .regis_sub {
+                        margin-left: 19px;
+                        text-decoration: none;
+                        color: #009fe2;
+                    }
+                }
+            }
+        }
+        .regis_btm {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            display: none;
+            width: 620px;
+            height: 560px;
+            transform: translateX(-50%);
+            background-color: #fff;
+            .regis_span {
+                float: right;
+                margin-right: 10px;
+                font-size: 18px;
+                cursor: pointer;
+            }
+        }
+    }
+    .regis_prompt {
+        font-size: 12px !important;
+        color: #D70028 !important;
+    }
+}

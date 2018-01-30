@@ -1,0 +1,33 @@
+.orderlist {
+    width: 1200;
+    margin: 0 auto;
+    .orderlist_prompt{
+        height: 305px;
+        background-color: #f9fdff;
+        padding-top:105px;
+        .orderlist_disinfor{
+            width: 363px;
+            height: 202px;
+            margin: 0 auto;
+            text-align: center;
+            img{
+                margin-top: 30px;
+                margin-bottom: 34px;
+            }
+            p{
+                line-height: 32px;
+                span{
+                    color: #009FE2;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .orderlist{
+        margin-top: 10px;
+        margin-bottom: 102px;
+    }
+    .el-table th > .cell{
+        margin-left:10px;
+    }
+}

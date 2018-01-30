@@ -1,0 +1,52 @@
+<section class="myincome">
+	<div>
+		<el-breadcrumb separator="/">
+			<el-breadcrumb-item :to="{ path: '/companycenter/mybid' }">财务管理</el-breadcrumb-item>
+			<el-breadcrumb-item>收支明细</el-breadcrumb-item>
+		</el-breadcrumb>
+		<!-- //日期搜索 -->
+		<div class="mybill-search">
+			<el-date-picker v-model="timevalue" type="daterange" align="right" unlink-panels range-separator="~" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions2" @change='timechange'>
+			</el-date-picker>
+			</el-date-picker>
+
+		</div>
+		<div class="mybill-table">
+			<el-table :data="incometable" border style="width: 100%">
+				<!--<el-table-column prop="createAt" label="交易时间" width="105" align="center">
+        </el-table-column>-->
+				<el-table-column label="交易时间" width="120">
+					<template slot-scope="scope">
+						<p style="width: 80px;margin-left: 10px;">{{scope.row.createAt}}</p>
+					</template>
+				</el-table-column>
+				<el-table-column prop="transCode" label="单据编号" width="170">
+				</el-table-column>
+				<el-table-column prop="transType.desc" label="单据类型">
+				</el-table-column>
+				<el-table-column prop="receiveCompany" label="接收公司">
+				</el-table-column>
+				<el-table-column prop="amount" label="金额">
+				</el-table-column>
+				<el-table-column prop="reasonType.desc" label="方向">
+				</el-table-column>
+				<el-table-column prop="balance" label="余额">
+				</el-table-column>
+				<el-table-column prop="status.desc" label="订单状态">
+				</el-table-column>
+			</el-table>
+		</div>
+		<!-- 底部分页 -->
+		<div v-show="pag" class="pagebox clearfix">
+			<div style="height: 30px;"></div>
+			<!-- 翻页效果 -->
+			<div class="sy-pagination">
+				<el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot" :total="total" :current-page="pageNum">
+					<slot>
+						<button class="btn-next">确定</button>
+					</slot>
+				</el-pagination>
+			</div>
+		</div>
+	</div>
+</section>

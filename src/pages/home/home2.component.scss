@@ -1,0 +1,119 @@
+
+.home .el-table__header {
+  .home {
+    .el-table__header-wrapper .el-table td,
+    .el-table th {
+      padding: 0 0 0 10px;
+    }
+  }
+}
+.home .el-tabs--border-card > .el-tabs__content {
+  padding: 15px 0 15px 0;
+  /* height: 440px; */
+}
+.home .el-table__header {
+  .mark-num-color {
+    .cell {
+      color: #000;
+    }
+  }
+}
+
+.home .stock .el-button--primary {
+  margin-left: 15px;
+}
+.home .tabs-custom .el-tabs__nav {
+  .stock .el-button--primary {
+    margin-left: 15px;
+  }
+  .tabs-custom .el-tabs__nav {
+    padding: 0;
+    margin-left: 20px;
+  }
+}
+.home .el-table th > .cell {
+  padding: 7px 0;
+  margin-left: 10px;
+}
+.home  .el-table_1_column_71 > .cell:first-child {
+  margin-left: 15px;
+}
+
+.home .el-table th > .cell {
+  padding: 7px 0;
+}
+.home .qutaSele .el-button:focus,
+.el-button:hover {
+  color: #fff ;
+  border-color: #66b1ff;
+  background: #66b1ff;
+}
+
+.home .el-table td,
+.el-table th.is-leaf {
+  font-size: 14px !important;
+  line-height: 28px !important;
+
+  border-top: 1px solid #e6e6e6 !important;
+}
+
+.home .el-tabs--border-card > .el-tabs__content {
+  padding: 15px 0 15px 0;
+  /* height: 440px; */
+}
+.home .table-one .el-table__row {
+  height: 60px;
+}
+.home .tabs-custom .el-tabs__nav {
+  padding: 0;
+  margin-left: 20px;
+}
+.home .grade .cell {
+  color: #fbbe42;
+}
+
+.home .list .btn-add-selector {
+  width: 56px;
+}
+.home .el-table__header {
+  width: 1200px !important;
+}
+.home .el-table__header .has-gutter {
+  line-height: 50px;
+}
+.home .el-table__header .has-gutter .is-leaf {
+  padding: 0;
+}
+.home .page .el-table__row,
+.page .el-table__body {
+  width: 1200px !important;
+}
+.home .el-tabs__content {
+  overflow: visible;
+}
+
+
+
+
+
+
+
+.home .el-carousel__container .el-carousel__item:nth-of-type(1) {
+  text-align: center;
+
+  img {
+    width: 1200px;
+  }
+}
+.home .el-carousel__container .el-carousel__item:nth-of-type(2) {
+  text-align: center;
+  // background: #193d6a;
+
+  background: #193d6a!important;
+  img {
+    width: 1200px;
+  }
+}
+.home .btn-add-selector {
+  width: 60px;
+}

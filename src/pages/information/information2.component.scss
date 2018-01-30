@@ -1,0 +1,14 @@
+.information{
+    .el-tabs__nav-wrap::after{
+        background-color: #fff;
+        
+    }
+    .el-tabs__item{
+        font-size: 18px!important;
+    }
+    .el-tabs{
+        float: left;
+        margin-right: 50px;
+        margin-top: 34px;
+    }
+}

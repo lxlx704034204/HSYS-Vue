@@ -1,0 +1,54 @@
+<section class="management">
+    <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/' }">产品管理</el-breadcrumb-item>
+        <el-breadcrumb-item>产品管理</el-breadcrumb-item>
+    </el-breadcrumb>
+    <div class="mybill-search clearfix">
+        <!-- <el-select class="myorder_input" v-model="value" multiple filterable remote reserve-keyword placeholder="请输入产品名称">
+            <el-option v-for="(item,index) in managementable" :key="index" :label="item.name" :value="item.name"></el-option>
+        </el-select> -->
+        <el-input class="myorder_input" v-model.trim="value" placeholder="请输入产品名称"></el-input>
+        <el-button class="myorder_btn" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
+        <button type="button" class="publishbtn" @click='publishbnt'>发布产品</button>
+    </div>
+
+    <div class="mybill-table">
+        <el-table :data="managementable" border style="width: 100%">
+            <el-table-column prop="name" label="产品名称">
+            </el-table-column>
+            <el-table-column label="分类">
+                <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.categoryOneName }} {{ scope.row.categoryTwoName }}</span>
+          </template>
+            </el-table-column>
+            <el-table-column prop="spec" label="规格/牌号">
+            </el-table-column>
+            <el-table-column prop="unitCode" label="单位" width="50">
+                <template slot-scope="scope">
+                <span >{{ getDwName(scope.row.unitCode) }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="salePrice" label="价格(元)">
+            </el-table-column>
+            <el-table-column label="操作">
+                <template slot-scope="scope">
+                <span  class="dingdan"  @click="handleEdit(scope.$index, scope.row)">编辑</span>
+                <span class="vertical">|</span>
+                 <span  class="dingdan online"  @click="handleactive(scope.$index, scope.row)">{{scope.row.show ? '下架' : '上架'}}</span>
+             </template>
+            </el-table-column>
+        </el-table>
+        <div class="pagebox clearfix">
+            <div style="height: 30px;"></div>
+            <!-- 翻页效果 -->
+            <div class="sy-pagination">
+                <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot" :total="total" :current-page="pageNum">
+                    <slot>
+                        <button class="btn-next">确定</button>
+                    </slot>
+                </el-pagination>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

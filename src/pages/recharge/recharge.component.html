@@ -1,0 +1,99 @@
+<section class="recharge">
+  <div class="rech">
+    <div class="rechs">
+      <div class="rsh_moy11">
+      	<div class="rsh_moy12">
+      		充值金额
+      	</div>
+      	<el-form :model="ruleForm">
+	      	<div style="float: left;">
+	      		<input id="input1" v-model="ruleForm.amount" class="rsh_moy13" @blur="inputmon()" />
+	      	</div>
+	      </el-form>
+      	<div class="rsh_moy14">
+      		元
+      	</div>
+      	<div class="rsh_moy15">
+      		<span>账户余额：{{amount}}元</span><span class="rsh_moy16">提示：<span class='redfont'>您所充金额与账户余额总共不能超过5000元</span></span>
+      	</div>
+      	<div id="notice1">
+      		{{notice}}
+      	</div>
+      </div>
+      <div class="payment_btm" style="margin-left: 5px;">
+        <div class="alt clearfix">
+          <h3>付款信息</h3>
+          <div class="title redfont">目前平台只支持线下打款充值,打款成功后平台将对应的金额充值到您的账户中</div>
+        </div>
+        <div class="btm_left">
+          <div class="btm_table">
+            <div class="table_left">
+              <span>平台收款银行</span>
+            </div>
+            <div class="table_right">
+              <span>{{bank}}</span>
+            </div>
+          </div>
+          <div class="btm_table">
+            <div class="table_left">
+              <span>平台开户名</span>
+            </div>
+            <div class="table_right">
+              <span>{{bankName}}</span>
+            </div>
+          </div>
+          <div class="btm_table">
+            <div class="table_left">
+              <span>平台开户地</span>
+            </div>
+            <div class="table_right">
+              <span>{{bankAddress}}</span>
+            </div>
+          </div>
+          <div class="btm_table">
+            <div class="table_left">
+              <span>平台银行账号</span>
+            </div>
+            <div class="table_right">
+              <span>{{bankAccount}}</span>
+            </div>
+          </div>
+          <div class="btm_table">
+            <div class="table_left">
+              <span>付款识别码</span>
+            </div>
+            <div class="table_right">
+              <span>{{paymentCode}}</span>
+              <span class="table_span">汇款时请备注汇款识别码，用于保证订单及时核销</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="btm_right">
+          <p class="right_p2" @click="tophone()">发送付款信息到手机</p>
+          <div>
+          	<el-upload
+						  class="avatar-uploader" 
+						  :action="upload" 
+						  :show-file-list="false"
+						  :on-success="handleAvatarSuccess"
+						  :before-upload="beforeAvatarUpload">
+						  <img v-if="imageUrl" :src="imageUrl" class="avatar">
+						  <i v-else class="el-icon-plus avatar-uploader-icon" style="color: #009FE2;"></i>
+						</el-upload>
+						<div class="rec_xiu">上传付款凭证</div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt">
+        <span>*</span>线下公司转账需将此识别码填写至电汇凭证的<span>【汇款用途】、【附言】、【摘要】</span>栏内(<span>重要提醒</span>:因不同银行备注字段不同，最好是将所有的可填写备注的地方都填写上<span>付款识别码</span>)，请务必填写正确，勿私自增加其他文字说明。请参考下图。
+      </div>
+      <div class="rsh_moy1">
+        <img src="./sam_03.png" alt="">
+      </div>
+    </div>
+    <div class="button">
+      <button @click = "applymon()">申请充值</button>
+    </div>
+  </div>
+</section>

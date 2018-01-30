@@ -1,0 +1,285 @@
+<section class="home">
+	<!-- 弹出登录框 -->
+	<div class="home-login-wrap" v-show='isLogin'>
+		<loginauct v-on:logining='logining'></loginauct>
+	</div>
+<!--轮播测试-->
+<section class="slider-contaner">
+<ul class="slider">
+<li class="slider-item slider-item1">
+	<div class="hme_xiu">寻找百家化塑企业孵化计划</div>
+	<div class="hme_xiu1">
+		资金、技术、方案、市场、股权等深度合作三年时间，
+	</div>
+	<div class="hme_xiu2">
+		扶持孵化100家化塑加工企业
+	</div>
+	<div class="hme_xiu2">
+
+	</div>
+</li>
+<li class="slider-item slider-item2">
+	<div class="hme_xiu">合作赋能，连接未来</div>
+	<div class="hme_xiu1">
+		依托道恩集团雄厚的化塑产业布局，从贸易商向服务商转型
+	</div>
+	<div class="hme_xiu2">
+		打造化塑全产业链服务专家。
+	</div>
+	<div class="hme_xiu2">
+
+	</div>
+</li>
+</ul>
+</section>
+  <!--轮播图下方5块-->
+  <div class="suy_man">
+  	<div class="suy_man1">
+	  	<!--第一块-->
+	  	<div class="suy_man11" @click="tzNo1()">
+	  		<!--左侧图片-->
+	  		<div class="suy_man12">
+	  			<img src="./images/hom_icon1.png"  />
+	  		</div>
+	  		<!--右侧文字-->
+	  		<div style="float: left;">
+	  			<div class="suy_man13">
+	  				<div class="suy_man14">原材料现货商城</div>
+	  				<div class="suy_man15">自营</div>
+	  			</div>
+	  			<div style="height: 15px;"></div>
+	  			<div class="suy_man16">
+	  				<p>道恩20多年分销经验，牌号齐全，全国厂库，山东省内当日到达...</p>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<!--第二块-->
+	  	<div class="suy_man11" @click="tzNo2()">
+	  		<!--左侧图片-->
+	  		<div class="suy_man12">
+	  			<img src="./images/hom_icon2.png"  />
+	  		</div>
+	  		<!--右侧文字-->
+	  		<div style="float: left;">
+	  			<div class="suy_man13">
+	  				<div class="suy_man14">化塑产业金融</div>
+	  				<div class="suy_man15">贷款保理</div>
+	  			</div>
+	  			<div style="height: 15px;"></div>
+	  			<div class="suy_man16">
+	  				<p>对接银行/产业资金，为化塑产业提供灵活，快捷的资金服务，包括信用、质押、保理...</p>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<!--第三块-->
+	  	<div class="suy_man11" @click="tzNo3()">
+	  		<!--左侧图片-->
+	  		<div class="suy_man12">
+	  			<img src="./images/hom_icon3.png"  />
+	  		</div>
+	  		<!--右侧文字-->
+	  		<div style="float: left;">
+	  			<div class="suy_man13">
+	  				<div class="suy_man14">化塑头条</div>
+	  				<div class="suy_man15">行情解读</div>
+	  			</div>
+	  			<div style="height: 15px;"></div>
+	  			<div class="suy_man16">
+	  				<p>分享市场行情，每日准时播报</p>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<!--第四块-->
+	  	<div class="suy_man11" @click="tzNo4()">
+	  		<!--左侧图片-->
+	  		<div class="suy_man12">
+	  			<img src="./images/hom_icon4.png"  />
+	  		</div>
+	  		<!--右侧文字-->
+	  		<div style="float: left;">
+	  			<div class="suy_man13">
+	  				<div class="suy_man14">企业产品库</div>
+	  				<div class="suy_man15">精准客户</div>
+	  			</div>
+	  			<div style="height: 15px;"></div>
+	  			<div class="suy_man16">
+	  				<p>化塑企业产品库，打通垂直化塑行业的企业产品信息，快速发现</p>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<!--第五块-->
+	  	<div class="suy_man17" @click="tzNo5()">
+	  		<!--左侧图片-->
+	  		<div class="suy_man12">
+	  			<img src="./images/hom_icon5.png"  />
+	  		</div>
+	  		<!--右侧文字-->
+	  		<div style="float: left;">
+	  			<div class="suy_man13">
+	  				<div class="suy_man14">竞价专区</div>
+	  				<div class="suy_man15">每日特惠</div>
+	  			</div>
+	  			<div style="height: 15px;"></div>
+	  			<div class="suy_man16">
+	  				<p>每日举行网络竞价，回馈客户</p>
+	  			</div>
+	  		</div>
+	  	</div>
+	  </div>
+  </div>
+  <!--自选-->
+  <div class="inner-1200  case-2">
+    <div class="tabs-custom ">
+      <div class="suy_man52" >现货交易</div>
+      <el-tabs type="border-card" class="tables suy_man53" @tab-click="handleClick">
+        <el-tab-pane v-for="(item,index) in goodsList" :key="index" :label="item.name" :item-id="item.id" class="list optional">
+          <router-link v-if="index == 4" to="/autotrophy" class="a_one">添加自选产品</router-link>
+          <router-link v-else to="/autotrophy" class="a_one">查看更多</router-link>
+        </el-tab-pane>
+      </el-tabs>
+      <div class="page">
+      	<div class="suy_man6">
+      		<div class="suy_man61">分类</div>
+      		<div class="suy_man61">牌号</div>
+      		<div class="suy_man61">产地</div>
+      		<div class="suy_man62">库存</div>
+      		<div class="suy_man63">库别</div>
+      		<div class="suy_man64">交货方式</div>
+      		<div class="suy_man65">更新时间</div>
+      		<div class="suy_man66">价格（元）</div>
+      		<div class="suy_man67">涨跌</div>
+      	</div>
+        <el-table class="table-one" style="text-align: center;" :data="prod" v-if="prod != ''" stripe row-class-name="row-60">
+          <el-table-column class-name="grad" prop="categoryName" label="分类" width="100"></el-table-column>
+          <el-table-column label-class-name="label-color" class-name="mark-num-color grade" width="110" label="牌号">
+            <template slot-scope ="scope">
+              <!-- <span style="color: #333;">{{scope.row.product.gradeCode}}</span> -->
+              <span style="color: #5a5e66;">{{ph.filter(v => v.dictCode === scope.row.product.gradeCode).length > 0 ? ph.filter(v => v.dictCode === scope.row.product.gradeCode)[0].dictName : scope.row.product.gradeCode}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column class-name="grad" width="100" label="产地">
+            <template slot-scope = "scope">
+              <span>{{cd.filter(v => v.dictCode === scope.row.product.manufacturerCode).length > 0 ? cd.filter(v => v.dictCode === scope.row.product.manufacturerCode)[0].dictName : scope.row.product.manufacturerCode}}
+              </span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="quantityAvailable " label="库存" width="110px">
+            <template slot-scope="scope">
+              <!-- <span>{{scope.row.quantityAvailable}}</span> -->
+              <span v-if="scope.row.quantityAvailable > 0">有货</span>
+              <span style="color:red" v-else="scope.row.quantityAvailable <= 0">无货</span>
+            </template>
+          </el-table-column>
+          <el-table-column class-name="grad" width="100" label="库别">
+            <template slot-scope ="scope">
+              <span>{{io.filter(v => v.dictCode === scope.row.warehouseCode).length > 0 ? io.filter(v => v.dictCode === scope.row.warehouseCode)[0].dictName : scope.row.warehouseCode}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column class-name="grad" width="100" label="交货方式">
+            <template slot-scope ="scope">
+              <span>{{sm.filter(v => v.dictCode === scope.row.shippingMethodCode).length > 0 ? sm.filter(v => v.dictCode === scope.row.shippingMethodCode)[0].dictName : scope.row.shippingMethodCode}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="" label="更新时间"  width="120px">
+            <template slot-scope="scope" v-model="data">
+              {{scope.row.updateStr}}
+            </template>
+          </el-table-column>
+          <el-table-column class-name="trand-cell" prop="salePrice" label="价格（元）" width="150px" >
+            <template slot-scope="scope">
+              <p class="price-color">
+                ￥{{scope.row.salePrice}}/{{scope.row.unitCode == 'KG'?'千克':'吨'}}
+                <el-popover trigger="hover" ref="popover2" placement="left">
+                  <chart-demo v-bind:echart-data-child="echartData"></chart-demo>
+                </el-popover>
+                <img src="./images/trend.png" v-popover:popover2 @mouseover='pop(scope.row)'>
+              </p>
+            </template>
+          </el-table-column>
+          <el-table-column class-name="grad" width="100" label="涨跌" align="center">
+            <template slot-scope="scope">
+              <p class="up-color" v-if="!scope.row.oldPrice">-- --</p>
+              <p class="up-color" v-else-if="scope.row.salePrice === scope.row.oldPrice">-- --</p>
+              <p class="up-color" v-else-if="scope.row.salePrice > scope.row.oldPrice">↑{{scope.row.salePrice - scope.row.oldPrice}}</p>
+              <p class="down-color" v-else>↓{{scope.row.oldPrice-scope.row.salePrice }}</p>
+            </template>
+          </el-table-column>
+          <el-table-column width="220px">
+            <template slot-scope="scope">
+              <span class="btn-add-selector clearfix but-add" v-if='scope.row.collection === "delete"' v-on:click="del(scope.row.id,$event)">
+                <img src="./images/delete.png">
+              </span>
+              <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row)" v-else-if='!scope.row.collection'>加入自选</span>
+              <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row)" v-else>已加入</span>
+              <el-tooltip v-if="sale" popper-class="sy-tooltip-custom" size="mini" effect="light" placement="bottom" >
+          <div slot="content">
+            <div class="sy-tipbox">
+              <div class="left weixin-info">
+                <img :src="sale.weixinUrl" alt="" style="width: 107px;height: 97px">
+                <p>扫码加微信咨询</p>
+              </div>
+              <div class="right card-info">
+                <h3>{{sale.username}}</h3>
+                <p class="position">{{sale.position}}</p>
+                <p>电话：{{sale.mobile}}</p>
+                <p>邮箱：{{sale.email}}</p>
+                <p>微信：{{sale.weixin}}</p>
+                <span class="qq" @click='openQQ(sale.qq)' ref='qq'>
+                  <img src="./images/qq.png" alt="">
+                </span>
+              </div>
+            </div>
+          </div>
+          <span class="btn-service">
+            <img src="./images/service.png" @mouseover="service(scope.row)" alt="">
+          </span>
+        </el-tooltip>
+              <el-button size="small" class="hom_xiu" type="primary" @click="getRowlist(scope.row)">立即采购</el-button>
+            </template>
+          </el-table-column>
+
+        </el-table>
+        <div class="hdpe goods" v-else>
+          <p>您还没有添加自选产品哦
+            <br> 快去添加吧
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--化塑金融-->
+  <div class="suy_man4">
+  	<!--第一行-->
+  	<div>
+  		<div class="suy_man41">化塑金融</div>
+  		<div class="suy_man42"></div>
+  		<!--tab条-->
+  		<!--<div class="suy_man43">
+  			<div class="suy_man44" @click="tab_Down1()">企业白条</div>
+  			<div class="suy_man45" @click="tab_Down2()">现金贷</div>
+  		</div>-->
+			<div class="suy_man46"></div>
+  		
+  	</div>
+  	<!--内容-->
+  	<!--第一行-->
+  	<div class="suy_man47">
+  		<div class="suy_man48">
+  			<router-link to="/financial" target="_blank"><img src="./images/hom_pic1.png" /></router-link>
+  		</div>
+  		<div class="suy_man49">
+  			<img src="./images/hom_pic2.png" />
+  		</div>
+  	</div>
+  	<!--第二行-->
+  	<div class="suy_man51">
+  		<div class="suy_man48">
+  			<router-link to="/financial" target="_blank"><img src="./images/hom_pic3.png" /></router-link>
+  		</div>
+  		<div class="suy_man5">
+  			<img src="./images/hom_pic4.png" />
+  		</div>
+  	</div>
+  </div>
+</section>

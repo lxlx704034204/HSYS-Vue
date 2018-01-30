@@ -1,0 +1,83 @@
+.bidding .bidding_input {
+    .el-input__inner {
+        height: 36px !important;
+    }
+    .el-input__suffix {
+        height: 18px !important;
+        .el-input__inner {
+            width: 284px;
+        }
+    }
+}
+
+.bidding .product-details .el-upload-dragger {
+    width: 158px !important;
+    height: 118px !important;
+}
+
+.bidding .pho-textarea {
+    .el-textarea__inner {
+        resize: none;
+    }
+}
+
+.bidding .product-sub .el-button {
+    width: 118px;
+    height: 38px;
+    color: #009fe2;
+    border-color: #009fe2;
+    margin-left: 0 !important;
+}
+
+.bidding .content-left2 {
+    .el-input__inner {
+        height: 36px !important;
+    }
+}
+
+.bidding .el-button--primary:focus,
+.el-button--primary:hover {
+    background: #66b1ff;
+    border-color: #66b1ff;
+    color: #fff;
+}
+
+.bidding {
+    .el-dialog__title {
+        font-size: 16px;
+        color: #333;
+    }
+    .el-button--primary {
+        background: #009fe2;
+        border-color: #009fe2;
+    }
+    .dialoging {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        font-size: 14px;
+    }
+    .tofirmbtn {
+        height: 34px;
+        padding: 0 20px;
+    }
+    .el-dialog__footer {
+        text-align: center;
+    }
+}
+
+.licesephot {
+    position: absolute;
+    top: 690px;
+    left: 107px;
+    color: #fa5555;
+    font-size: 12px !important;
+}
+
+.licesephot1 {
+    position: absolute;
+    top: 707px;
+    left: 107px;
+    color: #fa5555;
+    font-size: 12px !important;
+}

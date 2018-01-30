@@ -1,0 +1,214 @@
+.forgetpwd-1 {
+  .fg_pwd_bg {
+    position: absolute;
+    z-index: -1;
+
+    width: 100%;
+    height: 699px;
+    margin-top: -96px;
+
+    background: url(../images/bg_t.png) no-repeat center top;
+  }
+  #te {
+    display: none;
+  }
+  #cz {
+    position: absolute;
+    z-index: 3;
+
+    width: 368px;
+    height: 40px;
+    margin-top: -229px;
+    margin-left: 213px;
+  }
+  .fg_pwd10 {
+    width: 369px;
+    margin-top: 0;
+    margin-left: 0;
+
+    font-size: 18px;
+
+    color: #fff;
+    background: #009fe2;
+  }
+  .fg_pwd11 {
+    width: 368px;
+  }
+  .movebox {
+    position: relative;
+
+    width: 368px;
+    height: 38px;
+    overflow: hidden;
+
+    line-height: 39px;
+
+    text-align: center;
+
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+    background-color: #e8e8e8;
+    .txt {
+      position: absolute;
+      top: 0;
+
+      width: 364px;
+
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+
+      color: #fff;
+
+           -o-user-select: none;
+    }
+    .movego {
+      width: 0;
+      height: 40px;
+
+      background-color: #7ac23c;
+    }
+    .move {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+
+      width: 38px;
+      height: 38px;
+
+      cursor: move;
+
+      border: 1px solid #ccc;
+    }
+    .moveBefore {
+      background: #fff url("../images/movebox_2.png") no-repeat center;
+    }
+    .moveSuccess {
+      background: #fff url("../images/movebox_1.png") no-repeat center;
+    }
+  }
+  .alt {
+    font-size: 12px;
+
+    color: red;
+  }
+  .reset-box {
+    width: 831px;
+    margin: 0 auto;
+    margin-top: 96px;
+    overflow: hidden;
+    .in-box {
+      margin: -22px;
+      h3 {
+        width: 100%;
+        height: 59px;
+
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 59px;
+
+        text-align: center;
+
+        color: #fff;
+        background: #009fe2;
+      }
+      .reset-process {
+        position: relative;
+
+        margin-left: 117px;
+        li {
+          display: inline-block;
+          width: 56px;
+          height: 55px;
+          margin-top: 43px;
+          margin-right: 121px;
+
+          font-size: 14px;
+
+          text-align: center;
+        }
+        .active {
+          color: #39b7ec;
+        }
+      }
+      //   定位横线
+      span {
+        position: absolute;
+        top: 46px;
+      }
+      .blue-line {
+        left: 95px;
+      }
+      .greay-line1 {
+        left: 277px;
+      }
+      .greay-line2 {
+        left: 453px;
+      }
+      //form表单
+      form {
+        position: relative;
+
+        width: 375px;
+        margin-top: 59px;
+        margin-left: 234px;
+        .prompt-username {
+          position: absolute;
+          top: 45px;
+          left: 13px;
+
+          font-size: 12px;
+
+          color: #e20500;
+        }
+
+        .public-css {
+          width: 100%;
+          height: 40px;
+          margin-bottom: 22px;
+
+          border: 1px solid #bfbfbf;
+          border-radius: 4px;
+        }
+        .writeinto {
+          width: 353px;
+          padding-left: 13px;
+        }
+
+        .fixed-box {
+          position: relative;
+
+          font-size: 12px;
+          line-height: 40px;
+
+          text-align: center;
+
+          color: #333;
+          background: #f5f5f5;
+          .move-box {
+            position: absolute;
+            top: 0;
+            left: -1px;
+
+            width: 38px;
+            height: 40px;
+
+            border-right: 1px solid #bfbfbf;
+            border-left: 1px solid #bfbfbf;
+            background: #fff url("../images/right-flag.png") no-repeat center center;
+          }
+        }
+        .btn-color {
+          margin-bottom: 90px;
+
+          font-size: 19px;
+
+          color: #fff;
+          border: 0;
+          background: #009fe2;
+        }
+      }
+    }
+  }
+}

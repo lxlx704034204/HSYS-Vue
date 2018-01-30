@@ -1,0 +1,151 @@
+<section class="bidsuccess">
+  <div>
+    <!-- 面包屑导航 -->
+    <el-breadcrumb separator="/" class="nav">
+      <el-breadcrumb-item :to="{ path: '/companycenter/mybid' }">订单管理</el-breadcrumb-item>
+      <el-breadcrumb-item>竞价详情</el-breadcrumb-item>
+    </el-breadcrumb>
+    <!-- 主体 -->
+    <div class="main">
+      <!-- 订单号 -->
+      <div class="ordernum">
+        <div>竞价订单号 : {{ids}}
+          <span>{{status}}</span>
+        </div>
+        <div>供应商 : 山东道恩集团</div>
+      </div>
+      <!-- table表格 -->
+      <div class="tableinfo">
+        <el-table :data="productList" border class="table">
+          <el-table-column prop="product.name" label="产品名称" width="180">
+          </el-table-column>
+          <el-table-column  label="牌号" width="180">
+            <template slot-scope="scope">
+              <span>{{phjson[phnumber]}}</span>
+          </template>
+          </el-table-column>
+          <el-table-column label="产地">
+             <template slot-scope="scope">
+              <span>{{cdjson[manu]}}</span>
+          </template>
+          </el-table-column>
+          <el-table-column label="库别">
+             <template slot-scope="scope">
+              <span>{{iojson[warhouse]}}</span>
+           </template>
+          </el-table-column>
+          <el-table-column  label="单位">
+             <template slot-scope="scope">
+              <span>{{unitjson[unitint]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="数量">
+             <template slot-scope="scope">
+              <span>{{number}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="竞拍价格">
+             <template slot-scope="scope">
+              <span>{{biddingPrice}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="总价">
+             <template slot-scope="scope">
+              <span>{{sumprice}}</span>
+            </template>
+          </el-table-column>
+        </el-table>
+        <textarea class="text" cols="40" rows="3" placeholder="请在此填写您对此订单的备注" v-model='bidrequire'  v-show='success'></textarea>
+      </div>
+      <!-- 收货人信息 -->
+      <div class="consignee">
+        <h4>收货人信息</h4>
+        <div class="bid-inf-no clearfix" v-show='ishaveDefault'>
+          <img src="./images/nothing.png" alt="">
+          <div class='font-inf-wrap'>
+            <span class='font-add'>您还没有收货人信息,</span><span class='toadd-address font-add' @click="newAdd = true">去添加</span>
+          </div>
+        </div>
+        <div v-show='haveDefault'>
+          <div class='information-biddsuccess'>收货人 : {{defaultName}}</div>
+          <div class='information-biddsuccess'>联系电话 : {{defaultPhone}}</div>
+          <div class='information-biddsuccess' style="position: relative;">详细地址 : 
+            <div class='default-inf-wrap'>
+              <span>{{defaultPro}}{{defaultAdd}}</span>
+            </div> 
+            <div class='default-chose-wrap' >
+               <span  @click="manyadd" class='chage'>切换地址</span><span class='chage'  @click="newAdd = true">新增地址</span></div>
+            </div>
+            
+          </div>
+        </div>
+        <el-dialog
+              title="选择收货地址"
+              :visible.sync="changeAdd"
+              width="484px"
+              center class='changeadd'>
+              <div class="changadd-wrap" v-for='add in choseaddList' ref='selfs' :data='add.id' >
+                <ul class="changeAdd" @click='chosethis($event)' >
+                  <li>收货人 : {{add.userName}}</li>
+                  <li>联系电话 : {{add.primaryPhone}}</li>
+                  <li>收货地址 : {{add.provinceName}}{{add.cityName}}{{add.areaName}}</br><span class='haveadd'>{{add.address}}</span></li>
+                </ul>
+              </div>
+              
+              <span slot="footer" class="dialog-footer">
+                <el-button @click="changeAdd = false">取 消</el-button>
+                <el-button type="primary" @click="choseaddress">确 定</el-button>
+              </span>
+            </el-dialog>
+            <el-dialog
+              title="新增收货地址"
+              :visible.sync="newAdd"
+              width="484px"
+              center class='changeadd addID'>
+              <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="new-ruleForm">
+                <el-form-item label="收货人" prop="name">
+                  <el-input v-model="ruleForm.name" placeholder='请输入收货人姓名'></el-input>
+                </el-form-item>
+                <el-form-item label="联系电话" prop="phone">
+                  <el-input v-model="ruleForm.phone" placeholder='请输入收货人电话'></el-input>
+                </el-form-item>
+                <el-form-item label="省/直辖市"  prop="pro1">
+                  <el-select v-model="ruleForm.pro1" placeholder="请选择" class='pro' @change='prochange()'>
+                    <el-option v-for="(provin,index) in proname" :key="index" :label="provin.name" :value="provin.id"></el-option>
+                  </el-select>
+                  <el-select v-model="ruleForm.city" placeholder="请选择" class='city' @change='ciytchange'  prop="pro2">
+                    <el-option  v-for="(citys,index) in cityname" :key="index" :label="citys.name" :value="citys.id"></el-option>
+                  </el-select>
+                  <el-select v-model="ruleForm.country" placeholder="请选择" class='country'  prop="pro3">
+                    <el-option  v-for="(country,index) in country" :key="index" :label="country.name" :value="country.id"></el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="详细地址" prop="desc">
+                  <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+                </el-form-item>
+                <el-form-item class='resetbtn'>
+                  <el-button type="primary" @click="resetForm('ruleForm')" >取消</el-button>
+                  <el-button @click="submitForm('ruleForm')">确定</el-button>
+                </el-form-item>
+              </el-form>
+            </el-dialog>
+      <div class="inform">
+        <div class="payinfo">
+          <h4>付款信息</h4>
+          <div>付款方式 : 款到发货</div>
+          <div>应付金额 : ￥{{sumprice}}</div>
+        </div>
+        <div class="invinfo">
+            <h4>发票信息</h4> 
+            <div>发票信息 : 增值税专用发票</div>         
+            <div>发票抬头 : {{companyname}}</div>         
+            <div>统一社会信用代码 : {{bizcreditcode}}</div>         
+        </div>
+      </div>
+      <!-- 按钮 -->
+      <div class="but"  v-show='success'> 
+          <el-button class="btn" type="primary" @click='affirmorder'>确认竞价单</el-button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,106 @@
+<section class="payment">
+  <div class="payment_top">
+    <h3>已确认订单,请尽快完成付款</h3>
+    <p class="payment_p1">
+      <router-link :to='{path: "/companycenter/toaudited", query: {id: orderid}}'>查看订单详情</router-link>
+    </p>
+    <p> 请您在
+      <span>12小时内</span>完成付款,否则订单将自动取消</p>
+  </div>
+
+  <div class="payment_list">
+    <el-table :data="tableData" align="center" class="list_top" border style="width: 100%">
+      <el-table-column prop="order.orderCode" label="订单编号">
+      </el-table-column>
+      <el-table-column prop="order.items[0].name" label="产品信息">
+      </el-table-column>
+      <el-table-column prop="order.shippingMethod.desc" label="物流信息" width="150">
+      </el-table-column>
+      <el-table-column prop="order.paymentMethod.desc" label="付款方式" width="150">
+      </el-table-column>
+      <el-table-column label="订单总金额" width="255">
+        <template slot-scope="scope">
+          <span class="list_sapn">￥{{scope.row.order.total}}</span>
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
+
+   <div class="payment_btm">
+    <h3>付款信息</h3>
+    <div class="btm_left" v-for="item in tableData">
+      <div class="btm_table">
+        <div class="table_left">
+          <span>平台收款银行</span>
+        </div>
+        <div class="table_right">
+          <span>{{bank}}</span>
+        </div>
+      </div>
+      <div class="btm_table">
+        <div class="table_left">
+          <span>平台开户名</span>
+        </div>
+        <div class="table_right">
+          <span>{{bankName}}</span>
+        </div>
+      </div>
+      <div class="btm_table">
+        <div class="table_left">
+          <span>平台开户地</span>
+        </div>
+        <div class="table_right">
+          <span>{{bankAddress}}</span>
+        </div>
+      </div>
+      <div class="btm_table">
+        <div class="table_left">
+          <span>平台银行账号</span>
+        </div>
+        <div class="table_right">
+          <span>{{bankAccount}}</span>
+        </div>
+      </div>
+      <div class="btm_table">
+        <div class="table_left">
+          <span>付款识别码</span>
+        </div>
+        <div class="table_right">
+          <span>{{markCode}}</span>
+          <span class="table_span">汇款时请备注汇款识别码，用于保证订单及时核销</span>
+        </div>
+      </div>
+      <div class="btm_table btm_table2">
+        <div class="table_left">
+          <span>应付金额</span>
+        </div>
+        <div class="table_right">
+          <span class="list_sapn">￥{{item.order.total}}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="btm_right">
+      <p class="right_p2" @click="sendinfo">发送付款信息到手机</p>
+      <div class="right_file">
+        <el-upload class="avatar-uploader" :action="upload" :show-file-list="false" :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload">
+          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <i v-else class="el-icon-upload avatar-uploader-icon"></i>
+        </el-upload>
+      </div>
+    </div>
+  </div>
+  <div class="prompt">
+      <span>*</span>线下公司转账需将此识别码填写至电汇凭证的<span>【汇款用途】、【附言】、【摘要】</span>栏内(<span>重要提醒</span>:因不同银行备注字段不同，最好是将所有的可填写备注的地方都填写上<span>付款识别码</span>)，请务必填写正确，勿私自增加其他文字说明。请参考下图。
+    </div>
+    <div class="rsh_moy1">
+      <img src="./images/sam_03.png" alt="">
+      <div class="payment_btn">
+          <el-button type="primary" @click="open">提交</el-button>
+      </div>
+    </div>
+    
+  </div>
+  
+</section>

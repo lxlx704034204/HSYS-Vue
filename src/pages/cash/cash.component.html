@@ -1,0 +1,30 @@
+<section class='cash'>
+	<div class="inner-1200">
+		<el-form :model="cashForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+			<div class="cash-top clearfixed">
+				<span class='top-left'>竞价保证金</span>
+				<div class="top-right">
+					<span>账户可用余额 : {{havemoney}}元</span>
+					<el-button size="small" type="primary" class='cash-add' @click='addcash' >充值</el-button>
+				</div>
+			</div>
+			<div class="cash-second">
+				<div class="cash-money clearfixed">
+					<el-form-item label="缴纳保证金金额" prop="money" class='labemoney'>
+						<el-input placeholder="" class='aucti_input'  v-model='cashForm.money' @blur='howmoney' ref='inputs'></el-input> <span class="minmoney">本次竞拍保证金最少{{cashmoney}}元</span>
+					</el-form-item>
+					<div class='remind'>{{remind}}</div>
+				</div>
+				<div class="cash-phone">
+					手机号码 : {{phone}}
+				</div>
+				<div class="cash-code">
+					 <el-input placeholder="" class='cash_input' v-model='voidcode' @blur='changecode'></el-input>
+					<el-button style="font-size: 16px;text-align: center;" type="primary" class='havecode' @click='voidcodes' :disabled = "disabled" >{{btntxt}}</el-button>
+					<div class='remind2'>{{remind2}}</div>
+				</div>
+				<el-button style="font-size: 16px;" type="primary" class='mustpay' @click='topay'>立即支付</el-button>
+			</div>
+		</el-form>
+	</div>
+</section>

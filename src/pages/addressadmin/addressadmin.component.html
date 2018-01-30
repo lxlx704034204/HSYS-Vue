@@ -1,0 +1,119 @@
+<section class="bidsuccess">
+    <div>
+        <!-- 面包屑导航 -->
+        <el-breadcrumb separator="/" class="nav">
+            <el-breadcrumb-item :to="{ path: '/' }">企业中心</el-breadcrumb-item>
+            <el-breadcrumb-item>收货地址</el-breadcrumb-item>
+        </el-breadcrumb>
+        <!-- 主体 -->
+        <div class="main">
+            <!-- 我的收货地址 -->
+            <div class="myaddress">
+                <div>我的收货地址
+                    <!-- 新增地址 -->
+                    <template>
+            <span type="text" class="order_hover changebtn" @click="newadd">新增收货地址</span>
+            <el-dialog id="ad_rec" title="地址详情" :visible.sync="dialogFormVisible3" center>
+              <el-form :model="ruleForm2" ref="ruleForm2">
+                <el-form-item class="Bidding" label="收货人" :label-width="formLabelWidth" prop="username">
+                  <span>*</span>
+                  <el-input v-model="ruleForm2.userName" auto-complete="off" name="username"></el-input>
+                </el-form-item>
+                <el-form-item class="Bidding" label="联系电话" :label-width="formLabelWidth" prop="tel">
+                  <span>*</span>
+                  <el-input v-model="ruleForm2.primaryPhone" auto-complete="off"></el-input>
+                </el-form-item>
+                <el-form-item class="Bidding" label="省/直辖市" :label-width="formLabelWidth">
+                  <span>*</span>
+                  <el-select v-model="ruleForm2.province" class="product-car bidding_select  bidding_input" placeholder="省" @change="changeValue()"
+                    name='producingreaAOne '>
+                    <el-option v-for="(pro,index) in placelist" :key="index" :label="pro.name" :value="pro.id">
+                    </el-option>
+                  </el-select>
+                  <el-select v-model="ruleForm2.city" class="product-car bidding_select bidding_input" placeholder="市" @change='changeCity()'
+                    name='producingAreaTwo '>
+                    <el-option v-for="(item,index) in cityList" :key="index" :label="item.name" :value="item.id">
+                    </el-option>
+                  </el-select>
+                  <el-select v-model="ruleForm2.area" class="product-car bidding_select bidding_input" placeholder="县">
+                    <el-option v-for="(item,index) in countryList" :key="index" :label="item.name" :value="item.id" name='producingAreaThree'>
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item class="Bidding" label="详细地址" :label-width="formLabelWidth">
+                  <span>*</span>
+                  <el-input type="textarea" style="resize: noen;" v-model="ruleForm2.address"></el-input>
+                </el-form-item>
+              </el-form>
+
+              <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible3 = false">取 消</el-button>
+                <el-button v-if="submitType === 'add'" type="primary" @click="submitForm2()">新 增</el-button>
+                <el-button v-if="submitType === 'edit'" type="primary" @click="submitForm2()">编 辑</el-button>
+              </div>
+            </el-dialog>
+          </template>
+
+                </div>
+            </div>
+            <div class="add">
+                <div class="address clearfix" v-for="(list,index) in adrlist" :key="index">
+                    <div class="addressinfo">
+                        <div>收货人 : {{list.userName}}</div>
+                        <div>联系电话 : {{list.primaryPhone}}</div>
+                        <div>收货地址 :{{list.provinceName}}{{list.cityName}}{{list.areaName}}{{list.address}}</div>
+                    </div>
+                    <div>
+                        <template class="changeInf">
+              <span type="text" class="order_hover changebtn" @click="changemsg(list.id)">修改地址</span>
+              <!-- <el-dialog title="修改收货信息" :visible.sync="dialogFormVisible1" id="rec_mes" center> -->
+                <!-- <el-form :model="ruleForm1">
+                  <span class="order_span order_span1"></span>
+                  <el-form-item label="收货人" :label-width="formLabelWidth">
+                    <el-input v-model="ruleForm1.userName" auto-complete="off"></el-input>
+                  </el-form-item>
+                  <span class="order_span order_span2"></span>
+                  <el-form-item label="联系电话" :label-width="formLabelWidth">
+                    <el-input v-model="ruleForm1.primaryPhone" auto-complete="off"></el-input>
+                  </el-form-item>
+                  <span class="order_span order_span3"></span>
+
+                  <el-form-item label="省/直辖市" :label-width="formLabelWidth" class='proform'>
+                    <el-select v-model="ruleForm1.province" class="product-car bidding_select  bidding_input" placeholder="省" @change="changeValue(1)"
+                      name='producingreaAOne '>
+
+                      <el-option v-for="(pro,index) in placelist" :key="index" :label="pro.name" :value="pro.id">
+                      </el-option>
+                    </el-select>
+                    <input type="hidden">
+                    <el-select v-model="ruleForm1.city" class="product-car bidding_select bidding_input" placeholder="市" @change='changeCity(1)'
+                      name='producingAreaTwo '>
+                      <el-option v-for="(item,index) in cityList" :key="index" :label="item.name" :value="item.id">
+                      </el-option>
+                    </el-select>
+                    <el-select v-model="ruleForm1.area" class="product-car bidding_select bidding_input" placeholder="县">
+                      <el-option v-for="(item,index) in countryList" :key="index" :label="item.name" :value="item.id" name='producingAreaThree'>
+                      </el-option>
+                    </el-select>
+                  </el-form-item>
+                  <span class="order_span order_span4"></span>
+                  <el-form-item label="详细地址" :label-width="formLabelWidth">
+                    <el-input type="textarea" v-model="ruleForm1.address"></el-input>
+                  </el-form-item>
+                  <input type="hidden" v-model='ruleForm1.id'>
+                </el-form> -->
+
+                <!-- <div slot="footer" class="dialog-footer">
+                  <el-button @click="dialogFormVisible1 = false">取 消</el-button>
+                  <el-button type="primary" @click="submitForm1(id)">确 定</el-button>
+                </div> -->
+              <!-- </el-dialog> -->
+              <span v-if="defas.id !== list.id" type="text" class="order_hover changebtn" @click="defaults(list.id,$event)">设为默认地址</span>
+              <span v-else type="text" class="order_hover changebtn">默认地址</span>
+            </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

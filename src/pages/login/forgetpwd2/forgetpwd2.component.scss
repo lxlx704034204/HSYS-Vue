@@ -1,0 +1,275 @@
+.forgetpwd-2 {
+  .fg_pwd_bg {
+    position: absolute;
+    z-index: -1;
+
+    width: 100%;
+    height: 699px;
+    margin-top: -96px;
+
+    background: url(../images/bg_t.png) no-repeat center top;
+  }
+  .fg_pwd {
+    width: 352px;
+    height: 38px;
+    padding-left: 14px;
+    margin-top: 49px;
+    margin-left: 161px;
+
+    font-size: 14px;
+
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+  }
+  .fg_pwd1 {
+    width: 249px;
+    height: 38px;
+    padding-left: 14px;
+    margin-top: 23px;
+    margin-left: 161px;
+
+    font-size: 14px;
+
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+  }
+  .fg_pwd2 {
+    width: 98px;
+    height: 40px;
+    margin-top: 23px;
+    margin-left: 5px;
+
+    font-size: 14px;
+
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    background: #009fe2;
+  }
+  .fg_pwd22 {
+    width: 98px;
+    height: 40px;
+    margin-top: 23px;
+    margin-left: 5px;
+
+    font-size: 14px;
+
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    background: #e3e3e3;
+
+  }
+  .fg_pwd3 {
+    float: left;
+  }
+  .fg_pwd5 {
+    border: none !important;
+  }
+  .for_bs {
+    width: 352px;
+    height: 38px;
+    padding-left: 14px;
+    margin-top: 59px;
+    margin-left: 234px;
+
+    font-size: 14px;
+
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+  }
+  .for_bs1 {
+    width: 249px;
+    height: 38px;
+    padding-left: 14px;
+    margin-top: 22px;
+    margin-left: 234px;
+
+    font-size: 14px;
+
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+  }
+  input::-webkit-input-placeholder {
+    color: #bbb;
+  }
+  input::-moz-placeholder {
+    color: #bbb;
+  }
+  input::-ms-input-placeholder {
+    color: #bbb;
+  }
+  .btn-color {
+    margin-bottom: 90px;
+
+    font-size: 18px;
+
+    color: #fff;
+    border: 0;
+    background: #009fe2;
+  }
+  .public-css {
+    width: 369px;
+    height: 44px;
+    margin-top: 21px;
+    margin-bottom: 22px;
+    margin-left: 234px;
+
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+  }
+  .s3 {
+    margin-left: 240px;
+
+    font-size: 12px;
+
+    color: red;
+  }
+  .reset-box {
+    width: 831px;
+    margin: 0 auto;
+    margin-top: 96px;
+    overflow: hidden;
+    .in-box {
+      margin: -22px;
+      h3 {
+        width: 100%;
+        height: 59px;
+
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 59px;
+
+        text-align: center;
+
+        color: #fff;
+        background: #009fe2;
+      }
+      .reset-process {
+        position: relative;
+
+        margin-left: 117px;
+        li {
+          display: inline-block;
+          width: 56px;
+          height: 55px;
+          margin-top: 43px;
+          margin-right: 121px;
+
+          font-size: 14px;
+
+          text-align: center;
+        }
+        .active {
+          color: #39b7ec;
+        }
+      }
+      //   定位横线
+      span {
+        position: absolute;
+        top: 46px;
+      }
+      .blue-line {
+        left: 95px;
+      }
+      .greay-line1 {
+        left: 277px;
+      }
+      .greay-line2 {
+        left: 453px;
+      }
+      //form表单
+      form {
+        position: relative;
+
+        width: 375px;
+        // 定位正则输出内容
+        .prompt-username {
+          position: absolute;
+          top: 45px;
+          left: 10px;
+
+          font-size: 12px;
+
+          color: #e20500;
+        }
+        .public-css {
+          width: 100%;
+          height: 40px;
+          margin-bottom: 22px;
+
+          border: 1px solid #bfbfbf;
+          border-radius: 4px;
+        } //    第一个输入框
+
+        .writeinto {
+          width: 362px;
+          padding-left: 13px;
+        } //    第二个输入框
+
+        .input-box {
+          position: relative;
+
+          width: 100%;
+          .input-news {
+            float: left;
+            width: 258px;
+            height: 40px;
+            padding-left: 13px;
+            margin-right: 4px;
+            margin-bottom: 22px;
+
+            border: 1px solid #bfbfbf;
+            border-radius: 4px;
+          }
+          .el-button--primary {
+            padding: 13px;
+
+            color: #fff;
+            border-color: #009FE2;
+            background-color: #009FE2;
+          }
+          .position-btn {
+            position: absolute;
+            top: 0;
+            right: -114px;
+
+            padding: 13px;
+          }
+        }
+        .fixed-box {
+          position: relative;
+
+          font-size: 12px;
+          line-height: 40px;
+
+          text-align: center;
+
+          color: #333;
+          background: #f5f5f5;
+          .move-box {
+            position: absolute;
+            top: 0;
+            left: -1px;
+
+            width: 38px;
+            height: 40px;
+
+            border-right: 1px solid #bfbfbf;
+            border-left: 1px solid #bfbfbf;
+            background: #fff url("../images/right-flag.png") no-repeat center center; //   border-radius: 5px;   
+          }
+        }
+        .btn-color {
+          margin-bottom: 90px;
+
+          font-size: 19px;
+
+          color: #fff;
+          border: 0;
+          background: #009fe2;
+        }
+      }
+    }
+  }
+}

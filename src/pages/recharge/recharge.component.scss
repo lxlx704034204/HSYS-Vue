@@ -1,0 +1,209 @@
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+  
+#notice1{
+    position: absolute;color: red;font-size: 12px;margin-top: 59px;margin-left: 104px;
+}
+.rsh_moy{
+    font-size: 14px;
+    color: #24a6e4;  
+    margin-left: 30px;
+    overflow: hidden;
+}
+.rsh_moy1{
+    width: 502px;height: 266px;margin-top: 16px;margin-left: 5px;
+}
+.rsh_moy1 img{
+    width: 100%;height: 100%;overflow: hidden;
+}
+.rsh_moy11{
+    height: 83px;border-bottom: 1px dashed #CCC;position: relative;
+}
+.rsh_moy12{
+    float: left;line-height: 83px;margin-left: 20px;font-size: 16px;color: #333;
+}
+.rsh_moy13{
+    margin-left: 10px;margin-top: 26px;width: 107px;height: 29px;border: 1px solid #CCC;border-radius: 4px;padding-left: 5px;padding-right: 5px;overflow: hidden;outline: none;
+}
+.rsh_moy14{
+    float: left;margin-left: 5px;line-height: 83px;font-size: 16px;color: #333;
+}
+.rsh_moy15{
+    float: left;margin-left: 54px;line-height: 83px;font-size: 14px;color: #009DE5;
+}
+.rsh_moy16{
+    margin-left: 38px;color: #999;font-size: 12px;
+}
+.rec_xiu{
+    position: relative;margin-top: -40px;margin-left: 87px;color: #009FE2;
+}
+
+.recharge {
+    height: 1020px; 
+    .redfont{
+        color: #f83d46;
+    }
+    .avatar-uploader{
+        border: 1px dashed #E1E1E1;margin-top: 20px;width: 265px;height: 162px;
+    }
+    .avatar-uploader .el-upload {
+        border: 1px dashed #009FE2;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+      }
+      .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 265px;
+        height: 162px;
+        line-height: 162px;
+        text-align: center;
+      }
+      .avatar {
+        width: 265px;
+        height: 162px;
+        display: block;
+        z-index: 2;
+        position: relative;
+      }
+    .rech{
+        margin: 0 auto;    
+        width: 998px;
+        height: 832px;
+        border: 1px solid #cccccc; 
+        margin-top: 15px;
+        position: relative;
+        .rechs{
+            margin: 0 10px;
+            .inf{
+                height: 84px;
+                border-bottom: 1px dashed #ccc;
+                line-height: 84px;
+                div{
+                    float: left;
+                    &:nth-child(1){
+                        font-size: 16px;
+                        margin-left: 16px;
+                        input{
+                            width: 115px;
+                            height: 27px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            margin-left: 7px;
+                        }
+                    }
+                    
+                    &:nth-child(3){
+                        font-size: 12px;
+                        color: #999999;  
+                        margin-left: 30px;
+                    }
+                }
+            }
+            .payment_btm{
+                height: 270px;
+                .alt{
+                    line-height: 48px;                    
+                    h3{
+                        margin: 4px 0 0 20px;
+                        font-size: 16px;
+                        font-weight: normal;
+                        float: left;
+                    }
+                    .title{
+                        float: left;
+                        font-size: 12px;
+                        margin-left: 20px;
+                        margin-top: 5px;
+                    }
+                }
+                .btm_left{
+                    float: left;
+                    width: 682px;
+                    height: 200px;
+                    border: 1px solid #dddddd;
+                    .btm_table{
+                        height: 39px;
+                        color: #666666;
+                        border-bottom: 1px solid #eeeeee;
+                        span{
+                            font-size:14px ;
+                            margin-left: 20px;
+                            line-height: 39px;
+                        }
+                        .table_left{
+                            float: left;
+                            width: 160px;
+                            height: 39px;
+                            border-right: 1px solid #eeeeee;
+                        }
+                        .table_right{
+                            width: 478px;
+                            float: left;
+                            .table_span{
+                                float: right;
+                                margin-right: -30px;
+                                color: #999999;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+                .btm_right{
+                    float: left;
+                    margin-left: 15px;
+                    width: 250px;
+                    cursor: pointer;
+                    p{
+                        color: #009fe2;
+                        font-size: 14px;
+                        padding-left: 27px;
+                        line-height: 30px;
+                        &.right_p1{
+                            background:url("./table.jpg") no-repeat left center;
+                        }
+                        &.right_p2{
+                            background:url("./table2.jpg") no-repeat left center;
+                        }
+                    }
+                }
+            }
+            .prompt{
+                width: 600px;
+                margin-left: 17px;
+                font-size: 12px;
+                color: #999;
+                span{
+                    color: #f83d46;
+                }
+            }
+        }
+        .button{
+            width: 100%;
+            height: 80px;
+            background: #f8f8f8; 
+            position: absolute;
+            bottom:0;
+            button{
+                float: right;
+                width: 120px;
+                height: 38px;
+                background: #009fe2;
+                color: #fff;
+                border: 1px solid #009fe2;
+                border-radius: 4px;
+                margin: 20px 20px 0 0;
+                font-size: 14px;
+            }
+        }
+    }
+}

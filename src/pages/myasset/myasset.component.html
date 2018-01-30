@@ -1,0 +1,57 @@
+<section class="myasset">
+  <el-breadcrumb separator="/">
+    <el-breadcrumb-item :to="{ path: '/' }">财务管理</el-breadcrumb-item>
+    <el-breadcrumb-item>我的资产</el-breadcrumb-item>
+  </el-breadcrumb>
+  <div class="asset clearfix">
+    <div class="asset-left">
+      <p>我的可用余额<span>{{avaliable}}</span></p>
+    </div>
+    <div class="asset-center">
+      <p class="asset_p">全部余额  <span> {{amount}}</span></p>
+      <p class="asset_p">冻结余额  <span> {{freeze}}</span></p>
+    </div>
+    <div class="asset-right">
+      <button @click="toenchashment()">提现</button>
+      <button @click="torecharge()">充值</button>
+    </div>
+  </div>
+  <div class="tab">
+    <!-- <template>
+      <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="全部" name="first">
+          <div class="coupon">
+            <div class="coupon-left">
+              <span>可使用</span>
+              <div>
+                <p class="coupon_p">满1000减100</p>
+                <p class="coupon_p">PE类产品共享</p>
+                <p class="coupon_p">有效期 : 2017.11.01-2017.11.30</p>
+              </div>
+            </div>
+            <div class="coupon-center">
+              <span>已过期</span>
+              <div>
+                <p>满1000减100</p>
+                <p>PE类产品共享</p>
+                <p>有效期 : 2017.11.01-2017.11.30</p>
+              </div>
+            </div>
+            <div class="coupon-right">
+              <span>已使用</span>
+              <div>
+                <p>满1000减100</p>
+                <p>PE类产品共享</p>
+                <p>有效期 : 2017.11.01-2017.11.30</p>
+              </div>         
+            </div>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="可使用" name="second">可使用</el-tab-pane>
+        <el-tab-pane label="已过期" name="third">已过期</el-tab-pane>
+        <el-tab-pane label="以使用" name="fourth">已使用</el-tab-pane>
+      </el-tabs>
+    </template> -->
+  </div>
+</section>
+

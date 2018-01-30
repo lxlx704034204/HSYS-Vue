@@ -1,0 +1,162 @@
+<!-- 订单完成 -->
+<section class="tosigning">
+  <!-- 面包屑 -->
+  <el-breadcrumb class="myoderDetail">
+    <el-breadcrumb-item class="myoderDetail-item1">
+      <span>订单管理</span>
+    </el-breadcrumb-item>
+    <el-breadcrumb-item>订单详情</el-breadcrumb-item>
+  </el-breadcrumb>
+
+  <!-- 主体 -->
+  <div class="main">
+    <!-- 订单编号 -->
+    <div class="orderNumber">
+      <div class="orderNumber-title">
+        <span class="num">订单编号：</span>
+        <span>{{number}}</span>
+        <span class="isPayment">已完成</span>
+      </div>
+      <el-steps :active="6" process-status="wait" align-center class="orderNumber-detail">
+        <el-step>
+          <p slot="title" class="step-title active">提交订单信息</p>
+          <p slot="description" class="description">
+            <span>{{orderTime}}</span>
+          </p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title active">平台审核</p>
+          <p slot="description" class="description">
+            <span>{{audittime}}</span>
+          </p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title active">客户确定订单</p>
+          <p slot="description" class="description">
+            <span>{{confirmationtime}}</span>
+          </p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title active">线下转账付账</p>
+          <p slot="description" class="description">
+            <span>{{paymenttime}}</span>
+          </p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title active">出库发货</p>
+          <p slot="description" class="description">
+            <span>{{deliverytime}}</span>
+          </p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title active">货物签收</p>
+          <p slot="description" class="description">
+            <span>{{signingtime}}</span>
+          </p>
+        </el-step>
+      </el-steps>
+    </div>
+    <!-- 付款信息 -->
+    <div class="orderPayment">
+      <ul>
+        <li class="orderPayment-title">
+          <span>付款信息</span>
+          <span>物流信息</span>
+          <span>发票信息</span>
+        </li>
+        <li class="orderPayment-content">
+          <span>付款方式：{{payinfo}}</span>
+          <span>配送方式：{{shipMethod}}</span>
+          <span>发票类型：增值税专用发票</span>
+          <span>结算方式：{{abbtype}}</span>
+          <span>发票抬头：{{paytitle}}</span>
+          <span>应付金额：{{totalmoney}}</span>
+          <span></span>
+          <span>统一社会信用代码：{{bizcode}}</span>
+        </li>
+      </ul>
+    </div>
+    <!-- 供应商 -->
+    <div class="orderSupplier">
+      <h4 class="orderSupplier-title">供应商：山东道恩集团
+        <span class="order_span">合同编号:
+          <span></span>
+          <span class="order_see">点击查看</span>
+        </span>
+      </h4>
+      <div class="orderSupplier-table">
+        <el-table :data="orderTable" class="orderdetails" style="width: 100%;" border>
+          <el-table-column prop="items[0].name" label="产品名称">
+          </el-table-column>
+          <el-table-column label="规格/牌号">
+            <template slot-scope="scope">
+              <span>{{ph[scope.row.items[0].gradeCode]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="place" label="产地">
+            <template slot-scope="scope">
+              <span>{{cd[scope.row.items[0].sku.product.manufacturerCode]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="库别">
+            <template slot-scope="scope">
+              <span>{{io[scope.row.items[0].sku.warehouseCode]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="单位">
+            <template slot-scope="scope">
+              <span>{{dw[scope.row.items[0].sku.unitCode]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="items[0].quantiy" label="数量">
+          </el-table-column>
+          <el-table-column prop="items[0].retailPrice" label="价格">
+          </el-table-column>
+          <el-table-column label="客户经理">
+            <template slot-scope="scope">
+              <span>{{admin}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="total" label="总金额">
+          </el-table-column>
+        </el-table>
+      </div>
+      <!-- <ul class="orderSupplier-content">
+        <li class="top" v-for="(item,index) in orderTable" :key="index">
+          <p>
+            <span>{{item.fare1}}</span>运费
+            <i>(订单审核后确定运费)</i>
+          </p>
+          <p>
+            <span>{{item.cash}}</span>代金券</p>
+          <p>
+            <span>{{item.prefer}}</span>优惠活动</p>
+          <p>
+            <span>{{item.totalAount}}</span>应付总额</p>
+          <p class="last">总税额（人民币）{{item.totalTax}}元</p>
+          <h5 class="btn">
+
+            <a class="btn-left">实付款</a>
+            <a class="btn-right">{{item.order.total}}</a>
+          </h5>
+        </li>
+      </ul> -->
+    </div>
+    <!-- 付款凭证 -->
+    <div class="togoodsPayment">
+      <!-- <div class="togoodsPayment-voucher" v-for="(item,index) in voucher"> -->
+      <div class="togoodsPayment-voucher">
+        <a class="left">付款凭证</a>
+        <div class="right">
+          <!-- <img :src="item.Vimg"> -->
+        </div>
+      </div>
+    </div>
+    <!-- 底部 -->
+    <div class="orderFooter">
+      <div class="orderFooter-box">
+        <el-button class="orderFooter-btn" type="primary">下载合同</el-button>
+      </div>
+    </div>
+  </div>
+</section>

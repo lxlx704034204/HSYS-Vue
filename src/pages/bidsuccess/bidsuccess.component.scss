@@ -1,0 +1,157 @@
+// 清除浮动
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.bidsuccess {
+    .nav{
+        line-height: 22px;
+        margin-bottom:26px;
+    }
+    .main{
+        width: 960px;
+        height: 752px;
+        border: 1px solid #cccccc;
+        margin-top: 8px;
+        .ordernum{
+            font-size: 14px;
+            margin-left: 18px;
+            margin-top: 15px;
+            div{
+               line-height: 40px; 
+               span{
+                   margin-left: 25px;
+                   color: #009fe2; 
+               }
+            }
+        }
+        .tableinfo{
+            width: 942px;
+            height: 209px;
+            border-bottom: 1px dashed #cdcdcd; 
+            margin: 6px 9px 0 9px;
+            .table{
+                .has-gutter{
+                    .is-leaf{
+                    }
+                }
+            }
+            .text{
+                margin-top: 10px;
+                resize: none;
+                line-height: 25px;
+                border:1px solid #ddd;
+                padding-left: 5px;
+            }
+        }
+        .consignee{
+            width: 942px;
+            height: 159px;
+            border-bottom: 1px dashed #cdcdcd; 
+            margin: 15px 9px 0 9px;
+            .bid-inf-no{
+                height: 70px;
+                margin:10px 340px;
+                text-align: center;
+                .font-inf-wrap{
+                    float: left;
+                    margin: 15px 10px;
+                    font-size: 14px;
+                    .toadd-address{
+                        color:#009ef2;
+                        cursor: pointer;
+                        display: inline-block;
+                    }
+                }
+                img{
+                    float: left;
+                }
+
+                .font-add{
+                    margin-bottom: 10px;
+                }
+            }
+            h4{
+                margin-left: 10px;
+                line-height: 40px;
+                font-size: 14px;
+            }
+            .information-biddsuccess{
+                margin-left: 10px;
+                line-height: 30px;
+                font-size: 14px;
+                position: relative;
+                .default-inf-wrap{
+                    display: inline-block;
+                    position: absolute;
+                    width: 200px;
+                }
+                .default-chose-wrap{
+                    position: absolute;
+                    top:0px;
+                    left:400px;
+                    .chage{
+                        cursor: pointer;
+                        margin-left: 33px;
+                        color: #009fe2;
+                    }
+                }
+                
+            }
+        }
+        .changadd-wrap{
+                border:1px solid #CCC;
+                border-radius: 10px;
+                margin-bottom: 30px;
+                cursor: pointer;
+            .changeAdd{
+                width: 374px;
+                li{
+                    padding: 3px 15px;
+                    .haveadd{
+                        margin-left: 64px;
+                        display: inline-block;
+                    }
+                }
+                }
+               
+            }
+        .inform{
+            width: 942px;
+            height: 170px;
+            border-bottom: 1px dashed #cdcdcd; 
+            margin: 15px 9px 0 9px;
+            .payinfo , .invinfo{
+                float: left;
+                h4{
+                    line-height: 40px;
+                    font-size: 14px;
+                }
+                div{
+                    line-height: 30px;
+                    font-size: 14px;
+                }
+            }
+            .payinfo{
+                margin-left: 10px; 
+            }
+            .invinfo{
+                margin-left: 215px;   
+            }
+        }
+        .but{
+            height: 79px;
+            background: #f8f8f8;
+            .btn{
+                margin-top: 20px;
+                float: right;
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+

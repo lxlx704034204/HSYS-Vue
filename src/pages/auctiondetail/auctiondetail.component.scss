@@ -1,0 +1,362 @@
+.auctiondetail{
+	.login-wrap{
+		position: fixed;
+		top:0;
+		background: rgba(0,0,0,.5);
+		z-index: 100;
+		width: 100%;
+		height: 100%;
+		.autionlogin{
+			
+		}
+	}
+    .auc_xiu{
+        position: absolute;margin-left: 27px;color: #f83d46;        
+    }
+    .auc_xiu1{
+        margin-left: 325px;margin-top: 20px;display: inline-block;
+        .payup{
+        	width: 112px;
+        	height: 40px;
+        	border:none;
+    	    display: inline-block;
+		    line-height: 1;
+		    white-space: nowrap;
+		    cursor: pointer;
+		    color: #fff;
+		    background: #009fe2;
+		    -webkit-appearance: none;
+		    text-align: center;
+		    -webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		    outline: 0;
+		    margin: 0;
+		    -webkit-transition: .1s;
+		    transition: .1s;
+		    font-weight: 500;
+		    padding: 12px 20px;
+		    font-size: 14px;
+		    border-radius: 4px;
+        }
+    }
+	.clearfixed:after{
+		content: ".";
+		clear: both;
+		display: block;
+		visibility: hidden;
+		height: 0;
+	}
+	.title{
+		height: 52px;
+		line-height: 52px;
+		color:#999;
+		font-size: 14px;
+		.content{
+			color:#333;
+		}
+	}
+	.detailwrap{
+		.detail-left{
+			float: left;
+			width: 933px;
+			margin-bottom: 30px;
+			.left-wrap{
+				height: 350px;
+				border:1px solid #e5e6e6;
+				.left-top{
+					padding:15px 20px 25px 15px;
+					background: #f8f8f8;
+					height: 150px;
+					.pro-inf-one{
+						font-size: 14px;
+						color:#333;
+						.pro-name{
+							font-size: 18px;
+						}
+						.time-wrap{
+							margin-left:24px;
+						}
+						.time{
+							color:#009FE2;
+							margin-right: 25px;
+						}
+						.manyperson{
+							margin-left: 25px;
+						}
+					}
+					.pro-inf-two1{
+						margin-top: 20px;
+						font-size: 18px;
+						img,span{
+							float: left;
+						}
+						span,button{
+							margin-top: 45px;
+						}
+						button{
+							float: right;
+							margin-top: 40px;
+							font-size: 16px;
+						}
+						.pro-num{
+							margin:45px 50px 0 20px;
+						}
+						.pro-money{
+							margin:45px 60px 0 75px;
+						}
+						.disablebtn{
+							background: #D1D1D1;
+							color: #FFF;
+							width: 126px;
+							height: 34px;
+							border:none;
+							border-radius: 3px;
+						}
+						.disablebtn-btn{
+							background: #009fe2;
+							color: #FFF;
+							width: 126px;
+							height: 34px;
+							border:none;
+							border-radius: 3px;
+						}
+						
+					}
+					.pro-inf-two2{
+						margin-top: 20px;
+						font-size: 18px;
+						img{
+							float: left;
+						}
+						.pro-inf-auctioning{
+							float: left;
+							font-size: 14px;
+							color:#333;
+							.aucti_sum{
+								margin-left: 18px;
+
+								.datacolor{
+									color:#009FE2;
+								}
+								.margleft{
+									margin-left: 35px;
+								}
+							}
+							.aucti_sum2{
+								margin:18px 0 18px 18px ;
+							}
+							.aucti_num{
+								margin-left: 18px;
+								.num_wrap{
+									float: left;
+
+								}
+								.aucti_btn{
+									position: absolute;
+									left:145px;
+									top:-2px;
+									font-size: 12px;
+									float: left;
+								}
+							}
+							.aucti_num1{
+								position: relative;
+								margin-top: 16px;
+								.aucti_btn{
+									width: 42px;
+									border:1px solid #009FE2;
+									.aucti_btn_top{
+										width: 100%;
+										height: 15px;
+										border:none;
+										text-align: center;
+										line-height: 15px;
+										background: #FFF;
+										cursor: pointer;
+									}
+									.aucti_btn_top:nth-child(1){
+										border-bottom: 1px solid #009FE2;
+									}
+
+								}
+								.myprice{
+										position: absolute;
+										left:185px;
+										width: 71px;
+									}
+								.disablebtn2{
+									position: absolute;
+									left: 185px;
+								}	
+								.btn_2{
+									margin-top: 2px;
+								}
+								.fontleng{
+									letter-spacing:13px;
+								}
+								
+							}
+							.aucti_num1:nth-child(1){
+								margin-top: 18px;
+								
+							}
+						}
+					}
+				}
+				.centercontent{
+					margin-bottom: 20px;
+					text-indent:28px;
+		            font-size: 14px;
+				}
+				.centercontent1{
+				    margin-bottom: 20px;
+                    font-size: 14px;
+                    color: #009FE2;
+				}
+				.left-two{
+					padding:23px 0 30px 15px;
+					position: relative;
+					li{
+						position: absolute;
+						font-size: 14px;
+						color:#333;
+					}
+					li:nth-child(1){
+						left:15px;
+					}
+					li:nth-child(2){
+						left:335px;
+					}
+					li:nth-child(3){
+						left:725px;
+					}
+					li:nth-child(4){
+						left:15px;
+						top:68px;
+					}
+					li:nth-child(5){
+						left:335px;
+						top:68px;
+
+					}
+					li:nth-child(6){
+						left:725px;
+						top:68px;
+
+					}
+					li:nth-child(7){
+						left:15px;
+						top:110px;
+
+					}
+					li:nth-child(8){
+						left:335px;
+						top:110px;
+
+					}
+					
+				}
+			}
+			.left-wrap-list{
+				margin: 38px 0 50px;
+				width: 933px;
+				.list-title{
+					margin:37px auto;
+					position: relative;
+					width: 605px;
+					height: 1px;
+					background: #e5e6e6;
+					span{
+						display: inline-block;
+						width: 100px;
+						background: #fff;
+						text-align: center;
+						position: absolute;
+						left:250px;
+						top:-12px;
+					}
+				}
+			}
+		}
+		.detail-right{
+			float: right;
+			width: 248px;
+			.right-ower-inf{
+				height: 245px;
+				border:1px solid #dddddd;
+				font-size: 14px;
+				.ower-inf{
+					height: 40px;
+					line-height: 40px;
+					font-size: 14px;
+					color:#333;
+					background: #f8f8f8;
+					padding:0 16px;
+
+				}
+				.ower-inf-wrap{
+					padding:24px 16px ;
+					div{
+						margin-bottom: 15px;
+						img{
+							vertical-align: middle;
+							margin-right: 11px;
+						}
+					}
+				}
+			}
+			.right-autic-inf{
+				margin-top: 18px;
+				margin-bottom:30px;
+				border:1px solid #dddddd;
+				font-size: 14px;
+				.autic-inf-top{
+					height: 55px;
+					line-height: 55px;
+					font-size: 14px;
+					color:#333;
+					background: #fbfbfb;
+					padding:0 16px;
+					div{
+						width: 120px;
+						border-bottom:2px solid #009FE2;
+						img{
+							vertical-align: middle;
+							margin-right: 12px;
+							font-size: 18px;
+						}
+					}
+				}
+				.autic-inf-con{
+					padding:0 16px;
+					height: 40px;
+					line-height: 40px;
+					cursor: pointer;
+					border-bottom: 1px dotted #dfe5ee;
+					.name{
+						display: inline-block;
+						width:62px;
+						 text-overflow:ellipsis;
+						 white-space:nowrap; 
+						 overflow:hidden;
+					}
+					.timeleng{
+						float: right;
+						display: inline-block;
+						width:148px;
+						 text-overflow:ellipsis;
+						 white-space:nowrap; 
+						 overflow:hidden;
+					}
+				}
+				.not-inf-hotlist{
+						text-align: center;
+						padding:20px;
+					img{
+						width: 80%;
+					}
+				}
+			}
+		}
+	}
+}

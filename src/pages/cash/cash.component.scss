@@ -1,0 +1,77 @@
+.cash{
+	margin-bottom: 40px;
+	.cash-top{
+		margin-top: 50px;
+		font-size: 18px;
+		.top-right{
+			float: right;
+		}
+	}
+	.cash-second{
+		height: 354px;
+		margin-top: 23px;
+		border:1px solid #e5e6e6;
+		.cash-money{
+			font-size: 18px;
+			height: 95px;
+			line-height: 95px;
+			background: #F8F8F8;
+			padding-left: 45px;
+			position: relative;
+			span,.aucti_input{
+				float: left;
+			}
+			.aucti_input{
+				width: 142px;
+				height: 40px;
+				margin:0 20px 0 10px;
+			}
+			.minmoney{
+				font-size: 12px;
+			}
+			.remind{
+				    position: absolute;
+				    top: 65px;
+				    height: 30px;
+				    line-height: 30px;
+				    left: 209px;
+				    font-size: 12px;
+				    color: #fa5555;
+			}
+		}
+		.cash-phone{
+			font-size: 18px;
+			padding:35px 0 28px 45px;
+		}
+		.cash-code{
+			margin-left: 45px;
+			.cash_input{
+				width: 190px;
+				height: 40px;
+			}
+			.havecode{
+				width: 138px;
+				height: 40px;
+				background: #009FE2;
+                text-align: center;
+			}
+			.el-button:focus, .el-button:hover{
+			 	color:#FFF;
+			 }
+			 .remind2{
+			 	color:#fa5555;
+			 	font-size: 16px;
+			 }
+		}
+		.mustpay{
+			height: 40px;
+			width: 120px;
+			margin: 15px 0 83px 45px;
+			background: #009FE2;
+		}
+		.mustpay:hover, .mustpay:focus{
+			color:#FFF;
+			background: #009FE2;
+		}
+	}
+}

@@ -1,0 +1,617 @@
+.pro_det {
+    .pro_det {
+        width: 100%;
+        background-color: #F3F2F0;
+    }
+    .pro_det1 {
+        position: absolute;
+        height: 166px;
+        width: 563px;
+        background: #F4F3F1;
+        z-index: 1;
+        margin-top: 46px;
+    }
+    .pro_det11 {
+        height: 20px;
+        font-size: 14px;
+        color: #333;
+        position: relative;
+        z-index: 2;
+        margin-top: 12px;
+    }
+    .pro_det12 {
+        float: left;
+        margin-left: 17px;
+        width: 105px;
+        height: 20px;
+        line-height: 20px;
+    }
+    .pro_det13 {
+        float: left;
+        height: 18px;
+        line-height: 17px;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: auto;
+        border: 1px solid #009FE2;
+        background: #DDF6FF;
+    }
+    .pro_det14 {
+        height: 14px;
+        line-height: 14px;
+        font-size: 14px;
+        color: #333;
+        position: relative;
+        z-index: 2;
+        margin-top: 22px;
+    }
+    .pro_det15 {
+        width: 105px;
+        float: left;
+        margin-left: 17px;
+    }
+    .pro_det16 {
+        float: left;
+    }
+    .pro_det17 {
+        width: 932px;
+        margin-left: 23px;
+        border-bottom: 2px solid #009FE2;
+        overflow: hidden;
+    }
+    .pro_det18 {
+        float: left;
+        width: 130px;
+        height: 38px;
+        font-size: 18px;
+        color: #FFF;
+        background: #009FE2;
+        text-align: center;
+        line-height: 38px;
+    }
+    .pro_det19 {
+        width: 920px;
+        margin-left: 23px;
+        line-height: 16px;
+        color: #333;
+        font-size: 14px;
+    }
+    .pro_det2 {
+        height: 16px;
+        margin-top: 34px;
+    }
+    .pro_det21 {
+        float: left;
+        width: 371px;
+        margin-left: 22px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .pro_det22 {
+        float: left;
+        width: 290px;
+        margin-left: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .pro_det23 {
+        float: left;
+        width: 190px;
+        margin-left: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .pro_det24 {
+        width: 846px;
+        margin-top: 25px;
+        margin-left: 22px;
+        height: 16px;
+        line-height: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .pro_det25 {
+        height: 97px;
+        border-bottom: 1px solid #EAE8E6;
+    }
+    .pro_det26 {
+        width: 190px;
+        height: 80px;
+        margin-left: 12px;
+        margin-top: 8px;
+        overflow: hidden;
+    }
+    .pro_det26 img {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .pro_det27 {
+        border-bottom: 1px solid #EAE8E6;
+        overflow: hidden;
+    }
+    .pro_det27 p {
+        margin: 18px 18px 18px 18px;
+        color: #BBB;
+        text-indent: 24px;
+        font-size: 12px;
+        line-height: 20px;
+        width: 187px;
+        height: auto;  
+        word-wrap:break-word;  
+        word-break:break-all;  
+        overflow: hidden;  
+    }
+    .pro_det28 {
+        margin-left: 97px;
+        font-size: 14px;
+        overflow: hidden;
+    }
+    .pro_det28 ul li {
+        min-width: 140px;
+        margin-left: 5px;
+        line-height: 50px;
+        font-size: 24px;
+        color: #1a9fe2;
+        overflow: hidden;
+        float: left;
+    }
+    .pro_det29 {
+        float: left;
+        width: 59px;
+        height: 224px;
+    }
+    .pro_det3 {
+        height: 69px;
+    }
+    .clearfixed:after {
+        content: ".";
+        clear: both;
+        display: block;
+        visibility: hidden;
+        height: 0;
+    }
+    .img2_main img:hover {
+        cursor: pointer;
+    }
+    .product-detail {
+        // 面包屑
+        .product1 {
+            height: 56px;
+            font-size: 12px;
+            span {
+                line-height: 56px;
+            }
+        }
+        .product {
+            .product_left {
+                float: left;
+                width: 965px;
+                background: #FFF;
+                .left_top {
+                    height: 422px;
+                    margin-bottom: 75px;
+                    .leftTop_le {
+                        float: left;
+                        margin-top: 21px;
+                        margin-left: 17px;
+                        .leftTop_img {
+                            width: 350px;
+                            height: 350px;
+                            position: relative;
+                            border: 1px solid #C5C5C5;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                            .product-squir {
+                                width: 153px;
+                                height: 153px;
+                                background: rgba(0, 0, 0, .5);
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                // z-index: 100;
+                                /* display: none; */
+                            }
+                            .right-img {
+                                width: 350px;
+                                height: 350px;
+                                overflow: hidden;
+                                position: absolute;
+                                left: 350px;
+                                top: 0;
+                                border: 1px solid #333;
+                                z-index: 99;
+                                box-sizing: border-box;
+                                img {
+                                    width: 558px;
+                                    height: 558px;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                }
+                            }
+                        }
+                        .leftTop_img2 {
+                            margin-top: 18px;
+                            width: 350px;
+                            height: 54px;
+                            .img2_left {
+                                float: left;
+                                width: 18px;
+                                height: 54px;
+                                background-color: #eeeeee;
+                                i {
+                                    display: inline-block;
+                                    width: 10px;
+                                    height: 17px;
+                                    margin-top: 19px;
+                                    margin-left: 3px;
+                                    background: url("./images/left.gif") no-repeat;
+                                }
+                            }
+                            .img2_left2 {
+                                float: left;
+                                width: 305px;
+                                height: 54px;
+                                overflow: hidden;
+                                position: relative;
+                                .img2_main {
+                                    position: absolute;
+                                    left: 0;
+                                    width: 610px;
+                                    height: 54px;
+                                    img {
+                                        float: left;
+                                        width: 54px;
+                                        height: 54px;
+                                        margin-left: 7px;
+                                    }
+                                }
+                            }
+                            .img2_right {
+                                float: right;
+                                width: 18px;
+                                height: 54px;
+                                background-color: #eeeeee;
+                                i {
+                                    display: inline-block;
+                                    width: 10px;
+                                    height: 17px;
+                                    margin-top: 19px;
+                                    margin-left: 3px;
+                                    background: url("./images/right.gif") no-repeat;
+                                    background-size: 100%;
+                                }
+                            }
+                        }
+                    }
+                    .leftTop_rg {
+                        float: left;
+                        width: 562px;
+                        margin-left: 18px;
+                        margin-top: 18px;
+                        h3 {
+                            font-size: 18px;
+                            font-weight: normal;
+                            margin-bottom: 28px;
+                            height: 23px;
+                        }
+                        .leftTop_div {
+                            margin-left: 15px;
+                            font-size: 14px;
+                            position: relative;
+                            z-index: 2;
+                            .leftTop_span {
+                                float: left;
+                                width: 105px;
+                            }
+                            .leftTop_p {
+                                margin-left: 97px;
+                                font-size: 14px;
+                                overflow: hidden;
+                                ul li {
+                                    margin-left: 5px;
+                                    min-width: 138px;
+                                    overflow: hidden;
+                                    float: left;
+                                }
+                            }
+                            &.leftTop_div2 {
+                                height: 43px;
+                                line-height: 43px;
+                            }
+                            &.leftTop_div3 {
+                                margin-top: 23px;
+                                p {
+                                    height: 44px;
+                                    line-height: 44px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .left_btm {
+                    .leftBtm_title {
+                        height: 39px;
+                        background-color: #f8f8f8;
+                        border-bottom: 1px solid #009fe2;
+                        h3 {
+                            float: left;
+                            width: 130px;
+                            height: 39px;
+                            line-height: 39px;
+                            text-align: center;
+                            color: #fff;
+                            font-weight: normal;
+                            background-color: #009fe2;
+                        }
+                    }
+                    .leftBtm_nav {
+                        height: 91px;
+                        border-bottom: 1px solid #f2f2f2;
+                        p {
+                            float: left;
+                            font-size: 14px;
+                            color: #333333;
+                            line-height: 91px;
+                            width: 145px;
+                        }
+                        .leftBtm_p1 {
+                            margin-left: 45px;
+                            margin-right: 79px;
+                            width: 205px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                        .leftBtm_p2 {
+                            margin-right: 70px;
+                        }
+                        .leftBtm_p3 {
+                            margin-right: 60px;
+                        }
+                    }
+                    .leftBtm_img {
+                        width: 919px;
+                        padding: 18px 21px 55px 25px;
+                    }
+                }
+            }
+            .product_right {
+                float: right;
+                width: 217px;
+                .right_top {
+                    background: #FFF;
+                    border: 1px solid #e9e9e9;
+                    h4 {
+                        font-weight: normal;
+                        font-size: 14px;
+                        height: 40px;
+                        line-height: 40px;
+                        padding-left: 12px;
+                        background-color: #F8F8F7;
+                    }
+                    .right_img {
+                        height: 97px;
+                        border-bottom: 1px solid #e8e8e8;
+                        img {
+                            float: left;
+                            margin: 25px 0px 0px;
+                        }
+                        p {
+                            float: left;
+                            font-size: 14px;
+                            line-height: 50px;
+                            margin-top: 25px;
+                        }
+                    }
+                    .right_main {
+                        height: 92px;
+                        padding: 18px 20px;
+                        border-bottom: 1px solid #e8e8e8;
+                        p {
+                            font-size: 12px;
+                            text-indent: 2em;
+                            color: #999999;
+                        }
+                    }
+                    .right_main2 {
+                        padding: 0 16px;
+                        font-size: 12px;
+                        overflow: hidden;
+                        .rightBtm_p1 {
+                            margin-top: 23px;
+                            i {
+                                float: left;
+                                width: 13px;
+                                height: 16px;
+                                margin-right: 11px;
+                                background: url("./images/img3.gif")no-repeat;
+                            }
+                        }
+                        .rightBtm_p2 {
+                            margin-top: 11px;
+                            i {
+                                float: left;
+                                width: 15px;
+                                height: 13px;
+                                margin-right: 8px;
+                                background: url("./images/img2.gif")no-repeat;
+                            }
+                        }
+                        .rightBtm_p3 {
+                            margin-top: 11px;
+                            i {
+                                float: left;
+                                width: 11px;
+                                height: 15px;
+                                margin-right: 11px;
+                                background: url("./images/img1.gif")no-repeat;
+                            }
+                            .rightBtm_span2 {
+                                display: inline-block;
+                                width: 90px;
+                                line-height: 15px;
+                                padding-top: 1px;
+                                padding-left: 5px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                            .rightBtm_span {
+                                float: left;
+                            }
+                        }
+                        .right_address {
+                            height: 145px;
+                            margin-top: 20px;
+                        }
+                        .rightBtm_btn {
+                            width: 100%;
+                            height: 30px;
+                            padding: 0;
+                            margin-top: 21px;
+                            background: #009FE2;
+                            color: #FFF;
+                        }
+                        .rightBtm_btn:hover {
+                            background: #009FE2;
+                            color: #FFF;
+                            border: 1px solid #009FE2;
+                        }
+                    }
+                }
+                .right_btm {
+                    margin-top: 22px;
+                    border: 1px solid #f2f2f2;
+                    background: #FFF;
+                    a {
+                        text-decoration: none;
+                    }
+                    h4 {
+                        font-weight: normal;
+                        font-size: 14px;
+                        height: 40px;
+                        line-height: 40px;
+                        padding-left: 12px;
+                        background-color: #F8F8F7;
+                    }
+                    .rightBtm_div {
+                        height: 215px;
+                        padding: 15px 15px 0;
+                         :hover {
+                            cursor: pointer;
+                        }
+                        div {
+                            margin-left: 10px;
+                            margin-bottom: 10px;
+                            width: 160px;
+                            height: 160px;
+                            overflow: hidden;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        p {
+                            color: #333;
+                            font-size: 12px;
+                            line-height: 18px;
+                        }
+                    }
+                }
+            }
+        }
+        .product_btm {
+            // height: 264px;
+            margin-top: 15px;
+            background: #FFF;
+            .productBtm_title {
+                height: 38px;
+                font-size: 14px;
+                line-height: 38px;
+                padding-left: 18px;
+                padding-right: 27px;
+                background-color: #FFF;
+                border-bottom: 1px solid #F3F2F0;
+                .title_sapn1 {
+                    float: left;
+                }
+                .title_sapn2 {
+                    float: right;
+                    i {
+                        font-style: normal;
+                    }
+                }
+            }
+            .productBtm_img {
+                height: 224px;
+                .btmImg_left {
+                    float: left;
+                    width: 59px;
+                    height: 224px;
+                    background: url("./images/left.gif") no-repeat center center;
+                }
+                .btmImg_con {
+                    position: relative;
+                    float: left;
+                    width: 1080px;
+                    height: 160px;
+                    overflow: hidden;
+                    margin-top: 22px;
+                    .btmImg_con2 {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        width: 2190px;
+                        float: left;
+                        ul {
+                            li {
+                                float: left;
+                                width: 150px;
+                                height: 160px;
+                                margin-right: 36px;
+                                overflow: hidden;
+                                position: relative;
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                                .btmImg_div {
+                                    display: none;
+                                    position: absolute;
+                                    bottom: 0px;
+                                    width: 132px;
+                                    height: 36px;
+                                    padding: 0 9px;
+                                    background-color: #8d8d8d;
+                                    p {
+                                        font-size: 12px;
+                                        color: #fff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .btmImg_right {
+                    float: right;
+                    width: 59px;
+                    height: 224px;
+                    background: url("./images/right.gif") no-repeat center center;
+                }
+            }
+        }
+    }
+    .backgrounds {
+        padding: 5px 0 0 15px;
+        margin-left: 0!important;
+        background: #f3f3f3;
+    }
+}

@@ -1,0 +1,61 @@
+<section class="bidsuccess">
+  <div>
+    <!-- 面包屑导航 -->
+    <el-breadcrumb separator="/" class="nav">
+      <el-breadcrumb-item :to="{ path: '/companycenter/mybid' }">订单管理</el-breadcrumb-item>
+      <el-breadcrumb-item>竞价详情</el-breadcrumb-item>
+    </el-breadcrumb>
+    <!-- 主体 -->
+    <div class="main">
+      <!-- 订单号 -->
+      <div class="ordernum">
+        <div>竞价订单号 : {{ids}}
+          <span>{{status}}</span>
+        </div>
+        <div>供应商 : 山东道恩集团</div>
+      </div>
+      <!-- table表格 -->
+      <div class="tableinfo">
+        <el-table :data="productList" border class="table">
+          <el-table-column prop="product.name" label="产品名称" width="180">
+          </el-table-column>
+          <el-table-column  label="牌号" width="180">
+            <template slot-scope="scope">
+              <span>{{phjson[phnumber]}}</span>
+          </template>
+          </el-table-column>
+          <el-table-column label="产地">
+             <template slot-scope="scope">
+              <span>{{cdjson[manu]}}</span>
+          </template>
+          </el-table-column>
+          <el-table-column label="库别">
+             <template slot-scope="scope">
+              <span>{{iojson[warhouse]}}</span>
+           </template>
+          </el-table-column>
+          <el-table-column  label="单位">
+             <template slot-scope="scope">
+              <span>{{unitjson[unitint]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="数量">
+             <template slot-scope="scope">
+              <span>{{number}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="竞拍价格">
+             <template slot-scope="scope">
+              <span>{{biddingPrice}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="总价">
+             <template slot-scope="scope">
+              <span>{{sumprice}}</span>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
+  </div>
+</section>

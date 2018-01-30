@@ -1,0 +1,187 @@
+<section class="pro_det">
+    <div class="product-detail inner-1200">
+        <div class="product1">
+            <el-breadcrumb separator-class="el-icon-arrow-right">
+                <el-breadcrumb-item class="det_cla1" :to="{ path: '/customer' }" id="kehu">企业产品库</el-breadcrumb-item>
+                <el-breadcrumb-item class="det_cla">{{companyName}}</el-breadcrumb-item>
+                <el-breadcrumb-item class="det_cla">{{name}}</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
+        <div class="product clearfixed">
+            <!-- 左侧内容 -->
+            <div class="product_left">
+                <div class="left_top">
+                    <div class="leftTop_le">
+                        <div class="leftTop_img product-nav" ref='smallimg'>
+                            <img :src="images[0]" alt="" class="big" ref='leftimg'>
+                            <div class="product-squir" ref='squire' v-show='showsquires'></div>
+                        </div>
+                        <div class="leftTop_img2">
+                            <div id="leftbu" class="img2_left" @click="img2left" v-show='leftshow'>
+                                <i></i>
+                            </div>
+                            <div class="img2_left2">
+                                <div class="img2_main">
+                                    <img v-for="im in images" :src="im" @mouseenter='proimg($event)'>
+                                </div>
+                            </div>
+                            <div id="rightbu" class="img2_right" @click="img2right" v-show='leftshow'>
+                                <i></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!--如果区间价不为空，走上面部分-->
+                    <div class="leftTop_rg" v-for='inf in proinfjson' v-if="intervals[0].startNumber">
+                        <!--灰色底-->
+                        <div class="pro_det1"></div>
+                        <h3>{{name}}</h3>
+                        <div class="leftTop_div pro_det3">
+                            <span class="leftTop_span">参考区间价 :</span>
+                            <p class="leftTop_p">
+                                <ul v-for="(inter,index) in intervals" :key="index">
+                                    <li>{{inter.startNumber}}-{{inter.endNumber}}{{dwjson[unitCode]}}</li>
+                                </ul>
+                            </p>
+                            <p class="pro_det28">
+                                <ul v-for="(inter,index) in intervals" :key="index">
+                                    <li class="leftTop_span2">￥{{inter.saleprice}}</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="pro_det11">
+                            <div class="pro_det12">出&nbsp;&nbsp;货&nbsp;&nbsp;地：</div>
+                            <div class="pro_det13">{{inf.producingAreaOneName}}{{inf.producingAreaTwoName}}{{inf.producingAreaThreeName}}</div>
+                        </div>
+                        <div class="pro_det14">
+                            <div class="pro_det15">最小起订量：</div>
+                            <div class="pro_det16">{{inf.minSale}}{{dwjson[unitCode]}}</div>
+                        </div>
+                        <div class="leftTop_div leftTop_div3">
+                            <p>
+                                <span style="width: 105px;display: inline-block;">厂家 :</span>
+                                <span>{{inf.companyName}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!--如果区间价为空，走下面部分-->
+                    <div class="leftTop_rg" v-for='inf in proinfjson' v-else>
+                        <!--灰色底-->
+                        <div class="pro_det1" style="height: 120px;"></div>
+                        <h3>{{name}}</h3>
+                        <div class="leftTop_div pro_det3" style="height: 30px;">
+                            <span class="leftTop_span">出售价格 :</span>
+                            <p class="leftTop_p">
+                                ￥{{salePrice}}
+                            </p>
+                        </div>
+                        <div class="pro_det11">
+                            <div class="pro_det12">出&nbsp;&nbsp;货&nbsp;&nbsp;地：</div>
+                            <div class="pro_det13">{{inf.producingAreaOneName}}{{inf.producingAreaTwoName}}{{inf.producingAreaThreeName}}</div>
+                        </div>
+                        <div class="pro_det14">
+                            <div class="pro_det15">最小起订量：</div>
+                            <div class="pro_det16">{{inf.minSale}}{{dwjson[unitCode]}}</div>
+                        </div>
+                        <div class="leftTop_div leftTop_div3">
+                            <p>
+                                <span style="width: 105px;display: inline-block;">厂家 :</span>
+                                <span>{{inf.companyName}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 产品参数 -->
+                <div class="left_btm" v-for='inform in proinfjson'>
+                    <div class="pro_det17">
+                        <div class="pro_det18">
+                            产品参数
+                        </div>
+                    </div>
+                    <div class="leftBtm_img" v-html='inform.productContent.content'>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧内容 -->
+            <div class="product_right">
+                <div class="right_top" v-for='sell in cominf'>
+                    <h4>企业介绍</h4>
+                    <div class="pro_det25">
+                        <div class="pro_det26">
+                            <!--<img :src="sell.logoUrl" />-->
+                            <img v-if="sell.logoUrl" :src="sell.logoUrl" />
+                            <img v-else src="./images/com_mrlogo.png" />
+                        </div>
+                    </div>
+                    <div class="pro_det27">
+                    		<p v-if="!sell.description">暂无企业描述</p>
+                        <p v-else>{{sell.description}}</p>
+                    </div>
+                    <div class="right_main2">
+                        <p class="rightBtm_p1">
+                            <i></i>联 系 人 :
+                            <span>{{sell.linker}}</span>
+                        </p>
+                        <p class="rightBtm_p2">
+                            <i></i>联系电话 :
+                            <span>{{sell.primaryPhone}}</span>
+                        </p>
+                        <p class="rightBtm_p3">
+                            <i></i>
+                            <span class="rightBtm_span"> 企业地址 : </span>
+                            <span class="rightBtm_span2">{{sell.address}}</span>
+                        </p>
+
+                        <div id="allmap" class="right_address" ref='maps'>
+
+                        </div>
+                        <el-button class="rightBtm_btn" type="primary" @click="compy()">进入企业主页</el-button>
+                        <div style="height: 21px;"></div>
+                    </div>
+                </div>
+
+                <div class="right_btm">
+                    <h4>热销产品</h4>
+                    <ul v-for="(rex,index) in rexiao" :key="index" ref="rexid" :data="rex.id">
+                        <li class="rightBtm_div" @click="jumpto(index,rex.id)">
+                            <div><img :src="rex.masterImage" alt=""></div>
+                            <p>{{rex.name}}</p>
+                        </li>
+                    </ul>
+                    <div style="height: 36px;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 商家推荐 -->
+        <!--<div class="product_btm">
+	    <div class="productBtm_title">
+	      <span class="title_sapn1">厂商推荐</span>
+	    </div>
+	
+	    <div class="productBtm_img clearfixed">
+	        <div class="pro_det29">
+		        <div id="leftb" class="btmImg_left" @click="btmImgleft" v-show='btnsho'></div>
+			</div>
+	        <div class="btmImg_con">
+		        <div class="btmImg_con2">
+		          <ul v-for="(re,index) in recom" :key="index">
+		          	<router-link class="inf_cen8" :to="{path:'productDetail',query: {id:re.id,userId:re.userId}}" target="_blank">
+					        <li  @mouseenter="show(index)" @mouseleave="hide()">
+					          <img :src="re.masterImage" alt="">
+					          <div class="btmImg_div">
+					            <p>{{re.name}}<br/>{{re.useField}}</p>
+					          </div>
+					        </li>
+				    		</router-link>
+		          </ul>
+		        </div>
+	        </div>
+	        <div class="pro_det29">
+			    <div id="rightb" class="btmImg_right" @click="btmImgright"  v-show='btnsho'></div>
+			</div>
+	    </div>
+	  </div> -->
+        <div style="height: 50px;"></div>
+    </div>
+    <div v-show='detailshow'>dsf</div>
+</section>

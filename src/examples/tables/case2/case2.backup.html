@@ -1,0 +1,29 @@
+<div style="height: 20px;"></div>
+<div class="demo-hide" style="display: none;">
+    <el-pagination class="pull-right clearfix" @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="pageNo"
+        :page-sizes="pageSizesList" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="totalDataNumber">
+    </el-pagination>
+    <div style="height: 20px;"></div>
+
+    <el-row>
+        <el-col :span="6"></el-col>
+        <el-col :span="6">
+            <el-pagination :total="500" :current-page="2" :page-size="10" @current-change="goNext" layout="total,prev,pager,next,jumper"></el-pagination>
+        </el-col>
+    </el-row>
+    <div style="height: 20px;"></div>
+    <el-row>
+        <el-col :span="6"></el-col>
+        <el-col :span="6">
+            <el-pagination prev-text="上一页" next-text="下一页" :total="500" :current-page="2" :page-size="10" @current-change="goNext" layout="total,prev,pager,next,jumper"></el-pagination>
+        </el-col>
+    </el-row>
+    <div style="height: 20px;"></div>
+    <el-row>
+        <el-col :span="6"></el-col>
+        <el-col :span="6">
+            <el-pagination :page-sizes="[100, 200, 300, 400]" prev-text="上一页" next-text="下一页" :total="1000" :current-page="2" :page-size="10"
+                @current-change="goNext" layout="sizes,total,prev,pager,next,jumper"></el-pagination>
+        </el-col>
+    </el-row>
+</div>

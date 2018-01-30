@@ -1,0 +1,67 @@
+<section class="company">
+	<div class="com">
+		<div class="banner">
+			<img src="./images/banner.png" alt="">
+		</div>
+		<div class="main">
+			<my-sidebar></my-sidebar>
+			<div class="main-right">
+				<div class="naviga">
+					<div class="naviga-top">
+						<div class="com_bos"><img src="./images/icon_1.png" alt=""></div>
+						<div class="com_bos1">企业简介</div>
+					</div>
+					<div class="naviga-bottom" v-if="descrip">
+						<p>
+							{{descrip}}
+						</p>
+					</div>
+					<div v-else class="naviga-bottom">
+						<p>
+							暂无企业描述
+						</p>
+					</div>
+				</div>
+				<div class="content">
+					<div class="nav">
+						<div class="com_bos3"><img src="./images/icon_2.png" alt=""></div>
+						<div class="com_bos2">最新供应</div>
+					</div>
+					<div class="content-one">
+						<router-link v-for="(god,index) in goodinf" :key="index" :data="god.id" ref="godId" :to="{path:'productDetail',query: {id:god.id,userId:god.userId}}">
+							<dl>
+								<dt>
+                                    <img :src='god.masterImage' alt="">
+                                </dt>
+								<dd>
+									<h3>￥{{god.salePrice}}</h3>
+									<p class="p">{{god.name}}</p>
+									<p>规格：{{god.spec}}</p>
+									<div class="com_bos4">
+										<div class="com_bos5">{{god.producingAreaOne}}{{god.producingAreaTwo}}{{god.producingAreaThree}}</div>
+									</div>
+								</dd>
+							</dl>
+						</router-link>
+					</div>
+					<div v-show='cp'>
+						<div class="com_xiu" style="">
+							<img src="./images/non_inf.png" />
+						</div>
+						<div style="height: 20px;"></div>
+					</div>
+				</div>
+				<!-- 翻页效果 -->
+				<div v-show="!cp" class="clearfix page" style="height: 60px;">
+					<div class="sy-pagination">
+						<el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot" :total="total" :current-page="pageNo">
+							<slot>
+								<button class="btn-next">确定</button>
+							</slot>
+						</el-pagination>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,11 @@
+.myorder_btn{
+    float: left;
+    height: 40px !important;
+    border-radius:0 4px 4px 0 !important;
+}
+.myorder_input{
+    float: left;
+    .el-input__inner{
+        border-radius: 4px 0 0 4px !important;
+    }
+}

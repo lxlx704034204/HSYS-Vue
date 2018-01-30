@@ -1,0 +1,69 @@
+<section class="searchResult">
+	<div class="ser_res">
+		<!--面包屑-->
+   		<div class="ser_res1">
+   			<span class="ser_res11">搜索结果&nbsp;>&nbsp;</span><span>{{keyname}}</span>
+   		</div>
+   		<!--整体内容-->
+   		<div class="ser_res12">
+   			<!--左边搜索结果-->
+   			<div class="ser_res13">
+   				<!--商品part1-->
+   				<div class="ser_res14" v-for="(rec,index) in list_one" key="index" ref="rec" @click="jump(index,rec.customer.id)">
+   					<!--左图片-->
+   					<div class="ser_res15">
+   						<img :src="rec.customer.logoUrl" />
+   					</div>
+   					<!--右边内容文字/margin-left:19px;-->
+   					<div class="ser_res16">
+   						<!--第一行-->
+   						<div class="ser_res17">
+   							<div class="ser_res18">
+   								{{rec.customer.name}}
+   							</div>
+   							<div class="ser_res19">
+   								<img src="./certified.png"  />
+   							</div>
+   						</div>
+   						<!--第二行-->
+   						<div class="ser_res2" v-if="rec.attributes !=''">
+   							所在地区：{{rec.attributes[0].address}}
+   						</div>
+   						<!--第三行-->
+   						<div class="ser_res21" v-if="rec.attributes !=''">
+   							主营产品：{{masterjson[rec.attributes[0].industry]}}
+   						</div>
+   					</div>
+   				</div>
+   				<!--查看更多-->
+   				<div id="ckm" v-show="nextPage" @click="getNextPage" class="ser_res22">
+   					查看更多
+   				</div>
+   				<!--提示信息-->
+   				<div class="ser_res31" v-show='ishave'>
+   					暂无更多此类信息
+   				</div>
+   			</div>
+   			<!--右边列表部分-->
+   			<div class="ser_res23">
+   				<!--给边框-->
+   				<div class="ser_res24">
+   					<!--热搜/图标-->
+	   				<div class="ser_res25">
+	   					<div class="ser_res26">
+	   						<img src="./ser_icon1.png" />
+	   					</div>
+	   					<div class="ser_res27">企业热搜
+	   					</div>
+	   				</div>
+	   				<!--蓝色条-->
+	   				<div class="ser_res28"></div>
+	   				<!--列表-->
+	   				<div class="ser_res29" v-for="(hot,index) in hotcom" :key="index" ref="hotId" @click="jumpto(index,hot.customer.id)">{{hot.customer.name}}</div>
+	   				<div class="ser_res3"></div>
+	   			</div>
+   			</div>
+   		</div>
+	</div>
+	<div style="height: 94px;"></div>
+</section>

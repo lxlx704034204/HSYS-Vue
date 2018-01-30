@@ -1,0 +1,230 @@
+<section class="autotrophy clearfix case-4 inner-1200">
+  <!-- 弹出登录框 -->
+  <div class="autotrophy-login-wrap" v-show='isLogin'>
+    <loginauct v-on:logining='logining'></loginauct>
+  </div>
+  <!-- 筛选 -->
+  <div class="category-box" style="background: #FFF;border: none;margin-bottom: 4px;margin-top: -17px;">
+    <div class="box-left" style="width: 90px;margin-left: -16px;position: relative;z-index: 1;color: #333;">筛选条件:</div>
+    <ul class="box-right" style="margin-left: -19px;">
+      <li class="item all-item" @click="remove" style="color: #333;">
+        全部结果
+        <span v-show="categorys || company || city">&gt;</span>
+      </li>
+      <li class="item" v-show="categorys" v-for='a in categorys'>
+        <el-button size="mini" @click="removeFilter(1,a)">
+          <span class="select-text">{{a.name}}
+            <i class="el-icon-close el-icon-right"></i>
+          </span>
+        </el-button>
+      </li>
+      <li class="item" v-show="company" v-for='b in company'>
+        <el-button size="mini" @click="removeFilter(2,b)">
+          <span class="select-text">{{b.dictName}}
+            <i class="el-icon-close el-icon-right"></i>
+          </span>
+        </el-button>
+      </li>
+      <li class="item" v-show="city" v-for='c in city'>
+        <el-button size="mini" @click="removeFilter(3,c)">
+          <span class="select-text">{{c.dictName}}
+            <i class="el-icon-close el-icon-right"></i>
+          </span>
+        </el-button>
+      </li>
+    </ul>
+  </div>
+  <!-- 分类 -->
+  <div class="category-box city-box" style="margin-top: -1px;">
+    <div class="box-left">分类</div>
+    <ul class="box-right">
+      <li class="item" v-for="(item,key) in category" @click="selectFilter(1,item,key)">{{item.name}}</li>
+    </ul>
+    <div class="show-more-category" v-show="category.length >= typeLen">
+      <template v-if="category.length == typeLen">
+          <button type='button' @click="showAllCat" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+      </template>
+      <template v-else>
+        <button type='button' @click="hideAllCat" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+      </template>
+    </div>
+  </div>
+  <!-- 产地 -->
+  <div class="category-box city-box">
+    <div class="box-left">产地</div>
+    <ul class="box-right">
+      <li class="item" v-for="(item,key) in cd" @click="selectFilter(2,item,key)">{{item.dictName}}</li>
+    </ul>
+    <div class="show-more-category" v-show="cd.length >= cdlen">
+      <template v-if="cd.length == cdlen">
+        <button type='button' @click="showAllCategory" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+      </template>
+      <template v-else>
+        <button type='button' @click="hideAllCategory" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+      </template>
+    </div>
+
+  </div>
+  <!-- 库别 -->
+  <div class="category-box city-box">
+    <div class="box-left">库别</div>
+    <ul class="box-right">
+      <li class="item" v-for="(item,key) in io" @click="selectFilter(3,item,key)">{{item.dictName}}</li>
+    </ul>
+    <div class="show-more-city" v-show="io.length >= ctLen">
+      <template v-if="io.length == ctLen">
+        <button type='button' @click="showAllCity" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+      </template>
+
+      <template v-else>
+        <button type='button' @click="hideAllCity" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+      </template>
+    </div>
+  </div>
+
+  
+
+  <!-- 搜索框查询 -->
+  <div class="search-box">
+    <el-row>
+      <el-col :span="2" class="center">
+        <span class="label">关键字</span>
+      </el-col>
+      <el-col :span="4">
+        <el-input size="small" clearable @change="goSearch" v-model="keyword" placeholder="输入牌号搜索"></el-input>
+      </el-col>
+    </el-row>
+  </div>
+	<!--<div class="xho_shp1">
+		<div class="xho_shp2">分类</div>
+		<div class="xho_shp3">牌号</div>
+		<div class="xho_shp4">产地</div>
+		<div class="xho_shp5">库存</div>
+		<div class="xho_shp6">库别</div>
+		<div class="xho_shp7">交货方式</div>
+	</div>
+	<div class="xho_shp8">
+		涨跌
+	</div>-->
+  <!-- 列表 -->
+  <el-table class="autotro_list" :data="prod" row-class-name="row-60" ref="myTable" @sort-change="sortChange">
+    <el-table-column label="分类" align="center">
+    	<template slot-scope="scope">
+        <!-- <span style="color: #333;margin-left: 20px;">{{scope.row.categoryName}}</span> -->
+        <span>{{scope.row.categoryName}}</span>
+      </template>
+    </el-table-column>
+    <el-table-column label="牌号" align="center">
+      <template slot-scope="scope">
+        <!-- <span style="color: #333;margin-left: 20px;">{{scope.row.product.gradeCode}}</span> -->
+        <span>{{ph.filter(v => v.dictCode === scope.row.product.gradeCode).length > 0 ? ph.filter(v => v.dictCode === scope.row.product.gradeCode)[0].dictName : scope.row.product.gradeCode}}</span>
+      </template>
+    </el-table-column>
+    <el-table-column label="产地" align="center">
+      <template slot-scope="scope">
+        <!-- <span>{{scope.row.product.manufacturerCode}}</span> -->
+        <!-- <span style="margin-left: 20px;">{{cd.filter(v => v.dictCode === scope.row.product.manufacturerCode).length > 0 ? cd.filter(v => v.dictCode === scope.row.product.manufacturerCode)[0].dictName : scope.row.product.manufacturerCode}}</span> -->
+        <span style="padding-left: 10px;">{{cda.filter(v => v.dictCode === scope.row.product.manufacturerCode).length > 0 ? cda.filter(v => v.dictCode === scope.row.product.manufacturerCode)[0].dictName : scope.row.product.manufacturerCode}}</span>
+      </template>
+    </el-table-column>
+
+    <el-table-column prop="quantityAvailable " label="库存" align="center">
+      <template slot-scope="scope">
+        <!-- <span>{{scope.row.quantityAvailable}}</span> -->
+        <span style="margin-left: 20px" v-if="scope.row.quantityAvailable > 0">有货</span>
+        <span style="margin-left: 20px; color:red" v-else="scope.row.quantityAvailable <= 0">无货</span>
+      </template>
+    </el-table-column>
+
+    <el-table-column label="库别" align="center">
+      <template slot-scope="scope">
+        <!-- <span style="margin-left: 10px">{{scope.row.warehouseCode}}</span> -->
+        <span style="margin-left: 20px">{{io.filter(v => v.dictCode === scope.row.warehouseCode).length > 0 ? io.filter(v => v.dictCode === scope.row.warehouseCode)[0].dictName : scope.row.warehouseCode}}</span>
+      </template>
+    </el-table-column>
+    <el-table-column prop="shippingMethodCode" label="交货方式" align="center">
+      <template slot-scope="scope">
+     <!--    <span style="margin-left: 10px">{{scope.row.shippingMethodCode}}</span> -->
+        <span style="margin-left: 20px">{{fs.filter(v => v.dictCode === scope.row.shippingMethodCode).length > 0 ? fs.filter(v => v.dictCode === scope.row.shippingMethodCode)[0].dictName : scope.row.shippingMethodCode}}</span>
+      </template>
+    </el-table-column>
+
+    <el-table-column  label="更新时间" prop="updateOrder" align="center">
+       <template slot-scope="scope" v-model="data">
+          {{scope.row.updateStr}}
+        </template>
+    </el-table-column>
+    <el-table-column class-name="trand-cell" prop="priceOrder" label="价格（元）" width="150px">
+      <template slot-scope="scope">
+        <p class="price-color">
+          ￥{{scope.row.salePrice}}/{{scope.row.unitCode == 'KG'?'千克':'吨'}}
+          <el-popover trigger="hover" ref="popover2" placement="left" >
+            <chart-demo v-bind:echart-data-child="echartData"></chart-demo>
+          </el-popover>
+          <img src="./images/trend.png" v-popover:popover2 @mouseover='pop(scope.row)'>
+        </p>
+      </template>
+    </el-table-column>
+
+
+    <el-table-column class-name="grad" width="100" label="涨跌">
+      <template slot-scope="scope">
+        <p style="margin-left: 3px;" class="up-color" v-if="!scope.row.oldPrice">-- --</p>
+        <p style="margin-left: 3px;" class="up-color" v-else-if="scope.row.salePrice === scope.row.oldPrice">-- --</p>
+        <p style="margin-left: 3px;" class="up-color" v-else-if="scope.row.salePrice > scope.row.oldPrice">↑{{scope.row.salePrice - scope.row.oldPrice}}</p>
+        <p style="margin-left: 3px;" class="down-color" v-else>↓{{scope.row.oldPrice-scope.row.salePrice }}</p>
+      </template>
+    </el-table-column>
+
+    <el-table-column width="220px">
+      <template slot-scope="scope">
+        <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row.product.id,$event)" v-if='scope.row.collection == false'>加入自选</span>
+        <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row.product.id,$event)" v-else='scope.row.collection == true'>已加入</span>
+
+        <el-tooltip v-if="sale" popper-class="sy-tooltip-custom" size="mini" effect="light" placement="bottom" >
+          <div slot="content">
+            <div class="sy-tipbox">
+              <div class="left weixin-info">
+                <img :src="sale.weixinUrl" alt="" style="width: 107px;height: 97px">
+                <p>扫码加微信咨询</p>
+              </div>
+              <div class="right card-info">
+                <h3>{{sale.username}}</h3>
+                <p class="position">{{sale.position}}</p>
+                <p>电话：{{sale.mobile}}</p>
+                <p>邮箱：{{sale.email}}</p>
+                <p>微信：{{sale.weixin}}</p>
+                <span class="qq" @click='openQQ(sale.qq)' ref='qq'>
+                  <img src="./images/qq.png" alt="">
+                </span>
+                <!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=584729276&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:584729276:52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>-->
+              </div>
+            </div>
+          </div>
+          <span class="btn-service">
+            <img src="./images/service.png" @mouseover="service(scope.row)" alt="">
+          </span>
+        </el-tooltip>
+
+        <el-button size="small" type="primary" @click="getRowlist(scope.row)">立即采购</el-button>
+      </template>
+    </el-table-column>
+
+  </el-table>
+
+  <div style="height: 20px;"></div>
+  <!-- 分页   @current-change="" -->
+  <div class="pagebox clearfix">
+    <div style="height: 30px;"></div>
+    <!-- 翻页效果 -->
+    <div class="sy-pagination">
+      <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot"
+        :total="total" :current-page="pageNo">
+        <slot>
+          <button class="btn-next">确定</button>
+        </slot>
+      </el-pagination>
+    </div>
+  </div>
+
+</section>

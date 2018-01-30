@@ -1,0 +1,149 @@
+<section class="detailsclass inner-1200" v-loading="loading">
+    <!-- 面包屑 -->
+    <div class="customer">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item class="det_cla1" :to="{ path: '/customer' }" id="kehu">客户资源</el-breadcrumb-item>
+            <el-breadcrumb-item class="det_cla" @click='custone'>{{fstName}}</el-breadcrumb-item>
+            <el-breadcrumb-item class="det_cla">{{secName}}</el-breadcrumb-item>
+        </el-breadcrumb>
+    </div>
+
+    <!-- 分类 -->
+    <div class="details_top">
+        <div class="com_bos8">
+            <div class="com_bos81">
+                <div class="com_bos82">
+                    产品分类
+                </div>
+                <div class="com_bos83">
+                    <ul>
+                        <li v-for="(cat,index) in comcategory" @click="openx(cat.id,cat.name)" :data="cat.id" :data1="cat.name" ref='cat'>{{cat.name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="height: 44px;">
+                <div class="com_bos84">
+                    筛选条件
+                </div>
+                <div class="com_bos85">
+                    <div class="com_bos87" @click="closex()">全部结果&nbsp;></div>
+                    <div id="cate" class="com_bos86" @click="closex()" v-show='ishave'>&nbsp;{{names}}&nbsp;&nbsp;<span>x</span>&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="details_main clearfixed">
+        <div class="detail_left">
+            <h3>
+                <!--<i></i>-->
+                <div style="margin-left: 18px;">{{fstName}}</div>
+            </h3>
+            <div class="left_main1 clearfixed det_cla2" @click="watch(det.id,det.userId)" v-for="(det,index) in detlist" v-if="index<10" :data="det.id" :data1="det.userId" ref='de'>
+                <div class="main1_img">
+                    <img :src="det.masterImage" alt="">
+                </div>
+                <div class="main1_right">
+                    <h4>{{det.name}}</h4>
+                    <p class="clearfixed">
+                        <span>型号 : {{det.spec}}</span>
+                        <span>报价 : {{det.salePrice}}</span>
+                    </p>
+                    <p class="clearfixed">
+                        <span>最小起订量 : {{det.minSale}}{{dw[det.unitCode]}}</span>
+                        <span>品牌 : {{det.brand}}</span>
+                    </p>
+                    <P class="clearfixed">
+                        <span class="det_cla2">{{det.producingAreaOneName}}{{det.producingAreaTwoName}}{{det.producingAreaThreeName}}</span>
+                        <!-- <span class="main1_span">{{det.companyName}}</span> -->
+                        <router-link :to="{path:'company',query: {userId:det.userId}}" target="_blank" tag="a" class="main1_span">
+                            <div class="cus_res37">{{det.companyName}}</div>
+                        </router-link>
+                    </P>
+                </div>
+            </div>
+            <div class="nothinginf" v-show='isnothave'>
+                <img src="./images/non_inf.png" />
+            </div>
+            <!-- 分页 -->
+            <!-- 翻页效果 -->
+            <div v-show='!isnothave' class="clearfix paging" style="height: 60px;">
+                <div class="sy-pagination">
+                    <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot" :total="total" :current-page="pageNo">
+                        <slot>
+                            <button class="btn-next">确定</button>
+                        </slot>
+                    </el-pagination>
+                </div>
+            </div>
+        </div>
+
+        <!--右侧部分-->
+        <div class="cus_res28">
+            <!--最新供应-->
+            <div class="cus_res42">
+                <div style="background: #FBFBFB">
+                    <div class="cus_res38">
+                        <div class="cus_res39">
+                            <img src="./images/icon_9.gif" />
+                        </div>
+                        <div class="cus_res4">最新供应</div>
+                    </div>
+                </div>
+                <!--列表部分-->
+                <div v-for="(pro,index) in prolist" :key="index" style="overflow: hidden;">
+                    <router-link :to="{path:'productDetail',query: {id:pro.id,userId:pro.userId}}" target="_blank" tag="a" v-if='index<5'>
+                        <!--<div class="cus_res41">
+							{{pro.name}}
+						</div>-->
+                        <div class="cus_xiu">
+                            <img :src="pro.masterImage" />
+                        </div>
+                        <div class="cus_xiu1">产品名称：{{pro.name}}</div>
+                    </router-link>
+                    <!-- <div class="cus_xiu2">所属公司：{{pro.companyName}}</div> -->
+                    <router-link :to="{path:'company',query: {userId:pro.userId}}" target="_blank" tag="a">
+                        <div class="cus_res37 cus_res110">{{pro.companyName}}</div>
+                    </router-link>
+
+
+                </div>
+                <!--如果列表为空-->
+                <div v-show="zging" class="cus_xiu3">
+                    <img src="./images/non_inf.png" />
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="cus_res46"></div>
+            </div>
+            <div style="height: 22px;"></div>
+            <!--最新企业-->
+            <div class="cus_res42">
+                <div style="background: #FBFBFB">
+                    <div class="cus_res38">
+                        <div class="cus_res39">
+                            <img src="./images/icon_9.gif" />
+                        </div>
+                        <div class="cus_res4">最新企业</div>
+                    </div>
+                </div>
+                <!--列表部分-->
+                <div v-for="(nco,index) in newcom" :key="index">
+                    <!--<router-link :to="{path:'mainproduct',query: {userId:nco.customer.id}}" target="_blank" tag="a" >
+						<div class="cus_res41">
+							{{nco.customer.name}}
+						</div>
+					</router-link>-->
+                    <div @click="tocym(nco.customer.id)" class="cus_res41">
+                        {{nco.customer.name}}
+                    </div>
+                </div>
+                <div v-show="zqiy" class="cus_xiu3">
+                    <img src="./images/non_inf.png" />
+                </div>
+                <div v-show="zqiy" style="height: 20px;"></div>
+                <div class="cus_res46"></div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 20px;"></div>
+</section>

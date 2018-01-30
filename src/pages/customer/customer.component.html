@@ -1,0 +1,200 @@
+<section class='customer-cus'>
+    <div class="cus_res">
+        <div class="cus_res1">
+            <div @mouseleave="clos()">
+                <!--左侧导航栏-->
+                <div class="cus_res43">
+                    <ul v-for="(ol,index) in olist" :key="index" :data="ol.id">
+                        <li class="cus_res48" @mouseover="openlist(index, ol.id)">
+                          {{ol.name}}
+                          <span v-show="index !== i" class="dyicon" ></span>
+                          <span v-show="index === i" class="dyicon1"></span>
+                        </li>
+                    </ul>
+                </div>
+                <!--二级菜单栏-->
+                <div class="cus_res45">
+                    <ul v-for="(ml,index) in mlist" :key="index" :data="ml.id">
+                        <li @click="showId(ml.id, ml.lieId)">
+                            <div class="cus_res47">{{ml.name}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--企业入驻（白底）部分-->
+            <div class="cus_res11">
+                <div class="cus_res12">
+                    <div class="cus_res13">
+                        <img src="./images/icon_1.gif" />
+                    </div>
+                    <div class="cus_res14">
+                        企业入驻
+                    </div>
+                </div>
+                <div class="cus_res15">
+                    入驻流程
+                </div>
+                <!--三个图标-->
+                <div class="cus_res16">
+                    <div class="cus_res17">
+                        <img src="./images/icon_2.gif" />
+                    </div>
+                    <div class="cus_res18">
+                        <img src="./images/icon_3.gif" />
+                    </div>
+                    <div class="cus_res18">
+                        <img src="./images/icon_4.gif" />
+                    </div>
+                </div>
+                <!--三个文字-->
+                <div class="cus_res19">
+                    <ul>
+                        <li>免费注册</li>
+                        <li>入驻</li>
+                        <li>管理企业</li>
+                    </ul>
+                </div>
+                <!--虚线-->
+                <div class="cus_res2"></div>
+                <!--虚线以下-->
+                <div class="cus_res21">
+                    入驻优势
+                </div>
+                <!--三个图标-->
+                <div class="cus_res16">
+                    <div class="cus_res17">
+                        <img src="./images/icon_5.gif" />
+                    </div>
+                    <div class="cus_res18">
+                        <img src="./images/icon_6.gif" />
+                    </div>
+                    <div class="cus_res18">
+                        <img src="./images/icon_7.gif" />
+                    </div>
+                </div>
+                <!--三个文字-->
+                <div class="cus_res19">
+                    <ul>
+                        <li>发布产品</li>
+                        <li>企业推广</li>
+                        <li>精准推送</li>
+                    </ul>
+                </div>
+                <!--按钮-->
+                <el-button type="primary" class="cus_res22" @click="justfy()">免费入驻</el-button>
+            </div>
+        </div>
+    </div>
+    <div class="cus_res23"">
+        <div class="cus_res24" style="position: relative;">
+            <!--左侧栏开始-->
+            <div class="cus_res25" style="position: relative;">
+                <!--上半部分/8个货物-->
+                <div id="cus1" v-for='(cus,index) in olist' v-if='index<2'>
+                    <div class="cus_res26">
+                        <!--<div class="cus_res27">
+								<img src="./images/icon_8.png" />
+							</div>-->
+                        <div class="cus_res29">{{cus.name}}</div>
+                        <div class="cus_res3">
+                            <div @click="loMore1(cus.id,cus.userId)">查看更多</div>
+                        </div>
+                    </div>
+                    <div style="background: #FAFAF9;" class='cus-product-list'>
+                        <el-row :gutter="9">
+                            <el-col :span="6" v-for="(list,index) in cus.adrlist_up" :key="index" class='customer-product'>
+                                <router-link :to="{path:'productDetail',query: {id:list.id,userId:list.userId}}" target="_blank" tag="a">
+                                    <div class="grid-content">
+                                        <div class="cus_res31">
+                                            <img :src="list.masterImage" />
+                                        </div>
+                                        <div class="cus_res32">
+                                            ￥{{list.salePrice}}
+                                        </div>
+                                        <div class="cus_res33">
+                                            {{list.name}}
+                                        </div>
+                                        <div class="cus_res34">
+                                            规格：{{list.spec}}
+                                        </div>
+                                        <div class="cus_res35">
+                                            <div class="cus_res36">{{list.producingAreaOne}}{{list.producingAreaTwo}}{{list.producingAreaThree}}</div>
+                                            <router-link :to="{path:'company',query: {id:list.id,userId:list.userId}}" target="_blank" tag="a">
+                                                <div class="cus_res37">{{list.companyName}}</div>
+                                            </router-link>
+                                        </div>
+                                    </div>
+                                </router-link>
+
+                            </el-col>
+                            <div v-show='cus.adrlist_up == ""' class='ishaveinf'>
+                            	<img src="./images/non_inf.png" />
+                            </div>
+                        </el-row>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!--右侧部分-->
+            <div class="cus_res28" style="position: relative;">
+                <!--最新供应-->
+                <div class="cus_res42">
+                    <div style="background: #FBFBFB;">
+                        <div class="cus_res38">
+                            <div class="cus_res39">
+                                <img src="./images/icon_9.gif" />
+                            </div>
+                            <div class="cus_res4">最新供应</div>
+                        </div>
+                    </div>
+
+                    <!--列表部分-->
+                    <div v-for="(pro,index) in prolist" :key="index">
+                        <router-link :to="{path:'productDetail',query: {id:pro.id,userId:pro.userId}}" target="_blank" tag="a" v-if='index<5'>
+                            <div class="cus_xiu">
+                                <img :src="pro.masterImage" />
+                            </div>
+                            <div class="cus_xiu1">产品名称：{{pro.name}}</div>
+                        </router-link>
+                        <router-link :to="{path:'company',query: {id:pro.id,userId:pro.userId}}" target="_blank" tag="a" v-if='index<5'>
+                            <div class="cus_xiu2">所属公司：{{pro.companyName}}</div>
+                        </router-link>
+                    </div>
+                    <!--如果列表为空-->
+                    <div v-show="zging" class="cus_xiu3">
+                    	<img src="./images/non_inf.png" />
+                    </div>
+                    <div style="height: 20px;"></div>
+                    <!--空白20px-->
+                    <div class="cus_res46"></div>
+                </div>
+                <div style="height: 22px;"></div>
+                <!--最新企业-->
+                <div class="cus_res42">
+                    <div style="background: #FBFBFB;">
+                        <div class="cus_res38">
+                            <div class="cus_res39">
+                                <img src="./images/icon_9.gif" />
+                            </div>
+                            <div class="cus_res4">最新企业</div>
+                        </div>
+                    </div>
+                    <!--列表部分-->
+                    <div v-for="(nco,index) in newcom" :key="index">
+                        <div @click="tocym(nco.customer.id)" class="cus_res41">
+                            {{nco.customer.name}}
+                        </div>
+                    </div>
+                    <div v-show="zqiy" class="cus_xiu3">
+			        	<img src="./images/non_inf.png" />
+			        </div>
+			        <div v-show="zqiy" style="height: 20px;"></div>
+                    <div class="cus_res46"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 65px;"></div>
+</section>

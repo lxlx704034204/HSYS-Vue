@@ -1,0 +1,57 @@
+<section class="technician-consultation inner-1200">
+  <div class="breadcrumb">
+    <el-breadcrumb separator=">" class="breadcrumb-item">
+      <el-breadcrumb-item :to="{ path: '/technician' }" class="technician1">技术专家</el-breadcrumb-item>
+      <el-breadcrumb-item class="technician2">冯**</el-breadcrumb-item>
+    </el-breadcrumb>
+  </div>
+  <div class="consultationUser">
+    <el-row  v-for="(item,index) in consultationUser" :key="index">
+      <el-col :span="3">
+        <div class="consultationUser_left">
+          <img :src="item.expertImg" alt="">
+          <p>{{item.name}}</p>
+        </div>
+      </el-col>
+      <el-col :span="21">
+        <div class="consultationUser_right">
+          <span>{{item.introduce}}</span>
+          <p>{{item.descrtion}}</p>
+          <span class="spend">收费：<span>{{item.price1}}元/次</span><span>{{item.price2}}元/分钟</span></span>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
+  <div class="phone_msg">
+    <p><span>电话咨询</span>（50元/15分钟）</p>
+    <p>本服务为一次性通话，由专家本人接听，支付后，工作人员立即预约专家通话时间。</p>
+  </div>
+  <div class="User_msg">
+    <el-form ref="form" label-width="80px" class="msg_box">
+      <el-form-item label="手机号码">
+        <el-input></el-input>
+        <span>申请成功后，专家将会拨打此电话与您联系，请准确填写</span>
+      </el-form-item>
+      <el-form-item label="您的姓名">
+        <el-input></el-input>
+      </el-form-item>
+      <el-form-item label="您的问题">
+        <el-input type="textarea"></el-input>
+      </el-form-item>
+      <el-form-item label="图片资料">
+        <div class="upload_img">
+        <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card">
+        </el-upload>
+        <el-upload class="rightImg" action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card">
+          <i class="el-icon-plus">
+          </i>
+        </el-upload>
+        </div>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">立即申请</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+</section>
+

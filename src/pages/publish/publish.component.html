@@ -1,0 +1,227 @@
+<section class="publish">
+    <!-- 面包屑 -->
+    <div class="bidding-bread">
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/companycenter/myfirm' }">
+                <span class="bidding-bread-first">
+          企业中心
+        </span>
+            </el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/companycenter/myfirm' }">
+                <span class="bidding-bread-first">
+          我的企业
+        </span>
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>
+                <span class="bidding-bread-info">完善企业信息</span>
+            </el-breadcrumb-item>
+        </el-breadcrumb>
+    </div>
+    <el-form class="publish_main" :model="customer" ref="form" :rules="rules">
+        <el-row :gutter="20">
+            <el-col :span="24">
+                <h3>公司信息</h3>
+            </el-col>
+        </el-row>
+        <div v-show="ishide" class="ishide">审核未通过原因:{{failReasonl}}</div>
+        <el-row :gutter="20">
+            <el-col :span="6">
+                <el-upload class="avatar-uploader" :headers="{token : token}" :action="upload" :show-file-list="false" :on-success="successUploadLogo" :before-upload="beforeAvatarUpload" :disabled='flage'>
+                    <img v-if="customer.logoUrl" :src="customer.logoUrl" class="avatar">
+                    <div v-else class="default-img"></div>
+                </el-upload>
+            </el-col>
+            <el-col :span="17">
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="公司名称" prop="name">
+                            <el-input name="name" v-model="customer.name" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="主营产品" prop="industry">
+                            <el-select id="zhuying" v-model="customer.industry" placeholder="请选择" :disabled='flage'>
+                                <el-option v-for="item in master_product" :key="item.dictCode" :label="item.dictName" :value="item.dictCode">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="公司地址" prop="area">
+                            <el-row class="address" :gutter="10">
+                                <el-col :span="8">
+                                    <el-select id="provin" v-model="customer.province" placeholder="省" @change="changeProvince" :disabled='flage'>
+                                        <el-option v-for="pro in povince" :key="pro.id" :label="pro.name" :value="pro.id">
+                                        </el-option>
+                                    </el-select>
+                                </el-col>
+                                <el-col :span="8">
+                                    <el-select id="cit" v-model="customer.city" placeholder="市" @change="changeCity" :disabled='flage'>
+                                        <el-option v-for="item in city" :key="item.id" :label="item.name" :value="item.id">
+                                        </el-option>
+                                    </el-select>
+                                </el-col>
+                                <el-col :span="8">
+                                    <el-select id="are" v-model="customer.area" placeholder="县" @change="areaChange" :disabled='flage'>
+                                        <el-option v-for="item in area" :key="item.id" :label="item.name" :value="item.id">
+                                        </el-option>
+                                    </el-select>
+                                </el-col>
+                            </el-row>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="详细地址" prop="address">
+                            <el-input name="adre" v-model="customer.address" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="公司规模" prop="scale">
+                            <el-select id="guimo" v-model="customer.scale" placeholder="请选择" :disabled='flage'>
+                                <el-option v-for="item in model" :key="item.dictCode" :label="item.dictName" :value="item.dictCode">{{item.dictName}}</el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="固定电话" prop="secondPhone">
+                            <el-input name="secondPhone" v-model="customer.secondPhone" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="手机号码" prop="primaryPhone">
+                            <el-input v-model="customer.primaryPhone" disabled></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="邮箱" prop="email">
+                            <el-input name="email" v-model="customer.email" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="传真">
+                            <el-input v-model="customer.fax" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="企业联系人" prop="linker">
+                            <el-input name="linker" v-model="customer.linker" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="90">
+                    <el-col :span="24">
+                        <el-form-item label="公司简介">
+                            <el-input type="textarea" :rows="5" v-model="customer.description" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="90">
+                    <el-col :span="24">
+                        <el-form-item label="公司地理位置" prop="latitude">
+                            <div id="ditu" class="map">
+                                <div class="map-title">企业地图 (提示: 请通过放大移动确定位置后点击确认)</div>
+                                <div ref="map" class="map-wrapper">正在初始化地图</div>
+                            </div>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </el-col>
+        </el-row>
+        <el-row :gutter="20">
+            <el-col :span="24" class="border_top">
+                <h3>工商信息</h3>
+            </el-col>
+        </el-row>
+        <el-row :gutter="20">
+            <el-col :span="6">
+                <el-form-item label="*上传营业执照" ref='licesephoto'>
+                    <el-upload id="zhizhao" class="avatar-uploader" :headers="{token : token}" :action="upload" :show-file-list="false" :on-success="successUploadBizLogo" :before-upload="beforeAvatarUpload" :disabled='flage'>
+                        <span class="prefix">*</span>
+                        <img v-if="customer.bizLogoUrl" :src="customer.bizLogoUrl" class="avatar" prop="license">
+                        <div v-else class="choose-box">
+                            <i class="el-icon-plus avatar-uploader-icon"></i>
+                            <span>点击上传</span>
+                        </div>
+                        <div v-show='isremind' class='licesephot'>请提交营业执照</div>
+                    </el-upload>
+
+                </el-form-item>
+            </el-col>
+            <el-col :span="17">
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="统一社会信用代码" prop="bizCreditCode">
+                            <el-input name="tongyi" v-model="customer.bizCreditCode" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="公司类型" prop="bizType">
+                            <el-select id="leixing" v-model="customer.bizType" placeholder="请选择" :disabled='flage'>
+                                <el-option v-for="item in firmtype" :key="item.dictCode" :label="item.dictName" :value="item.dictCode">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="注册资金" prop="registeredCapital">
+                            <el-input type="number" name="zijin" v-model="customer.registeredCapital" :disabled='flage'></el-input>
+                        </el-form-item>
+                        <div class="pub_xiu1">万元</div>
+                        <div v-show="zhus" class="pub_xiu">请输入纯数字且小于11位</div>
+                    </el-col>
+                </el-row>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="24" class="border_top">
+                <h3>银行账号信息</h3>
+            </el-col>
+        </el-row>
+        <el-row :gutter="20">
+            <el-col :span="6">&nbsp;</el-col>
+            <el-col :span="17">
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="账户类型">
+                            <!-- <el-select v-model="customer.accountType" placeholder="请选择" :disabled='flage'>
+                                <el-option v-for="item in accounts" :key="item.dictCode" :label="item.dictName" :value="item.dictCode">
+                                </el-option>
+                            </el-select> -->
+                            <el-input disabled placeholder="公司账户"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="开户名" prop="accountName">
+                            <el-input name="huming" v-model="customer.accountName" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="90">
+                    <el-col :span="12">
+                        <el-form-item label="开户行" prop="bank">
+                            <el-input name="huhang" v-model="customer.bank" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="银行账号" prop="accountNo">
+                            <el-input name="accountNo" v-model="customer.accountNo" :disabled='flage'></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </el-col>
+        </el-row>
+        <el-row type="flex" justify="center" class="toolbar" v-show='isshow'>
+            <el-button type="primary" @click="perfect">提交审核</el-button>
+        </el-row>
+    </el-form>
+</section>

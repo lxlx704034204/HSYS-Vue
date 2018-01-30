@@ -1,0 +1,79 @@
+<section class="forgetpwd-1">
+  <div class="fg_pwd_bg"></div>
+  <div class="reset-box">
+    <el-card class="box-card">
+      <div class="in-box">
+        <h3>重置密码</h3>
+        <ul class="reset-process">
+          <li>
+            <dl>
+              <dt>
+                <img src="../images/people.png" alt="">
+              </dt>
+              <dd class="active">输入账号</dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>
+                <img src="../images/fail-identity.png" alt="">
+              </dt>
+              <dd>验证身份</dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>
+                <img src="../images/fail-pwd.png" alt="">
+              </dt>
+              <dd>重置密码</dd>
+            </dl>
+          </li>
+          <li style="margin-right: 0;">
+            <dl>
+              <dt>
+                <img src="../images/fail-reset.png" alt="">
+              </dt>
+              <dd>重置成功</dd>
+            </dl>
+          </li>
+          <span class="blue-line">
+            <img src="../images/blue-line.png" alt="">
+          </span>
+          <span class="greay-line1">
+            <img src="../images/greay-line.png" alt="">
+          </span>
+          <span class="greay-line2">
+            <img src="../images/greay-line.png" alt="">
+          </span>
+        </ul>
+        <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
+          <el-form-item label="" prop="pass">
+            <el-input type="text" v-model="ruleForm2.pass" auto-complete="off" placeholder="输入您的账号" class="fg_pwd11"></el-input>
+            <div class="alt" c-show="names">{{namea}}</div>
+          </el-form-item>
+          <template>
+            <el-form-item label="" prop="checkPass">
+              <div class="movebox">
+                <div class="movego"></div>
+                <div class="txt" id="txt">拖动滑块验证</div>
+                <div class="move moveBefore" v-move v-model="ruleForm2.checkPass"></div>
+                <input type="hidden" class="captcha">
+                <div class="alt" c-show="verif">{{verifs}}</div>
+              </div>
+            </el-form-item>
+          </template>
+          <el-form-item>
+            <el-button type="button" @click="submitForm('ruleForm2')" class="fg_pwd10">下一步</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+      <div style="height:123px;"></div>
+      <template>
+        <div id="cz" @click="open"></div>
+      </template>
+    </el-card>
+  </div>
+  <div style="height:72px;"></div>
+  <div id="te"></div>
+</section>

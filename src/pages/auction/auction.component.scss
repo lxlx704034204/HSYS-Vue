@@ -1,0 +1,185 @@
+.auction {
+    min-height: 750px;
+    .not_inf{
+    	width: 100%;
+    	padding:20px 0;
+    	text-align: center;
+    }
+    .auc_but1{
+        float: left;width: 40px;height: 32px;border: 1px solid #AAA;background: #FFF;text-align: center;line-height: 32px;border-bottom-left-radius: 3px;border-top-left-radius: 3px;font-size: 16px;color: #BBB;cursor: pointer;position: relative;
+    }
+    .auc_but1:hover{
+        z-index: 1;
+        border: 1px solid #009FE2;
+        color: #009FE2;
+    }
+    .auc_but2{
+        float: left;width: 40px;height: 32px;border: 1px solid #AAA;margin-left: -1px;background: #FFF;text-align: center;line-height: 32px;border-bottom-right-radius: 3px;border-top-right-radius: 3px;font-size: 16px;color: #BBB;cursor: pointer;position: relative;
+    }
+    .auc_but2:hover{
+        z-index: 1;
+        border: 1px solid #009FE2;
+        color: #009FE2;
+    }
+    .auc_but3{
+        position: absolute;z-index: 4;width: 42px;height: 34px;display: none;
+    }
+    .auc_but4{
+        position: absolute;z-index: 4;width: 42px;height: 34px;margin-left: 42px;display: none;
+    }
+	.show-more-category,.show-more-city{
+		background: #FFF;
+		padding-right: 10px;
+		.self-btn{
+		    font-size: 12px;
+		    border-radius: 3px;
+		    display: inline-block;
+		    line-height: 1;
+		    white-space: nowrap;
+		    cursor: pointer;
+		    background: #FFF;
+		    border:1px solid #d8dce5;
+		    color:#5a5e66;
+		    -webkit-appearance: none;
+		    text-align: center;
+		    box-sizing: border-box;
+		    outline: 0;
+		    margin: 0;
+		    -webkit-transition: .1s;
+		    transition: .1s;
+		    font-weight: 500;
+		    padding: 7px 15px;
+		    border-radius: 4px;
+		    }
+	}
+	.box-2{
+		.auction-box{
+			display: flex;
+			margin-top: 10px;
+			height: 20px;
+			font-size: 14px;
+			.box-left{
+				line-height: 26px;
+			}
+				.box-right{
+					display: flex;
+					.all-item{
+						cursor: pointer;
+						line-height: 26px;
+					}
+					.item{
+						margin-left: 10px;
+
+					}
+				}
+		}
+		
+	}
+	.scree-condition{
+		margin: 20px auto;
+		
+		.category-box {
+		  margin-top: -1px;
+		  display: flex;
+		  background: #f5f5f7;
+		  border: 1px solid #e6e6e6;
+		  line-height: 43px;
+		  font-size: 14px;
+		  .box-left {
+		    width: 118px;
+		    text-indent: 16px;
+		    color: #666; 
+		  }
+		  .box-right {
+		    flex: 1;
+		    background: #fff;
+		    padding-left: 14px;
+		    .item {
+		      display: inline-block;
+		      margin-right: 15px;
+		      color: #009ee1;
+		      font-size: 14px;
+		      cursor: pointer;
+		    }
+		    .all-item {
+		      color: #666;
+		      margin-right: 5px;
+		    }
+		    li.all-item:hover{
+		      color: #009FE2;
+		    }
+		    .select-text {
+		      color: #009ee1;
+		    }
+		  }
+		}
+		// 搜索框查询
+		.search-box {
+			margin: 20px auto 20px;
+			height: 60px;
+			background: #f5f5f7;
+			width: 100%;
+			line-height: 60px;
+			 .select-box {
+			    width: 75%;
+			  }
+			  .center {
+			    text-align: center;
+			  }
+			  .label {
+			    line-height: 33px;
+			    font-size: 14px;
+			    color: #666666;
+			  }
+			  .page-no-box {
+			    font-size: 13px;
+			    font-weight: bold;
+			    span {
+			      color: #009ee1;
+			    }
+			 }
+			 .rightdiv{
+			 	float: right;
+			 	.el-button-group .el-button{
+			 		float: right;
+			 	}
+			 }
+
+		}
+	}
+	// 分页
+	.pagebox{
+	  width: 1200px;
+	  height: 140px;
+	  background: #fff;
+	  margin:0 auto;
+	}
+	.sy-pagination {
+	  float: right;
+	  .btn-prev,
+	  .btn-next {
+	    padding: 0 13px !important;
+	  }
+	  .el-pager .number,
+	  .el-pager .more {
+	    padding: 0 11px !important;
+	    border: 1px solid #e6e6e6 !important;
+	    background-color: #fff !important;
+	  }
+	  .el-pager .more{
+	    border-color: #fff !important;
+	  }
+
+	  .el-pager li.active {
+	    background-color: #fff !important;
+	    color: #009FE2 !important;
+	    border-color: #fff !important;
+	  }
+	}
+	//   清除浮动
+	.clearfix {
+	  content: "";
+	  display: block;
+	  clear: both;
+	}
+}

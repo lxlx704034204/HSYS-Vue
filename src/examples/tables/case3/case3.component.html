@@ -1,0 +1,182 @@
+<section class="case-3 inner-1200">
+  <!-- 查找条件分类 -->
+  <div class="typelist">
+    <el-row :gutter="20" class="typetable">
+      <el-col :span="3">
+        <div class="type">
+          <span>分类</span>
+        </div>
+      </el-col>
+      <el-col :span="21">
+        <div class="content">
+          <ul>
+            <li v-for="item in category" @click="filterItem(1,item)">{{item}}</li>
+          </ul>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" class="typetable">
+      <el-col :span="3">
+        <div class="type">
+          <span>厂家</span>
+        </div>
+      </el-col>
+      <el-col :span="21">
+        <div class="content">
+          <ul>
+            <li v-for="item in companies" @click="filterItem(2,item)">{{item}}</li>
+          </ul>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" class="typetable">
+      <el-col :span="3">
+        <div class="type">
+          <span>交货地</span>
+        </div>
+      </el-col>
+      <el-col :span="21">
+        <div class="content">
+          <ul>
+            <li v-for="item in cities" @click="filterItem(3,item)">{{item}}</li>
+          </ul>
+          <el-button size="mini" class="btn">
+            更多
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </el-button>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" class="typetable tablelast">
+      <el-col :span="3">
+        <div class="type">
+          <span>筛选条件</span>
+        </div>
+      </el-col>
+      <el-col :span="21">
+        <div class="content">
+          <span v-show="!params.category && !params.company && !params.city ">全部结果</span>
+          <ul>
+            <li v-show="params.category">
+              <el-button size="mini" class="leftpx" @click="removeFilterParam(1)">
+                分类：{{params.category}}
+                <i class="el-icon-close el-icon--right"></i>
+              </el-button>
+            </li>
+            <li v-show="params.company">
+              <el-button size="mini" class="leftpx" @click="removeFilterParam(2)">
+                分类：{{params.company}}
+                <i class="el-icon-close el-icon--right"></i>
+              </el-button>
+            </li>
+            <li v-show="params.city">
+              <el-button size="mini" class="leftpx" @click="removeFilterParam(3)">
+                分类：{{params.city}}
+                <i class="el-icon-close el-icon--right"></i>
+              </el-button>
+            </li>
+          </ul>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
+  <!-- 搜索框查询 -->
+  <div class="search-box">
+    <el-row>
+      <el-col :span="2" class="center">
+        <span class="label">关键字</span>
+      </el-col>
+      <el-col :span="4">
+        <el-input v-model="params.keyword" @blur="goSearch" placeholder="输入牌号关键字搜索"></el-input>
+      </el-col>
+      <el-col :span="2" class="center">
+        <span class="label">交货方式</span>
+      </el-col>
+      <el-col :span="2">
+        <el-select v-model="params.sendWay" @change="sendWayChange" @visible-change="haha" placeholder="全部">
+          <el-option label="全部" :value="0" key="0"></el-option>
+          <el-option label="配送" :value="1" key="1"></el-option>
+          <el-option label="自提" :value="2" key="2"></el-option>
+        </el-select>
+      </el-col>
+      <el-col :span="11">&nbsp;</el-col>
+
+      <el-col :span="1" class="page-no-box">
+        <span>{{pageNo}}</span>/{{Math.ceil(total/pageSize)}}
+      </el-col>
+      <el-col :span="2">
+        <el-button-group class="rightbtn">
+          <el-button size="small" icon="el-icon-arrow-left" class="btn-bgcolor" @click="goPrevPage"></el-button>
+          <el-button size="small" @click="goNextPage">
+            <i class="el-icon-arrow-right el-icon--right"></i>
+          </el-button>
+        </el-button-group>
+      </el-col>
+    </el-row>
+  </div>
+  <el-table :data="tableData" :border="true" row-class-name="row-60" ref="myTable">
+    <el-table-column prop="type" label="分类"></el-table-column>
+    <el-table-column class-name="mark-num-color" prop="marknum" label="牌号"></el-table-column>
+    <el-table-column prop="company" label="厂家"></el-table-column>
+    <el-table-column prop="num" label="数量（吨）" width="110px"></el-table-column>
+    <el-table-column prop="address" label="发货地"></el-table-column>
+    <el-table-column prop="sendway" label="交互方式"></el-table-column>
+    <el-table-column prop="updatetime" label="更新时间" sortable width="120px"></el-table-column>
+    <el-table-column prop="price" label="价格（元）" width="150px" sortable>
+      <template slot-scope="scope">
+        <p class="price-color">
+          ￥{{scope.row.price}}/吨
+          <img src="../../../assets/img/trend.png">
+        </p>
+        <div slot="reference" class="name-wrapper">
+          <el-tooltip class="item" size="mini" effect="dark" content="满10000返1000元代金券" placement="top">
+            <el-tag size="mini" type="warning">返券</el-tag>
+          </el-tooltip>
+          <el-tooltip class="item" size="mini" effect="dark" content="满10000减999元" placement="top">
+            <el-tag size="mini" type="danger">满减</el-tag>
+          </el-tooltip>
+        </div>
+      </template>
+    </el-table-column>
+    <el-table-column label="涨价" align="center">
+      <template slot-scope="scope">
+        <p class="up-color" v-if="scope.row.updown && scope.row.updown.indexOf('↑') > -1 ">{{ scope.row.updown }}</p>
+        <p class="down-color" v-else>{{ scope.row.updown }}</p>
+      </template>
+    </el-table-column>
+    <el-table-column width="220px">
+      <template slot-scope="scope">
+        <span class="btn-add-selector">加入选择</span>
+        <el-tooltip class="item" size="mini" effect="light" popper-class="sy-pop-theme" placement="bottom">
+          <div slot="content">
+            <div class="sy-tipbox">
+              <div class="left weixin-info">
+                <img src="../../../assets/img/weixin.png" alt="">
+                <p>扫码加微信咨询</p>
+              </div>
+              <div class="right card-info">
+                <h3>王大力</h3>
+                <p class="position">华北区销售经理</p>
+                <p>手机：18201030698
+                  <a class="call-color" tel="18201030698">免费拨电话</a>
+                </p>
+                <p>邮箱：daxiang@daxiangclass.com</p>
+                <p>微信：suyun</p>
+                <span class="qq">
+                  <img src="../../../assets/img/qq.png" alt="">
+                </span>
+              </div>
+            </div>
+          </div>
+          <span class="btn-service">
+            <img src="../../../assets/img/service.png" alt="">
+          </span>
+        </el-tooltip>
+        <el-button size="small" type="primary">立即采购</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  <!-- total,pageNo,pageSize -->
+  <el-pagination prev-text="上一页" next-text="下一页" background :total="total" :current-page="pageNo" :page-size="pageSize" @current-change="currentPageHandler"
+    layout="prev,pager, total, jumper, next"></el-pagination>
+</section>

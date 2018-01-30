@@ -1,0 +1,32 @@
+<section class="propert-detail inner-1200">
+  <h3 class="title">
+      <router-link to="/properties">物性库</router-link> 
+    <span>&gt;</span>
+    <span class="proName">{{propert.productSign}}</span>
+  </h3>
+  <p class="proTitle">{{propert.productSign}}</p>
+  <!-- 基本信息 -->
+  <p class="basicInfo"> 基本信息</p>
+  <p class="basicInfoText">
+    <el-row>
+      <el-col :span="24">认证体系：{{propert.certificationDetailNames}}</el-col>
+      <el-col :span="24">加工级别：{{propert.craftCateDetailNames}}</el-col>
+      <el-col :span="24">特性级别：{{propert.specialCateDetailNames}}</el-col>
+       <el-col :span="24">用途级别：<span>{{propert.useCateDetailNames}}</span></el-col>
+    </el-row>
+  </p>
+  <p class="phyParam">物性参数</p>
+  <!-- 物性参数列表 -->
+  <el-table :data="phyParData" class="detail-list" style="width: 100%; margin-bottom: 90px">
+    <el-table-column prop="cateDetailName" label="性能项目" width="158">
+    </el-table-column>
+    <el-table-column prop="testMethod" label="测试方法" width="380">
+    </el-table-column>
+    <el-table-column prop="testCondition"  label="实验条件" width="334">
+    </el-table-column>
+    <el-table-column prop="testData"  label="测试结果" width="174">
+    </el-table-column>
+    <el-table-column prop="unit"  class-name="borderRight"  label="数据单位">
+    </el-table-column>
+  </el-table>
+</section>

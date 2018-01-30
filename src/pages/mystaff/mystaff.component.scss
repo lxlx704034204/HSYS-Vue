@@ -1,0 +1,55 @@
+// 清除浮动
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.mystaff {
+    .mybill-search{
+        padding: 20px 0;
+        .but{
+            float: right;
+            text-decoration: none;
+            color: #fff !important;
+            background: #009FE2 !important;
+            border-color: #009FE2 !important;
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 4px;
+        }
+
+    }
+    .mybill-table{
+        text-align: center;
+        .btn1,.btn2{
+            display: inline-block;
+            margin-left: 10px;
+            cursor:pointer;
+            text-decoration: none;
+            color: #009FE2;
+        }
+       
+    }
+    .el-table thead{
+        align: center;
+        background: #E5E6E6;
+    }
+    .el-table  {
+       text-align: center;
+    }
+    table{
+        align: center;
+    }
+    .mybill-fenye{
+        float: right;
+        padding: 10px;
+    }
+    .dingdan{
+        color: #009fe2;
+        cursor: pointer;
+    }
+}

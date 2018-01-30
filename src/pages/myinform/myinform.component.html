@@ -1,0 +1,28 @@
+<section class="myinform">
+    <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/companycenter/myinform' }">企业中心</el-breadcrumb-item>
+        <el-breadcrumb-item>个人信息</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-form ref="form" :model="form">
+        <el-form-item>
+            <template slot-scope="scope">
+        <div class="label">
+          <span>用户名:</span>
+        </div>
+        <el-input class="bidding-pname name" v-model="name" disabled style="width: 500px;">
+        </el-input>
+      </template>
+        </el-form-item>
+        <el-form-item>
+            <template slot-scope="scope">
+        <div class="label">
+          <span>手机号码:</span>
+        </div>
+        <el-input class="bidding-pname num" v-model="num" disabled size="small">
+        </el-input>
+        <span class="span" @click="span">修改手机号码</span>
+        <span class="span1" @click="update">修改密码</span>
+      </template>
+        </el-form-item>
+    </el-form>
+</section>

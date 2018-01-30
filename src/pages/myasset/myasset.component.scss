@@ -1,0 +1,121 @@
+.clearfix{
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.myasset {
+    .asset{
+        width: 978px;
+        margin: 30px 0 0 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        color: #666666;
+        .asset-left{
+            float: left;
+            width: 320px;
+            height: 95px;
+            border-right: 1px dashed #ccc;
+            p{
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 95px;
+                margin-left: 39px;
+                span{
+                    margin-left: 25px;
+                    color: #f83d46;
+                }
+            }
+        }
+        .asset-center{
+            float: left;
+            width: 333px;
+            height: 95px;
+            border-right: 1px dashed #ccc;
+            p{
+                font-size: 14px;
+                margin-top: 20px;
+                margin-left: 100px;
+                span{
+                    font-weight: 600;
+                    margin-left: 15px;
+                }
+            }
+        }
+        .asset-right{
+            float: right;
+            width: 320px;
+            height: 95px;
+            button{
+                float: left;
+                width: 99px;
+                height: 40px;
+                border: none;
+                color: #fff;
+                border-radius: 4px;
+                background-color: #009FE2;
+                margin-top: 27px;
+                cursor: pointer;
+                &:first-child{
+                    margin-left: 62px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+
+
+    // .tab{
+    //     margin: 35px 0 0 20px;
+    //     font-size: 14px;
+    //     .coupon{
+    //         .coupon-left{
+    //             background: url(../../assets/img/coupon.png) no-repeat left;   
+    //             border: 2px solid #33b2e8;
+    //             float: left;
+    //         }
+    //         .coupon-center{
+    //             margin: 0 10px;
+    //         }
+    //         .coupon-center,.coupon-right{
+    //             background: url(../../assets/img/coupon_1.png) no-repeat left;
+    //             border: 2px solid #ccc;
+    //             float: left;
+    //         }
+    //         .coupon-left,.coupon-center,.coupon-right{
+    //             width: 316px;
+    //             height: 158px;
+    //             text-align: center;
+    //             span:first-child{
+    //                 float: left;
+    //                 margin-left: 20px;
+    //                 font-size: 16px;
+    //                 color: #fff;
+    //                 width: 16px;
+    //                 line-height: 50px;
+    //             }
+    //             div{
+    //                 // float: right;
+    //                 text-align: center;
+    //                 p{
+    //                     color: #cccccc;
+    //                     font-size: 14px;
+    //                     &.coupon_p{
+    //                         color: #666666;
+    //                     }
+    //                 }
+    //                 p:first-child{
+    //                     font-size: 30px;
+    //                     padding-top: 22px;
+    //                     padding-bottom: 15px;
+    //                 }
+    //                 p:nth-child(2){
+    //                     padding-bottom: 40px;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+}

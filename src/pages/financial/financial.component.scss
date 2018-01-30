@@ -1,0 +1,214 @@
+.financial {
+    position: relative;
+    z-index: 1;
+    .fin_xiu{
+        float: left;width: 182px;height: 251px;position: relative;
+        img{
+            width: 100%;height: 100%;overflow: hidden;
+        }
+    }
+    .fin_xiu1{
+        float: left;width: 1010px;margin-left: 8px;
+        img{
+            width: 100%;height: 100%;overflow: hidden;
+        }
+    }
+    .fin_xiu2{
+        float: left;width: 1017px;
+        img{
+            width: 100%;height: 100%;overflow: hidden;
+        }
+    }
+    .fin_xiu3{
+        width: 87px;height: 30px;position: absolute;margin-left: 49px;line-height: 25px;text-align:center;color: #0B3155;z-index: 13;margin-top: -54px;font-size: 14px;cursor: pointer;
+    }
+    .fin_xiu4{
+        width: 87px;height: 30px;position: absolute;margin-left: 49px;line-height: 25px;text-align:center;color: #FFF;z-index: 13;margin-top: -57px;font-size: 14px;cursor: pointer;
+    }
+    /* margin-top: -46px; */
+    .financial_b1 {
+        margin-top: -2px;
+        width: 100%;
+        height: 450px;
+        background: url(images/fin_bg1.jpg) no-repeat center top;
+    }
+    .suyun_fin {
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 54px;
+        overflow: hidden;
+        color: #00A4E6;
+    }
+    .suyun_fin1 {
+        font-size: 36px;
+        float: left;
+        font-weight: 300;
+        height: 36px;
+        line-height: 36px;
+        margin-left: 24px;
+    }
+    .suyun_fin2 {
+        float: left;
+        margin-left: 11px;
+        font-size: 24px;
+        margin-top: 10px;
+        height: 24px;
+        line-height: 24px;
+    }
+    .suyun_fin3 {
+        font-size: 36px;
+        float: left;
+        margin-top: 4px;
+        margin-left: 11px;
+        font-weight: 300;
+        height: 36px;
+        line-height: 36px;
+    }
+    .suyun_fin4 {
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 42px;
+        overflow: hidden;
+        color: #00A4E6;
+    }
+    .suyun_fin5 {
+        font-size: 36px;
+        float: left;
+        font-weight: 300;
+        height: 36px;
+        line-height: 36px;
+        margin-left: 22px;
+    }
+    .suyun_fin6 {
+        float: left;
+        margin-left: 11px;
+        font-size: 24px;
+        margin-top: 10px;
+        height: 24px;
+        line-height: 24px;
+    }
+    .suyun_fin7 {
+        font-size: 36px;
+        float: left;
+        margin-top: 4px;
+        margin-left: 7px;
+        font-weight: 300;
+        height: 36px;
+        line-height: 36px;
+    }
+    h6 {
+        font-weight: 400;
+        width: 100%;
+        margin: 59px 0;
+        font-size: 22px;
+        color: #009fe2;
+        text-align: center;
+        span {
+            margin: 59px 10px;
+        }
+        &.advantagetitle {
+            margin: 42px 0 38px 0;
+            span {
+                margin: 0 10px;
+            }
+        }
+    }
+    .applylist {
+        margin-bottom: 61px;
+        .apply {
+            width: 318px;
+            height: 416px;
+            border: 1px #cccccc solid;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 auto;
+            text-align: center;
+            .title,
+            .title1,
+            .title2 {
+                width: 100%;
+                height: 289px;
+                position: relative;
+                .applymask {
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    text-align: center;
+                }
+            }
+            a {
+                text-decoration: none;
+                display: inline-block;
+                border: 1px #009fe2 solid;
+                width: 160px;
+                height: 40px;
+                line-height: 37px;
+                color: #009fe2;
+                font-size: 18px;
+                border-radius: 4px;
+                margin: 50px 79px 39px 79px;
+            }
+        }
+    }
+    .advantage {
+        .imglist {
+            text-align: center;
+            color: #333333;
+            .imgtitle {
+                margin-left: 68px;
+                width: 136px;
+                height: 136px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                }
+            }
+            h2 {
+                line-height: 22px;
+                font-weight: 400;
+                font-size: 22px;
+                margin-bottom: 19px;
+                margin-top: 36px;
+            }
+            div {
+                font-size: 18px;
+                height: 18px;
+                line-height: 18px;
+            }
+        }
+        .hotline {
+            width: 312px;
+            height: 48px;
+            // line-height: 48px;
+            margin: 61px auto 35px auto;
+            img {
+                width: 49px;
+                height: 49px;
+                float: left;
+            }
+            .fin_wrd1 {
+                float: left;
+                margin-left: 11px;
+                margin-top: 17px;
+                height: 14px;
+                line-height: 14px;
+                font-size: 14px;
+                color: #666;
+            }
+            .fin_wrd2 {
+                float: left;
+                font-size: 15px;
+                color: #009DE5;
+                font-weight: 500;
+                margin-top: 15px;
+                margin-left: 13px;
+                height: 15px;
+                line-height: 15px;
+            }
+        }
+    }
+}

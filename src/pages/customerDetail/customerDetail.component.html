@@ -1,0 +1,151 @@
+<section class="customer-detail inner-1200">
+
+  <div class="customer ">
+    <el-breadcrumb separator-class="el-icon-arrow-right" class="inner-1200">
+      <el-breadcrumb-item :to="{ path: '/customer' }" id="kehu">客户资源</el-breadcrumb-item>
+      <el-breadcrumb-item class="company">山东道恩集团</el-breadcrumb-item>
+
+    </el-breadcrumb>
+  </div>
+
+  <!-- 道恩 -->
+  <div class="group-details " v-for="(item,index) in Transfer.slice(0,1)" :key="index">
+    <el-row>
+      <el-col :span="8" class="xian">
+        <div class='xian-wrap'>
+          <div class="top">
+            <div class="tu">
+              <img :src="item.pany_smalogo" alt="">
+            </div>
+            <p class="daoen">{{item.pany_name}}</p>
+            <h5 class="address">{{item.pany_url}}</h5>
+
+          </div>
+          <span class="content" :title='item.pany_brief'>{{item.pany_brief}}</span>
+          <!-- <a class="cli">
+            <img src="./icon_20.png" alt="" class="down">点击下载报价单</a> -->
+        </div>
+      </el-col>
+      <el-col :span="8" class="xian">
+        <div class=" bg-purple-dark">
+          <li>
+            <img src="./icon_06.png" alt="" class="icon">
+            <i :title='item.pany_category'>{{item.pany_category}}</i>
+          </li>
+          <li class="bg-purple-dark-li">
+            <img src="./icon_12.png" alt="" class="icon">
+            <i>{{item.pany_employees}}</i>
+          </li>
+          <li class="bg-purple-dark-li">
+            <img src="./icon_14.png" alt="" class="icon">
+            <i>{{item.pany_address}}</i>
+          </li>
+          <li class="bg-purple-dark-li">
+            <img src="./icon_17.png" alt="" class="icon">
+            <i>{{item.pany_url}}</i>
+          </li>
+
+
+
+
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <div class=" bg-purple-dark">
+          <li>
+            <img src="./icon_08.png" alt="" class="icon">
+            <i>{{item.pany_tel}}</i>
+          </li>
+          <li  class="clearfixed">
+            <i class="num">{{item.pany_resTel}}</i>
+            <p class="manger" v-for="itea in item.pany_resheat">{{itea.p_name}}</p>
+            <span class="sale" v-for="itea in item.pany_level">{{itea.positi}}</span>
+          </li>
+          <li class="clearfixed">
+            <i class="num">{{item.pany_resTel}}</i>
+            <p class="manger" v-for="itea in item.pany_resheat">{{itea.r_name}}</p>
+            <span class="sale" v-for="itea in item.pany_level">{{itea.position}}</span>
+          </li>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
+
+
+  <!-- 导航 -->
+  <div class="customer-nav inner-1200 ">
+    <el-row>
+      <el-col :span="7" class="keyword">
+        <span class="grid-content bg-purple-light">关键字</span>
+        <el-input size="small" class="grid-content-input" clearable v-model="params.keyword" placeholder="输入牌号关键字搜索" ></el-input>
+        <div class="search-wrap">
+          <el-button type="primary" icon="el-icon-search" class="sousuo" @click="goSearch"></el-button>
+        </div>
+      </el-col>
+  
+      <el-col :span="13" class="grid-content">
+        
+        </el-button-group>
+      </el-col>
+      <el-col :span="1" class="keyword">
+       
+      </el-col>
+
+      <el-col :span="4" class="btn">
+        <div class="grid-content-num bg-purple-light">
+          <a class="first"> {{pageNum}}</a>/{{total/pageSize}}
+        </div>
+        <div class="grid-content-page bg-purple">
+          <el-button-group>
+            <el-button icon="el-icon-arrow-left" class="small-btn" @click="prevPage($event)"></el-button>
+            <el-button class="small-btn" @click="nextPage">
+              <i class="el-icon-arrow-right el-icon--right"></i>
+            </el-button>
+          </el-button-group>
+
+        </div>
+      </el-col>
+
+    </el-row>
+  </div>
+
+
+  <!-- 列表内容 -->
+  <div class="info-list clearfixed">
+
+    <router-link :to="{path:'productDetail',query:{plan:item}}" v-for="(item,index) in custList" tag="ul" class="info-list-ul "
+      :key="index">
+      <li class="info-list-li info-block">
+        <img class="info-list-img" :src="item.custImg" alt="">
+        <p class="info-list-mony">￥{{item.custmony}}</p>
+        <p class="info-list-describe cus_res" :title='item.custDescribe'>{{item.custDescribe}}</p>
+        <p class="info-list-addres" :title='item.custAddres'>{{item.custAddres}}</p>
+        <p class="info-list-weight" >{{item.custweight}}</p>
+
+      </li>
+
+
+    </router-link>
+
+  </div>
+
+
+  <!-- 翻页效果 -->
+ 
+  <div class="pagebox clearfix">
+
+    <!-- 翻页效果 -->
+    <div class="sy-pagination">
+      <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot"
+        :total="total" :current-page="pageNum">
+        <slot>
+          <button class="btn-next">确定</button>
+        </slot>
+      </el-pagination>
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+</section>

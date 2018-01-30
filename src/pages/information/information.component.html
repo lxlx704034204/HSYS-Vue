@@ -1,0 +1,161 @@
+<section class="information">
+	<div class="inf_bgc"></div> 
+	<div class="infor">
+		<div style="background: #F2F2F2;">
+			<div class="infor_header clearfix inner-1200">
+				<div class="infor_heright">
+					<div class="infor_heleft" style="margin-top: -35px;margin-left: -30px;">
+						<img src="./images/suyun_logo.png" alt="">
+					</div>
+					<div @click="tosy()" class="inf_xg" style="margin-top: 40px;margin-left: -20px;"></div>
+					<el-tabs v-model="activeName">
+						<el-tab-pane :name="index==0?'first':''" v-for="(item,index) in channel" :key="index">
+							<span style="height: 60px;display: inline-block;" slot="label" @click="getArticle(item.dictCode)">{{item.dictName}}</span>
+							<div style="height: 25px;"></div>
+							<div v-show="!isArticleContent" class="infor_content  inner-1200" >
+								<div class="infor_content2 clearfix">
+									<div class="infor_conleft">
+										<img v-if="index == 0" :src="tp.coverImage" v-for='(tp,index) in articleList' :key="index" alt="封面图" @click="setArticleId(tp.id)">
+										<div v-if="index == 0" :src="tp.coverImage" v-for='(tp,index) in articleList' :key="index" class="inf_xiu">{{tp.title}}</div>
+										<!--没有内容给默认图片-->
+										<div v-show="tupian" class="inf_xiu1">
+											<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
+										</div>
+									</div>
+									<div class="infor_conright">
+										<div class="infor_conrighttop">
+											热点关注
+										</div>
+										<div class="inf_cen" v-for='(tp,index) in hotList' :key="index" v-if="index == 0" :data='tp.id'>
+											<div class="inf_cen1">{{index+=1}}</div>
+											<div class="inf_cen2" @click="setArticleId(tp.id)">
+												{{tp.title}}
+											</div>
+										</div>
+										<div class="inf_cen7" v-for='(tp,index) in hotList' v-if="index>0&&index<5" :key="index"  :data='tp.id'>
+											<div class="inf_cen4">{{index+1}}</div>
+											<div class="inf_cen5">
+												<div @click="setArticleId(tp.id)" class="inf_cen8" >{{tp.title}}</div>
+											</div>
+											<div class="inf_cen6">{{tp.createBy}}</div>
+										</div>
+										<!--无热点给默认图片-->
+										<div v-show="redian" class="inf_xiu1">
+											<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
+										</div>
+									</div>
+								</div>
+								<div class="infor_content3 clearfix">
+									<div class="infor_left">
+										<div class="infor_left3 clearfix" v-for='(news,index) in articleList' :key="index" v-if="index > 0" :data='news.id'>
+											<img :src="news.coverImage"  alt="">
+											<div class="infor_left3s">
+												<h4 @click="setArticleId(news.id)">{{news.title}}</h4>
+												<p>{{news.createBy}}
+													<span>{{news.createDate}}</span>
+												</p>
+											</div>
+										</div>
+										<!--无文章给默认图片-->
+										<div v-show="wenzhang" class="inf_xiu1">
+											<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
+										</div>
+										<div v-show="nextPage" @click="getNextPage" class="infor_btm" >
+											查看更多
+										</div>
+									</div>
+									
+									<div class="infor_right">
+										<h4 class="infor_rightTop">推荐文章</h4>
+										<div class="infor_rightBtm">
+												<div v-for='(ro,index) in recommendList' :key="index" v-if="index == 0" :data='ro.id' @click="setArticleId(ro.id)" class="infor_rightBtmli clearfix">
+													<i>{{index+=1}}</i>
+													<h4 >{{ro.title}}</h4>
+													<p>{{ro.description}}</p>
+												</div>
+												<div class="infor_rightLi" v-for='(ro,index) in recommendList' :key="index" v-if="index > 0&&index < 10" :data='ro.id'>
+													<i>{{index+1}}</i>
+													<p @click="setArticleId(ro.id)" class="inf_cen8">
+														{{ro.title}}
+													</p>
+													<span>{{ro.createBy}}</span>
+												</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- articleContent  -->
+							<div v-show="isArticleContent" class="please_content clearfix inner-1200" v-loading="loading">
+								<div class="please_left">
+									<div class="please_leftTop">
+										<h3>{{articleContent.title}}</h3>
+										<p>
+											<span>{{articleContent.createBy}}</span> |
+											<span>{{articleContent.createDate}}</span>
+										</p>
+									</div>
+
+									<div class="please_leftBtm">
+										<div class="please_leftImg">
+											<img :src="articleContent.coverImage" alt="">
+										</div>
+										<article>
+											<p class="pas_nei">{{articleContent.description}}</p>
+											<p v-html="cotet" class="pas_nei"></p>
+										</article>
+									</div>
+
+								</div>
+
+								<div class="please_right">
+									<div class="infor_conrighttop">
+										热点关注
+									</div>
+									<div class="inf_cen" v-for='(news,index) in hotList' :key="index" v-if="index == 0" :data='news.id' v-loading="loading">
+										<div class="inf_cen1">{{index+=1}}</div>
+										<div class="inf_cen2" @click="setArticleId(news.id)">
+											{{news.title}}
+										</div>
+									</div>
+									<div class="inf_cen7" v-for='(news,index) in hotList' :key="index" v-if="index>0&&index<5"  :data='news.id'>
+										<div class="inf_cen4">{{index+1}}</div>
+										<div class="inf_cen5">
+											<div @click="setArticleId(news.id)" class="inf_cen8" >{{news.title}}</div>
+										</div>
+										<div class="inf_cen6">{{news.createBy}}</div>
+									</div>
+									<!--无文章给默认图片-->
+									<div v-show="redian" class="inf_xiu1">
+										<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
+									</div>
+								</div>
+
+								<div class="infor_right1">
+									<h4 class="infor_rightTop">推荐文章</h4>
+									<div class="infor_rightBtm" v-loading="loading">
+											<div v-for='(news,index) in recommendList' :key="index" v-if="index == 0" :data='news.id' @click="setArticleId(news.id)" class="infor_rightBtmli clearfix">
+												<i>{{index+=1}}</i>
+												<h4>{{news.title}}</h4>
+												<p>{{news.description}}</p>
+											</div>
+											<div class="infor_rightLi" v-for='(news,index) in recommendList' :key="index" v-if="index > 0&&index < 10" :data='news.id' @click="setArticleId(news.id)">
+												<i>{{index+1}}</i>
+												<p  class="inf_cen8">
+													{{news.title}}
+												</p>
+												<span>{{news.createBy}}</span>
+											</div>
+									</div>
+								</div>
+
+							</div>
+						</el-tab-pane>
+					</el-tabs>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="inf_xg1"></div>
+	<div class="inf_xg2"></div>
+</section>

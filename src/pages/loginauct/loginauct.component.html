@@ -1,0 +1,62 @@
+<section class="loginauct">
+  <!-- 登录logo -->
+  <div class="login-logo">
+    <div class="login-form">
+      <h3>登录</h3><span @click='close' class='close-login'>x</span>
+      <div class="login-box">
+        <el-tabs ref="loginTabs">
+          <el-tab-pane>
+            <div slot="label">
+              <div class="login-switch-bar" @click="clickToggleItem(1)">账号登录</div>
+            </div>
+            <div id="tsm1" v-show='isend'>
+            	{{errmsg}}
+            </div>
+            <!-- 输入账号密码登录 -->
+            <div class="login-number">
+              <input type="text" name="" @focus="ftestusername" @blur="testusername" placeholder="请输入您的账号" value="" v-model="username" @keyup.enter="loginbtn($event)">
+              <p class="prompt-username" v-show="nameisshow">{{usernametext}}</p>
+              <input type="password" @blur="testpwd" @focus="ftestpwd" v-model="pwd" placeholder="请输入您的密码" name="" value="" @keyup.enter="loginbtn($event)">
+              <p class="prompt-pwd" v-show="pwdisshow" ref='promptpwd'>{{pwdtext}}</p>
+              <router-link to="forgetpwd1">忘记密码？</router-link>
+              <button class="form-submit" @click="loginbtn($event)">登录</button>
+              <span class="person"></span>
+              <span class="pwd"></span>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane>
+            <div slot="label">
+              <div class="login-switch-bar" @click="clickToggleItem(2)">手机验证码登录</div>
+            </div>
+            <div id="tsm2" v-show="showphone">
+            	*验证码错误，请重新输入
+            </div>
+            <!-- 手机号码验证 -->
+            <div>
+              <div class="fg_pwd7">
+                <div class="fg_pwd74">
+                  <img src="./images/phone.png">
+                </div>
+                <input name="phone" placeholder="请输入您的手机号" @blur= "phoneq" v-model="phone" class="fg_pwd73" />
+                <span class="span1" v-show="phones">{{phonea}}</span>                    
+              </div>
+              <p class="fl">
+                <div class="fg_pwd76">
+                  <div>
+                    <input type="text" placeholder="验证码" @blur = "verifq" class="fg_pwd71" v-model="verif" @keyup.enter="login_btn"/>
+                  </div>
+                  <span class="span" v-show="verifs">{{verifa}}</span>                      
+                  <div>
+                    <button type="button" @click="sendcode" :disabled = "disabled" id="fg" class="fg_pwd72 btns" ref='senbtn'>{{btntxt}}</button>
+                  </div>
+                </div>
+              </p>
+            </div>
+            <input type="submit" @click="login_btn"  name="" value="登录" class="fg_pwd75">
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+      <p class="login_btm">还没有账户？ <router-link to="/register" class="login_regis">立即注册</router-link></p>
+    </div>
+  </div>
+</section>

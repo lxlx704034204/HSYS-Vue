@@ -1,0 +1,38 @@
+.companycenter {
+  margin-bottom: 40px;
+}
+
+.sy-sub-title {
+  padding-right: 25px;
+
+  font-size: 16px;
+
+  text-align: center;
+
+  color: #999;
+}
+
+.sy-sub-item {
+  text-align: left;
+  margin-left: 19px;
+  color: #333;
+}
+.iconimg {
+  width: 20px;
+  padding-right: 10px;
+  padding-bottom: 4px;
+}
+.myorder_div {
+  width: 100%;
+  height: 254px;
+  span {
+    display: inline-block;
+    width: 77px;
+    height: 70px;
+    margin-top: 50%;
+    margin-left: 50%;
+
+    transform: translate(-50%,-50%);
+    background-image: url("./images/logo.jpg");
+  }
+}

@@ -1,0 +1,181 @@
+<section class="properties inner-1200">
+  <div></div>
+<!-- 筛选条件添加 -->
+  <div class="proper-box">
+    <div class="properleft">筛选条件:</div>
+    <ul class="box-right">
+      <li class="item all-item" @click='allproduct'>
+        全部结果
+        <span v-show="stagdata.btnFd || stagdata.btnUse || stagdata.btnPro || stagdata.btnFea">&gt;</span>
+      </li>
+      <li class="item" v-show="stagdata.btnFd" v-for="a in stagdata.btnFd">
+        <el-button size="mini" @click="removeFilter(1,a)">
+          <span class="select-text">{{a.categoryName}}
+            <i class="el-icon-close el-icon-right"></i>
+          </span>
+        </el-button>
+      </li>
+      <li class="item" v-show="stagdata.btnUse" v-for="b in stagdata.btnUse">
+        <el-button size="mini" @click="removeFilter(2,b)">
+          <span class="select-text">{{b.rankDetailName}}
+            <i class="el-icon-close el-icon-right"></i>
+          </span>
+        </el-button>
+      </li>
+      <li class="item" v-show="stagdata.btnPro" v-for="c in stagdata.btnPro">
+        <el-button size="mini" @click="removeFilter(3,c)">
+          <span class="select-text">{{c.rankDetailName}}
+            <i class="el-icon-close el-icon-right"></i>
+          </span>
+        </el-button>
+      </li>
+      <li class="item" v-show="stagdata.btnFea" v-for="d in stagdata.btnFea">
+        <el-button size="mini" @click="removeFilter(4,d)">
+          <span class="select-text">{{d.rankDetailName}}
+            <i class="el-icon-close el-icon-right"></i>
+          </span>
+        </el-button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 用途级别列 -->
+  <div class="category-box  kind-box">
+    <div class="box-left">用途级别</div>
+    <ul class="box-right">
+      <li class="item" v-for="item in rtrankData2" @click="kindBtn(2,item)">{{item.rankDetailName}}</li>
+    </ul>
+    <div class="show-more-kind">
+      <template v-if="rtrankData2.length == ficatLen">
+        <button type='button' @click="showMoreR" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+      </template>
+      <template v-else>
+        <button type='button' @click="hideMoreR" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+      </template>
+    </div>
+  </div>
+
+
+  <!-- 加工级别列 -->
+  <div class="category-box  kind-box">
+    <div class="box-left">加工级别</div>
+    <ul class="box-right">
+      <li class="item" v-for="item in rtranktwo2" @click="kindBtn(3,item)">{{item.rankDetailName}}</li>
+    </ul>
+    <div class="show-more-kind">
+      <template v-if="rtranktwo2.length == ficatLen">
+         <button type='button' @click="showMoreT" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+      </template>
+      <template v-else>
+        <button type='button' @click="hideMoreT" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+      </template>
+    </div>
+  </div>
+
+  <!-- 特性级别列 -->
+  <div class="category-box kind-box">
+    <div class="box-left">特性级别</div>
+    <ul class="box-right">
+      <li class="item" v-for="item in rtrank2" @click="kindBtn(4,item)">{{item.rankDetailName}}</li>
+    </ul>
+    <!-- 更多Btn -->
+    <div class="show-more-kind">
+      <template v-if="rtrank2.length == ficatLen">
+         <button type='button' @click="showMoreF" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+      </template>
+      <template v-else>
+        <button type='button' @click="hideMoreF" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+      </template>
+    </div>
+  </div>
+
+  <form>
+    <el-row class="fliterBox">
+      <!-- 条件 -->
+      <el-col :span="24">
+        <el-row>
+          <el-col :span="8" class="col1">
+            <p>
+              <span class="propertiestitle">关键词</span>
+              <el-input class="inp" placeholder="请输入牌号关键词搜索" style="display: inline-block;width:176px" v-model.trim="params.productSign"></el-input>
+              <br>
+            </p>
+            <p class="p1">
+              <span class="propertiestitle">弯曲模量（MPa）</span>
+              <el-input style="display: inline-block;width:78px" v-model.trim="params.bendmin"></el-input>
+              <span class="symDot">—</span>
+              <el-input style="display: inline-block;width:78px" v-model.trim="params.bendmax"></el-input>
+            </p>
+          </el-col>
+          <el-col :span="8" class="col2">
+            <p class="p1">
+              <span class="propertiestitle">溶指（g/10min）</span>
+              <el-input style="display: inline-block;width:78px" v-model.trim="params.meltmin"></el-input>
+              <span class="symDot">—</span>
+              <el-input style="display: inline-block;width:78px" v-model.trim="params.meltmax"></el-input>
+            </p>
+            <p class="p1 p2">
+              <span class="propertiestitle">冲击强度</span>
+              <el-input class="inp1" style="display: inline-block;width:78px" v-model.trim="params.impactmin"></el-input>
+              <span class="symDot">—</span>
+              <el-input style="display: inline-block;width:78px" v-model.trim="params.impactmax"></el-input>
+            </p>
+          </el-col>
+          <el-col :span="8" class="col3">
+            <p class="p1">
+              <span class="propertiestitle">拉伸强度（Mpa）</span>
+              <el-input style="display: inline-block;width:78px" v-model.trim="params.pullupmin"></el-input>
+              <span class="symDot">—</span>
+              <el-input style="display: inline-block;width:78px" v-model.trim="params.pullupmax"></el-input>
+            </p>
+            <p class="pBtn">
+              <el-button plain @click="emptySearch">清空</el-button>
+              <el-button type="primary" @click="likeSearch()">搜索</el-button>
+            </p>
+          </el-col>
+        </el-row>
+      </el-col>
+      <!-- 前后分页 -->
+      <!-- <el-col :span="4" class="BApage">
+      <div class="bapage page-no-box">
+        <span>{{pageNum}}</span>/{{total/pageSize}}
+        <el-button-group class="rightbtn">
+          <el-button size="small" icon="el-icon-arrow-left" class="btn-bgcolor" @click="prevPage"></el-button>
+          <el-button size="small" @click="nextPage">
+            <i class="el-icon-arrow-right el-icon--right"></i>
+          </el-button>
+        </el-button-group>
+      </div>
+    </el-col> -->
+    </el-row>
+  </form>
+
+
+
+  <!-- 产品信息列表 -->
+  <el-table stripe :data="tableDatas" @row-click="tableClick" class="marTop">
+    <el-table-column class-name="nameCor" prop="productSign" label="名称" width="300">
+    </el-table-column>
+    <el-table-column prop="specialCateDetailNames" label="特性级别" width="400">
+    </el-table-column>
+    <el-table-column prop="useCateDetailNames" label="用途级别">
+    </el-table-column>
+  </el-table>
+
+
+
+  <!-- 分页   @current-change="" -->
+  <div class="pagebox clearfix">
+
+    <div style="height: 30px;"></div>
+    <!-- 翻页效果 -->
+    <div class="sy-pagination">
+      <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot"
+        :total="total" :current-page="pageNum">
+        <slot>
+          <button class="btn-next">确定</button>
+        </slot>
+      </el-pagination>
+    </div>
+  </div>
+</section>

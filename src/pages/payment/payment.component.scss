@@ -1,0 +1,159 @@
+.payment {
+  width: 980px;
+  // height: 850px;
+  padding: 9px;
+  margin: 34px auto;
+
+  border: 1px solid #ccc;
+  .payment_top {
+    height: 175px;
+
+    text-align: center;
+
+    color: #666;
+    border-bottom: 1px dashed #ccc;
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 78px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 43px;
+      &.payment_p1 {
+        a {
+          text-decoration: none;
+
+          color: #009fe2;
+        }
+      }
+      span {
+        color: #f19715;
+      }
+    }
+  }
+
+  .payment_list {
+    height: 226px;
+
+    border-bottom: 1px dashed #ccc;
+    .list_top {
+      margin-top: 29px;
+    }
+  }
+
+  .list_sapn {
+    font-size: 20px !important;
+
+    color: #f83d46;
+  }
+
+  .payment_btm {
+    height: 300px;
+    h3 {
+      margin: 4px 0 0 20px;
+
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 48px;
+    }
+    .btm_left {
+      float: left;
+      width: 640px;
+      height: 245px;
+
+      border: 1px solid #ddd;
+      .btm_table {
+        height: 39px;
+
+        color: #666;
+        border-bottom: 1px solid #eee;
+        span {
+          margin-left: 20px;
+
+          font-size: 14px ;
+          line-height: 39px;
+        }
+        .table_left {
+          float: left;
+          width: 160px;
+          height: 39px;
+
+          border-right: 1px solid #eee;
+        }
+        .table_right {
+          float: left;
+          width: 478px;
+          .table_span {
+            float: right;
+            margin-right: 10px;
+
+            color: #999;
+          }
+        }
+      }
+      .btm_table2 {
+        border-bottom: none;
+      }
+    }
+    .btm_right {
+      float: right;
+      width: 250px;
+      height: 250px;
+      p {
+        padding-left: 27px;
+
+        font-size: 14px;
+        line-height: 30px;
+
+        color: #009fe2;
+        &.right_p1 {
+          background: url("./images/table.jpg") no-repeat left center;
+        }
+        &.right_p2 {
+          margin-top: 11px;
+
+          cursor: pointer;
+
+          background: url("./images/table2.jpg") no-repeat left center;
+        }
+      }
+      .right_file {
+        width: 200px;
+        height: 160px;
+        margin-top: 17px;
+        .avatar-uploader {
+          .el-upload {
+            .avatar-uploader-icon::before {
+              content: '上传付款凭证';
+              font-size: 16px;
+            }
+            .el-icon-upload {
+              width: 200px;
+              height: 160px;
+
+              line-height: 160px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .prompt{
+    width: 600px;
+    margin-left: 17px;
+    font-size: 12px;
+    color: #999;
+    span{
+        color: red;
+    }
+}
+  .payment_btn {
+    float: right;
+    width: 120px;
+    margin: 200px 50px 0 0;
+    .el-button {
+      width: 100%;
+    }
+  }
+}

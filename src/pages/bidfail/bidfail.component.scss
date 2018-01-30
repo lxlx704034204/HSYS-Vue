@@ -1,0 +1,38 @@
+// 清除浮动
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.bidsuccess {
+    .nav{
+        margin-bottom:30px;
+    }
+    .main{
+        width: 960px;
+        height: 530px;
+        border: 1px solid #cccccc;
+        margin-top: 8px;
+        .ordernum{
+            font-size: 14px;
+            margin-left: 18px;
+            margin-top: 15px;
+            div{
+               line-height: 40px; 
+               span{
+                   margin-left: 25px;
+                   color: #009fe2; 
+               }
+            }
+        }
+        .tableinfo{
+            width: 942px;
+            height: 209px;
+            margin: 6px 9px 0 9px;
+        }
+    }
+}
+
+

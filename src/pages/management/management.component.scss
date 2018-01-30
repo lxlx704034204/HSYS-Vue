@@ -1,0 +1,83 @@
+// 清除浮动
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.management {
+    .mybill-search {
+        padding: 20px 0;
+        .but {
+            float: right;
+            text-decoration: none;
+            color: #fff !important;
+            background: #009FE2 !important;
+            border-color: #009FE2 !important;
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 4px;
+        }
+    }
+    .mybill-table {
+        text-align: center;
+    }
+    .el-table thead {
+        align: center;
+        background: #E5E6E6;
+    }
+    .el-table {
+        text-align: center;
+    }
+    table {
+        align: center;
+    }
+    .mybill-fenye {
+        float: right;
+        padding: 10px;
+    }
+    .dingdan {
+        color: #009fe2;
+        cursor: pointer;
+    }
+    .vertical {
+        display: inline-block;
+        height: 20px;
+        // border-left: 1px solid #666;
+    }
+    .myorder_release {
+        float: right;
+        width: 120px;
+        height: 40px;
+    }
+    .table-one .el-table__row {
+        height: 60px;
+    }
+    .publishbtn{
+        float: right;
+        width: 120px;
+        height: 40px;
+        background: #009fe2;
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        -webkit-appearance: none;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        outline: 0;
+        margin: 0;
+        -webkit-transition: .1s;
+        transition: .1s;
+        font-weight: 500;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 4px;
+        color:#fff;
+        border:none;
+    }
+}

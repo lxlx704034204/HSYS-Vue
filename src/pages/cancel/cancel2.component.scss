@@ -1,0 +1,16 @@
+.el-table--border td, .el-table--border th {
+    border-left: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+.el-table td, .el-table th {
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+.el-table__body .el-table__row {
+    height: 50px !important;
+}
+.el-table__header-wrapper .el-table__header .has-gutter .is-leaf{
+    height: 48px !important;
+    background: #E5E6E6 !important;
+    border: none !important; 
+}

@@ -1,0 +1,63 @@
+<section class="myorder">
+    <div>
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/companycenter/mybid' }">订单管理</el-breadcrumb-item>
+            <el-breadcrumb-item>我的竞价</el-breadcrumb-item>
+        </el-breadcrumb>
+        <!-- 搜索 -->
+        <div class="mybill-search clearfix">
+            <el-input v-model.trim="value9" class="myorder_input" placeholder="请输入产品名称/SKU编码"></el-input>
+            <el-button class="myorder_btn" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
+        </div>
+        <div class="mybill-table">
+            <el-table :data="orderList" border style="width: 100%">
+                <!--   查看订单url拼接id -->
+                <el-table-column prop="id" label="订单编号" class="table">
+                </el-table-column>
+                <el-table-column prop="productName" label="产品名称" class="table">
+                </el-table-column>
+                <el-table-column label="库别">
+                    <template slot-scope="scope">
+              <span>{{warejson[scope.row.warehouseCode]}}</span>
+          </template>
+                </el-table-column>
+                <el-table-column prop="startUnitPrice" label="起拍价">
+                </el-table-column>
+                <el-table-column prop="biddingQuantity" label="竞拍数量">
+                </el-table-column>
+                <el-table-column prop="total" label="单位">
+                    <template slot-scope="scope">
+              <span>{{unitjson[scope.row.unitCode]}}</span>
+          </template>
+                </el-table-column>
+                <el-table-column prop="biddingPrice" label="竞价单价">
+                </el-table-column>
+                <el-table-column prop="deposit" label="保证金">
+                </el-table-column>
+                <el-table-column prop="createDate" label="更新日期" width='110px'>
+                </el-table-column>
+                <el-table-column prop="biddingStatus.desc" label="状态">
+                </el-table-column>
+                <el-table-column label="操作">
+                    <template slot-scope="scope">
+            <span @click="findcontent(scope.row)" class='find-btn' size="small" v-if='scope.row.status != "统计中"'>查看</span>
+          </template>
+                </el-table-column>
+
+            </el-table>
+
+
+        </div>
+        <div class="pagebox clearfix">
+            <div style="height: 30px;"></div>
+            <!-- 翻页效果 -->
+            <div class="sy-pagination">
+                <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot" :total="total">
+                    <slot>
+                        <button class="btn-next">确定</button>
+                    </slot>
+                </el-pagination>
+            </div>
+        </div>
+    </div>
+</section>

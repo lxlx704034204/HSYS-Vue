@@ -1,0 +1,70 @@
+.auctiondetail{
+	.el-table td, .el-table th.is-leaf{
+		height:50px;
+	}
+	.el-input.is-disabled .el-input__inner{
+		background: #fff!important;
+		color:#333!important;
+	}
+	.el-dialog--center{
+		padding:0 16px !important;
+	}
+	.el-dialog--center .el-dialog__header{
+		background: #fff;
+		color:#333;
+		font-size: 18px;
+		height: 80px;
+		line-height: 80px;
+		border-bottom: 1px solid #e8e8e8;
+		padding:0;
+	}
+	.el-dialog__title{
+		color:#333;
+		font-family: '微软雅黑'
+	}
+
+	.el-checkbox__input.is-checked+.el-checkbox__label{
+		color:#333;
+	}
+	.qutaSele .payup:focus, .payup:hover{
+		background: #009FE2;
+		color:#fff;
+	}
+	.remain{
+		position: absolute;
+		bottom:10px;
+		color:#f56c6c;
+		padding-left: 25px;
+	}
+	.el-dialog--center .el-dialog__body{
+		position: relative;
+	}
+	.aucti_input{
+		width: 76px;
+		height: 26px;
+		input{
+			height: 34px;
+			border-radius: 0;
+		}
+	}
+	.myprice{
+		width: 71px;
+		margin-left: 10px;
+		background: #009FE2;
+		color:#fff
+	}
+	.myprice:focus, .myprice:hover{
+		background: #009FE2;
+		color:#fff;
+	}
+	.el-button.is-disabled, .el-button.is-disabled:focus, .el-button.is-disabled:hover{
+		background: #d1d1d1;
+		border-radius: #d1d1d1;
+		color:#fff;
+	}
+	.pro-inf-two1 .el-button.is-disabled:focus, .el-button.is-disabled:hover{
+		background: #D1D1D1;
+		border-radius: #D1D1D1;
+		color:#fff;
+	}
+}

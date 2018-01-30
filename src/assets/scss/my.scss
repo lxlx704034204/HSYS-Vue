@@ -1,0 +1,240 @@
+
+.clearfix {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.inner-1200 {
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+}
+.label-color{
+  color:#333;
+}
+.label-bgcolor{
+  background: #000000;
+}
+.mark-num-color {
+  color: yellow;
+}
+
+.nothing-color {
+  color: #fb3a40;
+}
+
+.row-60 {
+  height: 60px;
+}
+
+.up-color {
+  color: #e0141f;
+}
+
+.down-color {
+  color: #20c657;
+}
+
+.price-color {
+  color: #fe9900;
+}
+
+.btn-add-selector {
+  color: #333;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  float: left;
+  margin-top: 6px;
+}
+
+.btn-service {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-service img {
+  position: relative;
+  top: 5px;
+}
+
+.call-color {
+  color: #009FE2;
+}
+
+.el-tooltip__popper.is-light {
+  border: 1px solid #ddd;
+  box-shadow: 3px 3px 5px #ddd;
+}
+
+
+/* 服务提示内容 */
+
+.sy-tipbox {
+  width: 352px;
+  height: 148px;
+  display: flex;
+  .left {
+    text-align: center;
+  }
+  .weixin-info {
+    width: 95px;
+    color: #666;
+    p {
+      font-size: 12px;
+    }
+  }
+  .right {
+    flex: 1;
+    position: relative;
+    padding-left: 20px;
+  }
+  .qq {
+    position: absolute;
+    right: 14px;
+    top: 25px;
+  }
+  .card-info {
+    color: #666;
+    h3 {
+      line-height: 28px;
+      font-size: 16px;
+    }
+    .position {
+      line-height: 32px;
+      font-size: 14px;
+    }
+    p {
+      line-height: 22px;
+      font-size: 12px;
+    }
+  }
+}
+
+
+
+.sy-pagination {
+  float: right;
+  .btn-prev,
+  .btn-next {
+    padding: 0 13px !important;
+  }
+  .el-pager .number,
+  .el-pager .more {
+    padding: 0 11px !important;
+    border: 1px solid #e6e6e6 !important;
+    background-color: #fff !important;
+  }
+  .el-pager .more {
+    border-color: #fff !important;
+  }
+  .el-pager li.active {
+    background-color: #fff !important;
+    color: #009FE2 !important;
+    border-color: #fff !important;
+  }
+}
+
+
+
+// 查找条件分类
+.typelist {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  .typetable {
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    border-right: 0;
+    border-bottom: 0; // 左侧类型
+    .type {
+      height: 50px;
+      background: #f5f5f7;
+      line-height: 50px;
+      text-align: left;
+      text-indent: 2em;
+      margin-left: -10px;
+      span {
+        color: #666666;
+      }
+    } // 右侧数据
+    .content {
+      height: 50px;
+      line-height: 50px;
+      padding-right: 10px;
+      ul {
+        li {
+          float: left;
+          margin-left: 18px;
+          color: #009ee1;
+        }
+        li:first-child {
+          margin-left: 0;
+        }
+      }
+      button {
+        color: #009ee1;
+      }
+      .btn {
+        float: right;
+        margin-top: 10px;
+        color: #666666;
+      }
+      span {
+        float: left;
+      }
+      span:hover {
+        color: #009FE2;
+      }
+    }
+  }
+  .tablelast {
+    border-bottom: 1px solid #e6e6e6;
+    .leftpx {
+      margin-left: 10px;
+    }
+  }
+}
+//   物性库列表名称列颜色
+.nameCor{
+  color: #fcba2b 
+}
+.el-table__header-wrapper thead tr{
+   background: #E5E6E6 !important;
+   
+   
+}
+//table表头字体颜色
+.el-table__header-wrapper thead tr th{
+  color:#333;
+  font-weight: normal;
+}
+.mybill-table{
+  .cell{
+    text-align: center;
+  }
+}
+// table 列表边距调整
+// .colmar{
+//   text-indent: 92px;
+// }
+.test-td .cell{
+  padding-left:92px;
+}
+.borderLeft{
+  border-left:1px solid #dedede
+}
+.borderRight{
+  border-right:1px solid #dedede
+}
+.TextCenter{
+  text-align: center
+}
+
+
+.el-breadcrumb__inner, .el-breadcrumb__inner a {
+    color: #999;font-weight: normal;
+}
+
+

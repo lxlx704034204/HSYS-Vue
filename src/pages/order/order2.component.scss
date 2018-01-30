@@ -1,0 +1,97 @@
+.order{
+    .orderNum{
+        width: 80px;
+        height: 30px;
+        border-radius: 3px;
+        padding-left: 10px;
+        border:1px solid #aaa;
+    }
+    .el-dialog--center{
+        width: 484px !important;
+        // height: 570px !important;
+        border-radius: 9px !important;
+    }
+    .el-dialog--center .el-dialog__header {
+        border-radius: 9px 9px 0 0 !important;
+    }
+    .el-form{
+        padding: 0 29px;
+    }
+    .el-form-item {
+        // margin-bottom: 10px !important;
+    }
+    .el-form-item__label{
+        font-weight: normal;
+        float: none !important;
+    }
+    .el-form-item__content{
+        margin-left: 0  !important;
+    }
+    .el-form-item__content .el-textarea__inner{
+        resize:none;
+    }
+    .el-dialog--center .el-dialog__header {
+        padding: 0px;
+        font-weight: normal;
+    }
+    .el-dialog--center .el-dialog__body {
+        padding: 25px 27px 0 !important;
+    }
+    .dialog-footer .el-button{
+        width: 115px !important;
+        height: 40px !important;
+        border-radius: 0;
+        margin-top: 22px;
+    }
+    .el-textarea__inner{
+        height: 100px;
+    }
+    .el-button--default{
+        border: 1px solid #009fe2;
+        color: #009fe2;
+    }
+    .el-table td{
+        height: 60px;
+    }
+    .el-table td, .el-table th{
+        padding: 0 !important;
+    }
+    .el-table th.is-leaf{
+        margin-left: 20px;
+        border-top: 2px solid #e6e6e6;
+
+    }
+    .el-table td, .el-table th.is-leaf {
+        line-height: 28px !important;
+        font-size: 14px !important; 
+    }
+    .el-table__header-wrapper thead tr {
+        background: #f7f6f2 !important;
+    }
+    .el-form-item__content .el-input--suffix .el-input__inner {
+        // width: 120px !important;
+    }
+
+    .el-form-item__content .el-input--suffix .el-input__icon::after {
+        // margin-top: 0 !important;
+    }
+
+    .el-button:hover {
+        color: #fff ;
+        background-color: #009FE2;
+    }
+    .changebtn:hover{
+        border:1px solid #fff;
+        color:#009FE2;
+        background-color: #fff;
+        
+    }
+
+    .remarks_right .el-textarea .el-textarea__inner{
+        height: 115px !important;
+        resize: none !important;
+    }
+    .el-dialog__headerbtn .el-dialog__close{
+        color:#fff;
+    }
+}

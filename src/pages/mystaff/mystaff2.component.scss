@@ -1,0 +1,38 @@
+.table-one .el-table__row {
+    height: 60px;
+}
+
+.myorder_input {
+    float: left;
+    width: 217px !important;
+    .el-input__inner {
+        height: 36px !important;
+        border-radius: 4px 0 0 4px !important;
+    }
+}
+
+.mystaff .myorder_btn {
+    float: left;
+    height: 36px;
+    border-radius: 0 4px 4px 0 ;
+    background: #009fe2;
+    .el-icon-search {
+        font-size: 20px;
+        margin-top: -4px;
+    }
+}
+
+.mybill-search .el-button:focus,
+.el-button:hover {
+    color: #fff !important;
+    background: #009fe2 !important;
+    border-color: #009fe2 !important;
+}
+.mystaff{
+    .el-dialog__header{
+        text-align: left;
+    }
+    .el-dialog__title{
+        color:#333;
+    }
+} 

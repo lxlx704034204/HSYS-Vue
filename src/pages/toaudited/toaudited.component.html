@@ -1,0 +1,212 @@
+<!-- 待审核 -->
+<section class="toaudited">
+  <!-- 面包屑 -->
+  <el-breadcrumb class="myoderDetail">
+    <el-breadcrumb-item class="myoderDetail-item1">
+      <span>订单管理</span>
+    </el-breadcrumb-item>
+    <el-breadcrumb-item>订单详情</el-breadcrumb-item>
+  </el-breadcrumb>
+
+  <!-- 主体 -->
+  <div class="main">
+    <!-- 订单编号 -->
+    <div class="orderNumber">
+      <div class="orderNumber-title">
+        <span class="num">订单编号：</span>
+        <span>{{number}}</span>
+        <span class="isPayment">{{orderStatus}}</span>
+      </div >
+      <div v-if="step<7" >
+        <el-steps align-center class="orderNumber-detail" :active="step" process-status="wait" >
+              <el-step>
+                <p slot="title" class="step-title active">提交订单信息</p>
+                <p slot="description" class="description">
+                  <span>{{orderTime}}</span>
+                </p>
+              </el-step>
+              <el-step>
+                <p slot="title" :class="audittime ? 'step-title active' : 'step-title'">平台审核</p>
+                <p slot="description" class="description">
+                    <span>{{audittime}}</span>
+                </p>
+              </el-step>
+              <el-step>
+                <p slot="title" :class="querytime ? 'step-title active' : 'step-title'">客户确定订单</p>
+                <p slot="description" class="description">
+                    <span>{{querytime}}</span>
+                </p>
+              </el-step>
+      
+              <el-step>
+                <p v-if="payinfovalue == 0" slot="title" :class="paymenttime ? 'step-title active' : 'step-title'">线下转账付款</p>
+                <p v-if="payinfovalue == 0" slot="description" class="description">
+                    <span>{{paymenttime}}</span>
+                </p>
+                <!-- <p v-if="payinfovalue == 1" slot="title" :class="querytime ? 'step-title active' : 'step-title'">等待发货</p>
+                <p v-if="payinfovalue == 1" slot="description" class="description">
+                  <span>{{querytime}}</span>
+                </p> -->
+                <p v-if="payinfovalue == 1" slot="title" :class="deliverytime ? 'step-title active' : 'step-title'">出库发货</p>
+                <p v-if="payinfovalue == 1" slot="description" class="description">
+                  <span>{{deliverytime}}</span>
+                </p>
+              </el-step>
+              <el-step>
+                <p v-if="payinfovalue == 0" slot="title" :class="deliverytime ? 'step-title active' : 'step-title'">出库发货</p>
+                <p v-if="payinfovalue == 0" slot="description" class="description">
+                    <span>{{deliverytime}}</span>
+                </p>
+                <p v-if="payinfovalue == 1" slot="title" :class="signingtime ? 'step-title active' : 'step-title'">货物签收</p>
+                <p v-if="payinfovalue == 1" slot="description" class="description">
+                  <span>{{signingtime}}</span>
+                </p>
+              </el-step>
+              <el-step>
+                <p v-if="payinfovalue == 0" slot="title" :class="signingtime ? 'step-title active' : 'step-title'">货物签收</p>
+                <p v-if="payinfovalue == 0" slot="description" class="description">
+                    <span>{{signingtime}}</span>
+                </p>
+                <p v-if="payinfovalue == 1" slot="title" :class="paymenttime ? 'step-title active' : 'step-title'">线下转账付款</p>
+                <p v-if="payinfovalue == 1" slot="description" class="description">
+                  <span>{{paymenttime}}</span>
+                </p>
+              </el-step>
+            </el-steps>
+            <p class="last padbt-20" >
+              <span v-if="step===1">平台将尽快和你联系，确认订单信息</span>
+              <span v-if="step===2">请在{{orderExpireConfirm}}内确定订单信息，否则订单将自动取消</span>
+              <span v-if="step===3 && !paymentStatus  && payinfovalue == 0">请在{{orderExpirePay}}内完成付款，否则订单将自动取消</span>
+              <span v-if="step===3 && !!paymentStatus && payinfovalue == 0">您的付款信息已提交，请耐心等待客服确认</span>
+              <span v-if="step===5 && !paymentStatus && payinfovalue == 1">请在{{orderExpirePay}}内完成付款，否则订单将自动取消</span>
+              <span v-if="step===5 && !!paymentStatus && payinfovalue == 1">您的付款信息已提交，请耐心等待客服确认</span>
+            </p>
+      </div>
+    </div>
+    <!-- 收货人信息 -->
+    <div class="orderConsignee clearfix">
+      <div class="orderCon_left">
+        <h4>收货人信息</h4>
+        <p>收货人 : {{addName}}</p>
+        <p>联系电话 : {{addphone}}</p>
+        <p>详细地址 : {{address.provinceName}}{{address.cityName}}{{address.areaName}}{{address.address}}</p>
+        <p>备注 : {{event}}</p>
+      </div>
+      <!-- <div class="orderCon_right">
+        <p class="order_remarks"> 备注 : &nbsp;
+          <span>{{event}}</span>
+        </p>
+      </div> -->
+    </div>
+    <!-- 付款信息 -->
+    <div class="orderPayment">
+      <ul>
+        <li class="orderPayment-title">
+          <span>付款信息</span>
+          <span>物流信息</span>
+          <span>发票信息</span>
+        </li>
+        <li class="orderPayment-content">
+          <span>付款方式：{{payinfo}}</span>
+          <span>配送方式：{{shipMethod}}</span>
+          <span>发票类型：增值税专用发票</span>
+          <span>结算方式：{{abbtype}}</span>
+          <span class="order_span"></span>
+          <span>发票抬头：{{paytitle}}</span>
+          <span>应付金额：￥{{ totalmoney.toFixed(2) }}</span>
+          <span class="order_span"></span>
+          <span>统一社会信用代码：{{bizcode}}</span>
+        </li>
+      </ul>
+    </div>
+    <!-- 供应商 -->
+    <div class="orderSupplier">
+      <h4 class="orderSupplier-title" >供应商：山东道恩集团</h4>
+      <div class="orderSupplier-table">
+        <el-table :data="orderTable" class="orderdetails" style="width: 100%;" border>
+          <el-table-column prop="items[0].name" label="产品名称">
+          </el-table-column>
+          <el-table-column label="规格/牌号">
+            <template slot-scope ="scope">
+              <span>{{getPhName(scope.row.items[0].gradeCode)}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="place" label="产地">
+            <template slot-scope ="scope">
+              <span>{{getCdName(scope.row.items[0].sku.product.manufacturerCode)}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="库别">
+            <template slot-scope ="scope">
+              <span>{{getIoName(scope.row.items[0].sku.warehouseCode)}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="单位">
+            <template slot-scope ="scope">
+              <span>{{getDwName(scope.row.items[0].sku.unitCode)}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="items[0].quantity" label="数量">
+              <template slot-scope ="scope">
+                  <span>{{scope.row.items[0].quantity.toFixed(2)}}</span>
+              </template>
+          </el-table-column>
+          <el-table-column prop="items[0].retailPrice" label="价格">
+              <template slot-scope ="scope">
+                  <span>{{scope.row.items[0].retailPrice.toFixed(2)}}</span>
+              </template>
+          </el-table-column>
+          <el-table-column label="客户经理">
+            <template slot-scope ="scope">
+              <span>{{admin}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="total" label="总金额">
+              <template slot-scope ="scope">
+                  <span>{{scope.row.total.toFixed(2)}}</span>
+              </template>
+          </el-table-column>
+        </el-table>
+      </div>
+      <div v-if="paymentInfo != ''" class="payMsg">
+        <div class="payImg">
+          <div>付款识别码： {{paymentInfo.markCode}}</div>
+          <div>
+            <p>付款凭证</p>
+            <div>
+                <img :src="paymentInfo.voucherImage" class="avatar">
+            </div>
+          </div>
+        </div>
+        <!-- <div class="goodMsg">
+          发货信息:
+          <p>已发货：30吨</p>
+          <p>未发货：50吨</p>
+        </div> -->
+      </div>
+    </div>
+    <!-- 底部 -->
+    <div class="orderFooter">
+      <div class="orderFooter-box">
+        <el-button class="orderFooter-btn left" @click="del" v-if="step===1 || step===2">取消订单</el-button>
+        <el-button class="orderFooter-btn" type="primary" @click="confirm" v-if="step===2">确定订单</el-button>
+        <img src="./images/contract.png" alt="" ref='imgfalse' v-show='false'>
+        <a href="" download ref='downfile' v-if="step!==1 && step!==2">
+          <el-button class="orderFooter-btn" type="primary">下载合同</el-button>
+        </a>
+        <!-- <router-link   v-if="step!==1 && step!==2" target="_blank">
+            <el-button  class="orderFooter-btn" type="primary">下载合同</el-button>
+        </router-link> -->
+        <router-link  v-if="step===3 && !paymentStatus && payinfovalue == 0" class="el-button orderFooter-btn el-button--primary" :to="{path: '/payment', query: {id: this.orderid}}" target="_blank">
+          <span>立即付款</span>
+        </router-link>
+        <router-link v-if="step===5 && !paymentStatus && payinfovalue == 1" class="el-button orderFooter-btn el-button--primary" :to="{path: '/payment', query: {id: this.orderid}}"
+          target="_blank">
+          <span>立即付款</span>
+        </router-link>
+        <el-button @click="confirmReceived" class="orderFooter-btn" type="primary" v-if="step===5 && payinfovalue == 0">确定收货</el-button>
+        <el-button @click="confirmReceived" class="orderFooter-btn" type="primary" v-if="step===4 && payinfovalue == 1">确定收货</el-button>
+      </div>
+    </div>
+  </div>
+</section>

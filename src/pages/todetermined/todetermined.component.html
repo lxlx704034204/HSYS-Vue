@@ -1,0 +1,129 @@
+<!-- 待确定 -->
+<section class="todetermined">
+  <!-- 面包屑 -->
+  <el-breadcrumb class="myoderDetail">
+    <el-breadcrumb-item class="myoderDetail-item1">
+      <span>订单管理</span>
+    </el-breadcrumb-item>
+    <el-breadcrumb-item>订单详情</el-breadcrumb-item>
+  </el-breadcrumb>
+
+
+
+
+  <!-- 主体 -->
+  <div class="main">
+    <!-- 订单编号 -->
+    <div class="orderNumber">
+      <div class="orderNumber-title">
+        <span class="num">订单编号：</span>
+        <span>{{number}}</span>
+        <span class="isPayment">待确定</span>
+      </div>
+      <el-steps :active="2" process-status="wait" align-center class="orderNumber-detail">
+        <el-step>
+          <p slot="title" class="step-title active">提交订单信息</p>
+          <p slot="description" class="description">
+            <span>{{orderTime}}</span>
+          </p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title active">平台审核</p>
+          <p slot="description" class="description">
+            <span>{{audittime}}</span>
+          </p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title">客户确定订单</p>
+          <p slot="description" class="description"></p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title">线下转账付账</p>
+          <p slot="description" class="description"></p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title">出库发货</p>
+          <p slot="description" class="description"></p>
+        </el-step>
+        <el-step>
+          <p slot="title" class="step-title">货物签收</p>
+          <p slot="description" class="description"></p>
+        </el-step>
+      </el-steps>
+      <p class="last">
+        请在
+        <span>1小时内</span>确定订单信息，否则订单将自动取消
+      </p>
+    </div>
+    <!-- 付款信息 -->
+    <div class="orderPayment">
+      <ul>
+        <li class="orderPayment-title">
+          <span>付款信息</span>
+          <span>物流信息</span>
+          <span>发票信息</span>
+        </li>
+        <li class="orderPayment-content">
+          <span>付款方式：{{payinfo}}</span>
+          <span>配送方式：{{shipMethod}}</span>
+          <span>发票类型：增值税专用发票</span>
+          <span>结算方式：{{abbtype}}</span>
+          <span>发票抬头：{{paytitle}}</span>
+          <span>应付金额：{{totalmoney}}</span>
+          <span class="order_span"></span>
+          <span>统一社会信用代码：{{bizcode}}</span>
+        </li>
+      </ul>
+    </div>
+    <!-- 供应商 -->
+    <div class="orderSupplier">
+      <h4 class="orderSupplier-title">供应商：山东道恩集团</h4>
+      <div class="orderSupplier-table">
+        <el-table :data="orderTable" class="orderdetails" style="width: 100%;" border>
+          <el-table-column prop="items[0].name" label="产品名称">
+          </el-table-column>
+          <el-table-column label="规格/牌号">
+            <template slot-scope="scope">
+              <span>{{ph[scope.row.items[0].gradeCode]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="place" label="产地">
+            <template slot-scope="scope">
+              <span>{{cd[scope.row.items[0].sku.product.manufacturerCode]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="库别">
+            <template slot-scope="scope">
+              <span>{{io[scope.row.items[0].sku.warehouseCode]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="单位">
+            <template slot-scope="scope">
+              <span>{{dw[scope.row.items[0].sku.unitCode]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="items[0].quantiy" label="数量">
+          </el-table-column>
+          <el-table-column prop="items[0].retailPrice" label="价格">
+          </el-table-column>
+          <el-table-column label="客户经理">
+            <template slot-scope="scope">
+              <span>{{admin}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="total" label="总金额">
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
+    <!-- 底部 -->
+    <div class="orderFooter">
+      <div class="orderFooter-box">
+        <el-button class="orderFooter-btn left">取消订单</el-button>
+        <router-link class="el-button orderFooter-btn el-button--primary" to="">
+          <span @click = "confirm()">确定订单</span>
+        </router-link>
+      </div>
+    </div>
+  </div>
+</section>

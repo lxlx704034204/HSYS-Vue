@@ -1,0 +1,106 @@
+<section class="pleaseconsult">
+	<div class="please">
+		<div class="please_header clearfix inner-1200">
+			<div class="please_heleft">
+				<img src="./images/logo11.png" alt="">
+			</div>
+			<div class="please_heright" @click="toinf()">
+				<el-tabs v-model="activeName">
+					<el-tab-pane name="second">
+						<span slot="label">{{cc.CHANNEL_CODE1}}</span>
+						 <!--@click="info_one()"-->
+					</el-tab-pane>
+					<el-tab-pane name="second">
+						<span slot="label">{{cc.CHANNEL_CODE2}}</span>
+					</el-tab-pane>
+					<el-tab-pane name="third">
+						<span slot="label">{{cc.CHANNEL_CODE3}}</span>
+					</el-tab-pane>
+					<el-tab-pane name="fourth">
+						<span slot="label">{{cc.CHANNEL_CODE4}}</span>
+					</el-tab-pane>
+					<el-tab-pane name="tation">
+						<span slot="label">{{cc.CHANNEL_CODE5}}</span>
+					</el-tab-pane>
+					<el-tab-pane name="center">
+						<span slot="label">{{cc.CHANNEL_CODE6}}</span>
+					</el-tab-pane>
+				</el-tabs>
+			</div>
+		</div>
+	</div>
+
+	<div class="please_content clearfix inner-1200">
+		<div class="please_left">
+			<div class="please_leftTop">
+				<h3>{{title}}</h3>
+				<p>
+					<span>{{createBy}}</span> |
+					<span>{{createDate}}</span>
+				</p>
+			</div>
+
+			<div class="please_leftBtm">
+				<div class="please_leftImg">
+					<img :src="coverImage" alt="">
+				</div>
+				<article>
+					<p class="pas_nei">{{description}}</p>
+				</article>
+			</div>
+
+		</div>
+
+		<div class="please_right">
+			<div class="infor_conrighttop">
+				热点关注
+			</div>
+			<div class="inf_cen" v-for='(news,index) in tlist' :key='index' v-if='index==0' :data='news.id'>
+				<div class="inf_cen1">1</div>
+				<div class="inf_cen2 inf_cen8">
+					<router-link target="_blank" :to="{path:'pleaseconsult',query: {id:news.id}}">{{news.title}}</router-link>
+				</div>
+			</div>
+			<div class="inf_cen7" v-for='(news,index) in tlist' v-if='index<=4&&index!=0' :data='news.id' ref='infid'>
+				<div class="inf_cen4">{{index+1}}</div>
+				<div class="inf_cen5 inf_cen8">
+					<router-link target="_blank" :to="{path:'pleaseconsult',query: {id:news.id}}">{{news.title}}</router-link>
+				</div>
+				<div class="inf_cen6">{{news.createBy}}</div>
+			</div>
+		</div>
+
+		<div class="please_right2">
+			<h4 class="please_rightTop">咨询推荐</h4>
+			<div class="please_rightBtm">
+				<ul v-for='(news,index) in rlist' v-if='index==0' :data='news.id'>
+					<li class="infor_rightBtmli clearfix">
+						<i>1</i>
+						<h4><router-link class="inf_cen8"  target="_blank" :to="{path:'pleaseconsult',query: {id:news.id}}">{{news.title}}</router-link></h4>
+						<span>{{news.description}}</span>
+					</li>
+					<li class="infor_rightLi" v-for='(news,index) in rlist' v-if='index!=0&&index<=9' :data='news.id' ref='infid'>
+						<i>{{index+1}}</i>
+						<p>
+							<router-link class="inf_cen8" target="_blank" :to="{path:'pleaseconsult',query: {id:news.id}}">{{news.title}}</router-link>
+						</p>
+						<span>{{news.createBy}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="please_buttom">
+		<p>
+			<a href="#">销售网络与服务</a> |
+			<a href="#">联系我们</a> |
+			<a href="#">网站地图</a> |
+			<a href="#">法律声明</a> |
+			<a href="#">帮助信息</a>
+		</p>
+		<p>
+			<a href="#">版权所有:道恩集团有限公司 鲁ICP12020172号</a>
+		</p>
+	</div>
+</section>

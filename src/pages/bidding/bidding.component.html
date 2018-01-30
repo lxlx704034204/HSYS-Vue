@@ -1,0 +1,187 @@
+<!-- 发布产品 -->
+<section class="bidding">
+    <!-- 弹出框 -->
+    <!-- <el-dialog title="温馨提示" :visible.sync="isSuccess" width="500px">
+        <span class='dialoging'>请先完善公司信息，等待审核通过才能发布产品</span>
+        <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="tomyfirm" class='tofirmbtn'> 确 定</el-button>
+      </span>
+    </el-dialog> -->
+    <!-- 面包屑 -->
+    <div class="bidding-bread">
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item>
+                <span class="bidding-bread-first">
+          产品管理
+        </span>
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>
+                <span class="bidding-bread-info">{{detailId ? '编辑产品' : '发布产品'}}</span>
+            </el-breadcrumb-item>
+        </el-breadcrumb>
+    </div>
+    <div class="bidding-content">
+        <!-- 基本信息 -->
+        <div class="bidding-title">
+            基本信息
+        </div>
+        <div class="bidding-form">
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                <el-form-item label="产品名称" prop="name">
+                    <el-input v-model="ruleForm.name"></el-input>
+                </el-form-item>
+                <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="产品分类" prop="categoryArr">
+                            <el-cascader :options="options" @active-item-change="handleItemChange" @change="handleChange" v-model="ruleForm.categoryArr" :props="props" class="width-300"></el-cascader>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="规格" prop="spec">
+                            <el-input v-model="ruleForm.spec"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="产地" prop="areaArr">
+                            <el-cascader :options="producingArea" @active-item-change="handleAreaChange" v-model="ruleForm.areaArr" :props="props" class="width-300"></el-cascader>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="最小起订量:" prop="minSale">
+                            <el-input v-model="ruleForm.minSale"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="基本单位" prop="unitCode">
+                            <el-select v-model="ruleForm.unitCode" placeholder="请选择基本单位" style="width:300px">
+                                <el-option v-for='val in unitData' :key="val.dictCode" :label="val.dictName" :value="val.dictCode"></el-option>
+                            </el-select>
+                        </el-form-item>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="5">
+                        <el-form-item label="销售单价" prop="salePrice">
+                            <el-input v-model="ruleForm.salePrice"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="1" class="unit padding-30">元</el-col>
+                    <el-col :span="6">
+                        <el-form-item label="" prop="type">
+                            <el-checkbox v-model="ruleForm.type">价格范围法律声明</el-checkbox>
+                            <!-- <el-checkbox-group v-model="ruleForm.type">
+                          <el-checkbox label="价格范围法律声明" name="type"></el-checkbox>
+                        </el-checkbox-group> -->
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+
+                <el-row v-for="(customerProductIntervals, index) in ruleForm.customerProductIntervals" :key="customerProductIntervals.id" style="padding-bottom: 20px">
+                    <el-col :span="3" class='pt10'>
+                        <!-- <span class="pnameShow">*</span>区间销售价格 -->
+                        <span class="pnameShow"></span>区间销售价格
+                    </el-col>
+                    <el-col :span="3" style="margin-left:-20px;">
+                        <!-- <el-form-item label="" 
+                      :prop="'customerProductIntervals.' + index + '.startNumber'" 
+                      style="margin-left:-100px;"
+                      :rules="[
+                      {required: true, message: '请输入区间销售开始价格', trigger: 'change'},
+                      { validator: checkNumber, trigger: 'change' }
+                      ]"
+                      > -->
+                        <el-form-item label="" :prop="'customerProductIntervals.' + index + '.startNumber'" style="margin-left:-100px;">
+                            <el-input placeholder="" v-model="customerProductIntervals.startNumber" class="width-100" clearable>
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col class="line" :span="2" style="padding:10px 0 0 0px">————</el-col>
+                    <el-col :span="3">
+                        <!-- <el-form-item label="" 
+                      :prop="'customerProductIntervals.' + index + '.endNumber'"
+                      style="margin-left:-100px;"
+                      :rules="[
+                      {required: true, message: '请输入区间销售结束价格', trigger: 'change'},
+                      { validator: checkNumber, trigger: 'change' }
+                      ]"
+                      > -->
+                        <el-form-item label="" :prop="'customerProductIntervals.' + index + '.endNumber'" style="margin-left:-100px;">
+                            <el-input placeholder="" v-model="customerProductIntervals.endNumber" class="width-100" clearable>
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2" class="unit">
+                        吨
+                    </el-col>
+                    <el-col :span="2" class='pt10'>
+                        <!-- <span class="pnameShow">*</span>销售价格 -->
+                        <span class="pnameShow"></span>销售价格
+                    </el-col>
+                    <el-col :span="3">
+                        <!-- <el-form-item label="" 
+                      :prop="'customerProductIntervals.' + index + '.salePrice'"
+                      style="margin-left:-100px;"
+                      :rules="[
+                      {required: true, message: '请输入区间销售价格', trigger: 'change'},
+                      { validator: checkNumber, trigger: 'change' }
+                      ]"
+                      > -->
+                        <el-form-item label="" :prop="'customerProductIntervals.' + index + '.salePrice'" style="margin-left:-100px;">
+                            <el-input placeholder="" v-model="customerProductIntervals.salePrice" class="width-100" clearable>
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="6" class='pt10 pl10 add-line'>
+                        <i class="el-icon-circle-plus-outline" @click="addData(index)"></i>
+                        <i v-if="index>0" class="el-icon-remove-outline" @click="removeData(index)"></i>
+                    </el-col>
+                </el-row>
+
+                <el-form-item label="品牌" prop="brand">
+                    <el-input v-model="ruleForm.brand" class="width-300"></el-input>
+                </el-form-item>
+            </el-form>
+        </div>
+        <div class="bidding-title">
+            产品信息
+        </div>
+        <div class="bidding-upload">
+            <div class="left-labe" prop="name">上传照片</div>
+            <div v-show='isremind' class='licesephot'>请上传至少一张图片</div>
+            <div>
+                <el-upload :action="upLoadUrl" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :limit=5 :on-change="imageChange" :file-list="fileList">
+                    <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible" size="tiny">
+                    <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+            </div>
+        </div>
+        <div class="edit_container">
+            <div class="left-labe">图文详情</div>
+            <!-- <div>
+          <quill-editor v-model="ruleForm.a_content"
+          ref="myQuillEditor"
+          class="editer"
+          :options="ruleForm.editorOption" @ready="onEditorReady($event)">
+          </quill-editor>
+        </div> -->
+            <div>
+                <rich-text-editor :text="ruleForm.a_content" @editorChange="editorChange"> </rich-text-editor>
+            </div>
+            <div v-show='isremind1' class='licesephot1'>请填写图文信息</div>
+        </div>
+
+
+        <div class="operationBtn">
+            <!-- <el-button type="primary" :loading="flagStatus" :disabled="flagStatus" @click="submitForm('ruleForm')">{{detailId ? '保存并新增' : '保存并上架'}}</el-button> -->
+            <el-button type="primary" :loading="flagStatus" :disabled="flagStatus" @click="submitForm('ruleForm')">{{detailId ? '保存并上架' : '保存并上架'}}</el-button>
+            <el-button type="primary" :loading="addFlagStatus" :disabled="addFlagStatus" @click="submitForm2('ruleForm','add')">保存</el-button>
+            <el-button @click="resetForm('ruleForm')">取消</el-button>
+        </div>
+    </div>
+
+</section>

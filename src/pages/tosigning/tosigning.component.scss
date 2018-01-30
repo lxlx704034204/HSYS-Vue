@@ -1,0 +1,245 @@
+.tosigning {
+
+}
+
+.myoderDetail{
+    height: 44px;
+    .myoderDetail-item1{
+        color: #999;
+    }
+    .el-breadcrumb__inner{
+        color: #999 !important;
+    }
+}
+.aaa{
+    background: red;
+}
+
+//主体
+.main{
+    width: 960px;
+    height: auto;
+    border: 1px solid #cccccc;
+    // 订单编号
+    .orderNumber{
+        height: 235px;
+        margin: 0 8px;
+        border-bottom: 1px dashed #ccc;
+        .orderNumber-title{
+            height: 72px;
+            line-height: 72px;
+            margin-bottom: 28px;
+            color: #666;
+            font-size: 14px;
+            .num{
+                margin-left: 10px;
+            }
+            .isPayment{
+                color: #009fe2;
+                margin-left: 40px;
+            }
+        }
+        .orderNumber-detail{
+            width: 80%;
+            height: 70px;
+            margin: 20px auto 27px;
+            .step-title{
+                position: relative;
+                top: -60px;
+                font-size: 14px;
+                color: #666;
+                // font-weight: bold;
+                &.active{
+                    color: #009fe2;
+                }
+            }
+            
+            .description{
+                position: relative;
+                top: -26px;
+                color: #999;
+            }
+        }
+        .last{
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            span{
+                color: #F3A83A;
+            }
+        }
+    }
+    //收货人信息
+    .orderConsignee{
+        border-bottom: 1px dashed #ccc;
+         margin: 0 8px;
+        h4{
+            color: #333;
+            font-size: 14px;
+            margin: 20px 0 13px 12px;
+            font-weight: 600;
+        }
+        p{
+            color: #666;
+            line-height: 29px;
+            margin-left: 12px;
+            font-size: 14px;
+            &.order_remarks{
+                width:400px;
+                word-wrap:break-word;
+                margin-bottom: 18px;
+            }
+        }
+    }
+    // 付款信息
+    .orderPayment{
+        height: 136px;
+        margin: 0 8px;
+        border-bottom: 1px dashed #ccc;
+        li{
+            margin-left: 10px;
+        }
+        .orderPayment-title{
+            margin-top: 6px;
+            line-height: 40px;
+            span{
+                float: left;
+                width: 33.3333333%;
+                font-size: 14px;
+                font-weight: 600;
+                color: #333;
+            }
+        }
+        .orderPayment-content{
+            span{
+                float: left;
+                width: 33.3333333%;
+                font-size: 14px;
+                line-height: 28px;
+                color: #666;
+            }
+        }
+    }
+    //供应商
+    .orderSupplier{
+        height: 410px;
+        border-bottom: 1px solid #eeeeee;
+        // background: red;
+        padding: 0 20px;
+        h4{
+            height: 52px;
+            line-height: 52px;
+            font-size: 14px;
+            color: #333;
+            margin-left: 10px;
+            font-weight: normal;
+            .order_span{
+                margin-left: 30px;
+                .order_see{
+                    margin-left: 26px;
+                    color: #009fe2;
+                    cursor: pointer;
+                }
+            }
+        }
+        .orderSupplier-table{
+            width: 100%;
+            height: 100px;
+        }
+        .orderSupplier-content{
+            width: 372px;
+            height: 226px;
+            float: right;
+            margin-right: 10px;
+            .top{
+                margin-top: 9px;
+                p{
+                    font-size: 16px;
+                    margin-left: 32px;
+                    line-height: 34px;
+                    color: #666;
+                    font-weight: 600;
+                    &.last{
+                        font-size: 12px;
+                        font-weight: normal;
+                        margin-top: 0 ;
+                        border-bottom: 1px solid #cccccc;
+                    }
+                    span{
+                        float: right;
+                        margin-right: 32px;
+                    }
+                    i{
+                        font-style: normal;
+                        font-size: 12px;
+                        color: #666;
+                        margin-left: 6px;
+                    }
+                }
+                .btn{
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-top: 20px;
+                    .btn-left{
+                        margin-left: 32px;
+                        float: left;
+                    }
+                    .btn-right{
+                        color: #f83d46;
+                        float: right;
+                        margin-right: 35px;
+                    }
+                }
+            }
+            
+        }
+    }
+
+    //付款凭证
+    .togoodsPayment{
+        height: 216px;
+        border-bottom: 1px solid #eeeeee;
+        .togoodsPayment-voucher{
+            float: right;
+            width: 337px;
+            height: 190px;
+            margin-top: 27px;
+            .left{
+                font-size: 14px;
+                float: left;
+            }
+            .right{
+                float: right;
+                margin-right: 42px;
+                width: 200px;
+                height: 160px;
+            }
+        }
+    }
+
+    //底部
+    .orderFooter{
+        width: 100%;
+        height: 60px;
+        background: #f8f8f8;
+        margin-bottom: 20px;
+        .orderFooter-box{
+            float: right;
+            .orderFooter-btn{
+                width: 118px;
+                height: 40px;
+                margin-top: 10px;
+                margin-right: 20px;
+                &.left{
+                    color: #009fe2;
+                }
+            }
+        }
+        
+    }
+}
+.has-gutter{
+    tr:nth-child(1){
+      background: #E5E6E6 !important;
+  }
+}
