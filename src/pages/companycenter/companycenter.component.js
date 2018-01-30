@@ -92,8 +92,9 @@ export default {
     },
 
     created() {
+        this.$store.state.headerType = 2;
         let _this = this,
-            name = this.$router.history.current.name;
+        name = this.$router.history.current.name;
         this.menuArr.forEach((element, index) => {
             element.subItem.forEach((ele, indexs) => {
                 if (ele.component == name) {
@@ -107,7 +108,6 @@ export default {
 
     },
     mounted() {
-        // $('.out-type-classification').hide()
         $('.companycenter1').show();
     },
     methods: {

@@ -1,80 +1,71 @@
-.autotrophy{
-
-  .el-table__footer-wrapper, .el-table__header-wrapper,.el-table__header,.el-table__header-wrapper thead tr{
-      height: 50px !important;
-    }
-    
-    .el-table td, .el-table th{
-        padding: 0 !important;
-    }
-
-    .el-table tr:nth-child(even){
-          background-color: #f4f4f4;
-    }
-
-    .sy-tipbox .right .qq{
-      cursor: pointer !important;
-    }
-    
-    .el-col-2 {
-      width: auto;
-      margin-left: 26px;
-      margin-right: 13px;
-      padding-top: 12px;  
+.autotrophy {
+  .el-table__footer-wrapper,
+  .el-table__header-wrapper,
+  .el-table__header,
+  .el-table__header-wrapper thead tr {
+    height: 50px !important;
   }
-  .el-input--small  .el-input__inner{
-      width: 167px;
-      height: 34px;
-      margin-top: 12px;
+  .el-table td,
+  .el-table th {
+    padding: 0 !important;
   }
-  .autoco_input{
+  .el-table tr:nth-child(even) {
+    background-color: #f4f4f4;
+  }
+  .sy-tipbox .right .qq {
+    cursor: pointer !important;
+  }
+  .el-col-2 {
+    width: auto;
+    margin-left: 26px;
+    margin-right: 13px;
+    padding-top: 12px;
+  }
+  .el-input--small .el-input__inner {
+    width: 167px;
+    height: 34px;
+    margin-top: 12px;
+  }
+  .autoco_input {
+    width: 78px !important;
+    .el-input__inner {
       width: 78px !important;
-      .el-input__inner{
-          width: 78px !important; 
-      }
-      .el-input__prefix, .el-input__suffix {
-          height: 17px !important;
-          top: 21px !important;
-      }
+    }
+    .el-input__prefix,
+    .el-input__suffix {
+      height: 17px !important;
+      top: 21px !important;
+    }
   }
-  .el-button--small{
-      float: right;
+  .el-button--small {
+    float: right;
   }
-
-  .rightdiv{
-      margin: 0;
-      margin-right: 6px;
-      float: right !important;
+  .rightdiv {
+    margin: 0;
+    margin-right: 6px;
+    float: right !important;
   }
-  .rightdiv2{
-      float: right;
-      // margin-left: 65px !important;
+  .rightdiv2 {
+    float: right; // margin-left: 65px !important;
   }
-  .mark-num-color{
-      color: #febb00;
+  .mark-num-color {
+    color: #febb00;
   }
-
-  .has-gutter{
-      font-family: "微软雅黑";
-  }
-  // .el-input__icon::after {
+  .has-gutter {
+    font-family: "微软雅黑";
+  } // .el-input__icon::after {
   //     margin-top: -14px !important;
   // }
-
   .cell .el-button {
-      margin-left: 0 !important;
+    margin-left: 0;
+    color: #fff;
+    background-color: #009FE2;
   }
+  .el-table th>.cell {
+    margin-left: 10px;
+  }
+}
 
-  .cell .el-button:hover {
-      color: #fff !important;
-      background: #66b1ff !important;
-      border-color: #66b1ff !important;
-    }
-    .el-table th > .cell{
-      margin-left:10px;
-    }
-  }
-
-  .btn-add-selector{
-      width: 56PX !important;
-  }
+.btn-add-selector {
+  width: 56PX;
+}

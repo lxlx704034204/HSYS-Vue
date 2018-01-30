@@ -67,7 +67,6 @@ export default {
 		this.axios.get("customerproduct/all?size=8&newest=true")
 			.then(function(data) {
 				that.prolist = data.records;
-				console.log(that.prolist,'123')
 				if(!that.prolist || that.prolist.length == 0) {
 					// if(!that.prolist || that.prolist.length() == 0){ //解决报错 1/25
 					that.zging = true;
@@ -148,8 +147,8 @@ export default {
 			$($(".cus_res48")[index]).css("color", "#009FE2");
 //			console.log()
 //			$($(".dyicon")[index]).css('background', "green")
-			console.log($(".dyicon")[index],'鼠标所在的li')
-			console.log($('.dyicon'),'其余li')
+//			console.log($(".dyicon")[index],'鼠标所在的li')
+//			console.log($('.dyicon'),'其余li')
 			this.lieId = id;
 			var lieId = this.lieId;
 			var that = this;

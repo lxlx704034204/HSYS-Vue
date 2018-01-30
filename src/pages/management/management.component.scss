@@ -26,14 +26,14 @@
         text-align: center;
     }
     .el-table thead {
-        align: center;
+        text-align: center;
         background: #E5E6E6;
     }
     .el-table {
         text-align: center;
     }
     table {
-        align: center;
+        text-align: center;
     }
     .mybill-fenye {
         float: right;
@@ -61,7 +61,6 @@
         width: 120px;
         height: 40px;
         background: #009fe2;
-        display: inline-block;
         line-height: 1;
         white-space: nowrap;
         cursor: pointer;

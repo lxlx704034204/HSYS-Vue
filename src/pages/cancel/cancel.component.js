@@ -1,4 +1,3 @@
-import { orderList } from "@/api/api";
 import axios from 'axios';
 
 export default {

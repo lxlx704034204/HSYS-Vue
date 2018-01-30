@@ -9,37 +9,6 @@ Vue.use(Vuex)
 const vuexLocal = new VuexPersistence({
     storage: window.localStorage
 })
-// 应用初始状态
-/*const state = {
-    // 搜索状态
-    searchType:1,
-    user:{},
-    // header Type
-    headerType: 1, // 1表示首页类型的头部， 2表示自营商城头部，3表示登录头部
-    count: 10
-}*/
-
-// 定义所需的 mutations
-/*const mutations = {
-    // 切换选择
-    switchSearchType(state, type){
-        state.searchType = type;
-    },
-    // 切换选择
-    changeUser(state, user) {
-        state.user = user;
-    },
-    // 切换头部
-    switchHeaderType(state, type){
-        state.headerType = type;
-    },
-    INCREMENT(state) {
-        state.count++
-    },
-    DECREMENT(state) {
-        state.count--
-    }
-}*/
 
 // 创建 store 实例
 export default new Vuex.Store({
@@ -51,7 +20,7 @@ export default new Vuex.Store({
         searchType:1,
         user:{},
         // header Type
-        headerType: 1, // 1表示首页类型的头部， 2表示自营商城头部，3表示登录头部
+        headerType: 0, // 1表示首页类型的头部， 2表示自营商城头部，3表示登录头部
         count: 10,
         token: sessionStorage.token,
         title: '',

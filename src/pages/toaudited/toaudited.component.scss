@@ -1,332 +1,318 @@
 .clearfix {
-    content: "";
-    display: block;
-    clear: both;
-    overflow: hidden;
+  content: "";
+  display: block;
+  clear: both;
+  overflow: hidden;
 }
 
-.todetermined {
-    
-    }
-    
-    
-    .myoderDetail{
-        height: 44px;
-        .myoderDetail-item1{
-            color: #999;
-        }
-        .el-breadcrumb__inner{
-            color: #999 !important;
-        }
-    }
-    //圆圈颜色
-    // .el-step__head.is-wait{
-    //     border-color: #999;
-    // }
-    // .el-step__line{
-    //     border-color: #999;
-    // }
-    // .el-step__title.is-wait {
-    //     color: #999;
-    // }
-    
-    
-    
-    //主体
-    .main{
-        width: 960px;
-        height: auto;
-        border: 1px solid #cccccc;
-        // 订单编号
-        .orderNumber{
-            // height: 235px;
-            margin: 0 8px;
-            border-bottom: 1px dashed #ccc;
-            .orderNumber-title{
-                height: 72px;
-                line-height: 72px;
-                margin-bottom: 28px;
-                color: #666;
-                font-size: 14px;
-                .num{
-                    margin-left: 10px;
-                }
-                .isPayment{
-                    color: #009fe2;
-                    margin-left: 40px;
-                }
-            }
-            .orderNumber-detail{
-                width: 80%;
-                height: 70px;
-                margin: 20px auto 27px;
-                .step-title{
-                    position: relative;
-                    top: -60px;
-                    font-size: 14px;
-                    color: #666;
-                    // font-weight: bold;
-                    &.active{
-                        color: #009fe2;
-                    }
-                }
-                
-                .description{
-                    position: relative;
-                    top: -26px;
-                    color: #999;
-                }
-            }
-            .last{
-                text-align: center;
-                color: #999;
-                font-size: 12px;
-                span{
-                    color: #F3A83A;
-                }
-            }
-        }
-        //收货人信息
-        .orderConsignee{
-            border-bottom: 1px dashed #ccc;
-             margin: 0 8px;
-            .orderCon_left{
-                float: left;
-                width: 450px;
-                margin-bottom: 18px;
-                h4{
-                    color: #333;
-                    font-size: 14px;
-                    margin: 20px 0 10px 12px;
-                    font-weight: 600;
-                }
-                p{
-                    color: #666;
-                    line-height: 29px;
-                    margin-left: 12px;
-                    font-size: 14px;
-                }
-            }
-            .orderCon_right{
-                float: left;
-                width: 400px;
-                margin-top: 45px;
-                .order_remarks{
-                    color: #666;
-                    line-height: 29px;
-                    font-size: 14px;
-                    word-wrap:break-word;
-                    span{
-                        color: #666;
-                    }
-                    
-                }
-            }
-            
-        }
-        // 付款信息
-        .orderPayment{
-            height: 136px;
-            margin: 0 8px;
-            border-bottom: 1px dashed #ccc;
-            li{
-                margin-left: 10px;
-            }
-            .orderPayment-title{
-                margin-top: 6px;
-                line-height: 40px;
-                span{
-                    float: left;
-                    width: 33.3333333%;
-                    font-size: 14px;
-                    font-weight: 600;
-                    color: #333;
-                }
-            }
-            .orderPayment-content{
-                span{
-                    float: left;
-                    width: 33.3333333%;
-                    font-size: 14px;
-                    line-height: 28px;
-                    color: #666;
-                }
-                .order_span{
-                    float: left;
-                    width: 33.3333333%;
-                    height: 28px;
-                }
-            }
-        }
-        //供应商
-        .orderSupplier{
-            min-height: 410px;
-            border-bottom: 1px solid #eeeeee;
-            // background: red;
-            padding: 0 20px;
-            h4{
-                height: 52px;
-                line-height: 52px;
-                font-size: 14px;
-                color: #333;
-                margin-left: 10px;
-                font-weight: normal;
-            }
-            .orderSupplier-table{
-                width: 100%;
-                height: 100px;
-            }
-            .orderdetails{
-                width: 100% !important;
-            }
-            .orderSupplier-content{
-                width: 372px;
-                height: 226px;
-                float: right;
-                margin-right: 10px;
-                .top{
-                    margin-top: 10px;
-                    p{
-                        font-size: 16px;
-                        margin-left: 32px;
-                        line-height: 34px;
-                        color: #666;
-                        font-family: '黑体';
-                        /* margin:10px 0; */
-                        padding:0;
-                        &.last{
-                            font-size: 12px;
-                            font-weight: normal;
-                            margin-top: 0 ;
-                            border-bottom: 1px solid #cccccc;
-                        }
-                        span{
-                            float: right;
-                            margin-right: 32px;
-                        }
-                        i{
-                            font-style: normal;
-                            font-size: 12px;
-                            color: #666;
-                            margin-left: 6px;
-                        }
-                    }
-                    .btn{
-                        font-size: 16px;
-                        padding-top: 20px;
-                        border-top:1px solid #ccc;
-                        margin-top: 10px;
-                        .btn-left{
-                            margin-left: 32px;
-                            float: left;
-                        }
-                        .btn-right{
-                            color: #f83d46;
-                            float: right;
-                            margin-right: 35px;
-                        }
-                    }
-                }
-                
-            }
-        }
-        .payMsg {
-            display: flex;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            font-size: 14px;
-            color: #333;
-            .payImg {
-                margin-right: 100px;
-                p {
-                    margin-top: 10px;
-                }
-                img {
-                    width: 500px;
-                    height: 300px;
-                    margin-top: 10px
-                }
-            }
-            .goodMsg {
-                p {
-                    margin-top: 10px;
-                }
-            }
-        }
-        //底部
-        .orderFooter{
-            width: 100%;
-            height: 60px;
-            background: #f8f8f8;
-            .orderFooter-box{
-                float: right;
-                .orderFooter-btn{
-                    width: 118px;
-                    height: 40px;
-                    margin-top: 10px;
-                    margin-right: 20px;
-                    text-decoration: none;
-                    &.left{
-                        color: #009fe2;
-                    }
-                }
-            }
-            
-        }
-        .primaryleft {
-            width: 118px;
-            height: 40px;
-            margin-top: 10px;
-            margin-right: 20px;
-        }
-        //电子合同
-        .el-dialog--center .el-dialog__header {
-          background-color: #fff;
-        }
+.todetermined {}
 
-        .centerTitle {
-            padding: 20px 30px;
-            .auc_xiu {
-                position: absolute;
-                margin-left: 27px;
-                color: #f83d46;
-            }
-            
-            .auc_xiu1 {
-                margin-left: 218px;
-                margin-top: 20px;
-                display: inline-block;
-                .payup {
-                    border: none;
-                    display: inline-block;
-                    line-height: 1;
-                    white-space: nowrap;
-                    cursor: pointer;
-                    color: #fff;
-                    background: #009fe2;
-                    -webkit-appearance: none;
-                    text-align: center;
-                    -webkit-box-sizing: border-box;
-                    box-sizing: border-box;
-                    outline: 0;
-                    margin: 0;
-                    -webkit-transition: .1s;
-                    transition: .1s;
-                    font-weight: 500;
-                    padding: 12px 20px;
-                    font-size: 14px;
-                    border-radius: 4px;
-                }
-            }
-        }
-
-    }
-    .has-gutter{
-        tr:nth-child(1){
-          background: #E5E6E6 !important;
+.myoderDetail {
+  height: 44px;
+  .myoderDetail-item1 {
+    color: #999;
+  }
+  .el-breadcrumb__inner {
+    color: #999 !important;
+  }
+} //圆圈颜色
+// .el-step__head.is-wait{
+//     border-color: #999;
+// }
+// .el-step__line{
+//     border-color: #999;
+// }
+// .el-step__title.is-wait {
+//     color: #999;
+// }
+//主体
+.main {
+  width: 960px;
+  height: auto;
+  border: 1px solid #cccccc; // 订单编号
+  .orderNumber {
+    // height: 235px;
+    margin: 0 8px;
+    border-bottom: 1px dashed #ccc;
+    .orderNumber-title {
+      height: 72px;
+      line-height: 72px;
+      margin-bottom: 28px;
+      color: #666;
+      font-size: 14px;
+      .num {
+        margin-left: 10px;
+      }
+      .isPayment {
+        color: #009fe2;
+        margin-left: 40px;
       }
     }
-    .padbt-20 {
-        padding-bottom: 20px
+    .orderNumber-detail {
+      width: 80%;
+      height: 70px;
+      margin: 20px auto 27px;
+      .step-title {
+        position: relative;
+        top: -60px;
+        font-size: 14px;
+        color: #666; // font-weight: bold;
+        &.active {
+          color: #009fe2;
+        }
+      }
+      .description {
+        position: relative;
+        top: -26px;
+        color: #999;
+      }
     }
-    
+    .last {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      span {
+        color: #F3A83A;
+      }
+    }
+  } //收货人信息
+  .orderConsignee {
+    border-bottom: 1px dashed #ccc;
+    margin: 0 8px;
+    .orderCon_left {
+      float: left;
+      width: 450px;
+      margin-bottom: 18px;
+      h4 {
+        color: #333;
+        font-size: 14px;
+        margin: 20px 0 10px 12px;
+        font-weight: 600;
+      }
+      p {
+        color: #666;
+        line-height: 29px;
+        margin-left: 12px;
+        font-size: 14px;
+      }
+    }
+    .orderCon_right {
+      float: left;
+      width: 400px;
+      margin-top: 45px;
+      .order_remarks {
+        color: #666;
+        line-height: 29px;
+        font-size: 14px;
+        word-wrap: break-word;
+        span {
+          color: #666;
+        }
+      }
+    }
+  } // 付款信息
+  .orderPayment {
+    height: 136px;
+    margin: 0 8px;
+    border-bottom: 1px dashed #ccc;
+    li {
+      margin-left: 10px;
+    }
+    .orderPayment-title {
+      margin-top: 6px;
+      line-height: 40px;
+      span {
+        float: left;
+        width: 33.3333333%;
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+    .orderPayment-content {
+      span {
+        float: left;
+        width: 33.3333333%;
+        font-size: 14px;
+        line-height: 28px;
+        color: #666;
+      }
+      .order_span {
+        float: left;
+        width: 33.3333333%;
+        height: 28px;
+      }
+    }
+  } //供应商
+  .orderSupplier {
+    min-height: 410px;
+    border-bottom: 1px solid #eeeeee; // background: red;
+    padding: 0 20px;
+    h4 {
+      height: 52px;
+      line-height: 52px;
+      font-size: 14px;
+      color: #333;
+      margin-left: 10px;
+      font-weight: normal;
+    }
+    .orderSupplier-table {
+      width: 100%;
+      height: 100px;
+    }
+    .orderdetails {
+      width: 100% !important;
+    }
+    .orderSupplier-content {
+      width: 372px;
+      height: 226px;
+      float: right;
+      margin-right: 10px;
+      .top {
+        margin-top: 10px;
+        p {
+          font-size: 16px;
+          margin-left: 32px;
+          line-height: 34px;
+          color: #666;
+          font-family: '黑体';
+          /* margin:10px 0; */
+          padding: 0;
+          &.last {
+            font-size: 12px;
+            font-weight: normal;
+            margin-top: 0;
+            border-bottom: 1px solid #cccccc;
+          }
+          span {
+            float: right;
+            margin-right: 32px;
+          }
+          i {
+            font-style: normal;
+            font-size: 12px;
+            color: #666;
+            margin-left: 6px;
+          }
+        }
+        .btn {
+          font-size: 16px;
+          padding-top: 20px;
+          border-top: 1px solid #ccc;
+          margin-top: 10px;
+          .btn-left {
+            margin-left: 32px;
+            float: left;
+          }
+          .btn-right {
+            color: #f83d46;
+            float: right;
+            margin-right: 35px;
+          }
+        }
+      }
+    }
+  }
+  .payMsg {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #333;
+    .payImg {
+      margin-right: 100px;
+      p {
+        margin-top: 10px;
+      }
+      img {
+        // width: 500px;
+        height: 300px;
+        margin-top: 10px
+      }
+    }
+    .goodMsg {
+      p {
+        margin-top: 10px;
+      }
+    }
+  } //底部
+  .orderFooter {
+    width: 100%;
+    height: 60px;
+    background: #f8f8f8;
+    .orderFooter-box {
+      float: right;
+      .orderFooter-btn {
+        width: 118px;
+        height: 40px;
+        margin-top: 10px;
+        margin-right: 20px;
+        text-decoration: none;
+        &.left {
+          color: #009fe2;
+        }
+      }
+      .orderFooter-btn:hover {
+        color: #fff;
+        background: #409eff;
+        &.left:hover {
+          color: #409eff;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .primaryleft {
+    width: 118px;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 20px;
+  } //电子合同
+  .el-dialog--center .el-dialog__header {
+    background-color: #fff;
+  }
+  .centerTitle {
+    padding: 20px 30px;
+    .auc_xiu {
+      position: absolute;
+      margin-left: 27px;
+      color: #f83d46;
+    }
+    .auc_xiu1 {
+      margin-left: 218px;
+      margin-top: 20px;
+      display: inline-block;
+      .payup {
+        border: none;
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        color: #fff;
+        background: #009fe2;
+        -webkit-appearance: none;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        outline: 0;
+        margin: 0;
+        -webkit-transition: .1s;
+        transition: .1s;
+        font-weight: 500;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+.has-gutter {
+  tr:nth-child(1) {
+    background: #E5E6E6 !important;
+  }
+}
+
+.padbt-20 {
+  padding-bottom: 20px
+}

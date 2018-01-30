@@ -1,52 +1,20 @@
-.myorder{
-.myorder_btn{
+.myorder {
+  .myorder_btn {
     float: left;
-    height: 36px !important;
-    border-radius:0 4px 4px 0 !important;
-    .el-icon-search{
-        font-size: 20px;
-        margin-top: -4px;
+    height: 36px;
+    border-radius: 0 4px 4px 0;
+    background-color: #009fe2;
+    .el-icon-search {
+      font-size: 20px;
+      margin-top: -4px;
     }
-}
-.myorder_input{
+  }
+  .myorder_input {
     float: left;
     width: 200px;
-    .el-input__inner{
-        height: 36px !important;
-        border-radius: 4px 0 0 4px !important;
+    .el-input__inner {
+      height: 36px;
+      border-radius: 4px 0 0 4px;
     }
-}
-
-// .mybill-table .el-table__body .el-table__row{
-//     height: 68px !important;
-// }
-// .el-table__header{
-//     width: 100% !important;
-// }
-// .el-table__body{
-//     width: 100% !important;
-// }
-// .el-table__body-wrapper{
-//     font-size: 14px;
-// }
-// .has-gutter{
-//     tr:nth-child(1){
-//       background: #E5E6E6 !important;
-//   }
-// }
-
-// .mybill-search .el-button:focus, .el-button:hover {
-//     color: #fff !important;
-//     background: #66b1ff !important;
-//     border-color: #66b1ff !important;
-// }
-
-// .el-table__header-wrapper .el-table__header .has-gutter .is-leaf{
-//     vertical-align: middle !important;
-//     height: 48px !important;
-//     background: #E5E6E6 !important;border: none !important; 
-// }
-// .el-table__body-wrapper .el-table__row td{
-//     border-top: none;
-// }
+  }
 }

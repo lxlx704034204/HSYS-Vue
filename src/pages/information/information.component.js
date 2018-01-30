@@ -48,7 +48,6 @@ export default {
 		var that = this;
 		that.axios.get("dictionary/batch?parentCodes=CHANNEL_CODE")
 		.then(function(re){
-				console.log(re[0].dictionaries)
 				var channelCodeinfo = re[0].dictionaries;
 				if(channelCodeinfo){
 					that.channel = channelCodeinfo;
@@ -199,7 +198,6 @@ export default {
 			this.axios.get("article/info?id=" + pleasedid)
 			.then(function(re){
 					_this.articleContent = re;
-					console.log(re.articleContent);
 					if( re.articleContent != null){
 						_this.cotet = re.articleContent.content;
 					}else{

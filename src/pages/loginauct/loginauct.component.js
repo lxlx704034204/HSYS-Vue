@@ -2,8 +2,6 @@
 import storage from "store2";
 import { mapActions } from "vuex";
 // 引入后台数据
-import { logindata } from '@/api/api';
-
 const setStorage = (data) => {
   storage.set("token", data.token);
   storage.set("userName", data.login.userName);
@@ -43,7 +41,6 @@ export default {
         phone: this.phone
       },
       // 定义数据
-      logindata: [],
       showphone:false,
       isend:false,
     }

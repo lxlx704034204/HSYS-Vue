@@ -241,15 +241,18 @@ export default {
             }
         },
         beforeAvatarUpload(file) {
-            const isJPG = file.type === "image/jpeg";
+            const isJPEG = file.type === "image/jpeg";
+            const isPNG = file.type === "image/png";
+            const isGIF = file.type === "image/gif";
+            const isJPG = file.type === "image/jpg";
             const isLt1M = file.size / 1024 / 1024 < 1;
-            if (!isJPG) {
-                this.$message.error("上传图片只能是 JPG 格式!");
+            if (!isJPEG && !isPNG && !isGIF && !isJPG) {
+                this.$message.error("上传图片只能是 JPG/PNG/GIF/JPEG 格式");
             }
             if (!isLt1M) {
                 this.$message.error("上传图片大小不能超过 1MB!");
             }
-            return isJPG && isLt1M;
+            return (isJPG || isPNG || isJPEG || isGIF) && isLt1M;
         },
         getArea(id = 0) {
             const caches = areaCache[id];

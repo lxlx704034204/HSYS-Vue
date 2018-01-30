@@ -70,11 +70,11 @@ export default {
     font-size: 18px;
 }
 
-.qutaSele  .el-button:focus,.el-button:hover {
+/*.qutaSele  .el-button:focus,.el-button:hover {
     color: #494949;
     border-color: #D8DCE5;
     background-color: #fff;
-}
+}*/
 
 
 /* 我的企业 */

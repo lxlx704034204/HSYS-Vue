@@ -79,6 +79,8 @@ export default  {
       loading:true,
       nowDate:'',
       nowrevers:'',
+      serverTime1:0,
+      serverTime:0,
     }
   },
   created() {
@@ -201,7 +203,17 @@ export default  {
         const endTime = parseInt(new Date(this.endTime).getTime()/1000);
         const startDate =parseInt(new Date(this.startDate).getTime()/1000);
         var nowTime = parseInt(new Date(this.nowDate).getTime()/1000);
-        if(endTime < nowTime){
+        var mytime = parseInt(new Date().getTime()/1000);
+        if(!this.serverTime1){
+          this.serverTime1 = nowTime - mytime; 
+          
+        }
+        if(this.serverTime1 > 0){
+            var lastime =  mytime + this.serverTime1;
+          }else if(this.serverTime1 < 0){
+            var lastime =  mytime + this.serverTime1;
+          }
+        if(endTime < lastime){
           this.time = '00天00小时00分00秒';
           this.disablesub = true;
           this.willtaktime = true;
@@ -209,9 +221,10 @@ export default  {
           this.ontaking = true;
           this.remain = '产品竞价结束',
           clearInterval(this.setime);
+
         }else{
-           if(startDate > nowTime){
-            var tempTime = startDate - nowTime;
+           if(startDate > lastime){
+            var tempTime = startDate - lastime;
             if(tempTime == 0){
               this.willtaking = true;
               this.willtaktime = true;
@@ -219,10 +232,10 @@ export default  {
               this.isuntaking = false;
               this.islogincash();
             }
-          }else if(endTime > nowTime){
+          }else if(endTime > lastime){
             this.willtaktime = true;
             this.isuntaking = false;
-            var tempTime = endTime - nowTime;
+            var tempTime = endTime - lastime;
           }
           if(tempTime > 0){
             var day = parseInt(tempTime / 60 / 60 / 24);
@@ -243,10 +256,8 @@ export default  {
       this.axios.get("bidding/product/hot")
       .then(function(data){
           _this.hotlist = data;
-          console.log(data,'d');
           _this.hotlistid = data.biddingProductId;
           _this.transform(data)
-         console.log(_this.hotlist,'11dfa');
          setInterval(()=>_this.transform(_this.hotlist), 60 * 1000);
       })
       .catch(error => console.log(error))
@@ -258,8 +269,17 @@ export default  {
         item.nowDate  = item.nowDate.replace(re, "/");
         var endDate = new Date(item.endDate).getTime();
         var nowtime = new Date(item.nowDate).getTime();
-        if(endDate > nowtime){
-          var time_distance =  endDate - nowtime;
+        var mytime = parseInt(new Date().getTime()/1000);
+        if(!this.serverTime){
+          this.serverTime = nowtime - mytime;
+        }
+        if(this.serverTime >= 0){
+          var lastime =  mytime + this.serverTime;
+        }else{
+          var lastime =  mytime + this.serverTime;
+        }
+        if(endDate > lastime){
+          var time_distance =  endDate - lastime;
           this.intday = Math.floor(time_distance/86400000);  // 天
           time_distance -= this.intday * 86400000;
           this.inthour = Math.floor(time_distance/3600000);  // 时

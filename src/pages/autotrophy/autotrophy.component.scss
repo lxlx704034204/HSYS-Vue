@@ -4,6 +4,7 @@
   .autotrophy-login-wrap {
     position: fixed;
     top: 0;
+    left: 0;
     background: rgba(0, 0, 0, .5);
     z-index: 100;
     width: 100%;
@@ -145,10 +146,10 @@
       font-size: 14px;
       cursor: pointer;
       .el-button:hover {
-        background: #FFF;
-        border-color: #009FE2;
+        background: #FFF !important;
+        border-color: #009FE2 !important;
         span {
-          color: #009FE2;
+          color: #009FE2 !important;
         }
       }
     }
@@ -211,21 +212,21 @@
   float: right;
   .btn-prev,
   .btn-next {
-    padding: 0 13px !important;
+    padding: 0 13px;
   }
   .el-pager .number,
   .el-pager .more {
-    padding: 0 11px !important;
-    border: 1px solid #e6e6e6 !important;
-    background-color: #fff !important;
+    padding: 0 11px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
   }
   .el-pager .more {
-    border-color: #fff !important;
+    border-color: #fff;
   }
   .el-pager li.active {
-    background-color: #fff !important;
-    color: #009FE2 !important;
-    border-color: #fff !important;
+    background-color: #fff;
+    color: #009FE2;
+    border-color: #fff;
   }
 }
 

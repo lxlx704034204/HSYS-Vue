@@ -19,7 +19,7 @@
 	overflow:hidden; 
 }
 .properties .el-button:focus, .el-button:hover{
-	color: #66B1FF;
+	color: #009FE2;
 }
 
 </style>

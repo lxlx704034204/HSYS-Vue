@@ -111,7 +111,7 @@
     <el-table-column label="分类" align="center">
     	<template slot-scope="scope">
         <!-- <span style="color: #333;margin-left: 20px;">{{scope.row.categoryName}}</span> -->
-        <span>{{scope.row.categoryName}}</span>
+        <span style="margin-left: 20px;">{{scope.row.categoryName}}</span>
       </template>
     </el-table-column>
     <el-table-column label="牌号" align="center">
@@ -124,7 +124,7 @@
       <template slot-scope="scope">
         <!-- <span>{{scope.row.product.manufacturerCode}}</span> -->
         <!-- <span style="margin-left: 20px;">{{cd.filter(v => v.dictCode === scope.row.product.manufacturerCode).length > 0 ? cd.filter(v => v.dictCode === scope.row.product.manufacturerCode)[0].dictName : scope.row.product.manufacturerCode}}</span> -->
-        <span style="padding-left: 10px;">{{cda.filter(v => v.dictCode === scope.row.product.manufacturerCode).length > 0 ? cda.filter(v => v.dictCode === scope.row.product.manufacturerCode)[0].dictName : scope.row.product.manufacturerCode}}</span>
+        <span style="padding-left: 12px;">{{cda.filter(v => v.dictCode === scope.row.product.manufacturerCode).length > 0 ? cda.filter(v => v.dictCode === scope.row.product.manufacturerCode)[0].dictName : scope.row.product.manufacturerCode}}</span>
       </template>
     </el-table-column>
 
@@ -178,8 +178,10 @@
 
     <el-table-column width="220px">
       <template slot-scope="scope">
-        <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row.product.id,$event)" v-if='scope.row.collection == false'>加入自选</span>
-        <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row.product.id,$event)" v-else='scope.row.collection == true'>已加入</span>
+        <!-- <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row.product.id,$event)" v-if='scope.row.collection == false'>加入自选</span>
+        <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row.product.id,$event)" v-else='scope.row.collection == true'>已加入</span> -->
+        <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row)" v-if='!scope.row.collection'>加入自选</span>
+        <span class="btn-add-selector clearfix but-add" @click="selection(scope.row.id,scope.row)" v-else>已加入</span>
 
         <el-tooltip v-if="sale" popper-class="sy-tooltip-custom" size="mini" effect="light" placement="bottom" >
           <div slot="content">

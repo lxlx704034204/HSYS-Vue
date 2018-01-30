@@ -174,7 +174,8 @@
           <div>
             <p>付款凭证</p>
             <div>
-                <img :src="paymentInfo.voucherImage" class="avatar">
+                <img v-if="paymentInfo.voucherImage" :src="paymentInfo.voucherImage" class="avatar">
+                <img v-else src="./images/non_inf.png">
             </div>
           </div>
         </div>
@@ -191,12 +192,9 @@
         <el-button class="orderFooter-btn left" @click="del" v-if="step===1 || step===2">取消订单</el-button>
         <el-button class="orderFooter-btn" type="primary" @click="confirm" v-if="step===2">确定订单</el-button>
         <img src="./images/contract.png" alt="" ref='imgfalse' v-show='false'>
-        <a href="" download ref="downfile" v-if="step!==1 && step!==2">
+        <a href="" download ref="downfile" v-if="step!==1 && step!==2 && step!==7">
           <el-button class="orderFooter-btn" type="primary">下载合同</el-button>
         </a>
-        <!-- <router-link   v-if="step!==1 && step!==2" target="_blank">
-            <el-button  class="orderFooter-btn" type="primary">下载合同</el-button>
-        </router-link> -->
         <router-link  v-if="step===3 && !paymentStatus && payinfovalue == 0" class="el-button orderFooter-btn el-button--primary" :to="{path: '/payment', query: {id: this.orderid}}" target="_blank">
           <span>立即付款</span>
         </router-link>

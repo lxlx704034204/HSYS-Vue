@@ -20,7 +20,6 @@ export default {
             boxStatus: 1,
             name: "",
             isLogin: false, //判断是否登录
-            // token: "",
             needlogin: false,
             needlogins: false,
             activeName: 'second',
@@ -38,17 +37,12 @@ export default {
     },
     created() {
         // 获取热搜数据
-//      if(window.location.href.indexOf('information')!==-1){
-//      	this.axios.get("/word/1").then((res) => {
-//          this.keyWord = res;
-//      	});
-//      }
+        console.log(this.$store.state.headerType);
+     if(this.$store.state.headerType == 1 || this.$store.state.headerType == 2){
         this.axios.get("/word/1").then((res) => {
             this.keyWord = res;
         });
-
-        // this.token = sessionStorage.token;
-
+     }
         var data = storage.get("userName");
         if (data == undefined) {
             this.needlogin = false;
@@ -58,8 +52,8 @@ export default {
             this.needlogin = true;
             this.name = storage.get("userName");
         }
-        //获取用户名 判断登陆状态R
-        // this.username();
+
+     if(this.$store.state.headerType == 5){
         //  企业logo
         if (this.$route.query.userId != undefined) {
             var that = this;
@@ -80,20 +74,19 @@ export default {
                 that.logoUrl = res.logoUrl;
             });
         }
+     }
+      
     },
     computed: {
 
     },
     mounted() {},
     updated(){
-        //获取用户名 判断登陆状态R
-        // this.username();
     },
     methods: {
         logining() {
             this.isLogin = false;
             this.token = storage.get("token");
-            this.username();
         },
         //获取用户名 判断登陆状态R
         // username(){

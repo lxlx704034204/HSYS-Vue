@@ -17,6 +17,9 @@ export default {
             auth5: false,
             auth6: false,
             auth7: false,
+            auth8: false,
+            auth9: false,
+            auth10: false,
             imageUrl: "",
             name: "",
             money: '',
@@ -57,8 +60,11 @@ export default {
                         that.auth3 = true;
                         that.auth4 = false;
                         that.auth5 = false;
-                        that.auth6 = true;
-                        that.auth7 = false;
+                        that.auth6 = false;
+                        that.auth7 = true;
+                        that.auth8 = false;
+                        that.auth9 = false;
+                        that.auth10 = true;
                     } else if (that.per.status == 'SUCCESS') {
                         that.auth = true;
                         that.auth1 = false;
@@ -68,6 +74,9 @@ export default {
                         that.auth5 = false;
                         that.auth6 = true;
                         that.auth7 = false;
+                        that.auth8 = true;
+                        that.auth9 = false;
+                        that.auth10 = false;
                     } else if (that.per.status == 'FAIL') {
                         that.auth = false;
                         that.auth1 = false;
@@ -77,6 +86,9 @@ export default {
                         that.auth5 = false;
                         that.auth6 = true;
                         that.auth7 = false;
+                        that.auth8 = true;
+                        that.auth9 = false;
+                        that.auth10 = false;
                     } else if (that.per.status == 'NOT_AUTHENTICATION') {
                         that.auth = false;
                         that.auth1 = false;
@@ -86,6 +98,9 @@ export default {
                         that.auth5 = false;
                         that.auth6 = true;
                         that.auth7 = false;
+                        that.auth8 = true;
+                        that.auth9 = false;
+                        that.auth10 = false;
                     } else if (that.per.status == 'FROZEN') {
                         that.auth = false;
                         that.auth1 = true;
@@ -95,6 +110,9 @@ export default {
                         that.auth5 = true;
                         that.auth6 = false;
                         that.auth7 = true;
+                        that.auth8 = false;
+                        that.auth9 = true;
+                        that.auth10 = false;
                     }
                 }
             })

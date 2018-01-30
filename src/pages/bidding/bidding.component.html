@@ -133,7 +133,7 @@
         </div>
         <div class="operationBtn">
             <el-button type="primary" :loading="flagStatus" :disabled="flagStatus" @click="submitForm('ruleForm')">{{detailId ? '保存并上架' : '保存并上架'}}</el-button>
-            <el-button type="primary" :loading="addFlagStatus" :disabled="addFlagStatus" @click="submitForm('ruleForm','add')">保存</el-button>
+            <el-button type="primary" :loading="addFlagStatus" :disabled="addFlagStatus" @click="submitForm2('ruleForm','add')">保存</el-button>
             <el-button @click="resetForm('ruleForm')">取消</el-button>
         </div>
     </div>

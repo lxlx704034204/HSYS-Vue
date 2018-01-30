@@ -1,6 +1,5 @@
-import $ from 'jquery'
-import axios from 'axios';
-// import { addProduct } from "@/api/api";
+//import $ from 'jquery'
+//import axios from 'axios';
 export default {
     name: 'order',
     components: {},

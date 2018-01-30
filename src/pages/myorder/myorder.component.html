@@ -1,70 +1,71 @@
 <section class="myorder">
-    <div>
-        <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/' }">订单管理</el-breadcrumb-item>
-            <el-breadcrumb-item>我的订单</el-breadcrumb-item>
-        </el-breadcrumb>
-        <!-- //日期搜索 -->
-        <div class="mybill-search clearfix">
-            <!-- <el-select class="myorder_input" v-model="value" filterable remote reserve-keyword placeholder="请输入订单号码">
+  <div>
+    <el-breadcrumb separator="/">
+      <el-breadcrumb-item :to="{ path: '/' }">订单管理</el-breadcrumb-item>
+      <el-breadcrumb-item>我的订单</el-breadcrumb-item>
+    </el-breadcrumb>
+    <!-- //日期搜索 -->
+    <div class="mybill-search clearfix">
+      <!-- <el-select class="myorder_input" v-model="value" filterable remote reserve-keyword placeholder="请输入订单号码">
         <el-option v-for="item in option" :key="item.value" :label="item.label" :value="item.value">
         </el-option>
       </el-select> -->
-            <el-input placeholder="请输入订单号码" v-model.trim="value" class="myorder_input"></el-input>
-            <el-button class="myorder_btn" style="background: #009FE2;" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
-        </div>
-        <div class="mybill-table">
-            <el-table :data="orderList" border style="width: 100%">
-                <!--   查看订单url拼接id -->
-                <el-table-column prop="orderCode" label="订单编号" class="table" width="110">
-                    <template slot-scope="scope">
-			                <span @click='details(scope.row)' class="detail-span">{{scope.row.orderCode}}</span>
-			              </template>
-                </el-table-column>
-                <el-table-column label="创建日期" width="105">
-                	<template slot-scope="scope">
-			                <span style="width: 80px;display: inline-block;">{{scope.row.createDate}}</span>
-			            </template>
-                </el-table-column>
-                <el-table-column label="牌号">
-                    <template slot-scope="scope">
-              <span>{{getPhName(scope.row.items[0].gradeCode)}}</span>
-            </template>
-                </el-table-column>
-                <el-table-column prop="total" label="实付金额">
-                    <template slot-scope="scope">
-                <span>{{scope.row.total.toFixed(2)}}</span>
-              </template>
-                </el-table-column>
-                <el-table-column label="付款状态">
-                    <template slot-scope="scope">
+      <el-input placeholder="请输入订单号码" v-model.trim="value" class="myorder_input"></el-input>
+      <el-button class="myorder_btn" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
+    </div>
+    <div class="mybill-table">
+      <el-table :data="orderList" border style="width: 100%">
+        <!--   查看订单url拼接id -->
+        <el-table-column prop="orderCode" label="订单编号" class="table" width="110">
+          <template slot-scope="scope">
+            <span @click='details(scope.row)' class="detail-span">{{scope.row.orderCode}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="创建日期" width="103">
+          <template slot-scope="scope">
+            <span>{{scope.row.createDate}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="牌号" width="105">
+          <template slot-scope="scope">
+            <span>{{getPhName(scope.row.items[0].gradeCode)}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="total" label="实付金额">
+          <template slot-scope="scope">
+            <span>{{scope.row.total.toFixed(2)}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="付款状态">
+          <template slot-scope="scope">
             <span v-if="scope.row.paymentStatus  == 'NO'">未付款</span>
             <span v-else>已付款</span>
           </template>
-                </el-table-column>
-                <el-table-column prop="orderStatus.desc" label="订单状态">
-                </el-table-column>
-                <el-table-column prop="paymentMethod.desc" label="付款方式">
-                </el-table-column>
-                <el-table-column prop="shippingMethod.desc" label="配送方式">
-                </el-table-column>
-                <el-table-column prop="orderType.desc" label="订单类型">
-                </el-table-column>
-                <el-table-column prop="updateDate" label="更新日期" width="100">
-                </el-table-column>
-            </el-table>
+        </el-table-column>
+        <el-table-column prop="orderStatus.desc" label="订单状态">
+        </el-table-column>
+        <el-table-column prop="paymentMethod.desc" label="付款方式">
+        </el-table-column>
+        <el-table-column prop="shippingMethod.desc" label="配送方式">
+        </el-table-column>
+        <el-table-column prop="orderType.desc" label="订单类型">
+        </el-table-column>
+        <el-table-column prop="updateDate" label="更新日期" width="103">
+        </el-table-column>
+      </el-table>
 
-        </div>
-        <div class="pagebox clearfix">
-            <div style="height: 30px;"></div>
-            <!-- 翻页效果 -->
-            <div class="sy-pagination">
-                <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot" :total="total">
-                    <slot>
-                        <button class="btn-next">确定</button>
-                    </slot>
-                </el-pagination>
-            </div>
-        </div>
     </div>
+    <div class="pagebox clearfix">
+      <div style="height: 30px;"></div>
+      <!-- 翻页效果 -->
+      <div class="sy-pagination">
+        <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot"
+          :total="total">
+          <slot>
+            <button class="btn-next">确定</button>
+          </slot>
+        </el-pagination>
+      </div>
+    </div>
+  </div>
 </section>

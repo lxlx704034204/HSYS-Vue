@@ -98,8 +98,8 @@ export default {
             if (this.pwd1 == "") {
                 this.phone2 = "您的新密码不能为空";
                 this.phones2 = true;
-            } else if (this.pwd1.length < 4 || this.pwd1.length > 15) {
-                this.phone2 = "请设置4到15位长度密码";
+            } else if (this.pwd1.length < 6 || this.pwd1.length > 15) {
+                this.phone2 = "请设置6到15位长度密码";
                 this.phones2 = true;
             } else {
                 this.phone2 = "";

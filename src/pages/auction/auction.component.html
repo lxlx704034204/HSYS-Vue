@@ -153,7 +153,7 @@
    			</el-table-column>
    			<el-table-column  label="剩余时间" prop='updateStr'>
    			</el-table-column>
-   			<el-table-column prop="categoryName" label="" >
+   			<el-table-column prop="categoryName" label="">
      			<template slot-scope="scope" class='bidbtn'>
 					<div>
 						<el-button size="small" type="primary" @click="getRowlist(scope.row,1)" v-show='scope.row.biddingStatus.value==2'>竞拍中</el-button>

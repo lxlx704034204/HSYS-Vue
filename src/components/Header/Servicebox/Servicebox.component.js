@@ -89,7 +89,7 @@ export default {
     }
   },
   created() {
-    this.newcustome();
+    
     this.io = this.$util.getCodeMap("KUBE");
     this.cd = this.$util.getCodeMap("PRODUCINGAREA");
     this.financing = this.$util.getCodeMap("FINANCING");
@@ -100,16 +100,7 @@ export default {
       json[v.dictCode] = v.dictName
     })
     this.masterjson = json; // 主营产品
-
-    //      console.log(this.masterjson,'master_product');
-    this.axios.get("product/category").then((res) => {
-      this.sele = res;
-    });
-    var test = window.location.href;
     // 获取热搜数据
-    this.axios.get("/word/1").then((res) => {
-      this.keyWord = res;
-    });
   },
   watch: {
     srbox() {
@@ -117,14 +108,18 @@ export default {
     },
   },
   mounted() {
-    //  let _this = this
-    //  $(".el-select-dropdown ul li").on("mouseover", function () {
-    //    clearTimeout(_this.timer)
-    //    _this.isFindShow = true;
-    //  })
-
   },
   methods: {
+    chosecategory(){
+      this.axios.get("product/category").then((res) => {
+        this.sele = res;
+      });
+    },
+    hotsearch(){
+      this.axios.get("/word/1").then((res) => {
+        this.keyWord = res;
+      });
+    },
     newcustome() {
       var that = this;
       this.axios.get("customer/newcomer/6")
@@ -257,14 +252,16 @@ export default {
     switchBox(num) {
       // $('.el-select-dropdown').hide()
       if (num == 1) {
+        this.hotsearch();
+        this.chosecategory();
         this.show_1 = true,
-          this.show_2 = false,
-          this.show_3 = true,
-          this.show_5 = true,
-          this.show_6 = false,
-          this.show_4 = false,
-          this.show_7 = true,
-          this.show_8 = false
+        this.show_2 = false,
+        this.show_3 = true,
+        this.show_5 = true,
+        this.show_6 = false,
+        this.show_4 = false,
+        this.show_7 = true,
+        this.show_8 = false
       } else if (num == 2) {
         this.show_1 = false,
           this.show_2 = true,
@@ -276,14 +273,15 @@ export default {
           this.show_8 = false
 
       } else if (num == 3) {
+        this.newcustome();
         this.show_1 = false,
-          this.show_2 = true
+        this.show_2 = true
         this.show_3 = true,
-          this.show_4 = false,
-          this.show_5 = false,
-          this.show_6 = true,
-          this.show_7 = true,
-          this.show_8 = false
+        this.show_4 = false,
+        this.show_5 = false,
+        this.show_6 = true,
+        this.show_7 = true,
+        this.show_8 = false
 
       } else if (num == 4) {
         this.show_1 = false,

@@ -7,7 +7,7 @@
       <div class="apply-form">
         <el-form :model="ruleForm" ref="ruleForm" label-width="100px" class="demo-ruleForm">
 				  <el-form-item label="融资额度" prop="financingCode">
-				    <el-select v-model="ruleForm.financingCode" placeholder="请选择" name='financingCode'>
+				    <el-select id="edu" v-model="ruleForm.financingCode" placeholder="请选择" name='financingCode'>
 				       <el-option v-for="item in financing" :key="item.dictCode" :label="item.dictName" :value="item.dictCode" class="ress"></el-option>
 				     
 				    </el-select>

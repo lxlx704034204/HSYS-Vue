@@ -68,6 +68,9 @@ export default {
       // 排序
       updateOrder: "",
       priceOrder: "",
+      
+      purchaseid: '',//采购id
+      selfid: '',//自选id
     }
   },
   created() {
@@ -463,13 +466,17 @@ export default {
     //向订单传递信息
     logining() {
       this.isLogin = false;
-      this.token = storage.get("token")
+      this.token = storage.get("token");
+      if (this.purchaseid != '') {
+        this.$router.push({ path: '/order', query: { id: this.purchaseid } });
+      }
     },
     getRowlist(row) {
       //判断登陆状态
       var that = this;
       var token = storage.get("token");
       var userId = storage.get("id");
+      this.purchaseid = row.id;
       if (!token || token == "") {
         this.isLogin = true;
         return;
@@ -509,23 +516,41 @@ export default {
     //   }
     // },
 
-    selection(id, rid, event) {
+    // selection(id, rid, event) {
+    //   var that = this;
+    //   var even = $(event.currentTarget);
+    //   var roid = id;
+    //   var sele = {
+    //     skuId: roid
+    //   }
+    //   var sel = JSON.stringify(sele);
+
+
+    //   this.axios.post("product/collection", sele).then((res) => {
+    //     that.$alert(res || "已加入", '提示', {
+    //       confirmButtonText: '确定',
+    //     })
+    //     this._ajax();
+    //   })
+    // }
+
+    selection(a, row) {
+      var data = {
+        skuId: a,
+      };
+      //BUG修复版本
+      //判断登陆状态
       var that = this;
-      var even = $(event.currentTarget);
-      var roid = id;
-      var sele = {
-        skuId: roid
+      var token = storage.get("token");
+      if (!token || token == "") {
+        this.isLogin = true;
+        return;
       }
-      var sel = JSON.stringify(sele);
-
-
-      this.axios.post("product/collection", sele).then((res) => {
-        that.$alert(res || "已加入", '提示', {
-          confirmButtonText: '确定',
-        })
-        this._ajax();
-      })
-    }
+      this.axios.post("product/collection", data).then((res) => {
+        row.collection = true;
+      });
+    },
+    
   }
 
 }

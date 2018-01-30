@@ -12,9 +12,7 @@ export default {
 
     return {
       token: '',
-      companyList: [], // 公司
       banner: [],// 轮播
-      expertList: [], //专家
       show: false,
       current: 1,
       total: 1,
@@ -37,10 +35,11 @@ export default {
       perds: [],
       join: "",
       echartData:[],
-      companys:[],
       scale:[],
 			finan_down: 'first',
       isLogin: false, //判断是否登录
+      purchaseid: '',//采购id
+      selfid: '',//自选id
     }
   },
   computed: {
@@ -49,8 +48,6 @@ export default {
 
   created() {
     this.$store.state.headerType = 1;
-    $('.companycenter1').hide()
-    this.company();
     var that = this;
     const kubeinfo = this.$util.getCodeMap("KUBE");
     if(!kubeinfo){
@@ -252,55 +249,28 @@ export default {
       this.axios.post("product/collection", data).then((res) => {
         row.collection = true;
       });
-      // this.axios.post("product/collection", data).then((res) => {
-      //   row.collection = true;
-      // }, (res) => {
-      //   this.$router.push("/login");
-      // });
     },
-    //最新公司
-     company(){
-      var that = this;
-      this.axios.get("customer/newcomer/4").then((res) => {
-        that.per = res.map(item => {
-          item.address = (item.attributes || []).reduce((sum, attr) => {
-            if (sum) {
-                return sum;
-            }
-            return attr.address;
-          }, "");
-          item.scale = (item.attributes || []).reduce((sum, attr) => {
-            if (sum) {
-                return sum;
-            }
-            return attr.scale;
-          }, "");
-
-          item.industry = (item.attributes || []).reduce((sum, attr) => {
-            if (sum) {
-                return sum;
-            }
-            return attr.industry;
-          }, "");
-          return item;
-        });
-      });
-    },
-    //向订单传递信息
+    //向订单传递信息,登录成功后
     logining() {
       this.isLogin = false;
       this.token = storage.get("token");
       // this.ids = storage.get("id");
+      if(this.purchaseid != ''){
+        this.$router.push({ path: '/order', query: { id: this.purchaseid } });
+      }
+      if (this.selfid != ''){
+        this.$router.push({ path: '/home'});
+      }
     },
     getRowlist(row) {
       //判断登陆状态
       var that = this;
       var token = storage.get("token");
       var userId = storage.get("id");
+      this.purchaseid = row.id;
       // let customer = this.$store.state.customer;
       // console.log(this.$store,"66666")
       if (!token || token == "") {
-        // this.$router.push('/login');
         this.isLogin = true;
         return;
       } 

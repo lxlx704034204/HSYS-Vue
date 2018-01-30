@@ -2,28 +2,27 @@
 	.el-table tr:nth-child(even) {
 	    background-color: #f4f4f4;
 	}
-	.cell{
+	.autotro_list .cell{
 		position: relative;
 		.el-button--small{
 			width: 91px;
 	    	height: 30px;
-	    	background: #009EF2;
-	    	/* position: absolute;
-	    	right: 10px; */
+	    	background: #009EF2!important;
+	    	color:#fff!important;
 		}
-		.el-button:hover{
-			color:#fff;
-			background: #009FE2;
+		.categoryName .el-button:hover{
+			color:#fff!important;
+			background: #009FE2!important;
 		}
 		.el-button+.el-button{
 			margin-left: 0px;
 		}
 	}
-	.el-button--primary.is-disabled, .el-button--primary.is-disabled:active, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:hover{
+	.autotro_list .el-button--primary.is-disabled, .el-button--primary.is-disabled:active, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:hover{
 		background-color:#a0cfff!important;
 	}
 	.auction-box .el-button:focus, .el-button:hover{
 		background: #FFF;
-		color: #66B1FF;
+		color: #009FE2;
 	}
 } 

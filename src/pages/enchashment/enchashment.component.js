@@ -43,7 +43,9 @@ export default {
   	//  	验证手机号码部分
     sendcode() {
     	console.log(this.needMoy);
-    	if(this.needMoy <= this.avaliableAmount){
+       var g = /^[1-9]*[1-9][0-9]*$/;  
+       var money =  g.test(this.needMoy); 
+    	if(this.needMoy <= this.avaliableAmount && money ){
     		var that = this;
     		that.axios.post("msg/sendVerificationCode",{
     			bizType: "OTHER",
@@ -81,15 +83,19 @@ export default {
        var g = /^[1-9]*[1-9][0-9]*$/;  
        var money =  g.test(this.needMoy); 
        if(money){
-        this.notices = '';
-       }else{
+        if(this.needMoy > this.avaliableAmount){
           this.notices = '请输入正确提现金额';
-       }
-       if(this.needMoy == ''){
-           this.notices = '请输入提现金额';
-       }else if(this.needMoy > this.avaliableAmount){
-         this.notices = '请输入正确提现金额';
+        }else{
+          this.notices = '';
         }
+       }else{
+            if(this.needMoy == ''){
+              this.notices = '请输入提现金额';
+            }else{
+              this.notices = '请输入整数金额';
+
+            }
+       }
       
 		},
     // 申请提现

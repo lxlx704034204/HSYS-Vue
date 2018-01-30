@@ -7,17 +7,17 @@
         <div class="inner-box">
 
             <div class="find-left .clearfix:after">
-                <div @mouseover="switchBox(1)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="1"}'>
+                <div @mouseenter="switchBox(1)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="1"}'>
                     <img src="../../../assets/img/header/icon-pro.png" class="icon-chart icon-product" v-if="show_1">
                     <img src="../../../assets/img/header/findproduct_2.png" alt="" class="icon-chart icon-product" v-if="show_2">
                     <span class="lookfor">找产品</span>
                 </div>
-                <div @mouseover="switchBox(2)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="2"}'>
+                <div @mouseenter="switchBox(2)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="2"}'>
                     <img src="../../../assets/img/header/icon-mon.png" alt="" v-show="show_3" class="icon-chart icon-money">
                     <img src="../../../assets/img/header/findmoney_2.png" alt="" v-show="show_4" class="icon-chart icon-money">
                     <span class="lookfor">找资金</span>
                 </div>
-                <div @mouseover="switchBox(3)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="3"}'>
+                <div @mouseenter="switchBox(3)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="3"}'>
                     <img src="../../../assets/img/header/icon-cust.png" alt="" v-show="show_5" class="icon-chart icon-customer">
                     <img src="../../../assets/img/header/findcourse_2.png" alt="" v-show="show_6" class="icon-chart icon-customer">
                     <span class="lookfor">找客户</span>
@@ -47,15 +47,6 @@
                                         {{item.keyWord}}
                                     </router-link>
                                 </ul>
-                                <!-- <router-link :to='{path: "/autotrophy", query: {name: "7050H"}}' class="item">
-                                    7050H
-                                </router-link>
-                                <router-link :to='{path: "/autotrophy", query: {name: "2426H"}}' class="item">
-                                    2426H
-                                </router-link>
-                                <router-link :to='{path: "/autotrophy", query: {name: "L5E89"}}' class="item">
-                                    L5E89
-                                </router-link> -->
                             </div>
                         </div>
                         <el-form :model="ruleForm" :rules="rules" ref="ruleForm">

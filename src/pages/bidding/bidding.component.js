@@ -248,7 +248,6 @@ export default {
                         });
                     } else {
                         this.releasePro(obj).then(res => {
-                            alert(222)
                             if (obj.images != "") {
                                 this.isremind = false;
                             } else {

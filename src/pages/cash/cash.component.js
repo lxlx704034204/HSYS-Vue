@@ -32,7 +32,7 @@ export default {
     }
     this.residue();
     this.cashmoney = this.$store.state.cash;
-    console.log(this.cashmoney );
+    this.cashForm.money = this.$store.state.cash;
   },
   computed: {
 
@@ -54,14 +54,7 @@ export default {
     },
     // 获取验证码
     voidcodes(){
-      console.log(this.phone);
-      if(this.cashForm.money == ''){
-          this.remind = '请输入正确保证金金额'
-      }
-      if(this.cashForm.money > this.havemoney){
-          this.remind = '账户余额不足'
-      }else {
-         var that = this;
+        var that = this;
         this.axios.post("msg/sendVerificationCode", {
           bizType: "OTHER",
           phones: [that.phone],
@@ -70,7 +63,6 @@ export default {
             that.disabled = true;
             that.timer();
         })
-      }
       
     },
     timer() {
@@ -91,26 +83,6 @@ export default {
         
       }
     },
-    howmoney(){
-      var g = /^[1-9]*[1-9][0-9]*$/; 
-      var money =  g.test(this.cashForm.money); 
-      if(money){
-        if(this.cashForm.money < this.cashmoney){
-           this.remind = '请支付大于保证金的金额';
-           $(this.$refs.inputs.$refs.input).css('border-color','red');
-        }else  if(this.cashForm.money > this.havemoney){
-           this.remind = '账户余额不足请充值';
-           $(this.$refs.inputs.$refs.input).css('border-color','red');
-        }else {
-           this.remind = '';
-           $(this.$refs.inputs.$refs.input).css('border-color','#d8dce5');
-        }
-      }else{
-           this.remind = '保证金的金额为整数';
-      }
-      
-
-    },
     changecode(){
       if(this.voidcode == ''){
         this.remind2 = '请输入验证码';
@@ -120,9 +92,7 @@ export default {
     },
     topay(){
       var that = this;
-      if(that.cashForm.money == ''){
-        that.remind = '请支付保证金'
-      }else if(that.voidcode == ''){
+      if(that.voidcode == ''){
         that.remind2 = '请输入验证码'
       }else{
          this.axios.post("bidding/deposit/add", {

@@ -23,4 +23,8 @@
 .cash .el-form-item__error{
 	left: 64px;
 }
+.cash .cash-money .aucti_input input{
+	background: #fff;
+	color: #333;
+}
 </style>

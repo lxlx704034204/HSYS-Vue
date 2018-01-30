@@ -1,6 +1,3 @@
-
-import axios from 'axios';
-
 export default {
   name: 'todetermined',
   components: {},

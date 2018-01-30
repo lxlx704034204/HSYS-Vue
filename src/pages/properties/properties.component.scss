@@ -1,4 +1,7 @@
 .properties {
+    .el-button:focus, .el-button:hover{
+        border-color: #009FE2;
+    }
     min-height: 900px;
     margin-top: 11px!important;
     .proper-box{
@@ -50,6 +53,7 @@
         color: #009ee1;
         font-size: 14px;
         cursor: pointer;
+        
       }
       .all-item {
         color: #666;

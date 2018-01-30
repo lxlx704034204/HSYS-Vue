@@ -53,13 +53,13 @@ export default  {
       phjson:[],
       iojson:[],
       cdjson:[],
-      flag : false,
       cds:[],
       ficatLen:11,
       ctLen:11,
       typeLen:11,
       categorya:[],
       nowDate:'',
+      serviceTime:0
     }
   },
   created() {
@@ -92,16 +92,6 @@ export default  {
     this.comList();
   },
   mounted () {
-    let time = setInterval(()=>{ 
-    if(this.$route.path == '/auction'){
-       if(this.flag == true){
-          clearInterval(time)
-       }
-      this.transform();
-      }else{
-        return;
-      }
-    },1000)
   },
   methods: {
 
@@ -111,6 +101,8 @@ export default  {
       this.axios.get( "product/category")
       .then(function(data){
            that.categorya = data;
+           console.log(data,'da');
+           // storage.set("categorya", value);
            that.category = data.slice(0, that.typeLen);
       })
       .catch(error => console.log(error))
@@ -227,7 +219,7 @@ export default  {
 
     },
 
-    //公用数据查询
+    //公用数据查询  
     comList(){
       var _this = this;
       this.axios.get( "bidding/product/list?&current="+ this.pageNo + '&size=10' + '&categoryId=' + this.categoryId + "&manufacturerCode=" + this.manufacturerCode + "&warehouseCode=" + this.warehouseCode +'&biddingStatus=' + this.biddstatu + '&nameOrSkuCode=' +  this.keyword)
@@ -239,7 +231,7 @@ export default  {
             _this.pageSize = data.size;
             const { records = [], pages = 1 } = data || {};
             _this.biddlist = _this.transform(records);
-            setInterval(()=>_this.biddlist = _this.transform(records),  1000);
+            setInterval(()=>_this.biddlist = _this.transform(_this.biddlist),  1000);
       })
       .catch(error => console.log(error))
     },
@@ -249,24 +241,33 @@ export default  {
         var re = new RegExp("-", "g"); 
         item.endDate  = item.endDate.replace(re, "/");
         item.startDate  = item.startDate.replace(re, "/");
+        item.nowDate  = item.nowDate.replace(re, "/");
         var endDate = parseInt(new Date(item.endDate).getTime()/1000)  ;
         var startDate =parseInt(new Date(item.startDate).getTime()/1000)  ;
         var nowtime = parseInt(new Date(item.nowDate).getTime()/1000);
+        var mytime = parseInt(new Date().getTime()/1000);
 
-        if(startDate >= nowtime){
-          var time_distance = startDate - nowtime;  // 未开始
-          if(time_distance == 0 && nowtime < endDate){
+        if(!this.serviceTime){
+          this.serviceTime = nowtime - mytime;
+        }
+        if(this.serviceTime >= 0){
+          var lastime =  mytime + this.serviceTime;
+        }else{
+          var lastime =  mytime + this.serviceTime;
+        }
+        if(startDate >= lastime){
+          var time_distance = startDate - lastime;  // 未开始
+          if(time_distance == 0 && lastime < endDate){
             item.biddingStatus.value = 2;
           }
-        }else if(endDate >= nowtime){
-          var time_distance =  endDate - nowtime;   //已开始
+        }else if(endDate >= lastime){
+          var time_distance =  endDate - lastime;   //已开始
             if(time_distance == 0){
               item.biddingStatus.value = 0;
             }
-        }else if(endDate < nowtime){
+        }else if(endDate < lastime){
            var time_distance = 0;
         }
-        
         if(time_distance <=0){
           item.updateStr = '00天00时00分';
         }else if(time_distance <= 60 && time_distance >= 0){

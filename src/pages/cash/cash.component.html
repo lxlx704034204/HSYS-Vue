@@ -11,9 +11,8 @@
 			<div class="cash-second">
 				<div class="cash-money clearfixed">
 					<el-form-item label="缴纳保证金金额" prop="money" class='labemoney'>
-						<el-input placeholder="" class='aucti_input'  v-model='cashForm.money' @blur='howmoney' ref='inputs'></el-input> <span class="minmoney">本次竞拍保证金最少{{cashmoney}}元</span>
+						<el-input placeholder="" class='aucti_input'  v-model='cashForm.money' ref='inputs' disabled></el-input> <span class="minmoney">本次竞拍保证金最少{{cashmoney}}元</span>
 					</el-form-item>
-					<div class='remind'>{{remind}}</div>
 				</div>
 				<div class="cash-phone">
 					手机号码 : {{phone}}

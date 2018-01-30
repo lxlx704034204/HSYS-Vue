@@ -30,7 +30,7 @@ const logout = () => {
 
 // axios 配置
 axios.defaults.timeout = 10000;
-//    axios.defaults.baseURL = 'http://192.168.5.123:8888/suyun-api/api/';
+   // axios.defaults.baseURL = 'http://192.168.5.123:8888/suyun-api/api/';
 axios.defaults.baseURL = 'http://39.106.136.226:8888/suyun-api/api/';
 // http request 拦截器
 axios.interceptors.request.use(

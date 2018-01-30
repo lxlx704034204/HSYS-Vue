@@ -1,5 +1,3 @@
-// import { mystafftable } from "@/api/api";
-
 export default {
     name: 'mystaff',
     components: {},
@@ -70,7 +68,7 @@ export default {
 
         _mystafftable() {
             var that = this;
-            this.axios.get("user/all?current=" + that.pageNum + '&size=5').then(function(data) {
+            this.axios.get("user/all?current=" + that.pageNum + '&size=6').then(function(data) {
                     console.log(data, 'data');
                     that.mystafftable = data.records;
                     that.pageNum = data.current;

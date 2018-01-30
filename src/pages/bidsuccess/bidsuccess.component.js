@@ -126,6 +126,7 @@ export default {
           that.status = data.biddingStatus.desc;
           if(data.biddingStatus.value == '2'){
             that.success = true;
+            
           }else{
             that.success = false;
           }

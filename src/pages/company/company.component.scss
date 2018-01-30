@@ -127,6 +127,10 @@
                               line-height: 22px;
                               font-size: 12px;
                               color: #333333;
+                              width: 194px;
+                              overflow: hidden;
+                              text-overflow: ellipsis;
+                              white-space: nowrap;
                           }
                           p:last-child{
                               margin-top: 10px;
@@ -140,13 +144,6 @@
                                   float: right;
                                   margin-right: 15px;
                               }
-                          }
-                          .p{
-                              width: 206px;
-                              font-size: 12px;
-                              white-space: nowrap;  
-                              text-overflow:ellipsis; 
-                              overflow:hidden;
                           }
                       }
                   }

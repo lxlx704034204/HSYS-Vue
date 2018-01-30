@@ -15,7 +15,7 @@
                         <span v-if="!!(this.userInfor.userName)">
                         <!-- <span v-show="isShow"> -->
 	              <router-link to="/home" tag="span" class="span">
-	                <span @click="controllerbtn" v-model='name'>您好，{{this.userInfor.userName}}</span>
+	                <span @click="controllerbtn" v-model="name">您好，{{this.userInfor.userName}}</span>
 	                <!-- <span @click="controllerbtn" v-model='userName'>您好，{{userName}}</span> -->
                         </router-link>&nbsp;&nbsp;|&nbsp;
                         <router-link to="/home" tag="span" class="span">
@@ -26,7 +26,7 @@
                         <span v-if="!(this.userInfor.userName)">
                         <!-- <span v-show="!isShow"> -->
 	              <router-link to="/login" tag="span" class="span">
-	                <span @click="controllerbtn" v-model='userName'>登录</span>
+	                <span @click="controllerbtn" v-model="name">登录</span>
                         </router-link>&nbsp;&nbsp;|&nbsp;
                         <router-link class="span" to="/register" tag="span">
                             <span>注册</span>
@@ -169,7 +169,7 @@
         </div>
     </div>
 
-    <div class="header-box" :class="{show:$store.state.headerType === 4}">
+    <div class="header-box ishavesearch" :class="{show:$store.state.headerType === 4}">
         <!-- banner部分 -->
         <div class="sy-header">
             <el-row>

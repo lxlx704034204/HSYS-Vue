@@ -6,7 +6,7 @@ import router from './router'
 import axios from './http'
 import store from './vuex/store'
 import util from './util'
-import storage from "store2";
+import storage from "store2"
 import initCodeMapData from './initData';
 
 import ElementUI from 'element-ui'

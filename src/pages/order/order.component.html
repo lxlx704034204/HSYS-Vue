@@ -151,7 +151,7 @@
         </el-table-column>
         <el-table-column label="规格/牌号">
           <template slot-scope="scope">
-            <span style="margin-left: 10px">{{scope.row.product.gradeCode}}</span>
+            <span>{{scope.row.product.gradeCode}}</span>
           </template>
         </el-table-column>
         <el-table-column label="产地">
@@ -179,7 +179,7 @@
             <span>{{salePrice.toFixed(2)}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="业务员">
+        <el-table-column label="客户经理">
           <template slot-scope="scope">
             <span>{{admin}}</span>
           </template>

@@ -70,11 +70,11 @@
         <div v-show='haveDefault'>
           <div class='information-biddsuccess'>收货人 : {{defaultName}}</div>
           <div class='information-biddsuccess'>联系电话 : {{defaultPhone}}</div>
-          <div class='information-biddsuccess' style="position: relative;">详细地址 : 
+          <div class='information-biddsuccess clearfix'><span style="float: left;">详细地址 :</span> 
             <div class='default-inf-wrap'>
               <span>{{defaultPro}}{{defaultAdd}}</span>
             </div> 
-            <div class='default-chose-wrap' >
+            <div class='default-chose-wrap' v-show='success'>
                <span  @click="manyadd" class='chage'>切换地址</span><span class='chage'  @click="newAdd = true">新增地址</span></div>
             </div>
             
