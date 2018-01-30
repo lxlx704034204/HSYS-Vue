@@ -17,7 +17,6 @@ export default {
             auth5: false,
             auth6: false,
             auth7: false,
-            // isshow: false,
             imageUrl: "",
             name: "",
             money: '',
@@ -102,27 +101,8 @@ export default {
 
     },
     methods: {
-        // look() {
-        //     this.$alert(this.failReasonl, '审核未通过原因', {
-        //         confirmButtonText: '确定',
-        //         type: 'warning',
-        //     })
-        // },
         tomyc() {
             window.open('#/company?userId=' + this.id)
-                // let customer = this.$store.state.customer;
-                // if (customer.status !== 'SUCCESS') {
-                // if (!this.auth) {
-                //     this.$alert('公司信息尚未完善', '提示', {
-                //         confirmButtonText: '完善企业信息',
-                //         type: 'warning',
-                //         callback: action => {
-                //             this.$router.push("/companycenter/publish");
-                //         }
-                //     })
-                // } else {
-                //     window.open('#/company?userId=' + this.id)
-                // }
             if (!this.auth) {
                 this.$alert('公司信息尚未完善', '提示', {
                     confirmButtonText: '完善企业信息',

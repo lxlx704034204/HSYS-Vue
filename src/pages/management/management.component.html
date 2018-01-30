@@ -4,14 +4,10 @@
         <el-breadcrumb-item>产品管理</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="mybill-search clearfix">
-        <!-- <el-select class="myorder_input" v-model="value" multiple filterable remote reserve-keyword placeholder="请输入产品名称">
-            <el-option v-for="(item,index) in managementable" :key="index" :label="item.name" :value="item.name"></el-option>
-        </el-select> -->
         <el-input class="myorder_input" v-model.trim="value" placeholder="请输入产品名称"></el-input>
         <el-button class="myorder_btn" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
         <button type="button" class="publishbtn" @click='publishbnt'>发布产品</button>
     </div>
-
     <div class="mybill-table">
         <el-table :data="managementable" border style="width: 100%">
             <el-table-column prop="name" label="产品名称">

@@ -1,12 +1,5 @@
 <!-- 发布产品 -->
 <section class="bidding">
-    <!-- 弹出框 -->
-    <!-- <el-dialog title="温馨提示" :visible.sync="isSuccess" width="500px">
-        <span class='dialoging'>请先完善公司信息，等待审核通过才能发布产品</span>
-        <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="tomyfirm" class='tofirmbtn'> 确 定</el-button>
-      </span>
-    </el-dialog> -->
     <!-- 面包屑 -->
     <div class="bidding-bread">
         <el-breadcrumb separator="/">
@@ -72,27 +65,15 @@
                     <el-col :span="6">
                         <el-form-item label="" prop="type">
                             <el-checkbox v-model="ruleForm.type">价格范围法律声明</el-checkbox>
-                            <!-- <el-checkbox-group v-model="ruleForm.type">
-                          <el-checkbox label="价格范围法律声明" name="type"></el-checkbox>
-                        </el-checkbox-group> -->
                         </el-form-item>
                     </el-col>
                 </el-row>
 
                 <el-row v-for="(customerProductIntervals, index) in ruleForm.customerProductIntervals" :key="customerProductIntervals.id" style="padding-bottom: 20px">
                     <el-col :span="3" class='pt10'>
-                        <!-- <span class="pnameShow">*</span>区间销售价格 -->
                         <span class="pnameShow"></span>区间销售价格
                     </el-col>
                     <el-col :span="3" style="margin-left:-20px;">
-                        <!-- <el-form-item label="" 
-                      :prop="'customerProductIntervals.' + index + '.startNumber'" 
-                      style="margin-left:-100px;"
-                      :rules="[
-                      {required: true, message: '请输入区间销售开始价格', trigger: 'change'},
-                      { validator: checkNumber, trigger: 'change' }
-                      ]"
-                      > -->
                         <el-form-item label="" :prop="'customerProductIntervals.' + index + '.startNumber'" style="margin-left:-100px;">
                             <el-input placeholder="" v-model="customerProductIntervals.startNumber" class="width-100" clearable>
                             </el-input>
@@ -100,14 +81,6 @@
                     </el-col>
                     <el-col class="line" :span="2" style="padding:10px 0 0 0px">————</el-col>
                     <el-col :span="3">
-                        <!-- <el-form-item label="" 
-                      :prop="'customerProductIntervals.' + index + '.endNumber'"
-                      style="margin-left:-100px;"
-                      :rules="[
-                      {required: true, message: '请输入区间销售结束价格', trigger: 'change'},
-                      { validator: checkNumber, trigger: 'change' }
-                      ]"
-                      > -->
                         <el-form-item label="" :prop="'customerProductIntervals.' + index + '.endNumber'" style="margin-left:-100px;">
                             <el-input placeholder="" v-model="customerProductIntervals.endNumber" class="width-100" clearable>
                             </el-input>
@@ -117,18 +90,9 @@
                         吨
                     </el-col>
                     <el-col :span="2" class='pt10'>
-                        <!-- <span class="pnameShow">*</span>销售价格 -->
                         <span class="pnameShow"></span>销售价格
                     </el-col>
                     <el-col :span="3">
-                        <!-- <el-form-item label="" 
-                      :prop="'customerProductIntervals.' + index + '.salePrice'"
-                      style="margin-left:-100px;"
-                      :rules="[
-                      {required: true, message: '请输入区间销售价格', trigger: 'change'},
-                      { validator: checkNumber, trigger: 'change' }
-                      ]"
-                      > -->
                         <el-form-item label="" :prop="'customerProductIntervals.' + index + '.salePrice'" style="margin-left:-100px;">
                             <el-input placeholder="" v-model="customerProductIntervals.salePrice" class="width-100" clearable>
                             </el-input>
@@ -162,24 +126,14 @@
         </div>
         <div class="edit_container">
             <div class="left-labe">图文详情</div>
-            <!-- <div>
-          <quill-editor v-model="ruleForm.a_content"
-          ref="myQuillEditor"
-          class="editer"
-          :options="ruleForm.editorOption" @ready="onEditorReady($event)">
-          </quill-editor>
-        </div> -->
             <div>
                 <rich-text-editor :text="ruleForm.a_content" @editorChange="editorChange"> </rich-text-editor>
             </div>
             <div v-show='isremind1' class='licesephot1'>请填写图文信息</div>
         </div>
-
-
         <div class="operationBtn">
-            <!-- <el-button type="primary" :loading="flagStatus" :disabled="flagStatus" @click="submitForm('ruleForm')">{{detailId ? '保存并新增' : '保存并上架'}}</el-button> -->
             <el-button type="primary" :loading="flagStatus" :disabled="flagStatus" @click="submitForm('ruleForm')">{{detailId ? '保存并上架' : '保存并上架'}}</el-button>
-            <el-button type="primary" :loading="addFlagStatus" :disabled="addFlagStatus" @click="submitForm2('ruleForm','add')">保存</el-button>
+            <el-button type="primary" :loading="addFlagStatus" :disabled="addFlagStatus" @click="submitForm('ruleForm','add')">保存</el-button>
             <el-button @click="resetForm('ruleForm')">取消</el-button>
         </div>
     </div>

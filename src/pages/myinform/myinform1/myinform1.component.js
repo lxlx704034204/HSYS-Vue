@@ -37,18 +37,6 @@ export default {
 
     },
     methods: {
-        // ph() {
-        //   var reg = /^1[3|4|5|8][0-9]\d{4,8}$/;
-        //   if (this.phonea == "") {
-        //     this.phone = "您的手机号码不能为空";
-        //     this.phones = true;
-        //   } else if (!reg.test(this.phonea)) {
-        //     this.phone = "请输入正确手机号码";
-        //     this.phones = true;
-        //   } else {
-        //     this.phones = false;
-        //   }
-        // },
         code() {
             var reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
             if (this.phonea == "") {

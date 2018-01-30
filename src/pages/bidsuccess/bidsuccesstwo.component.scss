@@ -26,8 +26,44 @@
         		text-align: center;
 
         	}
-	    } 
+	    }
+        .el-dialog{
+            margin:0 auto;
+        } 
 	}
+	 .remind-add-address{
+        .el-dialog__header{
+            padding:30px 30px;
+            .el-dialog__title{
+                color:#333;
+            }
+            .el-dialog__headerbtn{
+            	.el-dialog__close{
+            		font-size:18px;
+            		color:#333; 
+            	}
+            }
+        }
+        .el-dialog__body{
+                padding:50px 20px 5px;
+            	height: 150px;
+            	.centerposition{
+            		width: 300px!important;
+            		margin:0 auto;
+            		img{
+            			float: left;
+            		}
+            		.top,.second{
+            			margin-left: 10px;
+            			float: left;
+            			font-size: 14px;
+            		}
+            		.second{
+						color:#8d8d8d;
+            		}
+            	}
+            }
+    }
 }
 .bidsuccess .cell{
     text-align: center;
@@ -50,7 +86,10 @@
 }
 .bidsuccess .changeadd  .el-dialog__header .el-dialog__title{
     font-size: 14px
-
+}
+.bidsuccess .changeadd .el-dialog--center .el-dialog__body{
+    height: 420px;
+    overflow-y: scroll;
 }
 .bidsuccess .changeadd .el-button:focus, .el-button:hover{
 	background: #009fe2;
@@ -64,7 +103,7 @@
 .bidsuccess .el-dialog--center .el-dialog__body{
 	padding: 25px 60px 30px;
 }
-.bidsuccess .el-dialog__body{
+.bidsuccess .addID .el-dialog__body{
 	height: 430px;
 	overflow-y:auto;
 }

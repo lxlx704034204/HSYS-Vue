@@ -59,7 +59,7 @@ export default  {
       ctLen:11,
       typeLen:11,
       categorya:[],
-
+      nowDate:'',
     }
   },
   created() {
@@ -235,6 +235,7 @@ export default  {
         console.log(data);
             _this.loading = false;
             _this.total = data.total;
+            _this.nowDate = data.nowDate;
             _this.pageSize = data.size;
             const { records = [], pages = 1 } = data || {};
             _this.biddlist = _this.transform(records);
@@ -250,7 +251,8 @@ export default  {
         item.startDate  = item.startDate.replace(re, "/");
         var endDate = parseInt(new Date(item.endDate).getTime()/1000)  ;
         var startDate =parseInt(new Date(item.startDate).getTime()/1000)  ;
-        var nowtime = parseInt(new Date().getTime()/1000);
+        var nowtime = parseInt(new Date(item.nowDate).getTime()/1000);
+
         if(startDate >= nowtime){
           var time_distance = startDate - nowtime;  // 未开始
           if(time_distance == 0 && nowtime < endDate){

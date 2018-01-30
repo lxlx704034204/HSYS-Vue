@@ -18,9 +18,9 @@
 										<img v-if="index == 0" :src="tp.coverImage" v-for='(tp,index) in articleList' :key="index" alt="封面图" @click="setArticleId(tp.id)">
 										<div v-if="index == 0" :src="tp.coverImage" v-for='(tp,index) in articleList' :key="index" class="inf_xiu">{{tp.title}}</div>
 										<!--没有内容给默认图片-->
-										<div v-show="tupian" class="inf_xiu1">
+										<!--<div v-show="tupian" class="inf_xiu1">
 											<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
-										</div>
+										</div>-->
 									</div>
 									<div class="infor_conright">
 										<div class="infor_conrighttop">
@@ -40,9 +40,9 @@
 											<div class="inf_cen6">{{tp.createBy}}</div>
 										</div>
 										<!--无热点给默认图片-->
-										<div v-show="redian" class="inf_xiu1">
+										<!--<div v-show="redian" class="inf_xiu1">
 											<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
-										</div>
+										</div>-->
 									</div>
 								</div>
 								<div class="infor_content3 clearfix">
@@ -57,9 +57,9 @@
 											</div>
 										</div>
 										<!--无文章给默认图片-->
-										<div v-show="wenzhang" class="inf_xiu1">
+										<!--<div v-show="wenzhang" class="inf_xiu1">
 											<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
-										</div>
+										</div>-->
 										<div v-show="nextPage" @click="getNextPage" class="infor_btm" >
 											查看更多
 										</div>
@@ -125,9 +125,9 @@
 										<div class="inf_cen6">{{news.createBy}}</div>
 									</div>
 									<!--无文章给默认图片-->
-									<div v-show="redian" class="inf_xiu1">
+									<!--<div v-show="redian" class="inf_xiu1">
 										<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
-									</div>
+									</div>-->
 								</div>
 
 								<div class="infor_right1">

@@ -23,10 +23,6 @@
                         <p v-show="auth5">
                             <span class="myfirm-span3" style="color:red"> 您的账号已被冻结，请联系客服解冻 </span>
                         </p>
-                        <!-- <span class="myfirm-span3" style="color:red"> 您的账号已被冻结，请联系客服解冻 </span> -->
-                        <!-- <router-link class="dingdan" :to="{path: '/companycenter/publish'}" tag="span"> -->
-                        <!-- <span class="myfirm-span3" style="cursor:pointer; color:red"> 您的账号已被冻结，请联系客服解冻 </span> -->
-                        <!-- </router-link> -->
                         <p v-show="auth2">
                             <img src="./images/notthrough.png" alt="">审核未通过
                             <router-link class="dingdan" :to="{path: '/companycenter/publish'}" tag="span">
@@ -53,9 +49,7 @@
             </el-col>
         </el-row>
     </div>
-
     <span class="myfirm-order">订单</span>
-
     <div class="myfirm-orderList">
         <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="今天">
@@ -162,8 +156,6 @@
           </div>
         </template>
             </el-tab-pane>
-
         </el-tabs>
     </div>
-
 </section>

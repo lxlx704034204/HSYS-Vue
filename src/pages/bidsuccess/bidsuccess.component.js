@@ -48,6 +48,7 @@ export default {
       ishaveDefault:false,
       haveDefault:false,
       defaultPro:'',
+      donthaveadd:false,
       ruleForm: {
           name: '',
           phone:'',
@@ -190,11 +191,12 @@ export default {
                 "primaryPhone": that.ruleForm.phone,
               }).then((res) => {
                 console.log(res,'res');
+                this.choseaddress(res.id);
                 that.newAdd = false;
                 that.haveDefault = true;
                 that.ishaveDefault = false;
-                // that.defaultadd();
                 that.$refs[formName].resetFields();
+
             })
           }
            
@@ -216,16 +218,18 @@ export default {
           that.choseaddList = data;
         })
       },
-      chosethis(event){
+      chosethis(event,id){
         var that = this;
         $('.changadd-wrap').css('border','1px solid #CCC')
         $(event.path[2]).css('border','1px solid #009EF0');
-        that.defaultid = $(event.path[2]).attr('data')
+        that.defaultid = $(event.path[2]).attr('data');
+        console.log(that.defaultid);
       },
-      choseaddress(){
+      choseaddress(id){
         var that = this;
+        var ids = this.defaultid;
         console.log(this.defaultid);  // 设置默认地址
-        that.axios.post("address/isdefault/"+ this.defaultid)
+        that.axios.post(`address/isdefault/${id || ids}`)
         .then((res) => {
             that.defaultadd();
             that.changeAdd = false;
@@ -278,16 +282,26 @@ export default {
                 "productId": that.ids
               }
             ]
-        })
+        },{params:{noInterceptor:1}})
         .then((res) => {
           console.log(res,'er');
-          if(res == undefined || res == null){
-            this.$router.push('/companycenter/mybid')
+          if(res.code == 500){
+            this.donthaveadd = true;
+          }else{
             that.changeAdd = false;
+            this.$router.push('/companycenter/mybid')
           }
+         
         })
-      }
-     
+      },
+      // 关闭弹出框
+      handleClose(done){
+        done()
+      },
+      mastadd(){
+        this.donthaveadd = false;
+        this.newAdd = true
+      },
 
   }
 }

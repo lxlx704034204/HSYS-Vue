@@ -37,9 +37,9 @@ export default {
 			cotet:'',
 			articleId:0,
 			loading: true,
-			tupian:false,
-			wenzhang:false,
-			redian:false,
+//			tupian:false,
+//			wenzhang:false,
+//			redian:false,
 		}
 	},
 	created() {
@@ -107,9 +107,9 @@ export default {
 			let _this = this;
 			_this.isArticleContent = false;
 			_this.articleList = [];
-			_this.tupian = false;
-			_this.wenzhang = false;
-			_this.redian = false;
+//			_this.tupian = false;
+//			_this.wenzhang = false;
+//			_this.redian = false;
 			_this.nextPage = false;
 //			_this.redian = false;
 			if(code != undefined)
@@ -125,13 +125,12 @@ export default {
 					}else{
 						_this.articleList = re.records;
 					}
-					console.log(_this.articleList.length,'3')
-					if(_this.articleList.length == 0){
-						_this.tupian = true;
-						_this.wenzhang = true;
-					} else if(_this.articleList.length == 1){
-						_this.wenzhang = true;
-					}
+//					if(_this.articleList.length == 0){
+//						_this.tupian = true;
+//						_this.wenzhang = true;
+//					} else if(_this.articleList.length == 1){
+//						_this.wenzhang = true;
+//					}
 					_this.total = re.total;
 					_this.pages = re.pages;
 					if(re.pages > _this.current){
@@ -139,7 +138,6 @@ export default {
 					}else{
 						_this.nextPage = false;
 					}
-					console.log(_this.articleList);
 				_this.loading = false;
 				
 			})
@@ -160,16 +158,15 @@ export default {
 		}
 		,_hot(){
 			let _this = this;
-			_this.redian = false;
+//			_this.redian = false;
 			_this.loading = true;
 			this.axios.get("article/list?hot=1&channelCode="+_this.channelCode)
 			.then(function(re){
 				_this.hotList = re.records;
 				_this.loading = false;
-				console.log(_this.hotList.length,'123')
-				if(_this.hotList.length == 0){
-					_this.redian = true
-				}
+//				if(_this.hotList.length == 0){
+//					_this.redian = true
+//				}
 			})
 		}
 		,_top(){
@@ -214,17 +211,5 @@ export default {
 		tosy(){
 			window.open('#/home')
 		}
-
-		// 资讯中心列表
-		
-		//  // 资讯中心tab切换
-		//  _handovelist(){
-		//    let params = {
-		//      params:{} 
-		//    }
-		//    Handoverlist(params).then(res=>{
-		//      this.Handoverlist=res.slice(0,1)
-		//    })
-		//  }
 	}
 }

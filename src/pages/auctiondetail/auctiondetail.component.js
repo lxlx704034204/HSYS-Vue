@@ -20,7 +20,7 @@ export default  {
       injumpprice:'',
       injumpquantity:'',
       countdown:'',
-      loading:false,
+      // loading:false,
       centerDialogVisible: false,
       agree:false,
       toread:false,
@@ -77,6 +77,8 @@ export default  {
       setime:'',
       ispass:false,
       loading:true,
+      nowDate:'',
+      nowrevers:'',
     }
   },
   created() {
@@ -142,15 +144,14 @@ export default  {
           console.log(data,'datas');
             if(data.biddingStatus.value == 2){
               _this.willtaktime = true;
-
               _this.isaddcash();
-             
             }else if(data.biddingStatus.value == 1){
                 // 竞价未开始
               _this.isuntaking = true;
               _this.ontaking = false;
               _this.listtaking = false;
             }
+            _this.nowDate = data.nowDate;
             _this.autdetailist = data;  
             _this.unitelement = data.unitCode;  
             _this.endTime = data.endDate;  
@@ -196,9 +197,10 @@ export default  {
         var re = new RegExp("-", "g");  
         this.endTime  = this.endTime.replace(re, "/");
         this.startDate  = this.startDate.replace(re, "/");
-        const endTime = new Date(this.endTime).getTime();
-        const startDate = new Date(this.startDate).getTime();
-        const nowTime = new Date().getTime();
+        this.nowDate  = this.nowDate.replace(re, "/");
+        const endTime = parseInt(new Date(this.endTime).getTime()/1000);
+        const startDate =parseInt(new Date(this.startDate).getTime()/1000);
+        var nowTime = parseInt(new Date(this.nowDate).getTime()/1000);
         if(endTime < nowTime){
           this.time = '00天00小时00分00秒';
           this.disablesub = true;
@@ -210,7 +212,7 @@ export default  {
         }else{
            if(startDate > nowTime){
             var tempTime = startDate - nowTime;
-            if(parseInt(tempTime/1000) == 0){
+            if(tempTime == 0){
               this.willtaking = true;
               this.willtaktime = true;
               this.isuntaking = false;
@@ -223,10 +225,10 @@ export default  {
             var tempTime = endTime - nowTime;
           }
           if(tempTime > 0){
-            var day = parseInt(tempTime / 1000 / 60 / 60 / 24);
-            var hour = parseInt(tempTime / 1000 / 60 / 60 % 24);
-            var minute = parseInt(tempTime / 1000 / 60 % 60);
-            var seconds = parseInt(tempTime / 1000 % 60);
+            var day = parseInt(tempTime / 60 / 60 / 24);
+            var hour = parseInt(tempTime  / 60 / 60 % 24);
+            var minute = parseInt(tempTime / 60 % 60);
+            var seconds = parseInt(tempTime % 60);
             day<10 ? day = '0'+day:day=day;
             hour<10 ? hour = '0'+hour:hour=hour;
             minute<10 ? minute = '0'+minute:minute=minute;
@@ -234,13 +236,6 @@ export default  {
             this.time = day+'天' + hour+'时' + minute+'分' + seconds + '秒';
           }
         }
-       
-          // if(this.time == '00天00小时00分01秒'){
-          //   this.disablesub = true;
-          //   this.ablesub = false;
-          //   this.auctList();
-
-          // }
    },
     // 热门拍卖
     looker(){
@@ -248,6 +243,7 @@ export default  {
       this.axios.get("bidding/product/hot")
       .then(function(data){
           _this.hotlist = data;
+          console.log(data,'d');
           _this.hotlistid = data.biddingProductId;
           _this.transform(data)
          console.log(_this.hotlist,'11dfa');
@@ -259,8 +255,9 @@ export default  {
       data.forEach(item => {
         var re = new RegExp("-", "g");  
         item.endDate  = item.endDate.replace(re, "/");
+        item.nowDate  = item.nowDate.replace(re, "/");
         var endDate = new Date(item.endDate).getTime();
-        var nowtime = new Date().getTime();
+        var nowtime = new Date(item.nowDate).getTime();
         if(endDate > nowtime){
           var time_distance =  endDate - nowtime;
           this.intday = Math.floor(time_distance/86400000);  // 天
@@ -301,6 +298,7 @@ export default  {
       var _this = this;
       this.axios.get("bidding/record/list?size=6&current="+ this.pageNo + '&biddingProductId=' + this.$route.query.id)
       .then(function(data){
+          _this.loading = false;
           _this.takinglist = data.records;
           _this.total = data.total;
 
@@ -397,7 +395,6 @@ export default  {
             return;
           }else{
             that.ispass = data.pass;
-               // that.loading = false;
             
             if(data.pass == false){      // 未交保证金显示缴纳保证金
               that.willtaking = true;

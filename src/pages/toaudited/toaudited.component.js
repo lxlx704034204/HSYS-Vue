@@ -37,6 +37,11 @@ export default {
       sm: "", //交货方式
       orderExpireConfirm: '', //订单几分钟不确认失效
       orderExpirePay: '', //订单几分钟不付款失效
+
+      //签署合同相关
+      centerDialogVisible: false,
+      toread:false,
+      agree:false,
     }
   },
   computed: {
@@ -53,10 +58,26 @@ export default {
     this.fs = this.$util.getCodeMap("SHIPPING_METHOD");
 
   },
-  mounted() {
+  updated() {
     $(this.$refs.downfile).attr('href', $(this.$refs.imgfalse).attr('src'));
   },
   methods: {
+    //同意电子合同
+    surebtn() {
+      if (this.agree == false) {
+        this.toread = true;
+      } else {
+        this.centerDialogVisible = false;
+        // this.$router.push('/cash?id=' + this.$route.query.id)
+        this.axios.post('order/' + this.orderid + "/confirm").then((res) => {
+          if (typeof res !== 'string') {
+            this.orderInf();
+          }
+        }).catch(function (response) {
+          // console.log(response);//发生错误时执行的代码  
+        });
+      }
+    },
     orderInf() {
       var that = this;
       this.axios.get('order/' + this.orderid).then(function (res) {
@@ -133,13 +154,14 @@ export default {
     },
     // 确认订单
     confirm() {
-      this.axios.post('order/' + this.orderid + "/confirm").then((res) => {
-        if (typeof res !== 'string') {
-          this.orderInf();
-        }
-      }).catch(function (response) {
-        // console.log(response);//发生错误时执行的代码  
-      });
+      this.centerDialogVisible = true;
+      // this.axios.post('order/' + this.orderid + "/confirm").then((res) => {
+      //   if (typeof res !== 'string') {
+      //     this.orderInf();
+      //   }
+      // }).catch(function (response) {
+      //   // console.log(response);//发生错误时执行的代码  
+      // });
     },
     // 确认收货
     confirmReceived() {

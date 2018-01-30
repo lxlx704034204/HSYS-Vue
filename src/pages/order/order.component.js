@@ -219,6 +219,7 @@ export default {
                     this.axios.post(`address/addAddress`, obj).then(res => {
                         console.log(typeof res);
                         if (typeof res !== 'string') {
+                            console.log(res,'ll');
                             this.submitForm3(res.id);
                             this.$message({ message: '新增地址成功', type: 'success' });
                             this.$refs['ruleForm2'].resetFields();

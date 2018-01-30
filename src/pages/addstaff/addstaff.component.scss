@@ -1,39 +1,39 @@
-.addstaff{
-    .el-form{
+.addstaff {
+    .el-form {
         font-size: 14px;
         margin: 40px 0 0 0;
-        .el-form-item{
+        .el-form-item {
             margin-bottom: 15px;
-            .el-form-item__content{
-                .label{
+            .el-form-item__content {
+                .label {
                     float: left;
                     width: 75px;
                     text-align: right;
                     margin-right: 5px;
-                    span{
+                    span {
                         color: #f83d46;
                     }
                 }
-                .el-input{
+                .el-input {
                     float: left;
                     width: 285px;
-                    margin-left: 10px;                    
+                    margin-left: 10px;
                 }
-                .name,.num{
+                .name,
+                .num {
                     width: 120px;
                 }
-                .span{
+                .span {
                     color: #009fe2;
                     cursor: pointer;
                 }
-
-                .p-one{
+                .p-one {
                     display: inline-block;
                     margin-left: 10px;
                 }
             }
         }
-        .preservation{
+        .preservation {
             display: inline-block;
             height: 40px;
             width: 120px;
@@ -43,7 +43,7 @@
             color: #fff;
             font-size: 14px;
             text-align: center;
-            border:none;
+            border: none;
         }
     }
 }

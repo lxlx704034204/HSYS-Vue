@@ -32,19 +32,15 @@ export default {
             console.log("Connection open ...");
             ws.send("Hello WebSockets1·!");
         };
-
         ws.onmessage = function(evt) {
             console.log("Received Message: " + evt.data);
             ws.close();
         };
-
         ws.onclose = function(evt) {
             console.log("Connection closed.");
         };
-
         this._managementable();
         this.dw = this.$util.getCodeMap("UNIT");
-
     },
     mounted() {
 
@@ -52,28 +48,6 @@ export default {
     methods: {
         // 发布产品
         publishbnt() {
-            // let customer = this.$store.state.customer;
-            // if (customer.status !== 'SUCCESS') {
-            //     // this.$alert('请先完善公司信息，等待审核通过才能发布产品', '提示', {
-            //     //     confirmButtonText: '完善企业信息',
-            //     //     type: 'warning',
-            //     //     callback: action => {
-            //     //         this.$router.push("/companycenter/publish");
-            //     //         this.$emit('publish');
-            //     //     }
-            //     // })
-            //     this.$alert('请先完善公司信息，等待审核通过才能发布产品', '温馨提示', {
-            //         confirmButtonText: '完善企业信息',
-            //         type: 'warning',
-            //     }).then(() => {
-            //         this.$router.push("/companycenter/publish");
-            //         this.$emit('publish');
-            //     }).catch(() => {
-
-            //     });
-            // } else {
-            //     this.$router.push('/companycenter/bidding');
-            // }
             var that = this;
             var userId = storage.get("id");
             //判断企业验证状态
@@ -109,15 +83,6 @@ export default {
                     that.managementable = res.records;
                     that.total = res.total;
                     that.pageNum = res.current;
-                    // for (var i = 0; i <  that.managementable.length; i++) {
-                    //    if(that.managementable[i].unitCode == 'TON'){
-                    //       that.managementable[i].unitCode = '吨'
-                    //    }else{
-                    //       that.managementable[i].unitCode = '千克'
-                    //    }
-                    // }
-                } else {
-                    // this.$message({ type: 'warning', message: '未找到相关产品' });
                 }
             });
         },
@@ -135,7 +100,6 @@ export default {
             this.pageNum = num++;
             this._managementable();
         },
-
         // 上一页
         prevPage() {
             this.pageNum--
@@ -152,11 +116,9 @@ export default {
                     return pageNum
                 }
         },
-
         handleEdit(index, row) {
             this.$router.push({ path: '/companycenter/bidding', query: { id: row.id } })
         },
-
         handleactive(index, row) {
             if (row.show) {
                 this.$confirm('确定下架?', '提示', {

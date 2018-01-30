@@ -70,17 +70,31 @@ export default {
                 this.positionz = false;
                 var that = this;
                 this.axios.put("user/update", {
-                    id: this.mystId,
-                    userName: this.name,
-                    mobileNo: this.phone,
-                    position: this.position,
-                    email: this.email,
-                    active: this.value3,
-                    admin: this.value4
-                }).then(function(data) {
-                    that.$router.push("/companycenter/mystaff");
-                })
-                .catch(error => console.log(error))
+                        id: this.mystId,
+                        userName: this.name,
+                        mobileNo: this.phone,
+                        position: this.position,
+                        email: this.email,
+                        active: this.value3,
+                        admin: this.value4
+                    }, { params: { noInterceptor: 1 } }).then(function(data) {
+                        if (data.code == 0) {
+                            that.$message({
+                                showClose: true,
+                                message: '修改成功',
+                                type: 'success'
+                            });
+                            // location.href = "#/companycenter/mystaff"
+                            that.$router.push("/companycenter/mystaff");
+                        } else {
+                            that.$message({
+                                showClose: true,
+                                message: data.msg,
+                                type: 'error'
+                            });
+                        }
+                    })
+                    .catch(error => console.log(error))
             }
         },
 
@@ -88,10 +102,10 @@ export default {
             if (this.name == "") {
                 this.namea = "姓名不能为空";
                 this.namez = true;
-            } else if(this.name.length > 45) {
+            } else if (this.name.length > 45) {
                 this.namea = "姓名长度不能超过45个";
                 this.namez = true;
-            }else{
+            } else {
                 this.namez = false;
             }
         },
@@ -111,7 +125,7 @@ export default {
             if (this.position == '') {
                 this.positionx = "请输入员工职位";
                 this.positionz = true;
-            }else if (this.position.length > 30 ) {
+            } else if (this.position.length > 30) {
                 this.positionx = "员工职位名称长度不能超过30个";
                 this.positionz = true;
             } else {
@@ -126,7 +140,7 @@ export default {
             } else if (!reg.test(this.email)) {
                 this.emaila = "请输入正确邮箱";
                 this.emailz = true;
-            }else if(this.email.length > 45){
+            } else if (this.email.length > 45) {
                 this.emaila = "邮箱长度最多不超过45";
                 this.emailz = true;
             } else {
@@ -162,23 +176,23 @@ export default {
                         email: this.email,
                         active: this.value3,
                         admin: this.value4
-                    },{params:{noInterceptor:1}}).then(function(data) {
-                        if(data.code == 0){
-                           that.$message({
-                              showClose: true,
-                              message: '添加成功',
-                              type: 'success'
+                    }, { params: { noInterceptor: 1 } }).then(function(data) {
+                        if (data.code == 0) {
+                            that.$message({
+                                showClose: true,
+                                message: '添加成功',
+                                type: 'success'
                             });
                             location.href = "#/companycenter/mystaff"
-                               
-                         }else{
-                             that.$message({
-                                  showClose: true,
-                                  message: data.msg,
-                                  type: 'error'
-                                });
-                         }
-                       
+
+                        } else {
+                            that.$message({
+                                showClose: true,
+                                message: data.msg,
+                                type: 'error'
+                            });
+                        }
+
                     })
                     .catch(error => console.log(error))
             }

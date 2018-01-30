@@ -1,9 +1,7 @@
-// import { quillEditor } from 'vue-quill-editor';
 import richTextEditor from '../../components/quill/richTextEditor.vue';
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
-
 export default {
     name: 'bidding',
     components: { richTextEditor },
@@ -85,7 +83,6 @@ export default {
         }
     },
     created() {
-
         this.upLoadUrl = this.axios.defaults.baseURL + 'upload';
         this.initData();
         this.isremind = false;
@@ -245,13 +242,13 @@ export default {
                             this.flagStatus = false;
                             this.addFlagStatus = false;
                             if (!res && obj.images != "" && obj.productContent != {}) {
-
                                 this.$router.push({ path: '/companycenter/management' });
                                 this.$message({ message: '编辑产品成功', type: 'success' });
                             } else {}
                         });
                     } else {
                         this.releasePro(obj).then(res => {
+                            alert(222)
                             if (obj.images != "") {
                                 this.isremind = false;
                             } else {
@@ -268,9 +265,6 @@ export default {
                                 this.$message({ message: '发布产品成功', type: 'success' });
                                 this.$router.push({ path: '/companycenter/management' });
                             } else {}
-                            // if (type) {
-                            //     this.$router.push({ path: '/companycenter/management' });
-                            // }
                         });
                     }
                 } else {
@@ -360,7 +354,6 @@ export default {
             this.$refs[formName].resetFields();
             this.$router.push({ path: '/companycenter/management' })
         },
-
         // 分类多级选择
         handleItemChange(val) {
             this.getCategoryData(val[0]).then(res => {
@@ -376,7 +369,6 @@ export default {
         handleChange(value) {
             // console.log(value);
         },
-
         // 地区选择
         handleAreaChange(val) {
             if (val.length === 1) {
@@ -416,8 +408,6 @@ export default {
             let list = this.ruleForm.customerProductIntervals;
             list.splice(index, 1);
         },
-
-
         // 上传照片
         handleRemove(file, fileList) {
             this.isremind = false;
@@ -458,14 +448,11 @@ export default {
                 this.images = allImages.join(',');
             }
         },
-
         onEditorReady(editor) {},
-
         editorChange: function(html) {
             this.isremind1 = false;
             this.ruleForm.a_content = html
         },
-
         // <---------------------------------------数据获取------------------------------------------------------>
         // 获取分类数据
         getCategoryData(id = 10000) {
@@ -507,7 +494,6 @@ export default {
                 });
             })
         },
-
         // 校验数字
         checkNumber(rule, value, callback) {
             if (!value) {}
@@ -520,9 +506,6 @@ export default {
                 }
             }, 500);
         },
-
-
         // <---------------------------------------------------------------------------------------->
-
     }
 }

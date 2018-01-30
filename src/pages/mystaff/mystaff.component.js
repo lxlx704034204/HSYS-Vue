@@ -43,7 +43,6 @@ export default {
             this.rowid = id.id;
             this.rowlist = row;
             this.number = index;
-
         },
         handleClose(done) {
             done();
@@ -73,7 +72,6 @@ export default {
             var that = this;
             this.axios.get("user/all?current=" + that.pageNum + '&size=5').then(function(data) {
                     console.log(data, 'data');
-
                     that.mystafftable = data.records;
                     that.pageNum = data.current;
                     that.total = data.total;

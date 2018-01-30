@@ -1,4 +1,4 @@
-import storage from "store2";
+//import storage from "store2";
 export default {
     name: 'detailsclass',
     components: {},
@@ -28,12 +28,18 @@ export default {
         }
     },
     created() {
-        this.dw = this.$util.getCodeMap("UNIT");;
+        //      this.dw = this.$util.getCodeMap("UNIT");
+        //      console.log(this.dw,'dw')
         this.fstId = this.$route.query.fstId;
         this.detaillist(); // 产品列表
         //  获得面包屑name名
         this.list();
         var that = this;
+        this.axios.get("dictionary/batch?parentCodes=UNIT")
+            .then(function(data) {
+                that.dw = data[0].dictionaries;
+                //            console.log(that.dw,'dd')
+            });
         // 最新供应
         this.axios.get("customerproduct/all?size=5&newest=true")
             .then(function(data) {
@@ -90,6 +96,7 @@ export default {
             var that = this;
             this.axios.get("customerproduct/all?size=8&current=" + this.pageNo + '&cid=' + this.fstId + "&newest=true", { params: { noInterceptor: 1 } })
                 .then(function(data) {
+                    console.log(data.data.records, 'data')
                     if (data.code === 500) {
                         that.isnothave = true;
                         that.detlist = '';

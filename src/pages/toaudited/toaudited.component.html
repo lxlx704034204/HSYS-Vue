@@ -191,7 +191,7 @@
         <el-button class="orderFooter-btn left" @click="del" v-if="step===1 || step===2">取消订单</el-button>
         <el-button class="orderFooter-btn" type="primary" @click="confirm" v-if="step===2">确定订单</el-button>
         <img src="./images/contract.png" alt="" ref='imgfalse' v-show='false'>
-        <a href="" download ref='downfile' v-if="step!==1 && step!==2">
+        <a href="" download ref="downfile" v-if="step!==1 && step!==2">
           <el-button class="orderFooter-btn" type="primary">下载合同</el-button>
         </a>
         <!-- <router-link   v-if="step!==1 && step!==2" target="_blank">
@@ -208,5 +208,20 @@
         <el-button @click="confirmReceived" class="orderFooter-btn" type="primary" v-if="step===4 && payinfovalue == 1">确定收货</el-button>
       </div>
     </div>
+    <!-- 签署电子合同 -->
+    <el-dialog title="电子合同" :visible.sync="centerDialogVisible" width="600px" top="60px" center class='centerTitle'>
+      <div style="height: 370px;overflow-y: scroll;">
+        <img src="./images/contract.png" alt="">
+      </div>
+      <div style="margin-top: 10px;">
+        <div>
+          <el-checkbox v-model="agree" @change='toread = false'>我已看过并同意本合同</el-checkbox>
+        </div>
+        <div v-show='toread' class="auc_xiu">请阅读本合同</div>
+        <div slot="footer" class="dialog-footer auc_xiu1">
+          <button type='button' @click="surebtn" class='payup'>签署电子合同</button>
+        </div>
+      </div>
+    </el-dialog>
   </div>
 </section>

@@ -523,6 +523,10 @@
                             color: #333;
                             font-size: 12px;
                             line-height: 18px;
+                            width: 190px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
                         }
                     }
                 }

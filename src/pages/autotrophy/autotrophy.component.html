@@ -139,7 +139,7 @@
     <el-table-column label="库别" align="center">
       <template slot-scope="scope">
         <!-- <span style="margin-left: 10px">{{scope.row.warehouseCode}}</span> -->
-        <span style="margin-left: 20px">{{io.filter(v => v.dictCode === scope.row.warehouseCode).length > 0 ? io.filter(v => v.dictCode === scope.row.warehouseCode)[0].dictName : scope.row.warehouseCode}}</span>
+        <span style="margin-left: 14px">{{ioa.filter(v => v.dictCode === scope.row.warehouseCode).length > 0 ? ioa.filter(v => v.dictCode === scope.row.warehouseCode)[0].dictName : scope.row.warehouseCode}}</span>
       </template>
     </el-table-column>
     <el-table-column prop="shippingMethodCode" label="交货方式" align="center">

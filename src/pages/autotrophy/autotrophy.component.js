@@ -15,6 +15,7 @@ export default {
       // product:[],
       io: '',
       ios: '',
+      ioa: '',
       dw: '',
       cd: '',
       cds: '',
@@ -84,6 +85,7 @@ export default {
     that.ph = this.$util.getCodeMap("GRADE");
     that.fs = this.$util.getCodeMap("SHIPPING_METHOD");
     that.cda = this.$util.getCodeMap("PRODUCINGAREA");// 产地
+    that.ioa = this.$util.getCodeMap("KUBE");// 库别
     // console.log(that.fs.filter(v => v.dictCode === "ZI_TI")[0])
 
 

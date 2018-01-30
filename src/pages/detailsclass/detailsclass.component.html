@@ -50,7 +50,14 @@
                         <span>报价 : {{det.salePrice}}</span>
                     </p>
                     <p class="clearfixed">
-                        <span>最小起订量 : {{det.minSale}}{{dw[det.unitCode]}}</span>
+                        <!--<span>最小起订量 : {{det.minSale}}{{dw[det.unitCode]}}</span>-->
+                        <span>最小起订量 : {{det.minSale}}{{dw.filter(v => v.dictCode === det.unitCode).length > 0 ? dw.filter(v => v.dictCode === det.unitCode)[0].dictName : det.unitCode}}</span>
+                        
+                        
+                        
+                        
+                        
+                        
                         <span>品牌 : {{det.brand}}</span>
                     </p>
                     <P class="clearfixed">
