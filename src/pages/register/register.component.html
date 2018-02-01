@@ -6,16 +6,16 @@
             </div>
             <form action="" :model="ruleForm" ref="ruleForm">
                 <div class="regis_con">
-                    <input type="text" class="regis_input regis_name" v-model="ruleForm.login" @blur="corporatename" placeholder="请输入账户">
+                    <input :maxlength=16 type="text" class="regis_input regis_name" v-model="ruleForm.login" @blur="corporatename" placeholder="请输入账户">
                     <span class="regis_prompt regis_prompt1"></span>
-                    <input type="password" class="regis_input regis_psd" v-model="ruleForm.password" @blur="pwd" placeholder="请输入您的密码">
+                    <input :maxlength=16 type="password" class="regis_input regis_psd" v-model="ruleForm.password" @blur="pwd" placeholder="请输入您的密码">
                     <span class="regis_prompt regis_prompt2"></span>
-                    <input type="password" class="regis_input regis_psd2" v-model="ruleForm.confirmPassword" @blur="pwds" placeholder="请再次确认密码">
+                    <input :maxlength=16 type="password" class="regis_input regis_psd2" v-model="ruleForm.confirmPassword" @blur="pwds" placeholder="请再次确认密码">
                     <span class="regis_prompt regis_prompt3"></span>
-                    <input type="text" class="regis_input regis_phooe" v-model="ruleForm.mobileNo" @blur="phone" placeholder="请输入手机号码">
+                    <input :maxlength=12 type="text" class="regis_input regis_phooe" v-model="ruleForm.mobileNo" @blur="phone" placeholder="请输入手机号码">
                     <span class="regis_prompt regis_prompt4"></span>
                     <div class="regis_div clearfix">
-                        <input type="text" class="regis_check" v-model="ruleForm.verificationCode" @blur="verif" placeholder="请输入验证码">
+                        <input :maxlength=8 type="text" class="regis_check" v-model="ruleForm.verificationCode" @blur="verif" placeholder="请输入验证码">
                         <button :disabled="disabled" type="button" class="regis_btn" id="fg" @click="sendcode" ref='sendcodebtn'>{{btntxt}}</button>
                     </div>
                     <span class="regis_prompt regis_prompt5"></span>

@@ -20,7 +20,8 @@ export default {
   },
   
   created () {
-    this.$store.state.headerType = 5;
+    // this.$store.state.headerType = 5;
+    this.$store.commit("switchHeaderType", 5);
     var userId = this.$route.query.userId;
     var that = this;
     that.axios.get("customer/detail/" + userId)

@@ -10,9 +10,7 @@ export default {
   created () {
     // 调用数据
     var urlId = this.$route.path;
-    if(urlId.indexOf('forgetpwd4') >0){
-      this.$store.state.headerType = 3;
-    }
+    this.$store.commit("switchHeaderType", 3);
   },
   computed: {
 

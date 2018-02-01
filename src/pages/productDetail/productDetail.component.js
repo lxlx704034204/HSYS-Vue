@@ -39,7 +39,8 @@ export default {
 	},
 	created() {
 		this.userId = this.$route.query.userId;
-		this.$store.state.headerType = 5;
+		// this.$store.state.headerType = 5;
+		this.$store.commit("switchHeaderType", 5);
 		var that = this;
 		this.dw = this.$util.getCodeMap("UNIT");
 //		console.log(this.dw, 'dw')

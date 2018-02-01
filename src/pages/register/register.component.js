@@ -20,9 +20,7 @@ export default {
     },
     created() {
         var urlId = this.$route.path;
-        if (urlId.indexOf('register') > 0) {
-            this.$store.state.headerType = 4;
-        }
+        this.$store.commit("switchHeaderType", 4);
     },
     computed: {
 

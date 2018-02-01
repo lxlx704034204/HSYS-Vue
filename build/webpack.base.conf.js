@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-
+var ImageminPlugin = require('imagemin-webpack-plugin').default
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -19,6 +19,12 @@ module.exports = {
 },
 plugins: [
   new ProvidePlugin({ $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery' }),
+  new ImageminPlugin({
+      disable: process.env.NODE_ENV !== 'production', 
+      pngquant: {
+        quality: '95-100'
+      }
+    })
 ],
   output: {
     path: config.build.assetsRoot,

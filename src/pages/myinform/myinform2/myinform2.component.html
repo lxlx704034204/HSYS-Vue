@@ -18,7 +18,7 @@
         <div class="label">
           <span>新手机号码:</span>
         </div>
-        <el-input class="bidding-pname phone" v-model="phonea" @blur="ph">
+        <el-input :maxlength="12" class="bidding-pname phone" v-model="phonea" @blur="ph">
         </el-input>
         <p class="p-one" v-show="phones">{{phone}}</p>
       </template>
@@ -28,7 +28,7 @@
         <div class="label">
           <span>验证码:</span>
         </div>
-        <el-input class="bidding-pname code" v-model="verif">
+        <el-input :maxlength="8" class="bidding-pname code" v-model="verif">
         </el-input>
         <button class="span" type="button" id="fg" :disabled="disabled" @click="code" ref='sendcodebtn'>{{btntxt}}</button>
         <p class="p-two" v-show="verifs">{{verifa}}</p>

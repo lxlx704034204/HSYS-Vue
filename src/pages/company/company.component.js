@@ -15,7 +15,8 @@ export default {
     }
   },
   created() {
-    this.$store.state.headerType = 5;
+    // this.$store.state.headerType = 5;
+    this.$store.commit("switchHeaderType", 5);
     var that = this;
     this.userId = this.$route.query.userId;
     //  企业详细信息

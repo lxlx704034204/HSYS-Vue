@@ -37,14 +37,12 @@ export default {
 			cotet:'',
 			articleId:0,
 			loading: true,
-//			tupian:false,
-//			wenzhang:false,
-//			redian:false,
+			number:1,
+			tempData:[],
 		}
 	},
 	created() {
-		this.$store.state.headerType = 6;
-//		console.log(window.location.href,'222')
+		this.$store.commit("switchHeaderType", 6);
 		var that = this;
 		that.axios.get("dictionary/batch?parentCodes=CHANNEL_CODE")
 		.then(function(re){
@@ -65,6 +63,7 @@ export default {
 				//默认显示第一个
 				that.getArticle(that.channel[0].dictCode);
 		});
+		this._hot();
 		
 		
 		
@@ -105,31 +104,21 @@ export default {
 		getArticle(code){
 			let _this = this;
 			_this.isArticleContent = false;
-			_this.articleList = [];
-//			_this.tupian = false;
-//			_this.wenzhang = false;
-//			_this.redian = false;
 			_this.nextPage = false;
-//			_this.redian = false;
 			if(code != undefined)
 				_this.channelCode = code;
 			this.axios.get("article/list?top=1&recommend="+ _this.recommend +"&channelCode="+_this.channelCode+"&size="+this.size+"&current="+this.current)
 			.then(function(re){
 					if(_this.current>1){
 						if(re.records.length>0)
-							var tempData = re.records;
-							$.each(tempData,function(index, el) {
+							_this.tempData = _this.tempData.concat(re.records);
+							$.each(_this.tempData,function(index, el) {
 								_this.articleList.push(el);
 							});
 					}else{
-						_this.articleList = re.records;
+                   		_this.articleList = _this.articleList.concat(re.records);
+						
 					}
-//					if(_this.articleList.length == 0){
-//						_this.tupian = true;
-//						_this.wenzhang = true;
-//					} else if(_this.articleList.length == 1){
-//						_this.wenzhang = true;
-//					}
 					_this.total = re.total;
 					_this.pages = re.pages;
 					if(re.pages > _this.current){
@@ -143,8 +132,6 @@ export default {
 			if(_this.recommendList.length <= 0){
 				_this._recommend();
 			}
-			// if(_this.hotList.length <= 0)
-			_this._hot();
 		}
 		,_recommend(){
 			let _this = this;
@@ -157,15 +144,11 @@ export default {
 		}
 		,_hot(){
 			let _this = this;
-//			_this.redian = false;
 			_this.loading = true;
 			this.axios.get("article/list?hot=1&channelCode="+_this.channelCode)
 			.then(function(re){
 				_this.hotList = re.records;
 				_this.loading = false;
-//				if(_this.hotList.length == 0){
-//					_this.redian = true
-//				}
 			})
 		}
 		,_top(){
@@ -176,15 +159,9 @@ export default {
 			})
 		}
 		,getNextPage(){
-			if(this.current < this.pages){
-//				this.current++;
-//			下方新增
-				this.size = Number(this.size) + Number(this.size);
-				this.getArticle();
-			}else{
-				this.nextPage = false;
-			}
-			
+			this.number++;
+            this.current = this.number;
+            this.getArticle();
 		}
 		,setArticleId(articleId){
 			if(articleId != '' || articleId != undefined){

@@ -206,7 +206,7 @@
           <el-table-column class-name="trand-cell" prop="salePrice" label="价格（元）" width="150px" >
             <template slot-scope="scope">
               <p class="price-color">
-                ￥{{scope.row.salePrice}}/{{scope.row.unitCode == 'KG'?'千克':'吨'}}
+                ￥{{scope.row.salePrice}}/{{dw.filter(v => v.dictCode === scope.row.unitCode).length > 0 ? dw.filter(v => v.dictCode === scope.row.unitCode)[0].dictName : scope.row.unitCode}}
                 <el-popover trigger="hover" ref="popover2" placement="left">
                   <chart-demo v-bind:echart-data-child="echartData"></chart-demo>
                 </el-popover>

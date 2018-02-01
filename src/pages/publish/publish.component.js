@@ -156,8 +156,8 @@ export default {
             const map = new BMap.Map(this.$refs.map);
             map.centerAndZoom(new BMap.Point(116.404, 39.915), 16);
             map.addControl(new BMap.NavigationControl());
-            map.enableScrollWheelZoom(true);   //启用滚轮放大缩小，默认禁用
-            map.enableContinuousZoom(true);    
+            map.enableScrollWheelZoom(true); //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom(true);
             const setMaker = point => {
                 map.clearOverlays();
                 const marker = new BMap.Marker(new BMap.Point(point.lng, point.lat));

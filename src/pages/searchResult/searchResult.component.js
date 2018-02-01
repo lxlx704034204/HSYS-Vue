@@ -30,7 +30,8 @@ export default {
         };
     },
     created() {
-        this.$store.state.headerType = 2;
+        // this.$store.state.headerType = 2;
+        this.$store.commit("switchHeaderType", 2);
         this.isFIndShow = false;
         this.keyword = this.$route.query.name;
         if (this.$route.query.name == '') {

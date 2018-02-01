@@ -61,35 +61,22 @@ export default {
                     trigger: 'change'
                 }],
                 spec: [{
-                        required: true,
-                        message: '请输入规格',
-                        trigger: 'blur,change'
-                    },
-                    {
-                        min: 0,
-                        max: 30,
-                        message: '长度在 0 到 30 个字符',
-                        trigger: 'change,blur'
-                    }
-                ],
+                    required: true,
+                    message: '请输入规格',
+                    trigger: 'blur,change'
+                }],
                 areaArr: [{
                     required: true,
                     message: '请选择产地',
-                    trigger: 'change'
+                    trigger: 'change,blur'
                 }],
                 minSale: [{
                         required: true,
                         message: '请输入最小起订量',
-                        trigger: 'change'
+                        trigger: 'change,blur'
                     },
                     {
                         validator: this.checkNumber,
-                        trigger: 'change'
-                    },
-                    {
-                        min: 0,
-                        max: 30,
-                        message: '长度在 0 到 30 个字符',
                         trigger: 'change,blur'
                     }
                 ],
@@ -101,12 +88,6 @@ export default {
                     {
                         validator: this.checkNumber,
                         trigger: 'change'
-                    },
-                    {
-                        min: 0,
-                        max: 30,
-                        message: '长度在 0 到 30 个字符',
-                        trigger: 'change,blur'
                     }
                 ],
                 unitCode: [{
@@ -120,17 +101,10 @@ export default {
                     trigger: 'change'
                 }],
                 brand: [{
-                        required: true,
-                        message: '请输入品牌',
-                        trigger: 'blur,change'
-                    },
-                    {
-                        min: 0,
-                        max: 30,
-                        message: '长度在 0 到 30 个字符',
-                        trigger: 'change,blur'
-                    }
-                ],
+                    required: true,
+                    message: '请输入品牌',
+                    trigger: 'blur,change'
+                }],
             },
             // 上传照片
             dialogImageUrl: '',

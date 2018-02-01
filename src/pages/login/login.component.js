@@ -48,9 +48,10 @@ export default {
     },
     created() {
         var urlId = this.$route.path;
-        if (urlId.indexOf('login') > 0) {
-            this.$store.state.headerType = 2;
-        }
+        // if (urlId.indexOf('login') > 0) {
+         this.$store.commit("switchHeaderType",2);
+
+        // }
     },
     computed: {},
     mounted() {},

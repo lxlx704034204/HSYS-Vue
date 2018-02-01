@@ -1,68 +1,68 @@
 <section class="myinform">
-  <el-breadcrumb separator="/">
-    <el-breadcrumb-item :to="{ path: '/companycenter/myinform' }">企业中心</el-breadcrumb-item>
-    <el-breadcrumb-item>个人信息</el-breadcrumb-item>
-  </el-breadcrumb>
-  <el-form ref="form" class="from-one" :model="form">
-      <el-form-item>
-        <template slot-scope="scope">
+    <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/companycenter/myinform' }">企业中心</el-breadcrumb-item>
+        <el-breadcrumb-item>个人信息</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-form ref="form" class="from-one" :model="form">
+        <el-form-item>
+            <template slot-scope="scope">
           <div class="label">
             <span>用户名:</span>
           </div>
           <el-input class="bidding-pname name" v-model="name" disabled>
           </el-input>
         </template>
-      </el-form-item>
-      <el-form-item>
-        <template slot-scope="scope">
+        </el-form-item>
+        <el-form-item>
+            <template slot-scope="scope">
           <div class="label">
             <span>请输入当前密码:</span>
           </div>
-          <el-input class="bidding-pname phone" v-model="pwd" @blur="ph2">
+          <el-input :maxlength="16" class="bidding-pname phone" v-model="pwd" @blur="ph2">
           </el-input>
           <p class="p-one" v-show="phones1">{{phone1}}</p>
         </template>
-      </el-form-item>
-      <el-form-item>
-      <template slot-scope="scope">
+        </el-form-item>
+        <el-form-item>
+            <template slot-scope="scope">
         <div class="label">
           <span>请输入新密码:</span>
         </div>
-        <el-input class="bidding-pname phone" v-model="pwd1" @blur="ph3">
+        <el-input :maxlength="16" class="bidding-pname phone" v-model="pwd1" @blur="ph3">
         </el-input>
         <p class="p-one" v-show="phones2">{{phone2}}</p>
       </template>
-      </el-form-item>
-      <el-form-item>
-      <template slot-scope="scope">
+        </el-form-item>
+        <el-form-item>
+            <template slot-scope="scope">
         <div class="label">
           <span>请确认新密码:</span>
         </div>
-        <el-input class="bidding-pname phone" v-model="pwd2" @blur="ph4">
+        <el-input :maxlength="16" class="bidding-pname phone" v-model="pwd2" @blur="ph4">
         </el-input>
         <p class="p-one" v-show="phones3">{{phone3}}</p>
       </template>
-      </el-form-item>
-      <el-form-item>
-        <template slot-scope="scope">
+        </el-form-item>
+        <el-form-item>
+            <template slot-scope="scope">
           <div class="label">
             <span>手机号码:</span>
           </div>
           <el-input class="bidding-pname num" v-model="num" disabled>
           </el-input>
         </template>
-      </el-form-item>
-      <el-form-item>
-        <template slot-scope="scope">
+        </el-form-item>
+        <el-form-item>
+            <template slot-scope="scope">
           <div class="label">
             <span></span>
           </div>
-          <el-input class="bidding-pname code" v-model="verif1">
+          <el-input :maxlength="8" class="bidding-pname code" v-model="verif1">
           </el-input>
           <button class="span" id="fg1" type="button" :disabled="disabled" @click="code">{{btntxt}}</button>
         </template>
-      </el-form-item>
-      <el-button type="primary" class="but" @click="cancel">取消</el-button>
-      <el-button type="primary" class="but" @click="prese">保存</el-button>
+        </el-form-item>
+        <el-button type="primary" class="but" @click="cancel">取消</el-button>
+        <el-button type="primary" class="but" @click="prese">保存</el-button>
     </el-form>
 </section>

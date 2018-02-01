@@ -17,7 +17,7 @@
         <div class="bidding-form">
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
                 <el-form-item label="产品名称" prop="name">
-                    <el-input v-model="ruleForm.name"></el-input>
+                    <el-input :maxlength="30" v-model="ruleForm.name"></el-input>
                 </el-form-item>
                 <el-row>
                     <el-col :span="12">
@@ -27,7 +27,7 @@
                     </el-col>
                     <el-col :span="12">
                         <el-form-item label="规格" prop="spec">
-                            <el-input v-model="ruleForm.spec"></el-input>
+                            <el-input :maxlength="10" v-model="ruleForm.spec"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -39,7 +39,7 @@
                     </el-col>
                     <el-col :span="12">
                         <el-form-item label="最小起订量:" prop="minSale">
-                            <el-input v-model="ruleForm.minSale"></el-input>
+                            <el-input v-model="ruleForm.minSale" :maxlength="10"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -54,7 +54,7 @@
                     </el-col>
                     <el-col :span="5">
                         <el-form-item label="销售单价" prop="salePrice">
-                            <el-input v-model="ruleForm.salePrice"></el-input>
+                            <el-input v-model="ruleForm.salePrice" :maxlength="10"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="1" class="unit padding-30">元</el-col>
@@ -71,14 +71,14 @@
                     </el-col>
                     <el-col :span="3" style="margin-left:-20px;">
                         <el-form-item label="" :prop="'customerProductIntervals.' + index + '.startNumber'" style="margin-left:-100px;">
-                            <el-input placeholder="" v-model="customerProductIntervals.startNumber" class="width-100" clearable>
+                            <el-input :maxlength="10" placeholder="" v-model="customerProductIntervals.startNumber" class="width-100" clearable>
                             </el-input>
                         </el-form-item>
                     </el-col>
                     <el-col class="line" :span="2" style="padding:10px 0 0 0px">————</el-col>
                     <el-col :span="5">
                         <el-form-item label="" :prop="'customerProductIntervals.' + index + '.endNumber'" style="margin-left:-100px;">
-                            <el-input placeholder="" v-model="customerProductIntervals.endNumber" class="width-100" clearable>
+                            <el-input :maxlength="10" placeholder="" v-model="customerProductIntervals.endNumber" class="width-100" clearable>
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -87,7 +87,7 @@
                     </el-col>
                     <el-col :span="3">
                         <el-form-item label="" :prop="'customerProductIntervals.' + index + '.salePrice'" style="margin-left:-100px;">
-                            <el-input placeholder="" v-model="customerProductIntervals.salePrice" class="width-100" clearable>
+                            <el-input :maxlength="10" placeholder="" v-model="customerProductIntervals.salePrice" class="width-100" clearable>
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -98,7 +98,7 @@
                 </el-row>
 
                 <el-form-item label="品牌" prop="brand">
-                    <el-input v-model="ruleForm.brand" class="width-300"></el-input>
+                    <el-input :maxlength="30" v-model="ruleForm.brand" class="width-300"></el-input>
                 </el-form-item>
             </el-form>
         </div>

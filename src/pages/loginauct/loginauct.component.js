@@ -48,7 +48,8 @@ export default {
   created() {
     var urlId = this.$route.path;
     if (urlId.indexOf('login') > 0) {
-      this.$store.state.headerType = 2;
+      // this.$store.state.headerType = 2;
+      this.$store.commit("switchHeaderType", 2);
     }
   },
   computed: {
@@ -344,8 +345,7 @@ export default {
     },
     close(){
       storage.set("token", '');
-      this.$emit('logining');
-
+      this.$emit('logining',1);
     }
   }
 }

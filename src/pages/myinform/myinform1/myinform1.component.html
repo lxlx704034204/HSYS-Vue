@@ -28,7 +28,7 @@
         <div class="label">
           <span>验证码:</span>
         </div>
-        <el-input class="bidding-pname code" v-model="verif">
+        <el-input :maxlength="8" class="bidding-pname code" v-model="verif">
         </el-input>
         <button class="span" type="button" id="fg" :disabled="disabled" @click="code" ref='sendcodebtn'>{{btntxt}}</button>
         <p class="p-two" v-show="verifs">{{verifa}}</p>

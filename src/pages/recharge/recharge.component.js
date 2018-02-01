@@ -21,7 +21,8 @@ export default {
 		};
   },
   created() {
-  	this.$store.state.headerType = 7;
+		// this.$store.state.headerType = 7;
+		this.$store.commit("switchHeaderType", 7);
   	var that = this;
 	that.axios.get("accountapply/recharge")
 	.then(function(data) {

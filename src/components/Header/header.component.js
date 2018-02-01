@@ -36,8 +36,7 @@ export default {
     },
     created() {
         // 获取热搜数据
-        console.log(this.$store.state.headerType);
-     if(this.$store.state.headerType == 1 || this.$store.state.headerType == 2){
+     if(this.$store.state.headerType == 1 ){
         this.axios.get("/word/1").then((res) => {
             this.keyWord = res;
         });
@@ -53,7 +52,6 @@ export default {
 		}
 
 		//  企业logo
-		//      if(this.$store.state.headerType == 5){
 		var u = document.location.toString();
 		console.log(u, '123')
 		if(u.indexOf("&") != 1) {

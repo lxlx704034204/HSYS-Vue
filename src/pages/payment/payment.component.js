@@ -16,7 +16,8 @@ export default {
     }
   },
   created() {
-    this.$store.state.headerType = 2;
+    // this.$store.state.headerType = 2;
+    this.$store.commit("switchHeaderType", 2);
     this.orderid = this.$route.query.id;
     this.orderInf();
     this.information();

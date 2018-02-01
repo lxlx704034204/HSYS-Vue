@@ -29,7 +29,8 @@ export default {
 	created() {
 		//      this.dw = this.$util.getCodeMap("UNIT");
 		//      console.log(this.dw,'dw')
-		this.$store.state.headerType == 1;
+		// this.$store.state.headerType == 1;
+		this.$store.commit("switchHeaderType", 1);
 		this.fstId = this.$route.query.fstId;
 		if (!this.$route.query.secId){
 			this.detaillist(); // 产品列表

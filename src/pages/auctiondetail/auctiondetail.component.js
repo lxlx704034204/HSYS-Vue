@@ -84,7 +84,8 @@ export default  {
     }
   },
   created() {
-    this.$store.state.headerType = 1;
+    // this.$store.state.headerType = 1;
+    this.$store.commit("switchHeaderType", 1);
     this.urlid =  this.$route.query.id || '';
     var that = this;
     this.brandNum = that.$util.getCodeMap("GRADE");   // 牌号

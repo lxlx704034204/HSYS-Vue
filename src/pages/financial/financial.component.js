@@ -11,14 +11,15 @@ export default  {
     }
   },
   created () {
-  	this.$store.state.headerType = 9;
+
   },
   computed: {
 
   },
   mounted () {
     $('.out-type-classification').hide()
-
+    // this.$store.state.headerType = 9;
+    this.$store.commit("switchHeaderType", 9);
   },
   methods: {
 		tofin(){

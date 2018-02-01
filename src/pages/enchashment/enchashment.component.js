@@ -20,7 +20,8 @@ export default {
 		};
   },
   created() {
-  	this.$store.state.headerType = 8;
+    // this.$store.state.headerType = 8;
+    this.$store.commit("switchHeaderType", 8);
   	var that = this;
   	this.axios.get("account/with")
 		.then(function(data) {

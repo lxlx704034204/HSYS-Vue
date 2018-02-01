@@ -43,9 +43,7 @@ export default {
   },
   created() {
     var urlId = this.$route.path;
-    if (urlId.indexOf('forgetpwd1') > 0) {
-      this.$store.state.headerType = 3;
-    }
+    this.$store.commit("switchHeaderType", 3);
     this.namea = "";
   },
   mounted() {

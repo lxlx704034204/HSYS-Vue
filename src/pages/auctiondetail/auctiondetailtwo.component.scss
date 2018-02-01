@@ -22,7 +22,9 @@
 		color:#333;
 		font-family: '微软雅黑'
 	}
-
+	.el-dialog--center .el-dialog__body{
+		text-align: left;
+	}
 	.el-checkbox__input.is-checked+.el-checkbox__label{
 		color:#333;
 	}

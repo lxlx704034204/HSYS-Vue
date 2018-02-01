@@ -22,10 +22,7 @@ export default {
 
   },
   created() {
-
-
-    this.$store.state.headerType = 1;
-   
+    this.$store.commit("switchHeaderType", 1);
     this.warehouse = this.$util.getCodeMap("KUBE");    // 库别
     this.unit = this.$util.getCodeMap("UNIT");    // 单位
     var json2 = {};

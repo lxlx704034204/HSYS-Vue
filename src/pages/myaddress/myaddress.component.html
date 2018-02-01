@@ -1,0 +1,87 @@
+<section class="myaddress">
+  <div>
+    <!-- 面包屑导航 -->
+    <el-breadcrumb separator="/" class="nav">
+      <el-breadcrumb-item :to="{ path: '/companycenter/myaddress' }">企业中心</el-breadcrumb-item>
+      <el-breadcrumb-item>收货地址</el-breadcrumb-item>
+    </el-breadcrumb>
+    <!-- 主体 -->
+    <div class="main">
+      <!-- 我的收货地址 -->
+      <div class="mainaddress">
+        <div>
+        	<span class="ada_xiu">我的收货地址</span>
+          <!-- 新增地址 -->
+          <template>
+            <span type="text" class="order_hover changebtn ada_xiu22" @click="newadd">新增收货地址</span>
+            <el-dialog title="地址详情" :visible.sync="dialogFormVisible3" center>
+              <el-form :model="ruleForm" ref="ruleForm">
+                <el-form-item label="收货人" :label-width="formLabelWidth" prop="username" style="margin-left: 4px;">
+                  <span class="ada_xiu1">*</span>
+                  <div class="ada_xiu11">
+                  	<el-input v-model="ruleForm.userName" auto-complete="off" name="username"></el-input>
+                  </div>
+                </el-form-item>
+                <el-form-item label="联系电话" :label-width="formLabelWidth" prop="tel" style="margin-left: 18px;">
+                  <span class="ada_xiu13">*</span>
+                  <div class="ada_xiu14">
+                  <el-input v-model="ruleForm.primaryPhone" auto-complete="off"></el-input>
+                  </div>
+                </el-form-item>
+                <el-form-item style="margin-left: 24px;" label="省/直辖市" :label-width="formLabelWidth">
+                  <div class="ada_xiu15"></div>
+                  <span class="ada_xiu16">*</span>
+                  <div class="ada_xiu17">
+                  <el-select v-model="ruleForm.province" class="product-car bidding_select  bidding_input" placeholder="省" @change="changeValue()"
+                    name='producingreaAOne '>
+                    <el-option v-for="(pro,index) in placelist" :key="index" :label="pro.name" :value="pro.id">
+                    </el-option>
+                  </el-select>
+                  <el-select v-model="ruleForm.city" class="product-car bidding_select bidding_input" placeholder="市" @change='changeCity()'
+                    name='producingAreaTwo '>
+                    <el-option v-for="(item,index) in cityList" :key="index" :label="item.name" :value="item.id">
+                    </el-option>
+                  </el-select>
+                  <el-select v-model="ruleForm.area" class="product-car bidding_select bidding_input" placeholder="县">
+                    <el-option v-for="(item,index) in countryList" :key="index" :label="item.name" :value="item.id" name='producingAreaThree'>
+                    </el-option>
+                  </el-select>
+                  </div>
+                </el-form-item>
+                <el-form-item class="Bidding" label="详细地址" :label-width="formLabelWidth" style="margin-left: 18px;">
+                  <span class="ada_xiu18">*</span>
+                  <div style="margin-left: -79px; width: 372px">
+                  <textarea v-model="ruleForm.address" class="ada_xiu23"></textarea>
+                  </div>
+                </el-form-item>
+              </el-form>
+
+              <div slot="footer" class="dialog-footer" style="margin-top: -23px;">
+                <el-button class="ada_xiu19" @click="dialogFormVisible3 = false">取 消</el-button>
+                <el-button class="ada_xiu2" v-if="submitType === 'add'" type="primary" @click="submitForm2()">新 增</el-button>
+                <el-button class="ada_xiu2" v-if="submitType === 'edit'" type="primary" @click="submitForm2()">编 辑</el-button>
+              </div>
+            </el-dialog>
+          </template>
+
+        </div>
+      </div>
+      <div class="add">
+        <div class="address clearfix" v-for="(list,index) in adrlist" :key="index">
+          <div class="addressinfo">
+            <div>收货人 : {{list.userName}}</div>
+            <div>联系电话 : {{list.primaryPhone}}</div>
+            <div>收货地址 :{{list.provinceName}}{{list.cityName}}{{list.areaName}}{{list.address}}</div>
+          </div>
+          <div>
+            <template class="changeInf">
+              <span type="text" class="order_hover changebtn" @click="changemsg(list.id)">修改地址</span>
+              <span v-if="defas.id !== list.id" type="text" class="order_hover changebtn" @click="defaults(list.id,$event)">设为默认地址</span>
+              <span v-else type="text" class="order_hover changebtn">默认地址</span>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

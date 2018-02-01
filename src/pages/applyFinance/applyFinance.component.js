@@ -14,7 +14,8 @@ export default {
 		};
 	},
 	created() {
-		this.$store.state.headerType = 9;
+		// this.$store.state.headerType = 9;
+		this.$store.commit("switchHeaderType", 9);
 		 this.financing = this.$util.getCodeMap("FINANCING");
 		 console.log(this.financing);
 	},

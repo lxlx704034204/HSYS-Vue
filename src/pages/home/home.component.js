@@ -12,7 +12,7 @@ export default {
 
     return {
       token: '',
-      banner: [],// 轮播
+      banner: [], // 轮播
       show: false,
       current: 1,
       total: 1,
@@ -34,12 +34,12 @@ export default {
       hide: false,
       perds: [],
       join: "",
-      echartData:[],
-      scale:[],
-			finan_down: 'first',
+      echartData: [],
+      scale: [],
+      finan_down: 'first',
       isLogin: false, //判断是否登录
-      purchaseid: '',//采购id
-      selfid: '',//自选id
+      purchaseid: '', //采购id
+      selfid: '', //自选id
     }
   },
   computed: {
@@ -47,12 +47,12 @@ export default {
   },
 
   created() {
-    this.$store.state.headerType = 1;
+    this.$store.commit("switchHeaderType", 1);
     var that = this;
     const kubeinfo = this.$util.getCodeMap("KUBE");
-    if(!kubeinfo){
+    if (!kubeinfo) {
       dic();
-    }else{
+    } else {
       that.io = this.$util.getCodeMap("KUBE");
       that.dw = this.$util.getCodeMap("UNIT");
       that.cd = this.$util.getCodeMap("PRODUCINGAREA");
@@ -63,24 +63,25 @@ export default {
       $('.out-type-classification').show()
     }
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     // echart
-    pop(row){
+    pop(row) {
       let that = this;
       that.echartData = [];
       sessionStorage.echartId = row.id;
-         this.axios.get('product/record?id='+ row.id)
-          .then((res) => {
-              let price = [];
-              let time = [];
-              let len = [];
-              for (var i = 0; i < res.length; i++) {
-                that.echartData.push({value:[res[i].createDate,res[i].price]});
-              }
-            // }
-          });
+      this.axios.get('product/record?id=' + row.id)
+        .then((res) => {
+          let price = [];
+          let time = [];
+          let len = [];
+          for (var i = 0; i < res.length; i++) {
+            that.echartData.push({
+              value: [res[i].createDate, res[i].price]
+            });
+          }
+          // }
+        });
     },
     //客户经理
     service(row) {
@@ -97,7 +98,7 @@ export default {
           res.unshift({
             name: "最新现货"
           });
-          res = res.slice(0,4);
+          res = res.slice(0, 4);
           res.push({
             name: "自选产品清单"
           });
@@ -112,12 +113,16 @@ export default {
       let params = id ? `categoryId=${id}&current=${me.current}&size=5` : "size=5";
 
       this.axios.get("product/list?" + params).then(res => {
-        const { records = [], pages = 1 } = res || {};
+        const {
+          records = [], pages = 1
+        } = res || {};
         me.total = pages;
         me.prod = me.transform(records);
       });
     },
-    handleClick({ index }) {
+    handleClick({
+      index
+    }) {
       const me = this;
       if (index === this.tabIndex) {
         return;
@@ -136,10 +141,12 @@ export default {
       };
       if (index == 0) {
         this.axios.get("product/list?params=5").then(res => {
-          if(res.code == 0){
-            const { records = [], pages = 1 } = res || {};
+          if (res.code == 0) {
+            const {
+              records = [], pages = 1
+            } = res || {};
             me.prod = me.transform(records);
-          }else if(res.code == 401){
+          } else if (res.code == 401) {
             me.$router.push('/login')
           }
         });
@@ -155,7 +162,9 @@ export default {
         return;
       }
       this.axios.get("product/collection?" + params).then(res => {
-        const { records = [], pages = 1 } = res || {};
+        const {
+          records = [], pages = 1
+        } = res || {};
         me.total = pages;
         me.prod = me.transform(records);
         me.prod.forEach((res) => {
@@ -199,17 +208,13 @@ export default {
         // }
         if (monthC >= 1) {
           updateStr = "1天前";
-        }
-        else if (weekC >= 1) {
+        } else if (weekC >= 1) {
           updateStr = "1天前";
-        }
-        else if (dayC >= 1) {
+        } else if (dayC >= 1) {
           updateStr = "1天前";
-        }
-        else if (hourC >= 1) {
+        } else if (hourC >= 1) {
           updateStr = "1小时前";
-        }
-        else if (minC >= 1) {
+        } else if (minC >= 1) {
           updateStr = "1分钟前";
         } else {
           updateStr = "刚刚发表";
@@ -222,16 +227,16 @@ export default {
     //删除自选产品
     del(id, event) {
       this.$confirm('是否删除产品?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          var data = id;
-          var that =  this;
-          this.axios.delete('product/collection/' + data).then((res) => {
-            this._getProducts();
-          })
-        });
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        var data = id;
+        var that = this;
+        this.axios.delete('product/collection/' + data).then((res) => {
+          this._getProducts();
+        })
+      });
     },
     //加入自选
     selection(a, row) {
@@ -245,21 +250,44 @@ export default {
       if (!token || token == "") {
         this.isLogin = true;
         return;
-      } 
+      }
       this.axios.post("product/collection", data).then((res) => {
         row.collection = true;
       });
     },
     //向订单传递信息,登录成功后
-    logining() {
+    logining(isclose) {
+      var that = this;
       this.isLogin = false;
       this.token = storage.get("token");
-      // this.ids = storage.get("id");
-      if(this.purchaseid != ''){
-        this.$router.push({ path: '/order', query: { id: this.purchaseid } });
-      }
-      if (this.selfid != ''){
-        this.$router.push({ path: '/home'});
+      var userId = storage.get("id");
+      if (isclose) return;
+      if (this.purchaseid != '') {
+        //判断企业验证状态
+        if (!!userId) {
+          this.axios.get('customer/detail/' + userId)
+            .then(function (data) {
+              if (data != "") {
+                if (data.status !== 'SUCCESS') {
+                  that.$alert('公司信息尚未完善', '提示', {
+                    confirmButtonText: '完善企业信息',
+                    type: 'warning',
+                  }).then(() => {
+                    that.$router.push("/companycenter/myfirm");
+                  }).catch(() => {
+
+                  });
+                } else {
+                  that.$router.push({
+                    path: '/order',
+                    query: {
+                      id: that.purchaseid
+                    }
+                  });
+                }
+              }
+            })
+        }
       }
     },
     getRowlist(row) {
@@ -268,12 +296,10 @@ export default {
       var token = storage.get("token");
       var userId = storage.get("id");
       this.purchaseid = row.id;
-      // let customer = this.$store.state.customer;
-      // console.log(this.$store,"66666")
       if (!token || token == "") {
         this.isLogin = true;
         return;
-      } 
+      }
       //判断企业验证状态
       if (!!userId) {
         this.axios.get('customer/detail/' + userId)
@@ -283,19 +309,25 @@ export default {
                 that.$alert('公司信息尚未完善', '提示', {
                   confirmButtonText: '完善企业信息',
                   type: 'warning',
-                  callback: action => {
-                    that.$router.push("/companycenter/myfirm");
-                  }
-                })
+                }).then(() => {
+                  that.$router.push("/companycenter/myfirm");
+                }).catch(() => {
+
+                });
               } else {
-                that.$router.push({ path: '/order', query: { id: row.id } });
+                that.$router.push({
+                  path: '/order',
+                  query: {
+                    id: row.id
+                  }
+                });
               }
             }
           })
       }
     },
-    openQQ(qq){
-        window.open('http://wpa.qq.com/msgrd?v=3&uin='+qq+'&site=qq&menu=yes','_brank');
+    openQQ(qq) {
+      window.open('http://wpa.qq.com/msgrd?v=3&uin=' + qq + '&site=qq&menu=yes', '_brank');
     },
     ser(id) {
       var that = this;
@@ -319,77 +351,77 @@ export default {
 
     },
 
-    tab_Down1(){
-    	$('.suy_man45').css("borderLeft","2px solid #FFF");
-    	$('.suy_man45').css("borderTop","2px solid #FFF");
-    	$('.suy_man45').css("borderRight","2px solid #FFF");
-    	$('.suy_man45').css("borderBottom","2px solid #009FE2");
-    	$('.suy_man44').css("borderLeft","2px solid #009FE2");
-    	$('.suy_man44').css("borderTop","2px solid #009FE2");
-    	$('.suy_man44').css("borderRight","2px solid #009FE2");
-    	$('.suy_man44').css("borderBottom","2px solid #FFF");
-    	$('.suy_man44').css("color","#009FE2");
-    	$('.suy_man45').css("color","#333");
-    	$('.suy_man51').css("display","none");
-    	$('.suy_man47').css("display","block");
+    tab_Down1() {
+      $('.suy_man45').css("borderLeft", "2px solid #FFF");
+      $('.suy_man45').css("borderTop", "2px solid #FFF");
+      $('.suy_man45').css("borderRight", "2px solid #FFF");
+      $('.suy_man45').css("borderBottom", "2px solid #009FE2");
+      $('.suy_man44').css("borderLeft", "2px solid #009FE2");
+      $('.suy_man44').css("borderTop", "2px solid #009FE2");
+      $('.suy_man44').css("borderRight", "2px solid #009FE2");
+      $('.suy_man44').css("borderBottom", "2px solid #FFF");
+      $('.suy_man44').css("color", "#009FE2");
+      $('.suy_man45').css("color", "#333");
+      $('.suy_man51').css("display", "none");
+      $('.suy_man47').css("display", "block");
     },
-    tab_Down2(){
-    	$('.suy_man44').css("borderLeft","2px solid #FFF");
-    	$('.suy_man44').css("borderTop","2px solid #FFF");
-    	$('.suy_man44').css("borderRight","2px solid #FFF");
-    	$('.suy_man44').css("borderBottom","2px solid #009FE2");
-    	$('.suy_man45').css("borderLeft","2px solid #009FE2");
-    	$('.suy_man45').css("borderTop","2px solid #009FE2");
-    	$('.suy_man45').css("borderRight","2px solid #009FE2");
-    	$('.suy_man45').css("borderBottom","2px solid #FFF");
-    	$('.suy_man45').css("color","#009FE2");
-    	$('.suy_man44').css("color","#333");
-    	$('.suy_man47').css("display","none")
-    	$('.suy_man51').css("display","block")
+    tab_Down2() {
+      $('.suy_man44').css("borderLeft", "2px solid #FFF");
+      $('.suy_man44').css("borderTop", "2px solid #FFF");
+      $('.suy_man44').css("borderRight", "2px solid #FFF");
+      $('.suy_man44').css("borderBottom", "2px solid #009FE2");
+      $('.suy_man45').css("borderLeft", "2px solid #009FE2");
+      $('.suy_man45').css("borderTop", "2px solid #009FE2");
+      $('.suy_man45').css("borderRight", "2px solid #009FE2");
+      $('.suy_man45').css("borderBottom", "2px solid #FFF");
+      $('.suy_man45').css("color", "#009FE2");
+      $('.suy_man44').css("color", "#333");
+      $('.suy_man47').css("display", "none")
+      $('.suy_man51').css("display", "block")
     },
-    tzNo1(){
-    	this.$router.push('/autotrophy')
+    tzNo1() {
+      this.$router.push('/autotrophy')
     },
-    tzNo2(){
-    	window.open('#/financial')
+    tzNo2() {
+      window.open('#/financial')
     },
-    tzNo3(){
-    	window.open('#/information')
+    tzNo3() {
+      window.open('#/information')
     },
-    tzNo4(){
-    	this.$router.push('/customer')
+    tzNo4() {
+      this.$router.push('/customer')
     },
-    tzNo5(){
-    	this.$router.push('/auction')
+    tzNo5() {
+      this.$router.push('/auction')
     },
-    lunbo1(){
-//  	$(".slider-item").css("animation-duration","0s")
-//  	$(".slider-item1").css("animation-delay","0s")
-//  	$(".slider-item2").css("animation-delay","0s")
-//  	$(".slider-item2").css("display",'none')
-			$("#a").css("display",'block')
+    lunbo1() {
+      //  	$(".slider-item").css("animation-duration","0s")
+      //  	$(".slider-item1").css("animation-delay","0s")
+      //  	$(".slider-item2").css("animation-delay","0s")
+      //  	$(".slider-item2").css("display",'none')
+      $("#a").css("display", 'block')
     },
-    lb1(){
-//  	$(".slider-item").css("animation-duration","8s")
-//  	$(".slider-item1").css("animation-delay","-1s")
-//  	$(".slider-item2").css("animation-delay","3s")
-//  	$(".slider-item2").css("display",'block')
+    lb1() {
+      //  	$(".slider-item").css("animation-duration","8s")
+      //  	$(".slider-item1").css("animation-delay","-1s")
+      //  	$(".slider-item2").css("animation-delay","3s")
+      //  	$(".slider-item2").css("display",'block')
     },
-    lunbo2(){
-    	$("#b").css("display",'block')
-//  	$(".slider-item").css("animation-duration","0s")
-//  	$(".slider-item1").css("animation-delay","0s")
-//  	$(".slider-item2").css("animation-delay","0s")
-//  	$(".slider-item2").css("opacity",'1')
-//  	$(".slider-item1").css("opacity",'0')
-//			$(".slider-item2").css("opacity",'1')
-//  	$(".slider-item1").css("opacity",'0')
+    lunbo2() {
+      $("#b").css("display", 'block')
+      //  	$(".slider-item").css("animation-duration","0s")
+      //  	$(".slider-item1").css("animation-delay","0s")
+      //  	$(".slider-item2").css("animation-delay","0s")
+      //  	$(".slider-item2").css("opacity",'1')
+      //  	$(".slider-item1").css("opacity",'0')
+      //			$(".slider-item2").css("opacity",'1')
+      //  	$(".slider-item1").css("opacity",'0')
     },
-    guanbi1(){
-			$("#a").css("display",'none')
+    guanbi1() {
+      $("#a").css("display", 'none')
     },
-    guanbi2(){
-			$("#b").css("display",'none')
+    guanbi2() {
+      $("#b").css("display", 'none')
     }
   }
 }

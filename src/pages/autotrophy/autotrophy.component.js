@@ -3,7 +3,10 @@ import storage from "store2";
 import loginauct from "@/pages/loginauct";
 export default {
   name: 'autotrophy',
-  components: { chartDemo, loginauct },
+  components: {
+    chartDemo,
+    loginauct
+  },
   props: ['searchData'],
   data() {
     return {
@@ -25,14 +28,14 @@ export default {
       pageNo: 1,
       pageSize: 10,
       pageSizesList: [10, 15, 20, 30, 50],
-      total: 0,//数据的总数,
+      total: 0, //数据的总数,
 
       //分类id
-      categoryId:'',
+      categoryId: '',
       // 产地
-      manufacturerCode:'',
+      manufacturerCode: '',
       // 库别
-      warehouseCode:'',
+      warehouseCode: '',
 
       join: "加入自选",
       // 分类数据
@@ -41,11 +44,11 @@ export default {
       companies: [],
       cities: [],
 
-      typeLen: 11,//分类
+      typeLen: 11, //分类
       typeShowLen: 11,
-      cdlen: 11,//产地
+      cdlen: 11, //产地
       cgShowLen: 11,
-      ctLen: 11,//库别
+      ctLen: 11, //库别
       ctShowLen: 11, // 默认显示多少条，和ctLen一样大
 
       // 选择类型
@@ -57,78 +60,79 @@ export default {
       city: [],
       prod: [],
       sale: [],
-      series:[],
-      oneprice:false,
-      changeprice:false,
-      downprice:false,
-      echartData:[],
-      name:'',
+      series: [],
+      oneprice: false,
+      changeprice: false,
+      downprice: false,
+      echartData: [],
+      name: '',
       loading: true,
-      salse:[],
+      salse: [],
       // 排序
       updateOrder: "",
       priceOrder: "",
-      
-      purchaseid: '',//采购id
-      selfid: '',//自选id
+
+      purchaseid: '', //采购id
+      selfid: '', //自选id
     }
   },
   created() {
-  	this.$store.state.headerType = 1;
+    // this.$store.state.headerType = 1;
+    this.$store.commit("switchHeaderType", 1);
     this.token = storage.get("token");
     var that = this;
 
-    that.cds = this.$util.getCodeMap("PRODUCINGAREA");   // 产地
+    that.cds = this.$util.getCodeMap("PRODUCINGAREA"); // 产地
     that.cd = this.cds.slice(0, that.cdlen);
 
-    that.ios = this.$util.getCodeMap("KUBE");    // 库别
+    that.ios = this.$util.getCodeMap("KUBE"); // 库别
     that.io = this.ios.slice(0, that.ctLen);
 
     that.dw = this.$util.getCodeMap("UNIT");
     that.ph = this.$util.getCodeMap("GRADE");
     that.fs = this.$util.getCodeMap("SHIPPING_METHOD");
-    that.cda = this.$util.getCodeMap("PRODUCINGAREA");// 产地
-    that.ioa = this.$util.getCodeMap("KUBE");// 库别
+    that.cda = this.$util.getCodeMap("PRODUCINGAREA"); // 产地
+    that.ioa = this.$util.getCodeMap("KUBE"); // 库别
     // console.log(that.fs.filter(v => v.dictCode === "ZI_TI")[0])
 
 
-    var name = that.$route.query.name?that.$route.query.name:'';
+    var name = that.$route.query.name ? that.$route.query.name : '';
     that.keyword = name;
-    that.categoryId = that.$route.query.categoryId?that.$route.query.categoryId:'';
-    that.manufacturerCode = that.$route.query.manufacturerCode?that.$route.query.manufacturerCode:'';
-    that.warehouseCode = that.$route.query.warehouseCode?that.$route.query.warehouseCode:'';
+    that.categoryId = that.$route.query.categoryId ? that.$route.query.categoryId : '';
+    that.manufacturerCode = that.$route.query.manufacturerCode ? that.$route.query.manufacturerCode : '';
+    that.warehouseCode = that.$route.query.warehouseCode ? that.$route.query.warehouseCode : '';
 
     //加载默认数据
 
     this.getCategory()
     this._ajax()
-    console.log(this.category,'ddd')
+    console.log(this.category, 'ddd')
   },
   computed: {
     getCities() {
       return this.cities.slice(0, this.ctLen);
     }
   },
-  watch:{
+  watch: {
     $route: function (route) {
       if (route.query.name) {
-        this.keyword =  route.query.name;
+        this.keyword = route.query.name;
       }
       if (route.query.warehouseCode) {
-        this.warehouseCode =  route.query.warehouseCode;
+        this.warehouseCode = route.query.warehouseCode;
       }
       if (route.query.manufacturerCode) {
-        this.manufacturerCode =  route.query.manufacturerCode;
+        this.manufacturerCode = route.query.manufacturerCode;
       }
       if (route.query.categoryId) {
-        this.categoryId =  route.query.categoryId;
+        this.categoryId = route.query.categoryId;
       }
 
       this._ajax();
     },
   },
   methods: {
-    getCategory(){
+    getCategory() {
       var _this = this;
       _this.axios.get("product/category").then((res) => {
         _this.categorya = res;
@@ -166,47 +170,48 @@ export default {
     },
 
     // 设置查询条件
-    setSearchResult(){
+    setSearchResult() {
       var that = this;
       var category = storage.get("categoryParents0");
-      if(category){
-         $.each(category,function(index, el) {
-            if(that.categoryId == el.id){
-               that.categorys = [];
-               that.categorys.push(el);
-            }
-         });
+      if (category) {
+        $.each(category, function (index, el) {
+          if (that.categoryId == el.id) {
+            that.categorys = [];
+            that.categorys.push(el);
+          }
+        });
       }
       var manufacturerCode = that.manufacturerCode;
-      if(that.manufacturerCode){
+      if (that.manufacturerCode) {
         that.company = [];
         that.company.push(that.cd.filter(v => v.dictCode === that.manufacturerCode)[0])
       }
-      if(that.warehouseCode){
+      if (that.warehouseCode) {
         that.city = [];
         that.city.push(that.io.filter(v => v.dictCode === that.warehouseCode)[0]);
       }
-    }
-    ,
-    searchKeyWord(){
+    },
+    searchKeyWord() {
       this.keyword = this.searchKeyWord;
       this._ajax();
     },
-    switbtn(){
+    switbtn() {
       alert(0)
     },
 
     // echart
-    pop(row){
+    pop(row) {
       let that = this;
       that.echartData = [];
       storage.set("echartId", row.id);
-        this.axios.get('product/record?id='+ row.id).then((res) => {
-          let chartData = res;
-          for (var i = 0; i < chartData.length; i++) {
-            that.echartData.push({value:[chartData[i].createDate,chartData[i].price]});
-          }
-        });
+      this.axios.get('product/record?id=' + row.id).then((res) => {
+        let chartData = res;
+        for (var i = 0; i < chartData.length; i++) {
+          that.echartData.push({
+            value: [chartData[i].createDate, chartData[i].price]
+          });
+        }
+      });
     },
 
     // //显示更多厂家(产地)
@@ -251,7 +256,7 @@ export default {
 
 
     // 选择分类
-    selectFilter(type, title ,code) {
+    selectFilter(type, title, code) {
       // TODO list
       // this.company.push({name:12111});
       if (type === 1) { //分类条件
@@ -277,7 +282,7 @@ export default {
       // this._ajax();
       this.productlists();
     },
-    productlists(){
+    productlists() {
       var usename = [];
       for (var i = 0; i < this.categorys.length; i++) {
         usename[i] = this.categorys[i].id;
@@ -287,39 +292,41 @@ export default {
 
 
     //公用数据查询
-    _ajax(){
+    _ajax() {
       var _this = this;
       _this.setSearchResult();
 
-      this.axios.get("product/list?categoryId=" + this.categoryId + "&manufacturerCode=" + this.manufacturerCode + "&warehouseCode=" + this.warehouseCode + "&name=" + this.keyword +'&current=' + this.pageNo + '&size=10' + "&updateOrder=" + this.updateOrder + "&priceOrder=" + this.priceOrder)
-      .then((res) => {
-        _this.loading = false;
-        const { records = [], pages = 1 } = res || {};
-        _this.prod = _this.transform(records);
-        _this.pageNo = res.current;
-        _this.total = res.total;
-        _this.prod.forEach(function(i,element){
-          (function(element){
-            if(_this.prod[element].oldPrice == null){
-              _this.oneprice = true;
-              _this.changeprice = false;
-              _this.downprice = false;
-            }else if(_this.prod[element].oldPrice != null){
-              if(_this.prod[element].salePrice > _this.prod[element].oldPrice){
-                _this.salse = _this.prod[element].salePrice - _this.prod[element].oldPrice
-                _this.changeprice = true;
-                _this.oneprice = false;
-                _this.downprice = false;
-              }else{
-                _this.salse = _this.prod[element].oldPrice - _this.prod[element].salePrice
-                _this.downprice = true;
+      this.axios.get("product/list?categoryId=" + this.categoryId + "&manufacturerCode=" + this.manufacturerCode + "&warehouseCode=" + this.warehouseCode + "&name=" + this.keyword + '&current=' + this.pageNo + '&size=10' + "&updateOrder=" + this.updateOrder + "&priceOrder=" + this.priceOrder)
+        .then((res) => {
+          _this.loading = false;
+          const {
+            records = [], pages = 1
+          } = res || {};
+          _this.prod = _this.transform(records);
+          _this.pageNo = res.current;
+          _this.total = res.total;
+          _this.prod.forEach(function (i, element) {
+            (function (element) {
+              if (_this.prod[element].oldPrice == null) {
+                _this.oneprice = true;
                 _this.changeprice = false;
-                _this.oneprice = false;
+                _this.downprice = false;
+              } else if (_this.prod[element].oldPrice != null) {
+                if (_this.prod[element].salePrice > _this.prod[element].oldPrice) {
+                  _this.salse = _this.prod[element].salePrice - _this.prod[element].oldPrice
+                  _this.changeprice = true;
+                  _this.oneprice = false;
+                  _this.downprice = false;
+                } else {
+                  _this.salse = _this.prod[element].oldPrice - _this.prod[element].salePrice
+                  _this.downprice = true;
+                  _this.changeprice = false;
+                  _this.oneprice = false;
+                }
               }
-            }
-          })(element)
-        })
-      });
+            })(element)
+          })
+        });
     },
     removeFilter(type, data) {
       if (type === 1) { // 删除分类条件
@@ -329,7 +336,7 @@ export default {
             this.categorys.splice(i, 1);
           }
         }
-      } else if (type === 2) {// 删除公司条件
+      } else if (type === 2) { // 删除公司条件
         this.manufacturerCode = '';
         for (var i = 0; i < this.company.length; i++) {
           if (this.company[i] == data) {
@@ -337,7 +344,7 @@ export default {
 
           }
         }
-      } else {// 删除交货地址条件
+      } else { // 删除交货地址条件
         this.warehouseCode = '';
         for (var i = 0; i < this.city.length; i++) {
           if (this.city[i] == data) {
@@ -356,17 +363,19 @@ export default {
 
     //  全部结果
     remove() {
-      this.categoryId ='';
-      this.manufacturerCode ='';
-      this.warehouseCode='';
-      this.biddstatu='';
+      this.categoryId = '';
+      this.manufacturerCode = '';
+      this.warehouseCode = '';
+      this.biddstatu = '';
       this.keyword = '';
-      this.categorys=[];
-      this.company=[];
-      this.city=[];
+      this.categorys = [];
+      this.company = [];
+      this.city = [];
       var _this = this;
       this.axios.get("product/list").then((res) => {
-        const { records = [], pages = 1 } = res || {};
+        const {
+          records = [], pages = 1
+        } = res || {};
         _this.prod = _this.transform(records);
         _this.pageNo = res.current;
         _this.total = res.total;
@@ -381,14 +390,18 @@ export default {
         current: this.pageNo,
         name: this.keyword,
         categoryId: this.categoryId,
-        warehouseCode:this.warehouseCode,
-        manufacturerCode:this.manufacturerCode
+        warehouseCode: this.warehouseCode,
+        manufacturerCode: this.manufacturerCode
       }
       this._ajax();
 
     },
     // 排序
-    sortChange ({ column, prop, order }) {
+    sortChange({
+      column,
+      prop,
+      order
+    }) {
       this[prop] = order.replace("ending", "")
       this._ajax();
 
@@ -399,15 +412,15 @@ export default {
       var id = row.userId;
       var _this = this;
       this.axios.get("sys/user/" + id).then((res) => {
-      	console.log(res,'gg')
+        console.log(res, 'gg')
         _this.sale = res || {};
       })
     },
-    openQQ(qq){
-        window.open('http://wpa.qq.com/msgrd?v=3&uin='+qq+'&site=qq&menu=yes','_brank');
+    openQQ(qq) {
+      window.open('http://wpa.qq.com/msgrd?v=3&uin=' + qq + '&site=qq&menu=yes', '_brank');
     },
 
-     transform(data = []) {
+    transform(data = []) {
       data.forEach(item => {
         var dateStr = item.updateDate;
         var date = new Date(dateStr).getTime();
@@ -443,17 +456,13 @@ export default {
         // }
         if (monthC >= 1) {
           updateStr = "1天前";
-        }
-        else if (weekC >= 1) {
+        } else if (weekC >= 1) {
           updateStr = "1天前";
-        }
-        else if (dayC >= 1) {
+        } else if (dayC >= 1) {
           updateStr = "1天前";
-        }
-        else if (hourC >= 1) {
+        } else if (hourC >= 1) {
           updateStr = "1小时前";
-        }
-        else if (minC >= 1) {
+        } else if (minC >= 1) {
           updateStr = "1分钟前";
         } else {
           updateStr = "刚刚发表";
@@ -464,11 +473,38 @@ export default {
     },
 
     //向订单传递信息
-    logining() {
+    logining(isclose) {
+      var that = this;
       this.isLogin = false;
       this.token = storage.get("token");
+      var userId = storage.get("id");
+      if (isclose) return;
       if (this.purchaseid != '') {
-        this.$router.push({ path: '/order', query: { id: this.purchaseid } });
+        //判断企业验证状态
+        if (!!userId) {
+          this.axios.get('customer/detail/' + userId)
+            .then(function (data) {
+              if (data != "") {
+                if (data.status !== 'SUCCESS') {
+                  that.$alert('公司信息尚未完善', '提示', {
+                    confirmButtonText: '完善企业信息',
+                    type: 'warning',
+                  }).then(() => {
+                    that.$router.push("/companycenter/myfirm");
+                  }).catch(() => {
+
+                  });
+                } else {
+                  that.$router.push({
+                    path: '/order',
+                    query: {
+                      id: that.purchaseid
+                    }
+                  });
+                }
+              }
+            })
+        }
       }
     },
     getRowlist(row) {
@@ -490,50 +526,23 @@ export default {
                 that.$alert('公司信息尚未完善', '提示', {
                   confirmButtonText: '完善企业信息',
                   type: 'warning',
-                  callback: action => {
-                    that.$router.push("/companycenter/myfirm");
-                  }
-                })
+                }).then(() => {
+                  that.$router.push("/companycenter/myfirm");
+                }).catch(() => {
+
+                });
               } else {
-                that.$router.push({ path: '/order', query: { id: row.id } });
+                that.$router.push({
+                  path: '/order',
+                  query: {
+                    id: row.id
+                  }
+                });
               }
             }
           })
       }
     },
-    // getRowlist(row) {
-    //   var token = storage.get("token");
-    //   if (token && token !== "") {
-    //     this.$router.push({ path: '/order', query: { id: row.id } })
-    //   } else {
-    //     this.$alert('请在登录后进行采购！', '提示', {
-    //       confirmButtonText: '确定',
-    //       type: 'error',
-    //       callback: action => {
-    //         this.$router.push("/login");
-    //       }
-    //     })
-    //   }
-    // },
-
-    // selection(id, rid, event) {
-    //   var that = this;
-    //   var even = $(event.currentTarget);
-    //   var roid = id;
-    //   var sele = {
-    //     skuId: roid
-    //   }
-    //   var sel = JSON.stringify(sele);
-
-
-    //   this.axios.post("product/collection", sele).then((res) => {
-    //     that.$alert(res || "已加入", '提示', {
-    //       confirmButtonText: '确定',
-    //     })
-    //     this._ajax();
-    //   })
-    // }
-
     selection(a, row) {
       var data = {
         skuId: a,
@@ -550,7 +559,7 @@ export default {
         row.collection = true;
       });
     },
-    
+
   }
 
 }

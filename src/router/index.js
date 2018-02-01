@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import home from '@/pages/home'
 /* login页面组件引入 结束  */
 import applyFinance from '@/pages/applyFinance' // 申请塑云金融
-import addressadmin from '@/pages/addressadmin' // 竞价地址管理
+import myaddress from '@/pages/myaddress' // 竞价地址管理
 
 
 // import technician from '@/pages/technician' // 技术专家
@@ -361,11 +361,11 @@ export default new Router({
                     component: () => import(/* webpackChunkName: "minbid" */ "@/pages/bidfail"),
                 },
                 // 地址管理
-                {
-                    path: '/companycenter/addressadmin',
-                    name: 'addressadmin',
-                    component:addressadmin
-                },
+                // {
+                //     path: '/companycenter/addressadmin',
+                //     name: 'addressadmin',
+                //     component:addressadmin
+                // },
                 // 我的服务
                 // {
                 //     path: '/companycenter/myserver',
@@ -445,7 +445,7 @@ export default new Router({
                 {
                     path: '/companycenter/myaddress',
                     name: 'myaddress',
-                    component: () => import(/* webpackChunkName: "myfirm" */ "@/pages/addressadmin"),
+                    component: () => import(/* webpackChunkName: "myfirm" */ "@/pages/myaddress"),
                 },
                 // 员工管理
                 {

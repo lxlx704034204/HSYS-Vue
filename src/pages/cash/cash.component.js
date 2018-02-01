@@ -27,9 +27,10 @@ export default {
   },
   created() {
     var urlId = this.$route.path;
-    if (urlId.indexOf('cash') > 0) {
-      this.$store.state.headerType = 10;
-    }
+    // if (urlId.indexOf('cash') > 0) {
+    //   this.$store.state.headerType = 10;
+    // }
+    this.$store.commit("switchHeaderType", 10);
     this.residue();
     this.cashmoney = this.$store.state.cash;
     this.cashForm.money = this.$store.state.cash;

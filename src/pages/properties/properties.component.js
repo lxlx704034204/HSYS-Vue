@@ -49,7 +49,8 @@ export default {
     }
   },
   created() {
-  	this.$store.state.headerType = 1;
+    // this.$store.state.headerType = 1;
+    this.$store.commit("switchHeaderType", 1);
   },
   mounted(){
     this._getProList();

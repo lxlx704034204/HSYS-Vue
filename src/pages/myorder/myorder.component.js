@@ -19,7 +19,7 @@ export default {
 
   },
   created() {
-    this.$store.state.headerType = 1;
+    this.$store.commit("switchHeaderType", 1);
     //牌号
     this.ph = this.$util.getCodeMap("GRADE");
   },

@@ -60,7 +60,8 @@ export default {
 
 	},
 	created() {
-		this.$store.state.headerType = 1;
+		// this.$store.state.headerType = 1;
+		this.$store.commit("switchHeaderType", 1);
 		this.token = storage.get("token");
 		var that = this;
 		// 最新供应

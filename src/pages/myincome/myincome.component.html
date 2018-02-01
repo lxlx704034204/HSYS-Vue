@@ -6,10 +6,8 @@
 		</el-breadcrumb>
 		<!-- //日期搜索 -->
 		<div class="mybill-search">
-			<el-date-picker v-model="timevalue" type="daterange" align="right" unlink-panels range-separator="~" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions2" @change='timechange'>
+			<el-date-picker v-model="timevalue" type="daterange" align="right" unlink-panels range-separator="~" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions2" @change="timechange">
 			</el-date-picker>
-			</el-date-picker>
-
 		</div>
 		<div class="mybill-table">
 			<el-table :data="incometable" border style="width: 100%">

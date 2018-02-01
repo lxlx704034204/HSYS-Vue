@@ -90,11 +90,9 @@ export default {
             ]
         }
     },
-
     created() {
-        console.log(this.$store.state.headerType,'pp');
         let _this = this,
-        name = this.$router.history.current.name;
+            name = this.$router.history.current.name;
         this.menuArr.forEach((element, index) => {
             element.subItem.forEach((ele, indexs) => {
                 if (ele.component == name) {
@@ -102,11 +100,8 @@ export default {
                 }
             })
         });
-
     }, //记录路由地址,绑定到默认active
-    computed: {
-
-    },
+    computed: {},
     mounted() {
         $('.companycenter1').show();
     },
@@ -138,39 +133,12 @@ export default {
                             }
                         })
                 }
-                // let customer = this.$store.state.customer;
-                // if (customer.status !== 'SUCCESS') {
-                //     // this.$alert('请先完善公司信息，等待审核通过才能发布产品', '提示', {
-                //     //     confirmButtonText: '完善企业信息',
-                //     //     type: 'warning',
-                //     //     callback: action => {
-                //     //         this.$router.push("/companycenter/publish");
-                //     //         this.defaultActive = '3-0';
-                //     //     }
-                //     // })
-                //     this.$alert('请先完善公司信息，等待审核通过才能发布产品', '温馨提示', {
-                //         confirmButtonText: '完善企业信息',
-                //         type: 'warning',
-                //     }).then(() => {
-                //         this.$router.push("/companycenter/publish");
-                //         this.defaultActive = '3-0';
-                //     }).catch(() => {
-                //         this.defaultActive = '3-0';
-                //     });
-                // } else {
-                //     this.$router.push({
-                //         path: item.component
-                //     });
-                // }
             } else {
                 this.$router.push({
                     path: item.component
                 });
             }
-
-
         },
-
         // 选择导航
         handleSelect(key, keyPath) {
             console.log(key, keyPath, '7');

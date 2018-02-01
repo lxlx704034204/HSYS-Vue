@@ -62,8 +62,7 @@ export default  {
     }
   },
   created() {
-    this.$store.state.headerType = 1;
-    
+    this.$store.commit("switchHeaderType", 1);
     this.classfy();
     this.comList();
     this.dicCode();
@@ -74,7 +73,6 @@ export default  {
     // 数据字典
     dicCode(){
       var that = this;
-      // if(storage.get("gradeCode")){
         that.cds = that.$util.getCodeMap("PRODUCINGAREA");   // 产地
         that.cd = that.cds.slice(0, that.ficatLen);
         that.ios = that.$util.getCodeMap("KUBE");    // 库别
@@ -98,24 +96,10 @@ export default  {
           json3[v.dictCode] = v.dictName
         })
         this.cdjson = json3;  // 产地
-        
-      // }else{
-      //   this.axios.get("dictionary/batch?parentCodes=GRADE,PRODUCINGAREA,SHIPPING_METHOD,KUBE&callback=" + Math.random())
-      //   .then((res) => {
-      //     if (res && res instanceof Array && res.length > 0) {
-      //       storage.set("gradeCode", res);
-      //     }
-      //   });
-      // }
-      
     },
     // 分类
     classfy(){
       var that = this;
-      // if(storage.get("categoryParents0")){
-      //      that.category = storage.get("categoryParents0");
-      //      console.log(that.category,'e');
-      // }else{
         this.axios.get( "product/category")
         .then(function(data){
              that.categorya = data;
@@ -123,7 +107,6 @@ export default  {
              that.category = data.slice(0, that.typeLen);
         })
         .catch(error => console.log(error))
-      // }
     },  
      // 选择分类qq
     selectFilter(type, title ,code,item) {

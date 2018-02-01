@@ -4,7 +4,7 @@
         <el-breadcrumb-item>员工管理</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="mybill-search clearfix">
-        <el-input class="myorder_input" v-model.trim="value" placeholder="请输入员工姓名">
+        <el-input :maxlength="10" class="myorder_input" v-model.trim="value" placeholder="请输入员工姓名">
         </el-input>
         <el-button class="myorder_btn" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
         <router-link to="/companycenter/addstaff" class="but myorder_release">添加员工</router-link>
