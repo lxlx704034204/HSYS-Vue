@@ -92,7 +92,7 @@ export default {
     },
 
     created() {
-        this.$store.state.headerType = 2;
+        console.log(this.$store.state.headerType,'pp');
         let _this = this,
         name = this.$router.history.current.name;
         this.menuArr.forEach((element, index) => {

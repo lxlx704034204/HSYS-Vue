@@ -2,9 +2,9 @@
 	<!-- 面包屑 -->
 	<div class="customer">
 		<el-breadcrumb separator-class="el-icon-arrow-right">
-			<el-breadcrumb-item class="det_cla1" :to="{ path: '/customer' }" id="kehu">客户资源</el-breadcrumb-item>
+			<el-breadcrumb-item class="det_cla1" :to="{ path: '/customer' }" id="kehu">企业产品库</el-breadcrumb-item>
 			<el-breadcrumb-item class="det_cla" @click='custone'>{{fstName}}</el-breadcrumb-item>
-			<el-breadcrumb-item class="det_cla">{{secName}}</el-breadcrumb-item>
+			<!--<el-breadcrumb-item class="det_cla">{{secName}}</el-breadcrumb-item>-->
 		</el-breadcrumb>
 	</div>
 
@@ -37,7 +37,8 @@
 		<div class="detail_left">
 			<h3>
 	        <!--<i></i>-->
-	        <div style="margin-left: 18px;">{{fstName}}</div>
+	        <div style="margin-left: 18px;" v-if='names != ""'>{{names}}</div>
+	        <div style="margin-left: 18px;" v-else>{{secName}}</div>
 	    </h3>
 			<div class="left_main1 clearfixed det_cla2" @click="watch(det.id,det.userId)" v-for="(det,index) in detlist" v-if="index<10" :data="det.id" :data1="det.userId" ref='de'>
 				<div class="main1_img">
@@ -58,7 +59,7 @@
 						<span class="det_cla2">{{det.producingAreaOneName}}{{det.producingAreaTwoName}}{{det.producingAreaThreeName}}</span>
 						<!-- <span class="main1_span">{{det.companyName}}</span> -->
 						<router-link :to="{path:'company',query: {userId:det.userId}}" target="_blank" tag="a" class="main1_span">
-							<div class="cus_res37">{{det.companyName}}</div>
+							<div class="cus_res37" style="font-size: 14px;">{{det.companyName}}</div>
 						</router-link>
 					</P>
 				</div>
@@ -104,7 +105,7 @@
 					</router-link>
 					<!-- <div class="cus_xiu2">所属公司：{{pro.companyName}}</div> -->
 					<router-link :to="{path:'company',query: {userId:pro.userId}}" target="_blank" tag="a">
-						<div class="cus_res37 cus_res110">{{pro.companyName}}</div>
+						<div class="cus_res37 cus_res110">公司名称：{{pro.companyName}}</div>
 					</router-link>
 
 				</div>

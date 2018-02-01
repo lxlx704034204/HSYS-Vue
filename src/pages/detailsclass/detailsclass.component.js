@@ -29,8 +29,41 @@ export default {
 	created() {
 		//      this.dw = this.$util.getCodeMap("UNIT");
 		//      console.log(this.dw,'dw')
+		this.$store.state.headerType == 1;
 		this.fstId = this.$route.query.fstId;
-		this.detaillist(); // 产品列表
+		if (!this.$route.query.secId){
+			this.detaillist(); // 产品列表
+		} else {
+			this.isnothave = false;
+			var secId = this.$route.query.secId;
+			this.ishave = true;
+			this.axios.get("product/categoryname?id=" + secId)
+					.then(function(data) {
+						that.names = data.name;
+					});
+			var that = this;
+			this.axios.get("customerproduct/all?size=8&current=" + this.pageNo + '&cid=' + secId + "&newest=true", {
+					params: {
+						noInterceptor: 1
+					}
+				})
+				.then(function(data) {
+					if(data.code === 500) {
+						that.isnothave = true;
+						that.detlist = '';
+						that.total = 0;
+
+					} else {
+						that.isnothave = false;
+						that.detlist = data.data.records;
+						console.log(that.detlist, '66')
+						that.total = data.data.total;
+					}
+
+				});
+		}
+		
+		
 		//  获得面包屑name名
 		this.list();
 		var that = this;
@@ -81,16 +114,17 @@ export default {
 				.then(function(data) {
 					that.fstName = data.name;
 				});
-			if(secId == undefined || secId == '') {} else {
-				this.axios.get("product/categoryname?id=" + secId)
-					.then(function(data) {
-						that.secName = data.name;
-					});
-			}
+//			if(secId == undefined || secId == '') {} else {
+//				this.axios.get("product/categoryname?id=" + secId)
+//					.then(function(data) {
+//						that.secName = data.name;
+//					});
+//			}
 		},
 		// 产品列表
 		detaillist() {
 			var that = this;
+			that.isnothave = false;
 			this.axios.get("customerproduct/all?size=8&current=" + this.pageNo + '&cid=' + this.fstId + "&newest=true", {
 					params: {
 						noInterceptor: 1
@@ -136,7 +170,7 @@ export default {
 		},
 		//	分类结束
 		watch(id, userId) {
-			this.$router.push('/productDetail?id=' + id + '&userId=' + userId);
+			window.open('#/productDetail?id=' + id + '&userId=' + userId);
 		},
 		// 分页
 		pageChange(num) {

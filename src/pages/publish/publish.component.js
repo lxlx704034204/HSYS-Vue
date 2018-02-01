@@ -11,7 +11,6 @@ export default {
         return {
             ishide: false,
             failReasonl: '',
-
             id: storage.get("id"),
             povince: [],
             master_product: [], //主营产品
@@ -48,6 +47,7 @@ export default {
                 accountName: "",
                 bank: "",
                 accountNo: "",
+                failReasonl: '',
             },
             rules: {
                 name: { required: true, validator: this.validName, trigger: "blur" },
@@ -156,7 +156,8 @@ export default {
             const map = new BMap.Map(this.$refs.map);
             map.centerAndZoom(new BMap.Point(116.404, 39.915), 16);
             map.addControl(new BMap.NavigationControl());
-
+            map.enableScrollWheelZoom(true);   //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom(true);    
             const setMaker = point => {
                 map.clearOverlays();
                 const marker = new BMap.Marker(new BMap.Point(point.lng, point.lat));
@@ -307,7 +308,7 @@ export default {
                 $("#leixing").focus();
             } else if (this.customer.registeredCapital == undefined) {
                 $("#zijin").focus();
-            } else if (!/^[0-9]*$/.test(this.customer.registeredCapital) || this.customer.registeredCapital.length > 10) {
+            } else if (!/^\d+(\.\d+)?$/.test(this.customer.registeredCapital) || this.customer.registeredCapital.length > 10) {
                 $("input[name='zijin']").focus();
                 this.zhus = true;
             } else if (this.customer.accountName == undefined) {
@@ -343,6 +344,9 @@ export default {
             });
         },
         save(customer) {
+            if (this.failReasonl != '') {
+                customer.failReasonl = '';
+            }
             return this.axios.put("customer/updateCustomer", customer, {
                 params: {
                     noInterceptor: 1 // hack

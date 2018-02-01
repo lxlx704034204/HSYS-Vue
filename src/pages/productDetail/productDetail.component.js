@@ -185,7 +185,9 @@ export default {
 			const map = new BMap.Map('allmap');
 			map.centerAndZoom(new BMap.Point(this.longitude, this.latitude), 13);
 			var marker = new BMap.Marker(new BMap.Point(this.longitude, this.latitude)); // 创建标注
-			map.addOverlay(marker)
+			map.addOverlay(marker);
+			map.enableScrollWheelZoom(true);   //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom(true);  
 
 		},
 		// 小图切换

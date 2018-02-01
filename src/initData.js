@@ -17,7 +17,7 @@ export default function initCodeMapData() {
     // if (!!storage.get("codeMap")){
     //   resolve();
     // } else {
-      axios.get("dictionary/batch?parentCodes=GRADE,UNIT,PRODUCINGAREA,KUBE,SHIPPING_METHOD,CAMPANY,MODEL,ACCOUNT,MASTER_PRODUCT,CHANNEL_CODE,FINANCING&callback=" + Math.random())
+      axios.get("dictionary/batch?parentCodes=GRADE,UNIT,PRODUCINGAREA,KUBE,SHIPPING_METHOD,CAMPANY,MODEL,ACCOUNT,MASTER_PRODUCT,FINANCING&callback=" + Math.random())
       .then((res) => {
         if (res && res instanceof Array && res.length > 0) {
           storage.set("codeMap", res);

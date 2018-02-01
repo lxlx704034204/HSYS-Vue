@@ -35,6 +35,10 @@ export default {
       that.area(city);
       that.area(area);
 		});
+//		initializeMap().then(BMap => {
+//    let point = {};
+//    this.initMap(BMap, point);
+//  });
   },
   mounted () {
     initializeMap().then(BMap => {
@@ -57,7 +61,9 @@ export default {
       const map = new BMap.Map(this.$refs.mapcustom);
       map.centerAndZoom(new BMap.Point(this.longitude, this.latitude), 13);
       var marker = new BMap.Marker(new BMap.Point(this.longitude, this.latitude));  // 创建标注
-      map.addOverlay(marker)
+      map.addOverlay(marker);
+      map.enableScrollWheelZoom(true);   //启用滚轮放大缩小，默认禁用
+      map.enableContinuousZoom(true);  
     },
   }
 }

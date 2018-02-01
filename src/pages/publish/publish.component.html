@@ -21,9 +21,11 @@
         <el-row :gutter="20">
             <el-col :span="24">
                 <h3>公司信息</h3>
+                <div v-show="ishide" class="ishide">审核未通过原因:{{failReasonl}}</div>
             </el-col>
+
         </el-row>
-        <div v-show="ishide" class="ishide">审核未通过原因:{{failReasonl}}</div>
+
         <el-row :gutter="20">
             <el-col :span="6">
                 <el-upload class="avatar-uploader" :headers="{token : token}" :action="upload" :show-file-list="false" :on-success="successUploadLogo" :before-upload="beforeAvatarUpload" :disabled='flage'>

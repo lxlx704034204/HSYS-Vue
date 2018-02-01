@@ -274,7 +274,7 @@ export default {
           this.city.push(title);
         }
       }
-      this._ajax();
+      // this._ajax();
       this.productlists();
     },
     productlists(){

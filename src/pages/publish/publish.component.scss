@@ -122,14 +122,22 @@
     left: 250px;
 }
 
+// .ishide {
+//     width: 671px;
+//     height: 25px;
+//     line-height: 25px;
+//     text-align: left;
+//     position: absolute;
+//     left: 265px;
+//     top: 30px;
+//     font-size: 18px;
+//     color: #fa5555;
+// }
 .ishide {
-    width: 671px;
-    height: 25px;
-    line-height: 25px;
-    text-align: left;
-    position: absolute;
-    left: 265px;
-    top: 30px;
-    font-size: 18px;
+    width: 800px;
+    line-height: 20px;
+    text-align: justify;
+    font-size: 14px;
     color: #fa5555;
+    margin: -33px 0px 10px 90px;
 }

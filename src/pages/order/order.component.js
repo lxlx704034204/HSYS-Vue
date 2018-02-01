@@ -101,10 +101,13 @@ export default {
 
     created() {
         // 地区数据
-        this.getAreaData().then(res => {
-            res.map(v => { v.childrens = [] })
-            this.producingArea = res;
-        });
+        if(this.dialogFormVisible3  || this.dialogFormVisible1 ){
+           this.getAreaData().then(res => {
+                res.map(v => { v.childrens = [] })
+                this.producingArea = res;
+            }); 
+        }
+        
         this.ids = this.$route.query.id;
         // this.selectChange();
         this.defaultaddress();
@@ -380,13 +383,21 @@ export default {
             var that = this;
             // this.numberDecimal
             // this.priceDecimal
-            this.orderNum = this.$util.limitTowDecimals(this.orderNum, this.numberDecimal);
+            this.orderNum = this.$util.limitTowDecimals(this.orderNum, this.numberDecimal);//数量
             if (this.orderNum > 0) {
                 that.allPrice = that.buylist[0].salePrice * that.orderNum;
+                that.allPrice = this.endPrice(that.allPrice, this.priceDecimal)
             } else if (this.orderNum <= 0) {
                 this.orderNum = 1
                 that.allPrice = that.buylist[0].salePrice;
+                that.allPrice = this.endPrice(that.allPrice, this.priceDecimal)
             }
+        },
+        //计算总价
+        endPrice(price,num){
+            let endPrice = 0;
+            endPrice = Math.round((price) * Math.pow(10 ,num)) / Math.pow(10 ,num);
+            return endPrice;
         },
         // 校验数字
         checkPhone(rule, value, callback) {

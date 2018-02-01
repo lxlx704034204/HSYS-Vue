@@ -20,7 +20,7 @@ export default new Vuex.Store({
         searchType:1,
         user:{},
         // header Type
-        headerType: 0, // 1表示首页类型的头部， 2表示自营商城头部，3表示登录头部
+        headerType: 1, // 1表示首页类型的头部， 2表示自营商城头部，3表示登录头部
         count: 10,
         token: sessionStorage.token,
         title: '',

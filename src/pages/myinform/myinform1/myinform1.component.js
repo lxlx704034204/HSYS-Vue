@@ -115,7 +115,7 @@ export default {
                         verificationCode: that.verif
                     }, { params: { noInterceptor: 1 } }).then(function(data) {
                         console.log(data, 'datad');
-                        if (data.data == false) {
+                        if (data.code == 500) {
                             that.verifs = true;
                             that.verifa = '验证码输入错误'
                         } else {

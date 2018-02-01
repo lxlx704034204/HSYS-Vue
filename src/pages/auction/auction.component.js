@@ -48,7 +48,6 @@ export default  {
       manufacturerCode:'',
       // 库别
       warehouseCode:'',
-
       gradeNum:'',
       phjson:[],
       iojson:[],
@@ -64,49 +63,67 @@ export default  {
   },
   created() {
     this.$store.state.headerType = 1;
-    var that = this;
-    that.cds = that.$util.getCodeMap("PRODUCINGAREA");   // 产地
-    that.cd = that.cds.slice(0, that.ficatLen);
-
-    that.ios = that.$util.getCodeMap("KUBE");    // 库别
-    that.io = that.ios.slice(0, that.ctLen);
-
-    that.ph = that.$util.getCodeMap("GRADE");   // 牌号
-    var json = {};
-    that.ph.forEach(v => {
-      json[v.dictCode] = v.dictName
-    })
-    this.phjson = json;    // 牌号
     
-    var json2 = {};
-    that.ios.forEach(v => {
-      json2[v.dictCode] = v.dictName
-    })
-    this.iojson = json2;  // 库别
-     var json3= {};
-    that.cds.forEach(v => {
-      json3[v.dictCode] = v.dictName
-    })
-    this.cdjson = json3;  // 产地
     this.classfy();
     this.comList();
+    this.dicCode();
   },
   mounted () {
   },
   methods: {
+    // 数据字典
+    dicCode(){
+      var that = this;
+      // if(storage.get("gradeCode")){
+        that.cds = that.$util.getCodeMap("PRODUCINGAREA");   // 产地
+        that.cd = that.cds.slice(0, that.ficatLen);
+        that.ios = that.$util.getCodeMap("KUBE");    // 库别
+        that.io = that.ios.slice(0, that.ctLen);
+        that.ph = that.$util.getCodeMap("GRADE");   // 牌号
 
+        var json = {};
+        that.ph.forEach(v => {
+          json[v.dictCode] = v.dictName
+        })
+        this.phjson = json;    // 牌号
+
+        var json2 = {};
+        that.ios.forEach(v => {
+          json2[v.dictCode] = v.dictName
+        })
+        this.iojson = json2;  // 库别
+
+         var json3= {};
+        that.cds.forEach(v => {
+          json3[v.dictCode] = v.dictName
+        })
+        this.cdjson = json3;  // 产地
+        
+      // }else{
+      //   this.axios.get("dictionary/batch?parentCodes=GRADE,PRODUCINGAREA,SHIPPING_METHOD,KUBE&callback=" + Math.random())
+      //   .then((res) => {
+      //     if (res && res instanceof Array && res.length > 0) {
+      //       storage.set("gradeCode", res);
+      //     }
+      //   });
+      // }
+      
+    },
     // 分类
     classfy(){
       var that = this;
-      this.axios.get( "product/category")
-      .then(function(data){
-           that.categorya = data;
-           console.log(data,'da');
-           // storage.set("categorya", value);
-           that.category = data.slice(0, that.typeLen);
-      })
-      .catch(error => console.log(error))
-
+      // if(storage.get("categoryParents0")){
+      //      that.category = storage.get("categoryParents0");
+      //      console.log(that.category,'e');
+      // }else{
+        this.axios.get( "product/category")
+        .then(function(data){
+             that.categorya = data;
+             // storage.set("categoryParents0", data);
+             that.category = data.slice(0, that.typeLen);
+        })
+        .catch(error => console.log(error))
+      // }
     },  
      // 选择分类qq
     selectFilter(type, title ,code,item) {

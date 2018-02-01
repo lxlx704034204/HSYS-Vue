@@ -55,7 +55,7 @@
             color: #666666;
         }
         .bidding-upload {
-            padding: 10px 20px 10px 20px;
+            padding: 10px 20px 15px 20px;
             display: flex;
             .left-labe {
                 width: 75px;
@@ -64,6 +64,7 @@
         .edit_container {
             padding: 10px 20px 10px 20px;
             display: flex;
+            position: relative;
             .left-labe {
                 width: 100px;
             }
@@ -126,6 +127,7 @@
     .bidding-upload {
         height: 150px;
         overflow: hidden;
+        position: relative;
     }
     // 
     .product-details {

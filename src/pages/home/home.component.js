@@ -362,6 +362,34 @@ export default {
     tzNo5(){
     	this.$router.push('/auction')
     },
-    
+    lunbo1(){
+//  	$(".slider-item").css("animation-duration","0s")
+//  	$(".slider-item1").css("animation-delay","0s")
+//  	$(".slider-item2").css("animation-delay","0s")
+//  	$(".slider-item2").css("display",'none')
+			$("#a").css("display",'block')
+    },
+    lb1(){
+//  	$(".slider-item").css("animation-duration","8s")
+//  	$(".slider-item1").css("animation-delay","-1s")
+//  	$(".slider-item2").css("animation-delay","3s")
+//  	$(".slider-item2").css("display",'block')
+    },
+    lunbo2(){
+    	$("#b").css("display",'block')
+//  	$(".slider-item").css("animation-duration","0s")
+//  	$(".slider-item1").css("animation-delay","0s")
+//  	$(".slider-item2").css("animation-delay","0s")
+//  	$(".slider-item2").css("opacity",'1')
+//  	$(".slider-item1").css("opacity",'0')
+//			$(".slider-item2").css("opacity",'1')
+//  	$(".slider-item1").css("opacity",'0')
+    },
+    guanbi1(){
+			$("#a").css("display",'none')
+    },
+    guanbi2(){
+			$("#b").css("display",'none')
+    }
   }
 }

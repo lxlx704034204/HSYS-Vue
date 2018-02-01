@@ -6,7 +6,7 @@
 <!--轮播测试-->
 <section class="slider-contaner">
 <ul class="slider">
-<li class="slider-item slider-item1">
+<li class="slider-item slider-item1" @mouseover="lunbo1()" >
 	<div class="hme_xiu">寻找百家化塑企业孵化计划</div>
 	<div class="hme_xiu1">
 		资金、技术、方案、市场、股权等深度合作三年时间，
@@ -18,7 +18,7 @@
 
 	</div>
 </li>
-<li class="slider-item slider-item2">
+<li class="slider-item slider-item2" @mouseover="lunbo2()">
 	<div class="hme_xiu">合作赋能，连接未来</div>
 	<div class="hme_xiu1">
 		依托道恩集团雄厚的化塑产业布局，从贸易商向服务商转型
@@ -28,6 +28,24 @@
 	</div>
 	<div class="hme_xiu2">
 
+	</div>
+</li>
+<li id="a" @mouseleave="guanbi1()" style="">
+	<div class="hme_xiu">寻找百家化塑企业孵化计划</div>
+	<div class="hme_xiu1">
+		资金、技术、方案、市场、股权等深度合作三年时间，
+	</div>
+	<div class="hme_xiu2">
+		扶持孵化100家化塑加工企业
+	</div>
+</li>
+<li id="b" @mouseleave="guanbi2()" style="">
+	<div class="hme_xiu">合作赋能，连接未来</div>
+	<div class="hme_xiu1">
+		依托道恩集团雄厚的化塑产业布局，从贸易商向服务商转型
+	</div>
+	<div class="hme_xiu2">
+		打造化塑全产业链服务专家。
 	</div>
 </li>
 </ul>

@@ -40,7 +40,9 @@ export default {
 
   },
   created() {
-   this.selectChange();
+    if(this.dialogFormVisible3){
+      this.selectChange();
+    }
    this.shamsg();
    this.defa();
   },

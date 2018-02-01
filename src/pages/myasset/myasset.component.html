@@ -1,15 +1,15 @@
 <section class="myasset">
   <el-breadcrumb separator="/">
-    <el-breadcrumb-item :to="{ path: '/' }">财务管理</el-breadcrumb-item>
+    <el-breadcrumb-item :to="{ path: '/companycenter/myasset' }">财务管理</el-breadcrumb-item>
     <el-breadcrumb-item>我的资产</el-breadcrumb-item>
   </el-breadcrumb>
   <div class="asset clearfix">
     <div class="asset-left">
-      <p>我的可用余额<span>{{avaliable}}</span></p>
+      <p>我的可用余额<span>￥{{avaliable}}</span></p>
     </div>
     <div class="asset-center">
-      <p class="asset_p">全部余额  <span> {{amount}}</span></p>
-      <p class="asset_p">冻结余额  <span> {{freeze}}</span></p>
+      <p class="asset_p">全部余额  <span> ￥{{amount}}</span></p>
+      <p class="asset_p">冻结余额  <span> ￥{{freeze}}</span></p>
     </div>
     <div class="asset-right">
       <button @click="toenchashment()">提现</button>

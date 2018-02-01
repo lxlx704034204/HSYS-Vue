@@ -7,11 +7,17 @@
       width: 100%;
       height: 100%;
     }
+    #a{
+        width: 100%;height: 420px;display: none;position: absolute;z-index: 2;background: url("./images/home_lunbo1.png") no-repeat center top;
+    }
+    #b{
+        width: 100%;height: 420px;background: green;display: none;position: absolute;z-index: 2;background: url("./images/home_lunbo2.png") no-repeat center top;
+    }
     .hme_xiu{
-        width: 800px;margin: 0 auto;text-align: center;font-size: 54px;color: #FFF;height: 100px;line-height: 100px;margin-top: 68px;letter-spacing:3px;
+        width: 800px;margin: 0 auto;text-align: center;font-size: 54px;color: #FFF;height: 100px;line-height: 100px;margin-top: 109px;letter-spacing:3px;
     }
     .hme_xiu1{
-        width: 800px;margin: 0 auto;text-align: center;font-size: 18px;color: #FFF;height: 20px;line-height: 20px;margin-top: 29px;
+        width: 800px;margin: 0 auto;text-align: center;font-size: 18px;color: #FFF;height: 20px;line-height: 20px;margin-top: 22px;
     }
     .hme_xiu2{
         width: 800px;margin: 0 auto;text-align: center;font-size: 18px;color: #FFF;height: 20px;line-height: 20px;margin-top: 13px;
@@ -334,6 +340,7 @@
       .slider-contaner {
         position: relative;
         width: 100%;
+        
       }
       .slider-item+.slider-item {
         opacity: 0;
@@ -345,7 +352,8 @@
         animation-timing-function: linear;
         animation-iteration-count: infinite;
         background-size: 100%;
-      } //.focus-container{
+      }
+       //.focus-container{
       //position:absolute;
       //z-index:7;
       //margin:0 auto;
@@ -375,13 +383,13 @@
       //margin-left:46%;
       //}
       /*设置轮播焦点的位置*/
-      .focus-container {
-        bottom: 2%;
-      }
+//    .focus-container {
+//      bottom: 2%;
+//    }
       /*设置当前图片焦点的颜色*/
-      .focus-item {
-        background: #51b1d9;
-      }
+//    .focus-item {
+//      background: #51b1d9;
+//    }
       /*设置动画，请根据实际需要修改秒数*/
       .slider-item,
       .focus-item {
@@ -452,12 +460,12 @@
       .slider-item2 {
         background: url("./images/home_lunbo2.png") no-repeat center top;
       }
-      .slider-item3 {
-        background: url("./images/home_lunbo1.png") no-repeat center top;
-      }
-      .slider-item4 {
-        background: url("./images/home_lunbo2.png") no-repeat center top;
-      }
+//    .slider-item3 {
+//      background: url("./images/home_lunbo1.png") no-repeat center top;
+//    }
+//    .slider-item4 {
+//      background: url("./images/home_lunbo2.png") no-repeat center top;
+//    }
       /*设置图片的高度，请根据具体需要修改百分比，响应式及时修改此值*/
       .slider,
       .slider-item {

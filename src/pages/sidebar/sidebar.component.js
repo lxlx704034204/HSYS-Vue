@@ -23,13 +23,11 @@ export default {
   	var userId = this.$route.query.userId;
   	that.axios.get("customer/detail/" + userId)
 		.then(function(data) {
-      console.log(data,'data');
 			that.commsg = [data];
 			that.addr = data.provinceName + data.cityName + data.areaName + data.address;
 		});
   	that.axios.get("customerproduct/category?id=" + userId)
 		.then(function(data) {
-			console.log(data,'66')
       if(!data || data.length == 0){
       	that.fle = true;
       } else {

@@ -253,10 +253,12 @@ export default {
             return false;
           }
           if (typeof res === "string") {
-            this.$alert(res, '提示', {
-              confirmButtonText: '确定',
-              type: 'error'
-            });
+            // this.$alert(res, '提示', {
+            //   confirmButtonText: '确定',
+            //   type: 'error'
+            // });
+            that.verifs = true;
+            that.verifa = res
             return false;
           }
           if (res != "") {

@@ -1,10 +1,12 @@
 import richTextEditor from '../../components/quill/richTextEditor.vue';
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
 export default {
     name: 'bidding',
-    components: { richTextEditor },
+    components: {
+        richTextEditor
+    },
     props: [],
     data() {
         return {
@@ -30,43 +32,104 @@ export default {
                 delivery: false,
                 type: false,
                 unitCode: '', // 单位
-                customerProductIntervals: [{ id: 0, startNumber: '', endNumber: '', salePrice: '' }], // 区间价格
+                customerProductIntervals: [{
+                    id: 0,
+                    startNumber: '',
+                    endNumber: '',
+                    salePrice: ''
+                }], // 区间价格
                 brand: '', // 品牌
                 a_content: '',
                 editorOption: {},
             },
             rules: {
-                name: [
-                    { required: true, message: '请输入产品名称', trigger: 'change,blur' },
-                    { min: 0, max: 30, message: '长度在 0 到 30 个字符', trigger: 'change,blur' }
+                name: [{
+                        required: true,
+                        message: '请输入产品名称',
+                        trigger: 'change,blur'
+                    },
+                    {
+                        min: 0,
+                        max: 30,
+                        message: '长度在 0 到 30 个字符',
+                        trigger: 'change,blur'
+                    }
                 ],
-                categoryArr: [
-                    { required: true, message: '请选择产品分类', trigger: 'change' }
+                categoryArr: [{
+                    required: true,
+                    message: '请选择产品分类',
+                    trigger: 'change'
+                }],
+                spec: [{
+                        required: true,
+                        message: '请输入规格',
+                        trigger: 'blur,change'
+                    },
+                    {
+                        min: 0,
+                        max: 30,
+                        message: '长度在 0 到 30 个字符',
+                        trigger: 'change,blur'
+                    }
                 ],
-                spec: [
-                    { required: true, message: '请输入规格', trigger: 'blur,change' },
-                    { min: 0, max: 30, message: '长度在 0 到 30 个字符', trigger: 'change,blur' }
+                areaArr: [{
+                    required: true,
+                    message: '请选择产地',
+                    trigger: 'change'
+                }],
+                minSale: [{
+                        required: true,
+                        message: '请输入最小起订量',
+                        trigger: 'change'
+                    },
+                    {
+                        validator: this.checkNumber,
+                        trigger: 'change'
+                    },
+                    {
+                        min: 0,
+                        max: 30,
+                        message: '长度在 0 到 30 个字符',
+                        trigger: 'change,blur'
+                    }
                 ],
-                areaArr: [
-                    { required: true, message: '请选择产地', trigger: 'change' }
+                salePrice: [{
+                        required: true,
+                        message: '请输入销售单价',
+                        trigger: 'change'
+                    },
+                    {
+                        validator: this.checkNumber,
+                        trigger: 'change'
+                    },
+                    {
+                        min: 0,
+                        max: 30,
+                        message: '长度在 0 到 30 个字符',
+                        trigger: 'change,blur'
+                    }
                 ],
-                minSale: [
-                    { required: true, message: '请输入最小起订量', trigger: 'change' },
-                    { validator: this.checkNumber, trigger: 'change' }
-                ],
-                salePrice: [
-                    { required: true, message: '请输入销售单价', trigger: 'change' },
-                    { validator: this.checkNumber, trigger: 'change' }
-                ],
-                unitCode: [
-                    { required: true, message: '请选择基本单位', trigger: 'change' }
-                ],
-                resource: [
-                    { required: true, message: '请选择活动资源', trigger: 'change' }
-                ],
-                brand: [
-                    { required: true, message: '请输入品牌', trigger: 'blur,change' },
-                    { min: 0, max: 30, message: '长度在 0 到 30 个字符', trigger: 'change,blur' }
+                unitCode: [{
+                    required: true,
+                    message: '请选择基本单位',
+                    trigger: 'change'
+                }],
+                resource: [{
+                    required: true,
+                    message: '请选择活动资源',
+                    trigger: 'change'
+                }],
+                brand: [{
+                        required: true,
+                        message: '请输入品牌',
+                        trigger: 'blur,change'
+                    },
+                    {
+                        min: 0,
+                        max: 30,
+                        message: '长度在 0 到 30 个字符',
+                        trigger: 'change,blur'
+                    }
                 ],
             },
             // 上传照片
@@ -101,7 +164,12 @@ export default {
                 delivery: false,
                 type: false,
                 unitCode: '', // 单位
-                customerProductIntervals: [{ id: 0, startNumber: '', endNumber: '', salePrice: '' }], // 区间价格
+                customerProductIntervals: [{
+                    id: 0,
+                    startNumber: '',
+                    endNumber: '',
+                    salePrice: ''
+                }], // 区间价格
                 brand: '', // 品牌
                 a_content: '',
                 editorOption: {},
@@ -141,18 +209,24 @@ export default {
                     let imgArr = [];
                     if (resp.images) {
                         resp.images.split(',').map(v => {
-                            imgArr.push({ url: v })
+                            imgArr.push({
+                                url: v
+                            })
                         })
                     }
                     this.fileList = imgArr;
                     this.ruleForm.a_content = resp.productContent.content;
                     // 地区初始数据
                     this.getAreaData().then(res => {
-                        res.map(v => { v.childrens = [] })
+                        res.map(v => {
+                            v.childrens = []
+                        })
                         this.producingArea = res;
                         if (detailId) {
                             this.getAreaData(resp.producingAreaOne).then(res => {
-                                res.map(v => { v.childrens = [] })
+                                res.map(v => {
+                                    v.childrens = []
+                                })
                                 this.producingArea.some((v, k) => {
                                     if (v.id === resp.producingAreaOne) {
                                         v.childrens = res;
@@ -170,7 +244,9 @@ export default {
                     });
                     // 分类初始数据
                     this.getCategoryData().then(res => {
-                        res.map(v => { v.childrens = [] })
+                        res.map(v => {
+                            v.childrens = []
+                        })
                         this.options = res;
                         if (detailId) {
                             this.getCategoryData(resp.categoryOne).then(res => {
@@ -187,12 +263,16 @@ export default {
             }
             // 分类数据
             this.getCategoryData().then(res => {
-                res.map(v => { v.childrens = [] })
+                res.map(v => {
+                    v.childrens = []
+                })
                 this.options = res;
             });
             // 地区数据
             this.getAreaData().then(res => {
-                res.map(v => { v.childrens = [] })
+                res.map(v => {
+                    v.childrens = []
+                })
                 this.producingArea = res;
             });
             // 基本单位
@@ -202,7 +282,6 @@ export default {
         submitForm(formName, type) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    if (type) { this.addFlagStatus = true; } else { this.flagStatus = true; }
                     this.ruleForm.customerProductIntervals.map(v => {
                         v.startNumber = parseFloat(v.startNumber) || '';
                         v.endNumber = parseFloat(v.endNumber) || '';
@@ -222,59 +301,58 @@ export default {
                     obj.priceSpecification = this.ruleForm.type ? 1 : 0;
                     obj.customerProductIntervals = this.ruleForm.customerProductIntervals; //区间价格
                     obj.brand = this.ruleForm.brand; //品牌 
-                    obj.productContent = { content: this.ruleForm.a_content }; //富文本数据
+                    obj.productContent = {
+                        content: this.ruleForm.a_content
+                    }; //富文本数据
                     obj.images = this.images; // 全部图片
                     obj.masterImage = this.masterImage; // 主图
                     obj.show = true;
-                    if (this.detailId) {
-                        obj.id = this.detailId;
-                        if (obj.images != "") {
-                            this.isremind = false;
-                        } else {
-                            this.isremind = true;
-                        }
+                    obj.id = this.detailId ? this.detailId : 0;
+
+                    this.isremind1 = this.ruleForm.a_content != '' ? false : true;
+                    this.isremind = obj.images != '' ? false : true;
+                    if (!this.isremind && !this.isremind1 && obj.id != '') {
                         this.editPro(obj).then(res => {
-                            if (obj.productContent != {}) {
-                                this.isremind1 = true;
-                            } else {
-                                this.isremind1 = false;
+                            if (res.code == 0) {
+                                this.$message({
+                                    message: '编辑产品成功',
+                                    type: 'success'
+                                });
+                                this.$router.push({
+                                    path: '/companycenter/management'
+                                });
+                            } else if (res.code == 401) {
+                                this.$message({
+                                    message: res.msg,
+                                    type: 'warning'
+                                });
                             }
-                            this.flagStatus = false;
-                            this.addFlagStatus = false;
-                            if (!res && obj.images != "" && obj.productContent != {}) {
-                                this.$router.push({ path: '/companycenter/management' });
-                                this.$message({ message: '编辑产品成功', type: 'success' });
-                            } else {}
-                        });
-                    } else {
+                        })
+                    } else if (!this.isremind && !this.isremind1 && obj.id == '') {
                         this.releasePro(obj).then(res => {
-                            if (obj.images != "") {
-                                this.isremind = false;
-                            } else {
-                                this.isremind = true;
+                            if (res.code == 0) {
+                                this.$message({
+                                    message: '发布产品成功',
+                                    type: 'success'
+                                });
+                                this.$router.push({
+                                    path: '/companycenter/management'
+                                });
+                            } else if (res.code == 401) {
+                                this.$message({
+                                    message: res.msg,
+                                    type: 'warning'
+                                });
                             }
-                            if (obj.productContent != {}) {
-                                this.isremind1 = true;
-                            } else {
-                                this.isremind1 = false;
-                            }
-                            this.flagStatus = false;
-                            this.addFlagStatus = false;
-                            if (!res && obj.images != "" && obj.productContent != {}) {
-                                this.$message({ message: '发布产品成功', type: 'success' });
-                                this.$router.push({ path: '/companycenter/management' });
-                            } else {}
+
                         });
                     }
-                } else {
-                    return false;
                 }
             });
         },
         submitForm2(formName, type) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    if (type) { this.addFlagStatus = true; } else { this.flagStatus = true; }
                     this.ruleForm.customerProductIntervals.map(v => {
                         v.startNumber = parseFloat(v.startNumber) || '';
                         v.endNumber = parseFloat(v.endNumber) || '';
@@ -294,64 +372,59 @@ export default {
                     obj.priceSpecification = this.ruleForm.type ? 1 : 0;
                     obj.customerProductIntervals = this.ruleForm.customerProductIntervals; //区间价格
                     obj.brand = this.ruleForm.brand; //品牌 
-                    obj.productContent = { content: this.ruleForm.a_content }; //富文本数据
+                    obj.productContent = {
+                        content: this.ruleForm.a_content
+                    }; //富文本数据
                     obj.images = this.images; // 全部图片
                     obj.masterImage = this.masterImage; // 主图
                     obj.show = false;
-                    if (this.detailId) {
-                        obj.id = this.detailId;
-                        if (obj.images != "") {
-                            this.isremind = false;
-                        } else {
-                            this.isremind = true;
-                        }
+                    obj.id = this.detailId ? this.detailId : 0;
+                    this.isremind1 = this.ruleForm.a_content != '' ? false : true;
+                    this.isremind = obj.images != '' ? false : true;
+                    if (!this.isremind && !this.isremind1 && obj.id != '') {
                         this.editPro(obj).then(res => {
-                            if (obj.images != "") {
-                                this.isremind = false;
-                            } else {
-                                this.isremind = true;
+                            if (res.code == 0) {
+                                this.$message({
+                                    message: '编辑产品成功',
+                                    type: 'success'
+                                });
+                                this.$router.push({
+                                    path: '/companycenter/management'
+                                });
+                            } else if (res.code == 401) {
+                                this.$message({
+                                    message: res.msg,
+                                    type: 'warning'
+                                });
                             }
-                            if (obj.productContent != {}) {
-                                this.isremind1 = true;
-                            } else {
-                                this.isremind1 = false;
-                            }
-                            this.flagStatus = false;
-                            this.addFlagStatus = false;
-                            if (!res && obj.images != "") {
-                                this.$router.push({ path: '/companycenter/management' });
-                                this.$message({ message: '编辑产品成功', type: 'success' });
-                            } else {}
-                        });
-                    } else {
+                        })
+                    } else if (!this.isremind && !this.isremind1 && obj.id == '') {
                         this.releasePro(obj).then(res => {
-                            if (obj.images != "") {
-                                this.isremind = false;
-                            } else {
-                                this.isremind = true;
+                            if (res.code == 0) {
+                                this.$message({
+                                    message: '发布产品成功',
+                                    type: 'success'
+                                });
+                                this.$router.push({
+                                    path: '/companycenter/management'
+                                });
+                            } else if (res.code == 401) {
+                                this.$message({
+                                    message: res.msg,
+                                    type: 'warning'
+                                });
                             }
-                            if (obj.productContent != {}) {
-                                this.isremind1 = true;
-                            } else {
-                                this.isremind1 = false;
-                            }
-                            this.flagStatus = false;
-                            this.addFlagStatus = false;
-                            if (!res && obj.images != "") {
-                                this.$message({ message: '发布产品成功', type: 'success' });
-                                this.$router.push({ path: '/companycenter/management' });
-                            } else {}
                         });
                     }
-                } else {
-                    return false;
                 }
             });
         },
         // 取消
         resetForm(formName) {
             this.$refs[formName].resetFields();
-            this.$router.push({ path: '/companycenter/management' })
+            this.$router.push({
+                path: '/companycenter/management'
+            })
         },
         // 分类多级选择
         handleItemChange(val) {
@@ -372,7 +445,9 @@ export default {
         handleAreaChange(val) {
             if (val.length === 1) {
                 this.getAreaData(val[0]).then(res => {
-                    res.map(v => { v.childrens = [] })
+                    res.map(v => {
+                        v.childrens = []
+                    })
                     this.producingArea.some((v, k) => {
                         if (val[val.length - 1] === v.id) {
                             this.producingArea[k].childrens = res;
@@ -412,7 +487,6 @@ export default {
             this.isremind = false;
             if (file.status === 'success') {
                 let allImages = [];
-
                 fileList.map(v => {
                     if (v.response) {
                         allImages.push(v.response.data.url);
@@ -425,16 +499,12 @@ export default {
             }
         },
         handlePictureCardPreview(file) {
-            this.isremind = false;
-
             this.dialogImageUrl = file.url;
             this.dialogVisible = true;
         },
         imageChange(file, fileList) {
-            this.isremind1 = false;
             this.isremind = false;
             if (file.status === 'success') {
-
                 let allImages = [];
                 fileList.map(v => {
                     if (v.response) {
@@ -449,8 +519,8 @@ export default {
         },
         onEditorReady(editor) {},
         editorChange: function(html) {
-            this.isremind1 = false;
             this.ruleForm.a_content = html
+            this.isremind1 = false;
         },
         // <---------------------------------------数据获取------------------------------------------------------>
         // 获取分类数据
@@ -472,7 +542,8 @@ export default {
         // 发布商品
         releasePro(params) {
             return new Promise(resolve => {
-                this.axios.post(`customerproduct/add`, params).then(res => {
+                this.axios.post(`customerproduct/add`, params, { params: { noInterceptor: 1 } }).then(res => {
+                    console.log(res, 'ddd')
                     resolve(res);
                 });
             })
@@ -480,7 +551,7 @@ export default {
         // 编辑商品
         editPro(params, show) {
             return new Promise(resolve => {
-                this.axios.put(`customerproduct/edit`, params).then(res => {
+                this.axios.put(`customerproduct/edit`, params, { params: { noInterceptor: 1 } }).then(res => {
                     resolve(res);
                 });
             })
@@ -504,6 +575,17 @@ export default {
                     callback();
                 }
             }, 500);
+        },
+        beforeAvatarUpload(file) {
+            const isJPEG = file.type === "image/jpeg";
+            const isPNG = file.type === "image/png";
+            const isGIF = file.type === "image/gif";
+            const isJPG = file.type === "image/jpg";
+            const isBMP = file.type === "image/bmp";
+            if (!isJPEG && !isPNG && !isGIF && !isJPG && !isBMP) {
+                this.$message.error("上传图片只能是 JPG/PNG/GIF/JPEG/BMP 格式");
+            }
+            return (isJPG || isPNG || isJPEG || isGIF || isBMP);
         },
         // <---------------------------------------------------------------------------------------->
     }

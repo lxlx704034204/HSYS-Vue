@@ -5,7 +5,7 @@
       <ul v-for='company in commsg'>
         <li><div><span class='companyName' :title='company.name' style="font-size: 18px;">{{company.name}}</span><img src="./images/certified.png" alt=""></div></li>
         <li><span>公司注册地址：</span><span class='company' :title='addr'>{{addr}}</span></li>
-        <li><span>注册资本：</span><span class='company common' :title='company.registeredCapital'>{{company.registeredCapital}}</span></li>
+        <li><span>注册资本：</span><span class='company common' :title='company.registeredCapital'>{{company.registeredCapital}}万元</span></li>
         <li><span>企业类型：</span><span class='company common' :title='compayjson[company.bizType]'>{{compayjson[company.bizType]}}</span></li>
       </ul>
     </div>
@@ -20,6 +20,35 @@
       <div class="com_inf1"></div>
     </div>
     <!--<div class="inf-bot">
+=======
+    <div class="side">
+        <div class="inf">
+            <div class="inf-nav">
+                <div>企业信息</div>
+            </div>
+            <ul v-for='company in commsg'>
+                <li>
+                    <div><span class='companyName' :title='company.name' style="font-size: 18px;">{{company.name}}</span><img src="./images/certified.png" alt=""></div>
+                </li>
+                <li><span>公司注册地址：</span><span class='company' :title='addr'>{{addr}}</span></li>
+                <li><span>注册资金：</span><span class='company common' :title='company.registeredCapital'>{{company.registeredCapital}}万元</span></li>
+                <li><span>企业类型：</span><span class='company common' :title='compayjson[company.bizType]'>{{compayjson[company.bizType]}}</span></li>
+            </ul>
+        </div>
+        <div class="inf-center">
+            <p class="inf-top">产品分类</p>
+            <ul>
+                <li v-for="(cat,index) in comcategory" :key="index" class="com_inf2" @click="tomain()">
+                    <div class="com_inf3">{{cat.name}}</div>
+                </li>
+            </ul>
+            <div v-show="fle" class="sid_xiu">
+                <img src="./images/non_inf.png" />
+            </div>
+            <div class="com_inf1"></div>
+        </div>
+        <!--<div class="inf-bot">
+>>>>>>> c86f91bedf2444804ca69c2583fb35eacc7fffa6
         <p class="inf-nav">联系方式</p>
         <ul>
             <li><img src="./contacts.png" alt="">联系人：塑云王菲</li>
@@ -28,5 +57,5 @@
         </ul>
         <div id="allmap"  class="Btm_position"></div>
     </div>-->
-  </div>
+    </div>
 </section>

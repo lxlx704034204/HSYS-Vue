@@ -170,7 +170,7 @@ export default {
                             that.phone = '';
                             that.verif = '';
                             that.verifs = true;
-                            that.verifa = data.msg
+                            that.verifa = '验证码输入错误'
                         }
                     })
                     .catch(error => console.log(error))

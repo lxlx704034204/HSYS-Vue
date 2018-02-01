@@ -13,7 +13,7 @@ import { Message } from "element-ui";
 const logout = () => {
     const token = storage.get("token");
     token && console.warn(`token[${token}]失效`);
-    // Message.error(types.LOGIN_EXPIRE);
+    Message.error(types.LOGIN_EXPIRE);
     // storage.clear("userName");
     localStorage.removeItem('token');
     // localStorage.removeItem('userName');//+
@@ -30,7 +30,7 @@ const logout = () => {
 
 // axios 配置
 axios.defaults.timeout = 10000;
-   // axios.defaults.baseURL = 'http://192.168.5.123:8888/suyun-api/api/';
+// axios.defaults.baseURL = 'http://192.168.5.123:8888/suyun-api/api/';
 axios.defaults.baseURL = 'http://39.106.136.226:8888/suyun-api/api/';
 // http request 拦截器
 axios.interceptors.request.use(

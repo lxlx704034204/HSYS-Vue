@@ -13,7 +13,7 @@
 								<div><span class='companyName' :title='company.name' style="font-size: 18px;">{{company.name}}</span><img src="./images/certified.png" alt=""></div>
 							</li>
 							<li><span>公司注册地址：</span><span class='company' :title='addr'>{{addr}}</span></li>
-							<li><span>注册资本：</span><span class='company common' :title='company.registeredCapital'>{{company.registeredCapital}}</span></li>
+							<li><span>注册资本：</span><span class='company common' :title='company.registeredCapital'>{{company.registeredCapital}}万元</span></li>
 							<li><span>企业类型：</span><span class='company common' :title='compayjson[company.bizType]'>{{compayjson[company.bizType]}}</span></li>
 						</ul>
 					</div>
@@ -64,22 +64,21 @@
 						<router-link v-for="(god,index) in goodinf" :key="index" :data="god.id" ref="godId" :to="{path:'productDetail',query: {id:god.id,userId:god.userId}}">
 							<dl>
 								<dt>
-                   					 <img :src='god.masterImage' alt="">
-                 		 		</dt>
+           					 <img :src='god.masterImage' alt="">
+         		 		</dt>
 								<dd>
 									<h3>￥{{god.salePrice}}</h3>
 									<p>{{god.name}}</p>
 									<p>规格：{{god.spec}}</p>
 									<div class="com_bos4">
-										<div class="com_bos5">{{god.producingAreaOne}}{{god.producingAreaTwo}}{{god.producingAreaThree}}</div>
-
+										<div class="com_bos5">{{god.producingAreaOneName}}{{god.producingAreaTwoName}}{{god.producingAreaThreeName}}</div>
 									</div>
 								</dd>
 							</dl>
 						</router-link>
 					</div>
 					<div v-show='cp'>
-						<div class="mc_xiu" style="">
+						<div class="mc_xiu">
 							<img src="./images/non_inf.png" />
 						</div>
 						<div style="height: 20px;"></div>

@@ -29,13 +29,13 @@ export default {
 
 	},
 	created() {
+		this.$store.state.headerType = 5;
 		this.compaytype = this.$util.getCodeMap("CAMPANY");
 		var json = {};
 		this.compaytype.forEach(v => {
 			json[v.dictCode] = v.dictName
 		})
 		this.compayjson = json; // 公司类型
-		this.$store.state.headerType = 5;
 		var that = this;
 		this.userId = this.$route.query.userId;
 		that.axios.get("customer/detail/" + this.userId)
@@ -62,17 +62,19 @@ export default {
 		mainlist() {
 			//  用户产品
 			var that = this;
+			that.cp = false;
 			this.axios.get("customerproduct/all?user_id=" + this.userId + '&size=12&current=' + this.pageNo + '&cid=' + this.cid, {
 					params: {
 						noInterceptor: 1
 					}
 				})
 				.then(function(data) {
+					console.log(data,'999')
 					if(data.code == 0) {
 						that.goodinf = data.data.records;
 						that.pageSize = data.data.size;
 						that.total = data.data.total;
-
+						that.cp = false;
 					} else {
 						that.goodinf = [];
 						that.pageSize = 1;
