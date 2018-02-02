@@ -102,11 +102,23 @@ export default {
 	}
 	,methods: {
 		getArticle(code){
+			console.log(code,'code');
 			let _this = this;
+			_this.articleList = [];
 			_this.isArticleContent = false;
 			_this.nextPage = false;
+			_this.current = 1;
+			_this.number = 1;
+			_this.tempData = [];
 			if(code != undefined)
 				_this.channelCode = code;
+				_this.articalist();
+			if(_this.recommendList.length <= 0){
+				_this._recommend();
+			}
+		}
+		,articalist(){
+			var _this = this;
 			this.axios.get("article/list?top=1&recommend="+ _this.recommend +"&channelCode="+_this.channelCode+"&size="+this.size+"&current="+this.current)
 			.then(function(re){
 					if(_this.current>1){
@@ -129,9 +141,6 @@ export default {
 				_this.loading = false;
 				
 			})
-			if(_this.recommendList.length <= 0){
-				_this._recommend();
-			}
 		}
 		,_recommend(){
 			let _this = this;
@@ -160,8 +169,8 @@ export default {
 		}
 		,getNextPage(){
 			this.number++;
-            this.current = this.number;
-            this.getArticle();
+      this.current = this.number;
+			this.articalist();
 		}
 		,setArticleId(articleId){
 			if(articleId != '' || articleId != undefined){

@@ -21,13 +21,13 @@
             </el-table-column>
             <el-table-column prop="active" label="状态">
                 <template slot-scope="scope">
-          <el-switch v-model="scope.row.active" active-text="启用" active-color="#1299D5" inactive-color="#979797">
+          <el-switch v-model="scope.row.active" @change="active(scope.row)" active-text="启用" active-color="#009fe2" inactive-color="#e3e3e3">
           </el-switch>
         </template>
             </el-table-column>
             <el-table-column prop="admin" label="企业联系人">
                 <template slot-scope="scope">
-          <el-switch v-model="scope.row.admin" active-text="启用" active-color="#1299D5" inactive-color="#979797">
+          <el-switch v-model="scope.row.admin" @change="active(scope.row)" active-text="启用" active-color="#009fe2" inactive-color="#e3e3e3">
           </el-switch>
         </template>
             </el-table-column>
@@ -50,7 +50,7 @@
             </el-table-column>
         </el-table>
 
-        <div class="pagebox clearfix">
+        <div class="pagebox clearfix" v-show="havedata">
             <div style="height: 30px;"></div>
             <!-- 翻页效果 -->
             <div class="sy-pagination">

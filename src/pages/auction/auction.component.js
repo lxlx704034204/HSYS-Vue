@@ -15,6 +15,7 @@ export default  {
       cd: '',
       ph: '',
       fs: '',
+      dw:'',
       productnum:'',
 
       cglen: 5,
@@ -52,13 +53,15 @@ export default  {
       phjson:[],
       iojson:[],
       cdjson:[],
+      dwjson:[],
       cds:[],
       ficatLen:11,
       ctLen:11,
       typeLen:11,
       categorya:[],
       nowDate:'',
-      serviceTime:0
+      serviceTime:0,
+
     }
   },
   created() {
@@ -73,12 +76,19 @@ export default  {
     // 数据字典
     dicCode(){
       var that = this;
+        that.dw = this.$util.getCodeMap("UNIT");
         that.cds = that.$util.getCodeMap("PRODUCINGAREA");   // 产地
         that.cd = that.cds.slice(0, that.ficatLen);
         that.ios = that.$util.getCodeMap("KUBE");    // 库别
         that.io = that.ios.slice(0, that.ctLen);
         that.ph = that.$util.getCodeMap("GRADE");   // 牌号
 
+        var json = {};
+        that.dw.forEach(v => {
+          json[v.dictCode] = v.dictName
+        })
+        this.dwjson = json;    // 牌号
+        
         var json = {};
         that.ph.forEach(v => {
           json[v.dictCode] = v.dictName

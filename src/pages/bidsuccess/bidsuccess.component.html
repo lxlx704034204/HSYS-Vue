@@ -84,12 +84,12 @@
               title="选择收货地址"
               :visible.sync="changeAdd"
               width="484px"
-              center class='changeadd'>
+              center class='changeadd' style='text-align: left'>
               <div class="changadd-wrap" v-for='add in choseaddList' ref='selfs' :data='add.id' >
                 <ul class="changeAdd" @click='chosethis($event)' >
                   <li>收货人 : {{add.userName}}</li>
                   <li>联系电话 : {{add.primaryPhone}}</li>
-                  <li>收货地址 : {{add.provinceName}}{{add.cityName}}{{add.areaName}}</br><span class='haveadd'>{{add.address}}</span></li>
+                  <li>收货地址 : {{add.provinceName}}{{add.cityName}}{{add.areaName}}{{add.address}}</li>
                 </ul>
               </div>
               

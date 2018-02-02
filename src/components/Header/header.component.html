@@ -115,10 +115,11 @@
                             <!-- type-checked-color -->
                             <router-link to="/autotrophy" tag="li">现货商城</router-link>
                             <!-- <a  target="_blank"  class="su_fin" @click='finanbtn'>塑云金融</a> -->
-                            <li @click="finClick()" class="su_fin">征信金融</li>
+                            <!-- <li @click="finClick()" class="su_fin">征信金融</li> -->
+                            <router-link to='/financial' target="_blank" tag="a"  class="su_fin">征信金融</router-link>
                             <router-link to="/customer" tag="li">企业产品库</router-link>
                             <!-- <router-link to="/technician" tag="li">技术专家</router-link> -->
-                            <li @click="infoClick()" class="su_fin">化塑头条</li>
+                            <router-link to='/information' target="_blank" tag="a"  class="su_fin">化塑头条</router-link>
                             <!--<router-link to="/technician" tag="li">技术专家</router-link>-->
                             <router-link to="/auction" tag="li">竞价专区</router-link>
 
@@ -131,7 +132,53 @@
             </div>
         </div>
     </div>
-
+    
+       <!-- header-box1开始 -->
+    <div class="header-box" :class="{show:$store.state.headerType === 11}">
+        <!-- banner部分 -->
+        <div class="hom_srh">
+            <!--商标-->
+            <router-link class="hom_srh1" to="/home">
+                <div class="hom_srh2">
+                    <img src="./images/suyun_logo.png" />
+                </div>
+            </router-link>
+            <!--搜索框-->
+            <div class="hom_srh3">
+                <div class="hom_srh4">
+                    <!--搜索框-->
+                    <div class="hom_srh5">
+                        <div class="hom_srh6">
+                            <img src="./images/head_icon1.png" />
+                        </div>
+                        <div style="float: left;">
+                            <input v-model.trim="swinput" type="text" class="hom_srh7" placeholder="请输入分类、牌号、厂商、公司" />
+                        </div>
+                    </div>
+                    <div class="hom_srh8" @click="switbtn">搜产品</div>
+                    <div class="hom_srh9" @click="searchcus">搜现货</div>
+                </div>
+                <!--热门推荐-->
+                <div class="hom_srh10">
+                    <div class="hom_srh11">热门推荐：</div>
+                    <div class="hom_srh12">
+                        <ul v-for="item in keyWord" :key="item.id">
+                            <router-link :to='{path: "/autotrophy", query: {name: item.keyWord}}' tag="li" class="item">{{item.keyWord}}
+                            </router-link>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--二维码-->
+            <div class="hom_ewm">
+                <div class="hom_ewm1">
+                    <img src="./images/2wm.png" />
+                </div>
+                <div class="hom_ewm2">关注我们</div>
+            </div>
+        </div>
+      
+    </div>
 
     <!-- header-box1结束 -->
     <div class="header-box" :class="{show:$store.state.headerType === 2}">

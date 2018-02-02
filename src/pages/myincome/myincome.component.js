@@ -32,7 +32,7 @@ export default  {
       timevalue:'',
       startTime:'',
       endTiem:'',
-      pag:true,
+      havedata:false,
       pickerOptions2: {
         shortcuts: [{
           text: '最近一周',
@@ -67,10 +67,8 @@ export default  {
   },
   created(){
     this._incometable();
-  
   },
   mounted () {
-
   },
   methods: {
     timechange(){
@@ -99,15 +97,11 @@ export default  {
       startTime:this.startTime,
       endTime: this.endTime
     }})
-      .then(function(data){
+      .then((data)=>{
         console.log(data,'aaaaaa');
           _this.incometable = data.records;
-          if (data.records.length == 0){
-          	_this.pag = false;
-          }
-          console.log( _this.incometable,'ddd')
           _this.total = data.total;
-          
+          _this.havedata = _this.total <= 0 ? false : true;
       })
       .catch(error => console.log(error))
 

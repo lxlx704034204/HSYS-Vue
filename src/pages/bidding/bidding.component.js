@@ -51,7 +51,7 @@ export default {
                     {
                         min: 0,
                         max: 30,
-                        message: '长度在 0 到 30 个字符',
+                        message: '输入0到30个字符',
                         trigger: 'change,blur'
                     }
                 ],
@@ -77,8 +77,8 @@ export default {
                     },
                     {
                         validator: this.checkNumber,
-                        trigger: 'change,blur'
-                    }
+                        trigger: 'blur'
+                    },
                 ],
                 salePrice: [{
                         required: true,
@@ -87,8 +87,8 @@ export default {
                     },
                     {
                         validator: this.checkNumber,
-                        trigger: 'change'
-                    }
+                        trigger: 'blur'
+                    },
                 ],
                 unitCode: [{
                     required: true,
@@ -544,7 +544,7 @@ export default {
             setTimeout(() => {
                 let flag = this.$util.isNumber(value)
                 if (!flag) {
-                    callback(new Error('请输入数字值'));
+                    callback(new Error('输入0-10位数字'));
                 } else {
                     callback();
                 }
@@ -555,11 +555,14 @@ export default {
             const isPNG = file.type === "image/png";
             const isGIF = file.type === "image/gif";
             const isJPG = file.type === "image/jpg";
-            const isBMP = file.type === "image/bmp";
-            if (!isJPEG && !isPNG && !isGIF && !isJPG && !isBMP) {
-                this.$message.error("上传图片只能是 JPG/PNG/GIF/JPEG/BMP 格式");
+            const isLt1M = file.size / 1024 / 1024 < 1;
+            if (!isJPEG && !isPNG && !isGIF && !isJPG) {
+                this.$message.error("上传图片只能是 JPG/PNG/GIF/JPEG 格式");
             }
-            return (isJPG || isPNG || isJPEG || isGIF || isBMP);
+            if (!isLt1M) {
+                this.$message.error("上传图片大小不能超过 1MB!");
+            }
+            return (isJPG || isPNG || isJPEG || isGIF) && isLt1M;
         },
         // <---------------------------------------------------------------------------------------->
     }

@@ -303,13 +303,13 @@ export default {
 
     },
     //  移出隐藏
-    wrapmoveout() {
+    // wrapmoveout() {
 
-      // this.timer = setTimeout(() => {
-      //         this.isFindShow = false;
-      //   //      $('.el-select-dropdown').hide()
-      // }, 100);
-    },
+    //   // this.timer = setTimeout(() => {
+    //   //         this.isFindShow = false;
+    //   //   //      $('.el-select-dropdown').hide()
+    //   // }, 100);
+    // },
     swtClose() {
       this.isFindShow = false;
       $('.el-popper').hide();

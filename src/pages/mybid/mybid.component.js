@@ -16,13 +16,14 @@ export default {
       warejson:[],
       unit:'',
       unitjson:[],
+      havedata:false,
     }
   },
   computed: {
 
   },
   created() {
-    this.$store.commit("switchHeaderType", 1);
+    this.$store.commit("switchHeaderType", 11);
     this.warehouse = this.$util.getCodeMap("KUBE");    // 库别
     this.unit = this.$util.getCodeMap("UNIT");    // 单位
     var json2 = {};
@@ -53,7 +54,7 @@ export default {
             that.total = data.total;
             that.pageNum = data.current;
             that.orderList =that.transform(data.records);
-
+            that.havedata = that.total <= 0 ? false : true; 
       })
         .catch(error => console.log(error))
     },

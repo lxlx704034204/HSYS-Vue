@@ -91,8 +91,9 @@ export default {
         }
     },
     created() {
+        this.$store.commit("switchHeaderType", 11);
         let _this = this,
-            name = this.$router.history.current.name;
+        name = this.$router.history.current.name;
         this.menuArr.forEach((element, index) => {
             element.subItem.forEach((ele, indexs) => {
                 if (ele.component == name) {

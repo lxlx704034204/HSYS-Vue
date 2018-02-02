@@ -120,10 +120,9 @@
     </div>
   	<div class="inner-1200">
   		<el-table class="autotro_list" :data="biddlist" row-class-name="row-60" ref="myTable" v-loading="loading" v-show='biddlist.length != ""'>
-   			<el-table-column label="产品名称" prop='productName'>
-   				
+   			<el-table-column label="产品名称" prop='productName' width='110'>
    			</el-table-column>
-   			<el-table-column prop="categoryName" label="分类"  align="center"></el-table-column>
+   			<el-table-column prop="categoryName" label="分类"  align="center" width='80'></el-table-column>
    			<el-table-column label="牌号" align="center">
    				<template slot-scope="scope">
 			        <span>{{phjson[scope.row.gradeCode]}}</span>
@@ -140,10 +139,14 @@
 			      </template>
 			    </el-table-column>
    			</el-table-column>
-   			<el-table-column prop="quantity" label="竞拍数量 (吨)" align="center" width="110"></el-table-column>
-   			<el-table-column label="起拍量" align="center" width="80">
+   			<el-table-column  label="竞拍数量 (吨)" align="left" width="110">
    				<template slot-scope="scope">
-			        <span style="display: inline-block;">{{scope.row.startQuantity }}</span>
+			        <span style="display: inline-block;">{{scope.row.quantity}}{{dwjson[scope.row.unitCode]}}</span>
+			     </template>
+   			</el-table-column>
+   			<el-table-column label="起拍量" align="left" width="80">
+   				<template slot-scope="scope">
+			        <span style="display: inline-block;">{{scope.row.startQuantity}}{{dwjson[scope.row.unitCode]}}</span>
 			     </template>
    			</el-table-column>
    			<el-table-column label="起拍价" align="center">
@@ -151,7 +154,7 @@
 			        <span style="display: inline-block;width: 100px">￥{{scope.row.startUnitPrice}}</span>
 			     </template>
    			</el-table-column>
-   			<el-table-column  label="剩余时间" prop='updateStr'>
+   			<el-table-column  label="剩余时间" prop='updateStr' align="center">
    			</el-table-column>
    			<el-table-column prop="categoryName" label="">
      			<template slot-scope="scope" class='bidbtn'>

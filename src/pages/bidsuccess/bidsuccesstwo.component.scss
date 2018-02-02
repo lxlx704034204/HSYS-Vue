@@ -1,5 +1,5 @@
 .bidsuccess{
-    .el-dialog--center .el-dialog__body{
+    .main .el-dialog--center .el-dialog__body{
         text-align: left;
     }
 	.addID{
@@ -80,15 +80,17 @@
 }
 .bidsuccess .changeadd  .el-dialog__header{
     border-radius: 10px 10px 0 0 ;
-    padding: 0;
-    height: 52px;
-    line-height: 52px;
+    padding: 15px 0;
+    height: 20px;
+    line-height: 20px;
+    /* height: 52px; */
+    /* line-height: 52px; */
 }
 .bidsuccess .el-dialog__headerbtn .el-dialog__close{
     color: #FFF;
 }
 .bidsuccess .changeadd  .el-dialog__header .el-dialog__title{
-    font-size: 14px
+    font-size: 18px
 }
 .bidsuccess .changeadd .el-dialog--center .el-dialog__body{
     height: 420px;
@@ -104,7 +106,7 @@
     color: #fff;
 }
 .bidsuccess .el-dialog--center .el-dialog__body{
-	padding: 25px 60px 30px;
+	padding: 25px 43px 30px;
 }
 .bidsuccess .addID .el-dialog__body{
 	height: 430px;

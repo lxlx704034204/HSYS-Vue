@@ -1,157 +1,157 @@
 <section class="servicebox">
-    <!-- <h1>servicebox Component</h1> -->
-    <div class="find-wrapper inner-1200" v-show="isFindShow" @mouseenter="wrapmovein" @mouseleave="wrapmoveout">
-        <div class="fol_rid" @mouseenter="swtClose()"></div>
-        <div class="fol_rid1" @mouseenter="swtClose()"></div>
-        <!--<div style="height: 3px;margin-top: -2px;background: red;width:483px"></div>-->
-        <div class="inner-box">
+  <!-- <h1>servicebox Component</h1> -->
+  <div class="find-wrapper inner-1200" v-show="isFindShow" @mouseenter="wrapmovein">
+    <div class="fol_rid" @mouseenter="swtClose()"></div>
+    <div class="fol_rid1" @mouseenter="swtClose()"></div>
+    <!--<div style="height: 3px;margin-top: -2px;background: red;width:483px"></div>-->
+    <div class="inner-box">
 
-            <div class="find-left .clearfix:after">
-                <div @mouseenter="switchBox(1)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="1"}'>
-                    <img src="../../../assets/img/header/icon-pro.png" class="icon-chart icon-product" v-if="show_1">
-                    <img src="../../../assets/img/header/findproduct_2.png" alt="" class="icon-chart icon-product" v-if="show_2">
-                    <span class="lookfor">找产品</span>
-                </div>
-                <div @mouseenter="switchBox(2)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="2"}'>
-                    <img src="../../../assets/img/header/icon-mon.png" alt="" v-show="show_3" class="icon-chart icon-money">
-                    <img src="../../../assets/img/header/findmoney_2.png" alt="" v-show="show_4" class="icon-chart icon-money">
-                    <span class="lookfor">找资金</span>
-                </div>
-                <div @mouseenter="switchBox(3)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="3"}'>
-                    <img src="../../../assets/img/header/icon-cust.png" alt="" v-show="show_5" class="icon-chart icon-customer">
-                    <img src="../../../assets/img/header/findcourse_2.png" alt="" v-show="show_6" class="icon-chart icon-customer">
-                    <span class="lookfor">找客户</span>
-                </div>
-                <!-- <div @mouseover="switchBox(4)" class="find-item" :class='{findactive:boxStatus=="4"}'>
+      <div class="find-left .clearfix:after">
+        <div @mouseenter="switchBox(1)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="1"}'>
+          <img src="../../../assets/img/header/icon-pro.png" class="icon-chart icon-product" v-if="show_1">
+          <img src="../../../assets/img/header/findproduct_2.png" alt="" class="icon-chart icon-product" v-if="show_2">
+          <span class="lookfor">找产品</span>
+        </div>
+        <div @mouseenter="switchBox(2)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="2"}'>
+          <img src="../../../assets/img/header/icon-mon.png" alt="" v-show="show_3" class="icon-chart icon-money">
+          <img src="../../../assets/img/header/findmoney_2.png" alt="" v-show="show_4" class="icon-chart icon-money">
+          <span class="lookfor">找资金</span>
+        </div>
+        <div @mouseenter="switchBox(3)" class="find-item" style="height: 68px;line-height: 68px;" :class='{findactive:boxStatus=="3"}'>
+          <img src="../../../assets/img/header/icon-cust.png" alt="" v-show="show_5" class="icon-chart icon-customer">
+          <img src="../../../assets/img/header/findcourse_2.png" alt="" v-show="show_6" class="icon-chart icon-customer">
+          <span class="lookfor">找客户</span>
+        </div>
+        <!-- <div @mouseover="switchBox(4)" class="find-item" :class='{findactive:boxStatus=="4"}'>
               <img src="../../../assets/img/header/icon-tec.png" alt="" v-show="show_7" class="icon-chart icon-technology">
               <img src="../../../assets/img/header/findtechnology_2.png" alt="" v-show="show_8" class="icon-chart icon-technology">
               <span class="lookfor">找技术</span>
             </div> -->
+      </div>
+      <div class="find-content">
+        <div :class="{show: boxStatus === 1}" class="box">
+          <div class="find-money">
+            <div class="ser_com5">
+              <div class="ser_com6">
+                <input v-model="swinput" type="text" placeholder="请输入牌号、厂商搜索" />
+              </div>
+              <div class="ser_com7" @click="findBtn">
+                <img src="./ser_butn.png" />
+              </div>
             </div>
-            <div class="find-content">
-                <div :class="{show: boxStatus === 1}" class="box">
-                    <div class="find-money">
-                        <div class="ser_com5">
-                            <div class="ser_com6">
-                                <input v-model="swinput" type="text" placeholder="请输入牌号、厂商搜索" />
-                            </div>
-                            <div class="ser_com7" @click="findBtn">
-                                <img src="./ser_butn.png" />
-                            </div>
-                        </div>
-                        <div class="ser_com8">
-                            <div style="float: left;">热门搜索：</div>
-                            <div class="ser_com9">
-                                <ul v-for="item in keyWord" :key="item.id">
-                                    <router-link :to='{path: "/autotrophy", query: {name: item.keyWord}}' tag="li" class="item">
-                                        {{item.keyWord}}
-                                    </router-link>
-                                </ul>
-                            </div>
-                        </div>
-                        <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-                            <div class="ser_com2">
-                                <el-form-item label="分类" class="ser_com">
-                                    <el-select v-model="seles" visiable-change="showxl" placeholder="请选择" class="serSelect">
-                                        <el-option v-for="item in sele" :key="item.id" :label="item.name" :value="item.id" class="ress">
-                                        </el-option>
-                                    </el-select>
-                                </el-form-item>
-                            </div>
+            <div class="ser_com8">
+              <div style="float: left;">热门搜索：</div>
+              <div class="ser_com9">
+                <ul v-for="item in keyWord" :key="item.id">
+                  <router-link :to='{path: "/autotrophy", query: {name: item.keyWord}}' tag="li" class="item">
+                    {{item.keyWord}}
+                  </router-link>
+                </ul>
+              </div>
+            </div>
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+              <div class="ser_com2">
+                <el-form-item label="分类" class="ser_com">
+                  <el-select v-model="seles" visiable-change="showxl" placeholder="请选择" class="serSelect">
+                    <el-option v-for="item in sele" :key="item.id" :label="item.name" :value="item.id" class="ress">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </div>
 
-                            <div class="ser_com2" style="margin-top: -17px;">
-                                <el-form-item label="产地" class="ser_com">
-                                    <el-select v-model="cds" placeholder="请选择" class="serSelect">
-                                        <el-option v-for="item in cd" :key="item.dictCode" :label="item.dictName" :value="item.dictCode" class="ress">
-                                        </el-option>
-                                    </el-select>
-                                </el-form-item>
-                            </div>
+              <div class="ser_com2" style="margin-top: -17px;">
+                <el-form-item label="产地" class="ser_com">
+                  <el-select v-model="cds" placeholder="请选择" class="serSelect">
+                    <el-option v-for="item in cd" :key="item.dictCode" :label="item.dictName" :value="item.dictCode" class="ress">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </div>
 
-                            <div class="ser_com2" style="margin-top: -17px;">
-                                <el-form-item label="库别" class="ser_com">
-                                    <el-select v-model="ioo" placeholder="请选择" class="serSelect">
-                                        <el-option v-for="item in io" :key="item.dictCode" :label="item.dictName" :value="item.dictCode" class="ress">
-                                        </el-option>
-                                    </el-select>
-                                </el-form-item>
-                            </div>
+              <div class="ser_com2" style="margin-top: -17px;">
+                <el-form-item label="库别" class="ser_com">
+                  <el-select v-model="ioo" placeholder="请选择" class="serSelect">
+                    <el-option v-for="item in io" :key="item.dictCode" :label="item.dictName" :value="item.dictCode" class="ress">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </div>
 
-                            <el-form-item>
-                                <el-button type="primary" class="ser_com4" @click="findBtn">搜索</el-button>
-                            </el-form-item>
-                        </el-form>
-                    </div>
-                </div>
+              <el-form-item>
+                <el-button type="primary" class="ser_com4" @click="findBtn">搜索</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </div>
 
-                <!-- 找资金 -->
-                <div :class="{show: boxStatus === 2}" class="box">
-                    <div class="find-money">
-                        <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-                            <div class="ser_com2">
-                                <el-form-item label="融资额度" class="ser_com" prop="region">
-                                    <el-select v-model="ruleForm.region" placeholder="请选择" name='financingCode' class="serSelect">
-                                        <el-option v-for="item in financing" :key="item.dictCode" :label="item.dictName" :value="item.dictCode" class="ress">
-                                        </el-option>
-                                    </el-select>
-                                </el-form-item>
-                            </div>
-                            <div class="ser_com1">
-                                <el-form-item label="手机号码" class="ser_com" prop="tel" style="font-size: 14px;">
-                                    <el-input v-model="ruleForm.tel" class="ser_com3" placeholder="请输入您的手机号码" name='mobile'></el-input>
-                                </el-form-item>
-                            </div>
-                            <div class="ser_com1">
-                                <el-form-item label="公司名称" class="ser_com" prop="company">
-                                    <el-input v-model="ruleForm.company" class="ser_com3" placeholder="请输入您的公司名称" name='companyName'></el-input>
-                                </el-form-item>
-                            </div>
-                            <div class="ser_com1">
-                                <el-form-item label="您的姓名" prop="yourname" class="ser_com">
-                                    <el-input v-model="ruleForm.yourname" class="ser_com3" placeholder="请输入您的姓名" name='userName'></el-input>
-                                </el-form-item>
-                            </div>
-                            <el-form-item>
-                                <el-button type="primary" class="ser_com4" @click="submitForm('ruleForm')">提交</el-button>
-                            </el-form-item>
-                        </el-form>
-                    </div>
-                </div>
-                <!-- 找客户 -->
-                <div :class="{show: boxStatus === 3}" class="box">
-                    <div class="find-customer">
-                        <!--<div class="find-serch">
+        <!-- 找资金 -->
+        <div :class="{show: boxStatus === 2}" class="box">
+          <div class="find-money">
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+              <div class="ser_com2">
+                <el-form-item label="融资额度" class="ser_com" prop="region">
+                  <el-select v-model="ruleForm.region" placeholder="请选择" name='financingCode' class="serSelect">
+                    <el-option v-for="item in financing" :key="item.dictCode" :label="item.dictName" :value="item.dictCode" class="ress">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </div>
+              <div class="ser_com1">
+                <el-form-item label="手机号码" class="ser_com" prop="tel" style="font-size: 14px;">
+                  <el-input v-model="ruleForm.tel" class="ser_com3" placeholder="请输入您的手机号码" name='mobile'></el-input>
+                </el-form-item>
+              </div>
+              <div class="ser_com1">
+                <el-form-item label="公司名称" class="ser_com" prop="company">
+                  <el-input v-model="ruleForm.company" class="ser_com3" placeholder="请输入您的公司名称" name='companyName'></el-input>
+                </el-form-item>
+              </div>
+              <div class="ser_com1">
+                <el-form-item label="您的姓名" prop="yourname" class="ser_com">
+                  <el-input v-model="ruleForm.yourname" class="ser_com3" placeholder="请输入您的姓名" name='userName'></el-input>
+                </el-form-item>
+              </div>
+              <el-form-item>
+                <el-button type="primary" class="ser_com4" @click="submitForm('ruleForm')">提交</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </div>
+        <!-- 找客户 -->
+        <div :class="{show: boxStatus === 3}" class="box">
+          <div class="find-customer">
+            <!--<div class="find-serch">
               <el-input placeholder="输入客户、产品关键字搜索" class="ser_xiu" name="customName">
                 
               </el-input>
               <el-button slot="append" type="primary" icon="el-icon-search" class="find-icon"  @click="searchcus"></el-button>
             </div>-->
-                        <div class="ser_com5">
-                            <div class="ser_com6">
-                                <input name="customName" type="text" placeholder="输入客户、产品关键字搜索" v-model='customeName'>
-                            </div>
-                            <div class="ser_com7" @click="searchcus">
-                                <img src="./ser_butn.png" />
-                            </div>
-                        </div>
-                        <div class="cust-content" style="overflow: hidden;">
-                            <span class="newest">最新客户</span>
-                            <ul>
-                                <li v-for='(com,index) in newcom' :key="index">
-                                	<div @click="tocym(com.customer.id)" class="ser_xiu1">
-							{{com.customer.name}}
-						</div>
-                                    <!--<router-link class="company master_com" :to="{path:'mainproduct',query: {userId:com.customer.id}}" target="_blank" tag="a" :title='com.customer.name'>{{com.customer.name}}</router-link>-->
-                                    <p class="main" :title='masterjson[com.industrys.industry]'>主营产品：{{masterjson[com.industrys.industry]}}</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <span class="find-btn" @click='morecustom'>更多客户</span>
-                    </div>
+            <div class="ser_com5">
+              <div class="ser_com6">
+                <input name="customName" type="text" placeholder="输入客户、产品关键字搜索" v-model='customeName'>
+              </div>
+              <div class="ser_com7" @click="searchcus">
+                <img src="./ser_butn.png" />
+              </div>
+            </div>
+            <div class="cust-content" style="overflow: hidden;">
+              <span class="newest">最新客户</span>
+              <ul>
+                <li v-for='(com,index) in newcom' :key="index">
+                  <div @click="tocym(com.customer.id)" class="ser_xiu1">
+                    {{com.customer.name}}
+                  </div>
+                  <!--<router-link class="company master_com" :to="{path:'mainproduct',query: {userId:com.customer.id}}" target="_blank" tag="a" :title='com.customer.name'>{{com.customer.name}}</router-link>-->
+                  <p class="main" :title='masterjson[com.industrys.industry]'>主营产品：{{masterjson[com.industrys.industry]}}</p>
+                </li>
+              </ul>
+            </div>
+            <span class="find-btn" @click='morecustom'>更多客户</span>
+          </div>
 
-                </div>
-                <!-- 找技术  -->
-                <!-- <div :class="{show: boxStatus === 4}" class="box">
+        </div>
+        <!-- 找技术  -->
+        <!-- <div :class="{show: boxStatus === 4}" class="box">
               <div class="find-technology">
                 <div class="find-serch">
                   <el-input placeholder="输入客户、产品关键字搜索" class="input-with-select">
@@ -184,7 +184,7 @@
                 </div>
               </div>
             </div> -->
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </section>

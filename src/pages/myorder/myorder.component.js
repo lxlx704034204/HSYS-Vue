@@ -13,13 +13,14 @@ export default {
       tableData: [],
       orderList: [],
       orderLists: [],
+      havedata:false,
     }
   },
   computed: {
 
   },
   created() {
-    this.$store.commit("switchHeaderType", 1);
+    this.$store.commit("switchHeaderType", 11);
     //牌号
     this.ph = this.$util.getCodeMap("GRADE");
   },
@@ -52,6 +53,7 @@ export default {
         that.orderList = res.records;
         that.total = parseFloat(res.total);
         that.pageNum = res.current;
+        that.havedata = that.total <= 0 ? false:true;  
       })
     },
 

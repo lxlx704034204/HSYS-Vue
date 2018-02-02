@@ -15,5 +15,9 @@
 .myaddress .bidding_input{
     width: 30%;
 }
+.myaddress .el-dialog__title{
+        color: #FFF;
+    }
+
 </style>
 

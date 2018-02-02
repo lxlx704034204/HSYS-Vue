@@ -154,12 +154,13 @@
       left: 0;
       top: 0;
       width: 487px;
-      display: flex;
+      float: left;
     }
     .find-left {
-      min-height: 406px;
+      min-height: 402px;
       width: 125px;
       background: #009fe2;
+      float: left;
       .find-item {
         width: 125px;
         height: 134px;
@@ -205,11 +206,12 @@
     }
     .find-content {
       width: 362px;
-      min-height: 406px;
+      min-height: 400px;
       background: #fff;
       margin-top: 2px;
       box-shadow: 3px 3px 10px 0px #E6E6E6;
-      flex: 1; // 找产品
+      float: left;
+
       .find-on {
         margin-left: 30px;
       } // 找资金

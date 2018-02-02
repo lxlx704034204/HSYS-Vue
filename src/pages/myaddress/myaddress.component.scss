@@ -39,13 +39,13 @@
         position: absolute;z-index: 2;color: red;margin-left: -78px;
     }
     .ada_xiu19{
-        width: 115px;height: 40px;border-color: #009FE2;color: #009FE2;border-radius: 0px;margin-left: -30px;
+        width: 115px;height: 40px;border-color: #009FE2;border-radius: 0px;margin-left: -30px;
     }
     .ada_xiu2{
         width: 115px;height: 40px;background: #009FE2;color: #FFF;border-radius: 0px;margin-left: 40px;
     }
     .ada_xiu21{
-        
+
     }
     .ada_xiu22{
         color: #009FE2;
@@ -55,11 +55,15 @@
                 margin-top: 26px;
                 font-size: 14PX;
     }
+    
     .ada_xiu23{
-        width: 350px;height: 78px;resize: none;border-color: #DCDFE6;border-radius: 3px;outline: none;font-size: 14px;padding: 10px;color: #666; 
+        width: 350px;height: 78px;resize: none;border: 1px solid #DCDFE6;border-radius: 3px;outline: none;font-size: 14px;padding: 10px;color: #666; 
         :hover{
             border-color: #009FE2;
         }
+    }
+    .ada_xiu24{
+        background: #009FE2;color: #FFF;width: 25px;height: 25px;position: absolute;margin-top: -70px;margin-left: 420px;z-index: 2;line-height: 25px;text-align: center;font-size: 20px;cursor: pointer;
     }
     
     .nav {

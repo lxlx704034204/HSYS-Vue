@@ -15,6 +15,7 @@
           <template>
             <span type="text" class="order_hover changebtn ada_xiu22" @click="newadd">新增收货地址</span>
             <el-dialog title="地址详情" :visible.sync="dialogFormVisible3" center>
+            	<div class="ada_xiu24" @click="dialogFormVisible3 = false">x</div>
               <el-form :model="ruleForm" ref="ruleForm">
                 <el-form-item label="收货人" :label-width="formLabelWidth" prop="username" style="margin-left: 4px;">
                   <span class="ada_xiu1">*</span>

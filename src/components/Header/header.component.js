@@ -36,7 +36,7 @@ export default {
     },
     created() {
         // 获取热搜数据
-     if(this.$store.state.headerType == 1 ){
+     if(this.$store.state.headerType == 1 || this.$store.state.headerType == 11){
         this.axios.get("/word/1").then((res) => {
             this.keyWord = res;
         });
@@ -196,12 +196,7 @@ export default {
 			location.href = "#/autotrophy?name=" + this.swinput;
 			this.$emit('search');
 		},
-		finClick() {
-			window.open('#/financial')
-		},
-		infoClick() {
-			window.open('#/information')
-		}
+		
 	},
 
 }

@@ -69,7 +69,11 @@ export default {
                 bizType: { required: true, message: "请选择公司类型", trigger: "blur" },
                 registeredCapital: [
                     { required: true, message: "请输入注册资金", trigger: "blur" },
-                    { min: 0, max: 10, message: '长度在 0 到 10 个字符', trigger: 'blur' }
+                    { min: 0, max: 10, message: '长度在 0 到 10 个字符', trigger: 'blur' },
+                    {
+                        validator: this.checkNumber,
+                        trigger: 'blur'
+                    },
                     // { type: "number", message: "请输入数字格式", trigger: "blur" },
                 ],
                 accountName: { required: true, message: "请输入开户名", trigger: "blur" },
@@ -387,6 +391,17 @@ export default {
                 }
                 return Promise.resolve(result.data ? "" : "该手机号码已存在");
             });
+        },
+        checkNumber(rule, value, callback) {
+            if (!value) {}
+            setTimeout(() => {
+                let flag = this.$util.isNumber(value)
+                if (!flag) {
+                    callback(new Error('请输入0-10位数字'));
+                } else {
+                    callback();
+                }
+            }, 500);
         },
     }
 };
