@@ -30,6 +30,8 @@
 	.show-more-category,.show-more-city{
 		background: #FFF;
 		padding-right: 10px;
+		float: left;
+		position: relative;
 		.self-btn{
 		    font-size: 12px;
 		    border-radius: 3px;
@@ -54,20 +56,24 @@
 	}
 	.box-2{
 		.auction-box{
-			display: flex;
 			margin-top: 10px;
 			height: 20px;
 			font-size: 14px;
 			.box-left{
+			  float: left;
 				line-height: 26px;
 			}
+			
 				.box-right{
-					display: flex;
+				  float: left;
+				  width: 960px;overflow: hidden;
 					.all-item{
 						cursor: pointer;
 						line-height: 26px;
+						float: left;
 					}
 					.item{
+						float: left;
 						margin-left: 10px;
 
 					}
@@ -77,23 +83,30 @@
 	}
 	.scree-condition{
 		margin: 20px auto;
-		
+		          
 		.category-box {
 		  margin-top: -1px;
-		  display: flex;
-		  background: #f5f5f7;
+
 		  border: 1px solid #e6e6e6;
 		  line-height: 43px;
 		  font-size: 14px;
+		  height: auto;
+		  overflow: hidden;
 		  .box-left {
+		    float: left;
 		    width: 118px;
 		    text-indent: 16px;
 		    color: #666; 
+        background: #f5f5f7;
 		  }
+		  .box-mid{
+                float: left;width: 993px;overflow: hidden;background: #FFF;
+            }
 		  .box-right {
-		    flex: 1;
+		    float: left;
 		    background: #fff;
 		    padding-left: 14px;
+		    overflow: hidden;
 		    .item {
 		      display: inline-block;
 		      margin-right: 15px;

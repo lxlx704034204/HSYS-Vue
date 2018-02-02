@@ -1,3 +1,4 @@
+import storage from "store2"
 export default {
   name: 'company',
   components: {},
@@ -12,25 +13,42 @@ export default {
       descrip: '',
       userId: '',
       cp:false,
+      logourl:''
     }
   },
   created() {
     // this.$store.state.headerType = 5;
     this.$store.commit("switchHeaderType", 5);
+//  this.$store.commit("switchFooterType", 100);
+this.$store.commit("switchFooterType", 100);
     var that = this;
     this.userId = this.$route.query.userId;
-    //  企业详细信息
-    this.axios.get("customer/detail/" + this.userId)
-      .then(function (data) {
-        that.cominf = data;
-        that.descrip = that.cominf.description;
-      });
+    this.cusdetail();
     //  用户产品
     this.conpanylist();
 
   },
+  mounted(){
 
+  },
   methods: {
+    cusdetail(){
+      var that = this;
+ //  企业详细信息
+    this.axios.get("customer/detail/" + this.userId)
+      .then(function (data) {
+        
+        
+        that.$store.commit("logo", data.logoUrl);
+
+        console.log("logo", that.$store.state.logo);
+         // that.$store.commit({  
+         //        type: logo
+         //    }) 
+        that.cominf = data;
+        that.descrip = that.cominf.description;
+      });
+    },
     conpanylist() {
       var that = this;
       this.axios.get("customerproduct/all?size=12&user_id=" + this.userId + '&current=' + this.pageNo)

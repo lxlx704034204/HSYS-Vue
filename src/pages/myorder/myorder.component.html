@@ -14,7 +14,7 @@
       <el-button class="myorder_btn" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
     </div>
     <div class="mybill-table">
-      <el-table :data="orderList" border style="width: 100%">
+      <el-table :data="orderList" border width="100%">
         <!--   查看订单url拼接id -->
         <el-table-column prop="orderCode" label="订单编号" class="table" width="110">
           <template slot-scope="scope">

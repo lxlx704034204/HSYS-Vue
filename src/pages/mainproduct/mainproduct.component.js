@@ -31,6 +31,7 @@ export default {
 	created() {
 		// this.$store.state.headerType = 5;
 		this.$store.commit("switchHeaderType", 5);
+		this.$store.commit("switchFooterType", 100);
 		this.compaytype = this.$util.getCodeMap("CAMPANY");
 		var json = {};
 		this.compaytype.forEach(v => {

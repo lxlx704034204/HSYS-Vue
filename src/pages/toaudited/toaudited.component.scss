@@ -5,8 +5,6 @@
   overflow: hidden;
 }
 
-.todetermined {}
-
 .myoderDetail {
   height: 44px;
   .myoderDetail-item1 {
@@ -71,6 +69,7 @@
       text-align: center;
       color: #999;
       font-size: 12px;
+      margin-bottom: 20px;
       span {
         color: #F3A83A;
       }
@@ -94,20 +93,6 @@
         line-height: 29px;
         margin-left: 12px;
         font-size: 14px;
-      }
-    }
-    .orderCon_right {
-      float: left;
-      width: 400px;
-      margin-top: 45px;
-      .order_remarks {
-        color: #666;
-        line-height: 29px;
-        font-size: 14px;
-        word-wrap: break-word;
-        span {
-          color: #666;
-        }
       }
     }
   } // 付款信息
@@ -145,7 +130,7 @@
     }
   } //供应商
   .orderSupplier {
-    min-height: 410px;
+    min-height: 295px;
     border-bottom: 1px solid #eeeeee; // background: red;
     padding: 0 20px;
     h4 {
@@ -155,13 +140,6 @@
       color: #333;
       margin-left: 10px;
       font-weight: normal;
-    }
-    .orderSupplier-table {
-      width: 100%;
-      height: 100px;
-    }
-    .orderdetails {
-      width: 100% !important;
     }
     .orderSupplier-content {
       width: 372px;
@@ -214,7 +192,6 @@
     }
   }
   .payMsg {
-    display: flex;
     margin-top: 30px;
     margin-bottom: 30px;
     font-size: 14px;
@@ -225,7 +202,6 @@
         margin-top: 10px;
       }
       img {
-        // width: 500px;
         height: 300px;
         margin-top: 10px
       }
@@ -248,26 +224,16 @@
         margin-top: 10px;
         margin-right: 20px;
         text-decoration: none;
+        background-color: #009fe2;
+        color: #fff;
         &.left {
           color: #009fe2;
-        }
-      }
-      .orderFooter-btn:hover {
-        color: #fff;
-        background: #409eff;
-        &.left:hover {
-          color: #409eff;
           background-color: #fff;
         }
       }
     }
   }
-  .primaryleft {
-    width: 118px;
-    height: 40px;
-    margin-top: 10px;
-    margin-right: 20px;
-  } //电子合同
+   //电子合同
   .el-dialog--center .el-dialog__header {
     background-color: #fff;
   }
@@ -313,6 +279,4 @@
   }
 }
 
-.padbt-20 {
-  padding-bottom: 20px
-}
+

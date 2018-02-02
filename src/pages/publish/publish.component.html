@@ -149,7 +149,7 @@
                         <span class="prefix">*</span>
                         <img v-if="customer.bizLogoUrl" :src="customer.bizLogoUrl" class="avatar" prop="license">
                         <div v-else class="choose-box">
-                            <i class="el-icon-plus avatar-uploader-icon"></i>
+                            <i class="el-icon-plus avatar-uploader-icon"></i><br />
                             <span>点击上传</span>
                         </div>
                         <div v-show='isremind' class='licesephot'>请提交营业执照</div>
@@ -223,7 +223,7 @@
                 </el-row>
             </el-col>
         </el-row>
-        <el-row type="flex" justify="center" class="toolbar" v-show='isshow'>
+        <el-row style="text-align: center;" justify="center" class="toolbar" v-show='isshow'>
             <el-button type="primary" @click="perfect">提交审核</el-button>
         </el-row>
     </el-form>

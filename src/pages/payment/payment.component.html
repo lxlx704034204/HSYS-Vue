@@ -9,24 +9,24 @@
   </div>
 
   <div class="payment_list">
-    <el-table :data="tableData" align="center" class="list_top" border style="width: 100%">
-      <el-table-column prop="order.orderCode" label="订单编号">
+    <el-table :data="tableData" border width="100%">
+      <el-table-column prop="order.orderCode" label="订单编号" align="center">
       </el-table-column>
-      <el-table-column prop="order.items[0].name" label="产品信息">
+      <el-table-column prop="order.items[0].name" label="产品信息" align="center">
       </el-table-column>
-      <el-table-column prop="order.shippingMethod.desc" label="物流信息" width="150">
+      <el-table-column prop="order.shippingMethod.desc" label="物流信息" align="center">
       </el-table-column>
-      <el-table-column prop="order.paymentMethod.desc" label="付款方式" width="150">
+      <el-table-column prop="order.paymentMethod.desc" label="付款方式" align="center">
       </el-table-column>
-      <el-table-column label="订单总金额" width="255">
+      <el-table-column label="订单总金额" align="center">
         <template slot-scope="scope">
-          <span class="list_sapn">￥{{scope.row.order.total}}</span>
+          <span class="list_span">￥{{scope.row.order.total}}</span>
         </template>
       </el-table-column>
     </el-table>
   </div>
 
-   <div class="payment_btm">
+  <div class="payment_btm">
     <h3>付款信息</h3>
     <div class="btm_left" v-for="item in tableData">
       <div class="btm_table">
@@ -79,12 +79,11 @@
         </div>
       </div>
     </div>
-    
+
     <div class="btm_right">
       <p class="right_p2" @click="sendinfo">发送付款信息到手机</p>
       <div class="right_file">
-        <el-upload class="avatar-uploader" :action="upload" :show-file-list="false" :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload">
+        <el-upload class="avatar-uploader" :action="upload" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
           <img v-if="imageUrl" :src="imageUrl" class="avatar">
           <i v-else class="el-icon-upload avatar-uploader-icon"></i>
         </el-upload>
@@ -92,15 +91,16 @@
     </div>
   </div>
   <div class="prompt">
-      <span>*</span>线下公司转账需将此识别码填写至电汇凭证的<span>【汇款用途】、【附言】、【摘要】</span>栏内(<span>重要提醒</span>:因不同银行备注字段不同，最好是将所有的可填写备注的地方都填写上<span>付款识别码</span>)，请务必填写正确，勿私自增加其他文字说明。请参考下图。
-    </div>
-    <div class="rsh_moy1">
-      <img src="./images/sam_03.png" alt="">
-      <div class="payment_btn">
-          <el-button type="primary" @click="open">提交</el-button>
-      </div>
-    </div>
-    
+    <span>*</span>线下公司转账需将此识别码填写至电汇凭证的
+    <span>【汇款用途】、【附言】、【摘要】</span>栏内(
+    <span>重要提醒</span>:因不同银行备注字段不同，最好是将所有的可填写备注的地方都填写上
+    <span>付款识别码</span>)，请务必填写正确，勿私自增加其他文字说明。请参考下图。
   </div>
-  
+  <div class="rsh_moy1">
+    <img src="./images/sam_03.png" alt="">
+  </div>
+  <div class="payment_btn">
+    <el-button type="primary" @click="open" class="button">提交</el-button>
+  </div>
+
 </section>

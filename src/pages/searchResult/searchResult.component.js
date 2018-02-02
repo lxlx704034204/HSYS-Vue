@@ -1,3 +1,4 @@
+import storage from "store2"
 export default {
     name: 'searchResult',
     components: {},
@@ -34,6 +35,7 @@ export default {
         this.$store.commit("switchHeaderType", 2);
         this.isFIndShow = false;
         this.keyword = this.$route.query.name;
+        console.log(this.keyword,'123')
         if (this.$route.query.name == '') {
             this.keyname = '全部企业'
         } else {
@@ -92,16 +94,14 @@ export default {
         },
         companylist() {
             var arr = [];
+            console.log(this.keyword,'sousuo')
             var that = this;
             that.axios.get("customer/list?current=" + this.current + "&size=5" + "&name=" + this.keyword)
                 .then(function(re) {
                     that.list_one = that.list_one.concat(re.records);
-                    console.log(that.list_one.length,'3')
-                    // this.list = this.list.concat(list.data)
                     if (that.list_one.length == 0) {
                         that.ishave = true;
                     }
-                    console.log(that.ishave,'5')
                     that.total = re.total;
                     that.pages = re.pages;
                     if (re.pages > that.current) {
@@ -130,8 +130,13 @@ export default {
             $('#ckm').css('display', 'none');
             $('#hdpart').css('display', 'block');
         },
-        jump(index, id) {
+        jump(index, id,logo) {
             var that = this;
+            // this.$store.state.logo =  logo;
+            
+            // this.$store.commit({  
+            //     type:"logo"  
+            // })      
             this.axios.post("customer/browse/" + id).then((res) => {
                 that.$router.push('/company?userId=' + id);
             })

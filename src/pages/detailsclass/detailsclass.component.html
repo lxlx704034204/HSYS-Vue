@@ -11,6 +11,15 @@
 	<!-- 分类 -->
 	<div class="details_top">
 		<div class="com_bos8">
+			<div style="height: 44px;">
+				<div class="com_bos84">
+					筛选条件:
+				</div>
+				<div class="com_bos85">
+					<div class="com_bos87" @click="closex()">全部结果&nbsp;></div>
+					<div id="cate" class="com_bos86" @click="closex()" v-show='ishave'>&nbsp;{{names}}&nbsp;&nbsp;<span>x</span>&nbsp;</div>
+				</div>
+			</div>
 			<div class="com_bos81">
 				<div class="com_bos82">
 					产品分类
@@ -21,15 +30,7 @@
 					</ul>
 				</div>
 			</div>
-			<div style="height: 44px;">
-				<div class="com_bos84">
-					筛选条件
-				</div>
-				<div class="com_bos85">
-					<div class="com_bos87" @click="closex()">全部结果&nbsp;></div>
-					<div id="cate" class="com_bos86" @click="closex()" v-show='ishave'>&nbsp;{{names}}&nbsp;&nbsp;<span>x</span>&nbsp;</div>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 
@@ -40,7 +41,7 @@
 	        <div style="margin-left: 18px;" v-if='names != ""'>{{names}}</div>
 	        <div style="margin-left: 18px;" v-else>{{secName}}</div>
 	    </h3>
-			<div class="left_main1 clearfixed det_cla2" @click="watch(det.id,det.userId)" v-for="(det,index) in detlist" v-if="index<10" :data="det.id" :data1="det.userId" ref='de'>
+			<div class="left_main1 clearfixed det_cla2" @click="watch(det.id,det.userId)"  v-for="(det,index) in detlist" v-if="index<10" :data="det.id" :data1="det.userId" ref='de'>
 				<div class="main1_img">
 					<img :src="det.masterImage" alt="">
 				</div>

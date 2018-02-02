@@ -21,7 +21,10 @@
             <span>{{warejson[scope.row.warehouseCode]}}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="startUnitPrice" label="起拍价">
+        <el-table-column label="起拍价">
+           <template slot-scope="scope">
+            <span>{{scope.row.startUnitPrice}}元</span>
+          </template>
         </el-table-column>
         <el-table-column prop="biddingQuantity" label="竞拍数量">
         </el-table-column>
@@ -30,9 +33,15 @@
             <span>{{unitjson[scope.row.unitCode]}}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="biddingPrice" label="竞价单价">
+        <el-table-column label="竞价单价">
+           <template slot-scope="scope">
+            <span>{{scope.row.biddingPrice}}元</span>
+          </template>
         </el-table-column>
-        <el-table-column prop="deposit" label="保证金">
+        <el-table-column label="保证金">
+          <template slot-scope="scope">
+            <span>{{scope.row.deposit}}元</span>
+          </template>
         </el-table-column>
         <el-table-column prop="createDate" label="更新日期" width="105">
         </el-table-column>

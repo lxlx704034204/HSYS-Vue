@@ -10,6 +10,7 @@
 
 .information {
     height: 100%;
+    overflow: hidden;
     router-link {
         color: #505050;
     }
@@ -146,11 +147,11 @@
     }
 
     .inf_cen8 {
-        width: 170px;color: #505050;cursor: pointer;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;position: relative;z-index: 99999;
+        width: 170px;color: #505050;cursor: pointer;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;position: relative;z-index: 99999;font-size: 14px;
     }
 
     .inf_cen8:hover {
-        color: #AAA;
+        color: #AAA !important;
     }
 
     .inf_bgc {
@@ -258,7 +259,6 @@
                         margin-right: 20px;
                         width: 180px;
                         height: 120px;
-                        background: deepskyblue;
                     }
                     .infor_left3s {
                         float: left;
@@ -282,9 +282,10 @@
             .infor_right {
                 float: right;
                 width: 344px;
-                height: 610px;
+                height: 630px;
                 background-color: #fff;
                 margin-right: 29px;
+                overflow: hidden;
                 .infor_rightTop {
                     height: 56px;
                     font-size: 20px;
@@ -557,7 +558,7 @@
         top: 20px;
         float: right;
         width: 344px;
-        height: 610px;
+        height: 630px;
         background-color: #fff;
         margin-right: 29px;
         .infor_rightTop {

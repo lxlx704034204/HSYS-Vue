@@ -110,6 +110,7 @@ export default {
 
     // 全部产品
     allproduct(){
+      this.pageNum = 1;
       this.params.useCateDetailCodes ='';
       this.params.craftCateDetailCodes ='';
       this.params.specialCateDetailCodes ='';
@@ -134,22 +135,23 @@ export default {
 
     // 筛选条件添加
     kindBtn(type, item) {
+      this.pageNum = 1;
       if (type === 2) {
         if (this.stagdata.btnUse.indexOf(item) == -1) {
           console.log(item);
-          this.params.useCateDetailCodes = item.rankDetailName;
+          this.params.useCateDetailCodes =  encodeURI(item.rankDetailName);
           this.stagdata.btnUse=[];
           this.stagdata.btnUse.push(item);
         }
       } else if (type === 3) {
         if (this.stagdata.btnPro.indexOf(item) == -1) {
-          this.params.craftCateDetailCodes = item.rankDetailName;
+          this.params.craftCateDetailCodes = encodeURI(item.rankDetailName);
           this.stagdata.btnPro=[];
           this.stagdata.btnPro.push(item);
         }
       } else if (type === 4) {
         if (this.stagdata.btnFea.indexOf(item) == -1) {
-          this.params.specialCateDetailCodes = item.rankDetailName;
+          this.params.specialCateDetailCodes =  encodeURI(item.rankDetailName);
           this.stagdata.btnFea = [];
           this.stagdata.btnFea.push(item);
         }

@@ -7,10 +7,10 @@
 }
 
 .cus_xiu {
-    width: 190px;
-    height: 190px;
+    width: 198px;
+    height: 198px;
     margin-top: 22px;
-    margin-left: 28px;
+    margin-left: 24px;
 }
 
 .cus_xiu img {
@@ -20,7 +20,7 @@
 }
 
 .cus_xiu1 {
-    width: 180px;
+    width: 198px;
     height: 14px;
     line-height: 14px;
     overflow: hidden;
@@ -28,12 +28,12 @@
     white-space: nowrap;
     font-size: 12px;
     color: #333;
-    margin-top: 5px;
-    margin-left: 28px;
+    margin-top: 10px;
+    margin-left: 24px;
 }
 
 .cus_xiu2 {
-    width: 180px;
+    width: 198px;
     height: 14px;
     line-height: 14px;
     overflow: hidden;
@@ -42,7 +42,7 @@
     font-size: 14px;
     color: #333;
     margin-top: 5px;
-    margin-left: 28px;
+    margin-left: 24px;
 }
 
 .cus_xiu3 {
@@ -161,7 +161,7 @@
 
 .cus_res37 {
     float: left;
-    width: 191px;
+    width: 174px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -171,8 +171,10 @@
 }
 
 .cus_res110 {
-    padding-left: 28px;
-    color:#333;
+    width: 174px;
+    padding-left: 24px;
+    margin-top: 5px;
+    color: #333;
 }
 
 .cus_res38 {
@@ -300,7 +302,7 @@
 
 .com_bos81 {
     overflow: hidden;
-    border-bottom: 1px dashed #E6E4E1;
+    border-top: 1px dashed #E6E4E1;
 }
 
 .com_bos82 {
@@ -336,7 +338,7 @@
 .com_bos84 {
     float: left;
     width: 117px;
-    background: #FBFBFA;
+    background: #FFF;
     font-size: 14px;
     line-height: 44px;
     text-align: center;
@@ -386,59 +388,10 @@
     .customer {
         padding: 26px 0 27px 0;
         font-size: 14px;
-        border-bottom: 1px solid #e7e7e7;
     }
     // 分类
     .details_top {
         border-bottom: 1px solid #e7e7e7;
-        /* 分类 */
-        .category-box {
-            display: flex;
-            background: #f5f5f7;
-            line-height: 50px;
-            font-size: 14px;
-            .box-left {
-                width: 118px;
-                text-indent: 16px;
-                color: #666;
-            }
-            .box-right {
-                flex: 1;
-                background: #fff;
-                padding-left: 14px;
-                .item {
-                    display: inline-block;
-                    margin-right: 15px;
-                    color: #009ee1;
-                    font-size: 14px;
-                    cursor: pointer;
-                }
-                .all-item {
-                    color: #666;
-                    margin-right: 5px;
-                }
-                li.all-item:hover {
-                    color: #009FE2;
-                }
-                .select-text {
-                    color: #009ee1;
-                }
-            }
-        }
-        .city-box {
-            position: relative;
-            border-bottom: 1px dashed #f0f0f0;
-            .show-more-city {
-                position: absolute;
-                right: 20px;
-                bottom: 0px;
-            }
-            .show-more-category {
-                position: absolute;
-                right: 20px;
-                bottom: 0px;
-            }
-        }
     }
     .details_main {
         margin-top: 28px;
@@ -514,7 +467,7 @@
                     }
                 }
                 &:hover {
-                    box-shadow: 6px 6px 8px #f4f4f4;
+                    box-shadow: 2px 2px 3px #9e9494;
                 }
             }
             .nothinginf {

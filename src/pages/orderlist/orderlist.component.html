@@ -2,7 +2,7 @@
 <section class="orderlist case-4 inner-1200">
   <div class="orderlist_prompt">
     <div class="orderlist_disinfor">
-      <img src="./提交订单成功_03.png" alt="">
+      <img src="./images/submit.png" alt="">
       <p>订单提交成功，等待平台审核！
          <span type="button" @click='watchorder' tag="span">查看订单详情</span>
         <!-- <router-link to="/companycenter/toaudited" tag="span">查看订单详情</router-link></p> -->
@@ -11,25 +11,25 @@
   </div>
   <div class="orderlist">
     <template>
-      <el-table style="width: 100%" :data='orderList'>
-        <el-table-column label="订单编号" prop="orderCode">
+      <el-table :data="orderList" class="orderlistTable" border >
+        <el-table-column label="订单编号" prop="orderCode" align="center">
         </el-table-column>
-        <el-table-column label="产品信息">
-           <template slot-scope="scope">
+        <el-table-column label="产品信息" align="center">
+           <template slot-scope="scope" align="center">
             <span style="margin-left: 10px">{{orderName}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="物流方式">
+        <el-table-column label="物流方式" align="center">
            <template slot-scope="scope">
             <span style="margin-left: 10px">{{sendwayscop}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="付款方式">
+        <el-table-column label="付款方式" align="center">
           <template slot-scope="scope">
-            <span style="margin-left: 10px">{{payMethodscop}}</span>
+            <span>{{payMethodscop}}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="total" label="总金额">
+        <el-table-column label="总金额(元)" prop="total" align="center">
         </el-table-column>
       </el-table>
     </template>

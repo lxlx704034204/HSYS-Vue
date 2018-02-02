@@ -4,10 +4,10 @@
     <loginauct v-on:logining='logining'></loginauct>
   </div>
   <!-- 筛选 -->
-  <div class="category-box" style="background: #FFF;border: none;margin-bottom: 4px;margin-top: -17px;">
-    <div class="box-left" style="width: 90px;margin-left: -16px;position: relative;z-index: 1;color: #333;">筛选条件:</div>
+  <div class="category-box" style="background: #FFF;border: none;margin-bottom: 4px;margin-top: -16px;">
+    <div class="box-left" style="width: 90px;margin-left: -16px;position: relative;z-index: 1;color: #333;background: #FFF;">筛选条件:</div>
     <ul class="box-right" style="margin-left: -19px;">
-      <li class="item all-item" @click="remove" style="color: #333;">
+      <li class="item all-item" @click="remove" style="color: #333;position: relative;z-index: 2;">
         全部结果
         <span v-show="categorys || company || city">&gt;</span>
       </li>
@@ -35,11 +35,14 @@
     </ul>
   </div>
   <!-- 分类 -->
-  <div class="category-box city-box" style="margin-top: -1px;">
+  <div class="category-box city-box" style="margin-top: -2px;">
     <div class="box-left">分类</div>
-    <ul class="box-right">
-      <li class="item" v-for="(item,key) in category" @click="selectFilter(1,item,key)">{{item.name}}</li>
-    </ul>
+    <div class="box-mid">
+    	<ul class="box-right">
+	      <li class="item" v-for="(item,key) in category" @click="selectFilter(1,item,key)">{{item.name}}</li>
+	    </ul>
+    </div>
+    
     <div class="show-more-category" v-show="category.length >= typeLen">
       <template v-if="category.length == typeLen">
           <button type='button' @click="showAllCat" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
@@ -52,9 +55,12 @@
   <!-- 产地 -->
   <div class="category-box city-box">
     <div class="box-left">产地</div>
-    <ul class="box-right">
-      <li class="item" v-for="(item,key) in cd" @click="selectFilter(2,item,key)">{{item.dictName}}</li>
-    </ul>
+    <div class="box-mid">
+	    <ul class="box-right">
+	      <li class="item" v-for="(item,key) in cd" @click="selectFilter(2,item,key)">{{item.dictName}}</li>
+	    </ul>
+    </div>
+    
     <div class="show-more-category" v-show="cd.length >= cdlen">
       <template v-if="cd.length == cdlen">
         <button type='button' @click="showAllCategory" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
@@ -68,9 +74,12 @@
   <!-- 库别 -->
   <div class="category-box city-box">
     <div class="box-left">库别</div>
-    <ul class="box-right">
-      <li class="item" v-for="(item,key) in io" @click="selectFilter(3,item,key)">{{item.dictName}}</li>
-    </ul>
+    <div class="box-mid">
+    	<ul class="box-right">
+	      <li class="item" v-for="(item,key) in io" @click="selectFilter(3,item,key)">{{item.dictName}}</li>
+	    </ul>
+    </div>
+	    
     <div class="show-more-city" v-show="io.length >= ctLen">
       <template v-if="io.length == ctLen">
         <button type='button' @click="showAllCity" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
@@ -91,7 +100,7 @@
         <span class="label">关键字</span>
       </el-col>
       <el-col :span="4">
-        <el-input size="small" clearable @change="goSearch" v-model="keyword" placeholder="输入牌号搜索"></el-input>
+        <el-input size="small" style="margin-left: 14px;margin-top: 2px;" clearable @change="goSearch" v-model="keyword" placeholder="输入牌号搜索"></el-input>
       </el-col>
     </el-row>
   </div>

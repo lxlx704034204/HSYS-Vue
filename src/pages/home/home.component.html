@@ -4,9 +4,9 @@
 		<loginauct v-on:logining='logining'></loginauct>
 	</div>
 <!--轮播测试-->
-<section class="slider-contaner">
+<section class="slider-contaner" style="width: 100%;overflow: hidden;">
 <ul class="slider">
-<li class="slider-item slider-item1" @mouseover="lunbo1()" >
+<li class="slider-item slider-item1" @mouseover="lunbo1()" style="background-color: #102A44;">
 	<div class="hme_xiu">寻找百家化塑企业孵化计划</div>
 	<div class="hme_xiu1">
 		资金、技术、方案、市场、股权等深度合作三年时间，
@@ -18,7 +18,7 @@
 
 	</div>
 </li>
-<li class="slider-item slider-item2" @mouseover="lunbo2()">
+<li class="slider-item slider-item2" @mouseover="lunbo2()" style="background-color: #1D4A7C;">
 	<div class="hme_xiu">合作赋能&nbsp;&nbsp;连接未来</div>
 	<div class="hme_xiu1">
 		依托道恩集团雄厚的化塑产业布局，从贸易商向服务商转型
@@ -30,7 +30,7 @@
 
 	</div>
 </li>
-<li id="a" @mouseleave="guanbi1()" style="">
+<li id="a" @mouseleave="guanbi1()" style="background-color: #102A44;">
 	<div class="hme_xiu">寻找百家化塑企业孵化计划</div>
 	<div class="hme_xiu1">
 		资金、技术、方案、市场、股权等深度合作三年时间，
@@ -39,7 +39,7 @@
 		扶持孵化100家化塑加工企业
 	</div>
 </li>
-<li id="b" @mouseleave="guanbi2()" style="">
+<li id="b" @mouseleave="guanbi2()" style="background-color: #1D4A7C;">
 	<div class="hme_xiu">合作赋能&nbsp;&nbsp;连接未来</div>
 	<div class="hme_xiu1">
 		依托道恩集团雄厚的化塑产业布局，从贸易商向服务商转型

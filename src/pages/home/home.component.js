@@ -48,6 +48,7 @@ export default {
 
   created() {
     this.$store.commit("switchHeaderType", 1);
+    this.$store.commit("switchFooterType", 1);
     var that = this;
     const kubeinfo = this.$util.getCodeMap("KUBE");
     if (!kubeinfo) {

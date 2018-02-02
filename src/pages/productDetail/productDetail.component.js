@@ -41,6 +41,7 @@ export default {
 		this.userId = this.$route.query.userId;
 		// this.$store.state.headerType = 5;
 		this.$store.commit("switchHeaderType", 5);
+		this.$store.commit("switchFooterType", 1);
 		var that = this;
 		this.dw = this.$util.getCodeMap("UNIT");
 //		console.log(this.dw, 'dw')
@@ -57,7 +58,7 @@ export default {
 		this.dwjson = json2; // 单位
 		this.detailinf();
 		this.custominf();
-
+		this.topstyle();
 		//  用户产品
 		that.axios.get("customerproduct/all?user_id=" + this.userId)
 			.then(function(data) {
@@ -84,11 +85,19 @@ export default {
 		$('.leftBtm_img p').find('img').css('width', '100%');
 	},
 	methods: {
+		topstyle(){
+			$('#ph1').css('borderBottom','2px solid #FFF')
+			$('#ph2').css('borderBottom','2px solid #FFF')
+			$('#ph4').css('color','#333')
+			$('#ph5').css('color','#333')
+		},
 		custominf() {
 			var that = this;
 			this.$nextTick(function() {
 				this.axios.get("customer/detail/" + this.userId)
 					.then(function(data) {
+						console.log(data);
+        				that.$store.state.logo =  data.logoUrl;
 						that.longitude = data.longitude;
 						that.latitude = data.latitude;
 						that.cominf = [data];

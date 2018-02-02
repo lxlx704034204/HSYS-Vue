@@ -9,7 +9,7 @@
    			<!--左边搜索结果-->
    			<div class="ser_res13">
    				<!--商品part1-->
-   				<div class="ser_res14" v-for="(rec,index) in list_one" key="index" ref="rec" @click="jump(index,rec.customer.id)">
+   				<div class="ser_res14" v-for="(rec,index) in list_one" key="index" ref="rec" @click="jump(index,rec.customer.id,rec.customer.logoUrl)">
    					<!--左图片-->
    					<div class="ser_res15">
    						<img :src="rec.customer.logoUrl" />

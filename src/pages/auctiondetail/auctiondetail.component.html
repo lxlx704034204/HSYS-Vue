@@ -127,7 +127,11 @@
 	  				<el-table class="autotro_list" :data="takinglist" row-class-name="row-60" ref="myTable" v-loading="loading">
 			   			<el-table-column label="竞拍人" prop='bidder'>
 			   			</el-table-column>
-			   			<el-table-column prop="biddingPrice" label="价格"></el-table-column>
+			   			<el-table-column label="价格">
+			   				<template slot-scope="scope">
+						        <span>{{scope.row.biddingPrice}}元</span>
+						    </template>
+			   			</el-table-column>
 			   			<el-table-column label="交货地(库别)">
 			   				<template slot-scope="scope">
 						        <span>{{iojson[autdetailist.warehouseCode]}}</span>

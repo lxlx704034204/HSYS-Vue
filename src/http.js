@@ -2,7 +2,7 @@
  * Created by jos on 18/1/11.
  * http配置
  */
-
+// require('es6-promise').polyfill();
 import axios from 'axios'
 import store from './vuex/store'
 import storage from "store2";
@@ -32,6 +32,9 @@ const logout = () => {
 axios.defaults.timeout = 10000;
 // axios.defaults.baseURL = 'http://192.168.5.123:8888/suyun-api/api/';
 axios.defaults.baseURL = 'http://39.106.136.226:8888/suyun-api/api/';
+// axios.defaults.headers.post['token'] = storage.get("token");
+// axios.defaults.headers.get['token'] = storage.get("token");
+
 // http request 拦截器
 axios.interceptors.request.use(
     config => {

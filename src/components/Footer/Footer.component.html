@@ -1,8 +1,13 @@
 <section class="footer">
-<!--   <div>
+<!--   <div class="footer1">
   	销售网络与服务&nbsp;&nbsp;|&nbsp;&nbsp;联系我们&nbsp;&nbsp;|&nbsp;&nbsp;网站地图&nbsp;&nbsp;|&nbsp;&nbsp;法律声明&nbsp;&nbsp;|&nbsp;&nbsp;帮助信息
   </div> -->
-  <div >
+  <div class="footer1" style="display: none;" :class="{show:$store.state.footerType === 1}">
   	版权所有：道恩集团有限公司 鲁ICP备18002195号
+  </div>
+  <div class="footer2" style="display: none;" :class="{show:$store.state.footerType === 100}">
+  	<div class="footer1">
+  		版权所有：道恩集团有限公司 鲁ICP备18002195号
+  	</div>
   </div>
 </section>

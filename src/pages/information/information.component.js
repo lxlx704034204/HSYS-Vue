@@ -43,6 +43,7 @@ export default {
 	},
 	created() {
 		this.$store.commit("switchHeaderType", 6);
+		this.$store.commit("switchFooterType", 100);
 		var that = this;
 		that.axios.get("dictionary/batch?parentCodes=CHANNEL_CODE")
 		.then(function(re){

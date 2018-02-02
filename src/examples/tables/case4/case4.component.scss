@@ -41,7 +41,6 @@
 
 .category-box {
   margin-top: -1px;
-  display: flex;
   background: #f5f5f7;
   border: 1px solid #e6e6e6;
   line-height: 49px;
@@ -50,9 +49,10 @@
     width: 118px;
     text-indent: 15px;
     color:#666;
+    float: left;
   }
   .box-right {
-    flex: 1;
+    float: left;
     background: #fff;
     padding-left:14px;
     font-size:0;

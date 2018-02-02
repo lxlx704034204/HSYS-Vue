@@ -11,7 +11,7 @@
         width: 100%;height: 420px;display: none;position: absolute;z-index: 2;background: url("./images/home_lunbo1.png") no-repeat center top;
     }
     #b{
-        width: 100%;height: 420px;background: green;display: none;position: absolute;z-index: 2;background: url("./images/home_lunbo2-1.jpg") no-repeat center top;
+        width: 100%;height: 420px;background: green;display: none;position: absolute;z-index: 2;background: url("./images/home_lunbo2.png") no-repeat center top;
     }
     .hme_xiu{
         width: 800px;margin: 0 auto;text-align: center;font-size: 54px;color: #FFF;height: 100px;line-height: 100px;margin-top: 109px;letter-spacing:3px;
@@ -496,75 +496,7 @@
           font-size: 14px;
           color: #1896de;
         }
-      } // 最新专家    
-      .margin10 {
-        position: relative;
-        width: 275px;
-        height: 320px;
-        padding: 0 16px;
-        margin: 10px 15px;
-        font-family: "微软雅黑";
-        line-height: 26px;
-        border: 1px solid #ddd;
-        border-radius: 15px;
-        .expert-title {
-          display: flex;
-          .expert-title-img {
-            margin: 17px 0 15px 22px;
-            border-radius: 50%;
-          } //expert-img
-          .expert-title-uname {
-            margin: 30px 0 0 15px;
-            flex: 1;
-            .expert-title-uname-left {
-              float: left;
-            }
-            .expert-title-uname-right {
-              float: left;
-              margin-top: 5px;
-              margin-left: 8px;
-            }
-          } //expert-uname
-        } //expert-title
-        // 介绍
-        .expert-introduce {
-          max-height: 50px;
-          margin-top: -5px;
-          overflow: hidden;
-          font-size: 14px;
-          line-height: 25px;
-          color: #494949;
-        } // 内容描述
-        .expert-descrtion {
-          max-height: 88px;
-          margin: 5px 0;
-          overflow: hidden;
-          font-size: 14px;
-          line-height: 22px;
-          color: #808080;
-        } // 收费
-        .expert-pd {
-          font-size: 14px;
-          color: #414141;
-          .expert-price {
-            margin-right: 14px;
-          }
-        } // 按钮
-        .sub {
-          position: absolute;
-          right: 5%;
-          bottom: 20px;
-          width: 100%;
-          font-size: 0;
-          .sub-info {
-            width: 40%;
-            height: 38px;
-            font-size: 12px;
-            text-align: center;
-            border-radius: 0;
-          }
-        }
-      } // 距离顶部
+      }// 距离顶部
       .case-2 {
         margin-top: 69px;
         .tabs-custom {
@@ -596,48 +528,6 @@
       }
       .modify-grid {
         margin-bottom: 20px;
-      }
-      .company-box {
-        display: flex;
-        width: 588px;
-        height: 228px;
-        background: #f4f4f4;
-        .logo-box {
-          width: 242px;
-          padding-left: 10px;
-          margin-top: 14px;
-          img {
-            width: 245px;
-            height: 200px;
-          }
-        }
-        .company-info {
-          padding-left: 21px;
-          flex: 1;
-        }
-        .title {
-          margin-top: 11px;
-          font-size: 16px;
-          color: #323232;
-        }
-        .verfiied {
-          display: inline-block;
-          margin-top: 10px;
-        }
-        p {
-          margin-top: 5px;
-          font-size: 14px;
-          color: #666;
-        }
-        .el-button {
-          margin-top: 30px;
-          color: #009fe2;
-          border: 1px solid #009fe2;
-          background: #f4f4f4;
-        }
-        .el-tabs__item {
-          padding: 0 18px;
-        }
       }
       .page-no-box {
         font-size: 13px;

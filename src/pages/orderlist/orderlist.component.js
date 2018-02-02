@@ -44,20 +44,21 @@ export default {
       var that = this;
       this.axios.get(`order/${this.urlid}`).then(res => {
         if (typeof res !== 'string') {
+          console.log(res)
           that.orderList = [res.order];
-          that.sendway = res.order.shippingMethod;
-          that.payMethod = res.order.paymentMethod;
+          that.sendwayscop = res.order.shippingMethod.desc;
+          that.payMethodscop = res.order.paymentMethod.desc;
           that.orderName = this.getPhName(that.orderList[0].items[0].gradeCode);
-          if(that.sendway.value == 0 ){
-            that.sendwayscop = '配送 '
-          }else  if(that.sendway.value == 1 ){
-            that.sendwayscop = '自提 '
-          }
-          if(that.payMethod.value == 0 ){
-            that.payMethodscop = '先款后货 '
-          }else  if(that.payMethod.value == 1 ){
-            that.payMethodscop = '货到付款 '
-          }
+          // if(that.sendway.value == 0 ){
+          //   that.sendwayscop = '配送 '
+          // }else  if(that.sendway.value == 1 ){
+          //   that.sendwayscop = '自提 '
+          // }
+          // if(that.payMethod.value == 0 ){
+          //   that.payMethodscop = '先款后货 '
+          // }else  if(that.payMethod.value == 1 ){
+          //   that.payMethodscop = '货到付款 '
+          // }
         }
       });
     },

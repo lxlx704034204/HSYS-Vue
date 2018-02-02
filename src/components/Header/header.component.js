@@ -35,11 +35,18 @@ export default {
         }
     },
     created() {
+
         // 获取热搜数据
      if(this.$store.state.headerType == 1 || this.$store.state.headerType == 11){
         this.axios.get("/word/1").then((res) => {
             this.keyWord = res;
         });
+     }
+     console.log(this.$store.state.headerType,'hd')
+     if(this.$store.state.headerType === 5){
+     	this.$store.commit("switchFooterType", 100);
+     } else {
+     	this.$store.commit("switchFooterType", 1);
      }
 		var data = storage.get("userName");
 		if(data == undefined) {
@@ -50,41 +57,14 @@ export default {
 			this.needlogin = true;
 			this.name = storage.get("userName");
 		}
-
-		//  企业logo
-		var u = document.location.toString();
-		console.log(u, '123')
-		if(u.indexOf("&") != 1) {
-			if(u.indexOf("?") != -1) {
-				var x = u.split("?")[1];
-				var y = x.split("=")[1];　　　　　　
-				this.$route.query.userId = y　　　　
-			}
-		}
-		if(u.indexOf("&") != -1) {
-			var x = u.split("&")[1];
-			console.log(x, 'xxxxx')
-			var y = x.split("=")[1];　　　　　　
-			this.$route.query.userId = y　　　
-		}
-		console.log(this.$route.query.userId)
-		if(this.$route.query.userId) {
-			var that = this;
-			var userId = that.$route.query.userId;
-			that.axios.get("customer/detail/" + userId)
-				.then(function(data) {
-					that.cominf = data;
-					if(that.cominf.logoUrl) {
-
-						that.logoUrl = that.cominf.logoUrl;
-					}
-				})
-				.catch(error => console.log(error))
-		}
-
+		
 	},
-	computed: {
-
+	mounted() {
+		if(this.$store.state.headerType == 1 || this.$store.state.headerType == 11){
+        this.axios.get("/word/1").then((res) => {
+            this.keyWord = res;
+        });
+     }
 	},
 	mounted() {},
 	updated() {},
@@ -196,7 +176,12 @@ export default {
 			location.href = "#/autotrophy?name=" + this.swinput;
 			this.$emit('search');
 		},
-		
+		finClick(){
+			window.open('#/financial')
+		},
+		infClick(){
+			window.open('#/information')
+		}
 	},
 
 }

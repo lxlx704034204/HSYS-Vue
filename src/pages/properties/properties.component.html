@@ -1,5 +1,4 @@
 <section class="properties inner-1200">
-  <div></div>
 <!-- 筛选条件添加 -->
   <div class="proper-box">
     <div class="properleft">筛选条件:</div>
@@ -42,9 +41,12 @@
   <!-- 用途级别列 -->
   <div class="category-box  kind-box">
     <div class="box-left">用途级别</div>
-    <ul class="box-right">
-      <li class="item" v-for="item in rtrankData2" @click="kindBtn(2,item)">{{item.rankDetailName}}</li>
-    </ul>
+   	<div class="box-mid">
+   		<ul class="box-right">
+	      <li class="item" v-for="item in rtrankData2" @click="kindBtn(2,item)">{{item.rankDetailName}}</li>
+	    </ul>
+   	</div>
+	    
     <div class="show-more-kind">
       <template v-if="rtrankData2.length == ficatLen">
         <button type='button' @click="showMoreR" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
@@ -59,9 +61,12 @@
   <!-- 加工级别列 -->
   <div class="category-box  kind-box">
     <div class="box-left">加工级别</div>
-    <ul class="box-right">
-      <li class="item" v-for="item in rtranktwo2" @click="kindBtn(3,item)">{{item.rankDetailName}}</li>
-    </ul>
+   	<div class="box-mid">
+    
+	    <ul class="box-right">
+	      <li class="item" v-for="item in rtranktwo2" @click="kindBtn(3,item)">{{item.rankDetailName}}</li>
+	    </ul>
+	  </div>
     <div class="show-more-kind">
       <template v-if="rtranktwo2.length == ficatLen">
          <button type='button' @click="showMoreT" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
@@ -75,9 +80,12 @@
   <!-- 特性级别列 -->
   <div class="category-box kind-box">
     <div class="box-left">特性级别</div>
-    <ul class="box-right">
-      <li class="item" v-for="item in rtrank2" @click="kindBtn(4,item)">{{item.rankDetailName}}</li>
-    </ul>
+   	<div class="box-mid">
+    
+	    <ul class="box-right">
+	      <li class="item" v-for="item in rtrank2" @click="kindBtn(4,item)">{{item.rankDetailName}}</li>
+	    </ul>
+	  </div>
     <!-- 更多Btn -->
     <div class="show-more-kind">
       <template v-if="rtrank2.length == ficatLen">
@@ -153,7 +161,7 @@
 
 
   <!-- 产品信息列表 -->
-  <el-table stripe :data="tableDatas" @row-click="tableClick" class="marTop">
+  <el-table stripe :data="tableDatas" @row-click="tableClick" class="marTop" >
     <el-table-column class-name="nameCor" prop="productSign" label="名称" width="300">
     </el-table-column>
     <el-table-column prop="specialCateDetailNames" label="特性级别" width="400">

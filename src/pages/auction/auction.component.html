@@ -35,11 +35,14 @@
   </div>
    
    <div class='inner-1200 scree-condition' style="margin-top: 21px;">
-  	    <div class="category-box">
+  	  <div class="category-box">
 		    <div class="box-left">分类</div>
-		    <ul class="box-right">
-		      <li class="item" v-for="item in category" @click="selectFilter(1,item)">{{item.name}}</li>
-		    </ul>
+		   	<div class="box-mid">
+		   		<ul class="box-right">
+			      <li class="item" v-for="item in category" @click="selectFilter(1,item)">{{item.name}}</li>
+			    </ul>
+		   	</div>
+			   
 		    <div class="show-more-category" v-show="category.length >= typeLen">
 		      <template v-if="category.length == typeLen">
 		      	<button type='button' @click="showAllCat" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
@@ -52,9 +55,11 @@
 		  <!-- 产地 -->
 		  <div class="category-box city-box">
 		    <div class="box-left">产地</div>
-		    <ul class="box-right">
-		      <li class="item" v-for="(item,key) in cd" @click="selectFilter(2,$event,key,item)">{{item.dictName}}</li>
-		    </ul>
+		    <div class="box-mid">
+			    <ul class="box-right">
+			      <li class="item" v-for="(item,key) in cd" @click="selectFilter(2,$event,key,item)">{{item.dictName}}</li>
+			    </ul>
+			  </div>
 		    <div class="show-more-category" v-show="cd.length >= ficatLen">
 		        <template v-if="cd.length == ficatLen">
 
@@ -69,9 +74,12 @@
 		  <!-- 库别 -->
 		  <div class="category-box city-box">
 		    <div class="box-left">库别</div>
-		    <ul class="box-right">
-		      <li class="item" v-for="(item,key) in io" @click="selectFilter(3,$event,key,item)">{{item.dictName}}</li>
-		    </ul>
+		    <div class="box-mid">
+		    
+			    <ul class="box-right">
+			      <li class="item" v-for="(item,key) in io" @click="selectFilter(3,$event,key,item)">{{item.dictName}}</li>
+			    </ul>
+			  </div>
 		    <div class="show-more-city" v-show="io.length >= ctLen">
 		        <template v-if="io.length == ctLen">
 		      	    <button type='button' @click="showAllCity" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>

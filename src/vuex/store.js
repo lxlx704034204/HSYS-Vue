@@ -21,13 +21,16 @@ export default new Vuex.Store({
         user:{},
         // header Type
         headerType: 1, // 1表示首页类型的头部， 2表示自营商城头部，3表示登录头部
+        footerType: 1,
         count: 10,
         token: sessionStorage.token,
         title: '',
         cashmoney:'',
         uesrInfor: {userName:''},
         customer: {},
-        codeMap: {}
+        codeMap: {},
+        logo:'',
+        logoUrl:false,
     },
     
     mutations: {
@@ -53,6 +56,10 @@ export default new Vuex.Store({
         switchHeaderType(state, type){
             state.headerType = type;
         },
+        // 切换底部
+        switchFooterType(state, type){
+            state.footerType = type;
+        },
         INCREMENT(state) {
             state.count++
         },
@@ -74,6 +81,13 @@ export default new Vuex.Store({
         },
         codeMap(state, codeMap) {
             state.codeMap = codeMap;
+        },
+        logo(state,logo) {
+            if(logo){
+                state.logo = logo;
+                state.logoUrl = true;
+            }
         }
+
     }
 })

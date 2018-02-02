@@ -50,7 +50,7 @@ export default {
         var urlId = this.$route.path;
         // if (urlId.indexOf('login') > 0) {
          this.$store.commit("switchHeaderType",2);
-
+				 this.$store.commit("switchFooterType", 1);
         // }
     },
     computed: {},

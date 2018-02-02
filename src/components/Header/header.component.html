@@ -16,7 +16,7 @@
                         <!-- <span v-show="isShow"> -->
 	              <router-link to="/home" tag="span" class="span">
 	                <span @click="controllerbtn" v-model="name">您好，{{this.userInfor.userName}}</span>
-	                <!-- <span @click="controllerbtn" v-model='userName'>您好，{{userName}}</span> -->
+                        <!-- <span @click="controllerbtn" v-model='userName'>您好，{{userName}}</span> -->
                         </router-link>&nbsp;&nbsp;|&nbsp;
                         <router-link to="/home" tag="span" class="span">
                             <span @click="exitlogon">退出</span>
@@ -88,7 +88,7 @@
             <!--二维码-->
             <div class="hom_ewm">
                 <div class="hom_ewm1">
-                    <img src="./images/2wm.png" />
+                    <img src="./images/2wm.jpg" />
                 </div>
                 <div class="hom_ewm2">关注我们</div>
             </div>
@@ -98,7 +98,7 @@
             <div class="type-classification">
                 <el-row>
                     <el-col :span="5">
-                        <div class="hom_swt">
+                        <div class="hom_swt" @mouseenter="movein" @mouseleave="moveout">
                             <div class="hom_swt1">
                                 <img src="./images/head_icon2.png" />
                             </div>
@@ -106,7 +106,6 @@
                                 产品服务分类
                             </div>
                         </div>
-                        <div @mouseover="movein" @mouseout="moveout" class="hom_swt3" style="z-index: 9;height: 44px;"></div>
                     </el-col>
                     <el-col :span="1">&nbsp;</el-col>
                     <el-col :span="18">
@@ -115,11 +114,13 @@
                             <!-- type-checked-color -->
                             <router-link to="/autotrophy" tag="li">现货商城</router-link>
                             <!-- <a  target="_blank"  class="su_fin" @click='finanbtn'>塑云金融</a> -->
-                            <!-- <li @click="finClick()" class="su_fin">征信金融</li> -->
-                            <router-link to='/financial' target="_blank" tag="a"  class="su_fin">征信金融</router-link>
+                            <li @click="finClick()" class="su_fin">征信金融</li>
+                            <!--<router-link to='/financial' target="_blank" tag="a"  class="su_fin">征信金融</router-link>-->
                             <router-link to="/customer" tag="li">企业产品库</router-link>
                             <!-- <router-link to="/technician" tag="li">技术专家</router-link> -->
-                            <router-link to='/information' target="_blank" tag="a"  class="su_fin">化塑头条</router-link>
+                            <!--<router-link to='/information' target="_blank" tag="a"  class="su_fin">化塑头条</router-link>-->
+                            <li @click="infClick()" class="su_fin">化塑头条</li>
+
                             <!--<router-link to="/technician" tag="li">技术专家</router-link>-->
                             <router-link to="/auction" tag="li">竞价专区</router-link>
 
@@ -132,8 +133,8 @@
             </div>
         </div>
     </div>
-    
-       <!-- header-box1开始 -->
+
+    <!-- header-box1开始 -->
     <div class="header-box" :class="{show:$store.state.headerType === 11}">
         <!-- banner部分 -->
         <div class="hom_srh">
@@ -172,12 +173,12 @@
             <!--二维码-->
             <div class="hom_ewm">
                 <div class="hom_ewm1">
-                    <img src="./images/2wm.png" />
+                    <img src="./images/2wm.jpg" />
                 </div>
                 <div class="hom_ewm2">关注我们</div>
             </div>
         </div>
-      
+
     </div>
 
     <!-- header-box1结束 -->
@@ -237,12 +238,12 @@
         <!-- banner部分 -->
         <div class="sy-header">
             <div class="pro_hed">
-                <img v-if="logoUrl" :src="logoUrl" />
+                <img v-if="$store.state.logoUrl" :src="$store.state.logo" />
                 <img v-else src="./images/com_mrlogo.png" />
             </div>
             <div class="pro_hed2">
-                <div id="ph1" @click="changas()">
-                    <div id="ph4">企业首页</div>
+                <div id="ph1" style="border-color: #009FE2;" @click="changas()">
+                    <div id="ph4" style="color: #009FE2;">企业首页</div>
                 </div>
                 <div id="ph2" @click="changbs()">
                     <div id="ph5">主营产品</div>

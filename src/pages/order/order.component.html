@@ -146,45 +146,45 @@
   </div>
   <div class="order_productlist_table">
     <template>
-      <el-table style="width: 100%" :data="buylist">
-        <el-table-column prop="product.name" label="产品名称">
+      <el-table width="100%" :data="buylist" border>
+        <el-table-column prop="product.name" label="产品名称" align="center">
         </el-table-column>
-        <el-table-column label="规格/牌号">
+        <el-table-column label="规格/牌号" align="center">
           <template slot-scope="scope">
             <span>{{scope.row.product.gradeCode}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="产地">
+        <el-table-column label="产地" align="center">
           <template slot-scope="scope">
             <span>{{getCdName(scope.row.product.manufacturerCode)}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="库别">
+        <el-table-column label="库别" align="center">
           <template slot-scope="scope">
             <span>{{getIoName(scope.row.warehouseCode)}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="单位">
+        <el-table-column label="单位" align="center">
           <template slot-scope="scope">
             <span>{{getDwName(scope.row.unitCode)}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="数量*">
+        <el-table-column label="数量*" align="center">
           <template slot-scope="scope">
             <input type="number" v-model='orderNum' @change='chageNum' class='orderNum' name='quantiy'>
           </template>
         </el-table-column>
-        <el-table-column label="价格*">
+        <el-table-column label="价格(元)*" align="center">
           <template slot-scope="scope">
             <span>{{salePrice.toFixed(2)}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="客户经理">
+        <el-table-column label="客户经理" align="center">
           <template slot-scope="scope">
             <span>{{admin}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="总金额(元)">
+        <el-table-column label="总金额(元)" align="center">
           <template slot-scope="scope">
             <span>{{allPrice.toFixed(2)}}</span>
           </template>
@@ -209,31 +209,6 @@
   	<div class="ord_sub9">¥&nbsp;{{allPrice.toFixed(2)}}</div>
   	<div class="ord_sub8">应付总额</div>
   </div>
-  <!--下面是写法二，先注释-->
-  <!--<div style="height: 64px;line-height: 64px;">
-    <div style="float: right;color: #009FE2;font-size: 18px;font-weight: blod;margin-left:10px;margin-right:10px;">¥ {{allPrice.toFixed(2)}}</div>
-    <div style="float: right;font-size: 14px;color: #333;">应付总额</div>
-  </div>-->
-  <!--下方订单备注部分-->
-  <!--<div class="ord_xiu">
-    <div class="ord_xiu1">
-      <div class="ord_xiu2">订单备注</div>
-      <el-col :span="18">
-        <div class="remarks_right">
-          <el-input type="textarea" :rows="3" placeholder="限50字以内" v-model="ordertext" @input='textaretorder' :maxlength='maxlength'>
-          </el-input>
-        </div>
-      </el-col>
-    </div>
-    <div class="ord_xiu4">
-      <div class="ord_xiu5">
-        开票公司名称：{{companyName}}
-      </div>
-      <div class="ord_xiu6">
-        统一信用社会代码：{{bizcode}}
-      </div>
-    </div>
-  </div>-->
   <div class="subBtn">
     <button type="button" @click='submitOrder'>提交订单</button>
   </div>

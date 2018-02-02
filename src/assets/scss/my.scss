@@ -74,9 +74,9 @@
 .sy-tipbox {
   width: 352px;
   height: 148px;
-  display: flex;
   .left {
     text-align: center;
+    float: left;
   }
   .weixin-info {
     width: 95px;
@@ -86,13 +86,13 @@
     }
   }
   .right {
-    flex: 1;
+    float: left;
     position: relative;
     padding-left: 20px;
   }
   .qq {
     position: absolute;
-    right: 14px;
+    right: -104px;
     top: 25px;
   }
   .card-info {

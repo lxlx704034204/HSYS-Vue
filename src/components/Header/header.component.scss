@@ -225,8 +225,7 @@
 
 .hom_swt {
     width: 240px;
-    height: 42px;
-    margin-top: 2px;
+    height: 44px;
     font-size: 16px;
     cursor: pointer;
     color: #fff;
@@ -234,12 +233,11 @@
 }
 
 .hom_swt1 {
-    position: absolute;
     float: left;
     width: 18px;
     height: 12px;
-    margin-top: -2px;
-    margin-left: 10px;
+    margin-top: -1px;
+    margin-left: 13px;
     img {
         width: 100%;
         height: 100%;
@@ -248,22 +246,19 @@
 }
 
 .hom_swt2 {
-    position: absolute;
     float: left;
     height: 40px;
     margin-left: 44px;
     line-height: 40px;
 }
 
-.hom_swt3 {
-    position: absolute;
-    width: 240px;
-    height: 44px;
-    z-index: 2;
-    margin-top: -42px;
-    z-index: 999999;
-}
-
+// .hom_swt3 {
+//     position: absolute;
+//     width: 240px;
+//     height: 44px;
+//     margin-top: -42px;
+//     z-index: 999999;
+// }
 .hom_ewm {
     position: relative;
     top: 18px;
@@ -458,28 +453,6 @@
                 background: #009FE2;
             }
         }
-        .header-search-box {
-            display: flex;
-            width: 490px;
-            .header-search-input {
-                height: 34px;
-                text-indent: 10px; // width: 431px;
-                border: 1px solid #009FE2;
-                border-radius: 0 0 0 5px;
-                outline: none;
-                flex: 1; // float: left;
-            }
-            .header-search-btn {
-                width: 57px;
-                // float: left;
-                height: 36px;
-                cursor: pointer;
-                border: 2px solid #009FE2;
-                border-radius: 0 5px 5px 0;
-                outline: none;
-                background: #009FE2 url("./images/searchIcon.png") no-repeat center center;
-            }
-        }
         .material-science {
             margin-top: 10px;
             font-size: 12px;
@@ -549,32 +522,6 @@
                 p {
                     float: left;
                     line-height: 40px;
-                }
-            }
-            .heade_right {
-                float: right;
-                margin-top: 32px;
-                margin-right: 160px;
-                .header-search-box {
-                    width: 490px;
-                    .header-search-input {
-                        height: 34px;
-                        text-indent: 10px; // width: 431px;
-                        border: 1px solid #009FE2;
-                        border-radius: 0 0 0 5px;
-                        outline: none;
-                        flex: 1; // float: left;
-                    }
-                    .header-search-btn {
-                        width: 57px;
-                        // float: left;
-                        height: 36px;
-                        cursor: pointer;
-                        border: 2px solid #009FE2;
-                        border-radius: 0 5px 5px 0;
-                        outline: none;
-                        background: #009FE2 url("./images/searchIcon.png") no-repeat center center;
-                    }
                 }
             }
         }

@@ -91,7 +91,10 @@ export default {
           } else {
             that.$alert(res, '提示', {
               confirmButtonText: '确定',
-              type: 'error'
+              type: 'error',
+              callback: action => {
+                that.$router.push("/companycenter/myorder")
+              }
             });
             // that.$message({ message: res, type: 'error' });
           }
