@@ -30,6 +30,9 @@
           </template>
         </el-table-column>
         <el-table-column label="总金额(元)" prop="total" align="center">
+          <template slot-scope="scope">
+            <span>{{scope.row.total.toFixed(2)}}</span>
+          </template>
         </el-table-column>
       </el-table>
     </template>

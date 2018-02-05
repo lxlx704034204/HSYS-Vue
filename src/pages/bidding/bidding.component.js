@@ -21,6 +21,7 @@ export default {
             unitData: [], // 单位数据
             isSuccess: false,
             // 表单数据与校验规则
+            date: '',
             ruleForm: {
                 name: '',
                 category: '1',
@@ -169,6 +170,7 @@ export default {
             this.detailId = detailId;
             if (detailId) {
                 this.getDetailData(detailId).then(resp => {
+                    this.date = new Date().getTime();
                     this.ruleForm.name = resp.name;
                     this.ruleForm.categoryArr = [resp.categoryOne, resp.categoryTwo];
                     this.ruleForm.spec = resp.spec;
@@ -262,6 +264,7 @@ export default {
                         v.salePrice = parseFloat(v.salePrice) || '';
                     })
                     const obj = {};
+                    obj.date = new Date().getTime();
                     obj.name = this.ruleForm.name; // 商品名称
                     obj.categoryOne = this.ruleForm.categoryArr[0]; // 一级分类
                     obj.categoryTwo = this.ruleForm.categoryArr[1]; // 二级分类 
@@ -333,6 +336,7 @@ export default {
                         v.salePrice = parseFloat(v.salePrice) || '';
                     })
                     const obj = {};
+                    obj.date = new Date().getTime();
                     obj.name = this.ruleForm.name; // 商品名称
                     obj.categoryOne = this.ruleForm.categoryArr[0]; // 一级分类
                     obj.categoryTwo = this.ruleForm.categoryArr[1]; // 二级分类 
@@ -533,7 +537,7 @@ export default {
         // 获取产品详情数据
         getDetailData(id) {
             return new Promise(resolve => {
-                this.axios.get(`customerproduct/info?id=${id}`).then(res => {
+                this.axios.get(`customerproduct/info?id=${id}&date=` + new Date().getTime()).then(res => {
                     resolve(res);
                 });
             })

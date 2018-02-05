@@ -8,17 +8,19 @@ import store from './vuex/store'
 import util from './util'
 import storage from "store2"
 import initCodeMapData from './initData';
+import promise from 'es6-promise';
 
 import ElementUI from 'element-ui'
 import './assets/scss/reset.scss'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/scss/el-modify.scss'
 import './assets/scss/my.scss'
-
+// import vueQuillEditor from 'vue-quill-editor'//+
 
 import { startLogin } from "./router/interceptorLogin";
 import sidebar from '@/pages/sidebar'
 
+promise.polyfill();
 // 开启登录
 startLogin({ router: router, store: store, isNeedLogin: false });
 Vue.config.productionTip = false
@@ -26,6 +28,7 @@ Vue.config.productionTip = false
 Vue.component('my-sidebar', sidebar)
 Vue.use(ElementUI)
 Vue.use(util)
+// Vue.use(vueQuillEditor)//+
 
 //路由判断
 router.beforeEach((to, from, next) => {
@@ -51,7 +54,7 @@ router.beforeEach((to, from, next) => {
 
 
 Vue.prototype.axios = axios
-window.baseURL = 'http://39.106.136.226:8888/suyun-api/api/';
+window.baseURL = 'http://39.106.136.226';
 /* eslint-disable no-new */
 
 // 初始化数据后加载工程

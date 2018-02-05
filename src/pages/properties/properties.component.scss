@@ -30,13 +30,20 @@
         
       }
     }
-
+    .box-xiu {
+        float: left;
+        background: #FFF;
+        width: 1070px;
+        min-height: 42px;
+    }
     .category-box {
     margin-top: -1px;
     border: 1px solid #e6e6e6;
     line-height: 49px;
     min-height: 49px;
     overflow: hidden;
+    background: #f5f5f7;
+    
     // 分类列表左侧部分
     .box-left {
       width: 128px;
@@ -44,7 +51,7 @@
       color: #666;
       font-size: 14px;
       float: left;
-    background: #f5f5f7;
+
     background-size: 100% 100%;
       
     }

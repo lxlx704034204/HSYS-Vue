@@ -101,6 +101,7 @@ export default {
     })
     this.masterjson = json; // 主营产品
     // 获取热搜数据
+    this.hotsearch();
   },
   watch: {
     srbox() {
@@ -111,22 +112,20 @@ export default {
   },
   methods: {
     chosecategory(){
-      this.axios.get("product/category").then((res) => {
+      this.axios.get("product/category" + '?t=' + Math.random()).then((res) => {
         this.sele = res;
       });
     },
     hotsearch(){
-      this.axios.get("/word/1").then((res) => {
+      this.axios.get("/word/1" + '?t=' + Math.random()).then((res) => {
         this.keyWord = res;
       });
     },
     newcustome() {
       var that = this;
-      this.axios.get("customer/newcomer/6")
+      this.axios.get("customer/newcomer/6" + '?t=' + Math.random())
         .then(function (data) {
-          //                  console.log(data,'data');
           that.newcom = that.transform(data);
-          //                  console.log(that.newcom,'newcome');
         });
     },
     transform(data = []) {
@@ -252,7 +251,6 @@ export default {
     switchBox(num) {
       // $('.el-select-dropdown').hide()
       if (num == 1) {
-        this.hotsearch();
         this.chosecategory();
         this.show_1 = true,
         this.show_2 = false,
@@ -316,7 +314,7 @@ export default {
       //    $('.el-select-dropdown').hide()
     },
     tocym(id) {
-      window.open('#/mainproduct?userId=' + id);
+      window.open('#/company?userId=' + id);
       var that = this;
       that.axios.post("customer/browse/" + id)
         .then(function (data) {

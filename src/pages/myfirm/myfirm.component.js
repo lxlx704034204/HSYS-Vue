@@ -43,7 +43,7 @@ export default {
         this.app();
         var that = this;
         var id = storage.get("id");
-        this.axios.get('customer/detail/' + id)
+        this.axios.get('customer/detail/' + id + '?t=' + Math.random())
             .then(function(data) {
                 if (data != "") {
                     that.per = data;
@@ -120,7 +120,7 @@ export default {
     },
     methods: {
         tomyc() {
-            window.open('#/company?userId=' + this.id)
+            //          this.$router.push('/company?userId=' + this.id)
             if (!this.auth) {
                 this.$alert('公司信息尚未完善', '提示', {
                     confirmButtonText: '完善企业信息',

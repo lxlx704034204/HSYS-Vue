@@ -12,7 +12,7 @@ export default {
       bankAccount:'',
       markCode: '',
       total:'',
-      upload:'',
+      upload: this.axios.defaults.baseURL + "upload",
     }
   },
   created() {
@@ -21,7 +21,7 @@ export default {
     this.orderid = this.$route.query.id;
     this.orderInf();
     this.information();
-    this.upload = baseURL + 'upload'
+    // this.upload = baseURL + 'upload'
   },
   computed: {
 
@@ -32,7 +32,7 @@ export default {
   methods: {
     orderInf() {
       var that = this;
-      this.axios.get('order/' + this.orderid).then((res) => {
+      this.axios.get('order/' + this.orderid + '?t='+ Math.random()).then((res) => {
         that.total = res.order.total;
         that.tableData = [res];
         that.markCode = res.order.reserveAttribute2;//付款识别码
@@ -101,7 +101,7 @@ export default {
       });
     },
     information(){
-      this.axios.get('platform/bank').then((res) => {
+      this.axios.get('platform/bank' + '?t=' + Math.random()).then((res) => {
         this.bank = res.platformBank.bank;
         this.bankName = res.platformBank.bankName;
         this.bankAddress = res.platformBank.bankAddress;

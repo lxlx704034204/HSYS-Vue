@@ -10,7 +10,7 @@
         <el-option v-for="item in option" :key="item.value" :label="item.label" :value="item.value">
         </el-option>
       </el-select> -->
-      <el-input placeholder="请输入订单号码" v-model.trim="value" class="myorder_input"></el-input>
+      <el-input placeholder="请输入订单号码" v-model="value" class="myorder_input"></el-input>
       <el-button class="myorder_btn" type="primary" @click="likeSearch" icon="el-icon-search"></el-button>
     </div>
     <div class="mybill-table">

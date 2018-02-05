@@ -97,7 +97,8 @@ export default {
 
 
     var name = that.$route.query.name ? that.$route.query.name : '';
-    that.keyword = name;
+
+    that.keyword = decodeURIComponent(name);
     that.categoryId = that.$route.query.categoryId ? that.$route.query.categoryId : '';
     that.manufacturerCode = that.$route.query.manufacturerCode ? that.$route.query.manufacturerCode : '';
     that.warehouseCode = that.$route.query.warehouseCode ? that.$route.query.warehouseCode : '';
@@ -106,7 +107,7 @@ export default {
 
     this.getCategory()
     this._ajax()
-    console.log(this.category, 'ddd')
+    $('#srbox').css('box-shadow','3px 3px 10px 0px #E6E6E6')
   },
   computed: {
     getCities() {
@@ -116,7 +117,7 @@ export default {
   watch: {
     $route: function (route) {
       if (route.query.name) {
-        this.keyword = route.query.name;
+        this.keyword = decodeURIComponent(route.query.name);
       }
       if (route.query.warehouseCode) {
         this.warehouseCode = route.query.warehouseCode;
@@ -134,7 +135,7 @@ export default {
   methods: {
     getCategory() {
       var _this = this;
-      _this.axios.get("product/category").then((res) => {
+      _this.axios.get("product/category" + '?t=' + Math.random()).then((res) => {
         _this.categorya = res;
         _this.category = _this.categorya.slice(0, this.typeLen);
         var categoryParents0 = {};
@@ -204,7 +205,7 @@ export default {
       let that = this;
       that.echartData = [];
       storage.set("echartId", row.id);
-      this.axios.get('product/record?id=' + row.id).then((res) => {
+      this.axios.get('product/record?id=' + row.id + '&t=' + Math.random()).then((res) => {
         let chartData = res;
         for (var i = 0; i < chartData.length; i++) {
           that.echartData.push({
@@ -296,7 +297,7 @@ export default {
       var _this = this;
       _this.setSearchResult();
 
-      this.axios.get("product/list?categoryId=" + this.categoryId + "&manufacturerCode=" + this.manufacturerCode + "&warehouseCode=" + this.warehouseCode + "&name=" + this.keyword + '&current=' + this.pageNo + '&size=10' + "&updateOrder=" + this.updateOrder + "&priceOrder=" + this.priceOrder)
+      this.axios.get("product/list?categoryId=" + this.categoryId + "&manufacturerCode=" + this.manufacturerCode + "&warehouseCode=" + this.warehouseCode + "&name=" + encodeURI(this.keyword) + '&current=' + this.pageNo + '&size=10' + "&updateOrder=" + this.updateOrder + "&priceOrder=" + this.priceOrder + '&t=' + Math.random())
         .then((res) => {
           _this.loading = false;
           const {
@@ -372,7 +373,7 @@ export default {
       this.company = [];
       this.city = [];
       var _this = this;
-      this.axios.get("product/list").then((res) => {
+      this.axios.get("product/list" + '?t=' + Math.random()).then((res) => {
         const {
           records = [], pages = 1
         } = res || {};
@@ -411,7 +412,7 @@ export default {
     service(row) {
       var id = row.userId;
       var _this = this;
-      this.axios.get("sys/user/" + id).then((res) => {
+      this.axios.get("sys/user/" + id + '?t=' + Math.random()).then((res) => {
         console.log(res, 'gg')
         _this.sale = res || {};
       })
@@ -463,7 +464,7 @@ export default {
         } else if (hourC >= 1) {
           updateStr = "1小时前";
         } else if (minC >= 1) {
-          updateStr = "1分钟前";
+          updateStr = parseInt(minC) + "分钟前";
         } else {
           updateStr = "刚刚发表";
         }
@@ -482,7 +483,7 @@ export default {
       if (this.purchaseid != '') {
         //判断企业验证状态
         if (!!userId) {
-          this.axios.get('customer/detail/' + userId)
+          this.axios.get('customer/detail/' + userId + '?t=' + Math.random())
             .then(function (data) {
               if (data != "") {
                 if (data.status !== 'SUCCESS') {
@@ -519,7 +520,7 @@ export default {
       }
       //判断企业验证状态
       if (!!userId) {
-        this.axios.get('customer/detail/' + userId)
+        this.axios.get('customer/detail/' + userId + '?t=' + Math.random())
           .then(function (data) {
             if (data != "") {
               if (data.status !== 'SUCCESS') {

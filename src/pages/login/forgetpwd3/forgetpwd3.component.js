@@ -44,7 +44,7 @@ export default {
       },
       rules2: {
         pass: [
-          { validator: validatePass, trigger: 'blur' }
+          { validator: validatePass, trigger: 'blur'}
         ],
         checkPass: [
           { validator: validatePass2, trigger: 'blur' }
@@ -57,6 +57,7 @@ export default {
   },
   created () {
     // 调用数据
+    console.log(this.$store.state.loginName)
     var urlId = this.$route.path;
     this.$store.commit("switchHeaderType", 3);
   },
@@ -64,10 +65,28 @@ export default {
     submitForm(formName) {
       var phones = this.$route.query.phone;
       var pass = this.ruleForm2.pass;
-      if(this.ruleForm2.pass == this.ruleForm2.checkPass){
+      if(this.ruleForm2.pass =='' || this.ruleForm2.pass == undefined){
+      	this.$message({
+          message: '新密码不能为空',
+          type: 'warning'
+        });
+      } else if(this.ruleForm2.checkPass =='' || this.ruleForm2.checkPass == undefined){
+      	this.$message({
+          message: '确认密码不能为空',
+          type: 'warning'
+        });
+      } else if(this.ruleForm2.pass == this.ruleForm2.checkPass && this.ruleForm2.pass.length >=6 && this.ruleForm2.pass.length >= 6){
         var that = this;
-        this.axios.put('updatepaw?phone='+ phones +'&paw='+ pass).then((res) => {
-          that.$router.push({ path: "forgetpwd4"});
+        this.axios.put('updatepaw?login=' + this.$store.state.loginName+'&phone='+ phones +'&paw='+ pass).then((res) => {
+          console.log(res, '3');
+          if (!!res) {
+            this.$message(res.msg, '提示', {
+              confirmButtonText: '确定',
+              type: 'error',
+            });
+          } else {
+            that.$router.push({ path: "forgetpwd4"})
+          }
         });
       }
     },

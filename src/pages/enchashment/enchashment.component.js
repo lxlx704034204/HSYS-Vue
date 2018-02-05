@@ -23,7 +23,7 @@ export default {
     // this.$store.state.headerType = 8;
     this.$store.commit("switchHeaderType", 8);
   	var that = this;
-  	this.axios.get("account/with")
+  	this.axios.get("account/with?date="+ new Date().getTime())
 		.then(function(data) {
       console.log(data,'data');
 				that.cusBank 				 = data.customerBank;

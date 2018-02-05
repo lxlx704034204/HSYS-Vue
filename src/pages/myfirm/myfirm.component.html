@@ -12,7 +12,9 @@
                         <img v-else src="./images/companylogin.jpg" alt="" />
                     </div>
                     <div class="myfirm-messages" style="margin-top: 20px;">
-                        <div class="myf_xiu1" style="" @click="tomyc()" v-show="auth">进入我的公司></div>
+                    		<router-link :to="{path:'/company',query: {userId:id}}" target="_blank">
+                        <div class="myf_xiu1" @click="tomyc()" v-show="auth" tag='a' target='_blank'>进入我的公司></div>
+                       </router-link>
                         <p class="myf_xiu" v-model="name">{{name}}</p>
                         <p v-show="auth">
                             <img src="./images/verfiied.png" alt="">

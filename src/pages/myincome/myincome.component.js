@@ -95,7 +95,8 @@ export default  {
       size: 6,
       current:this.pageNum,
       startTime:this.startTime,
-      endTime: this.endTime
+      endTime: this.endTime,
+      date:new Date().getTime()
     }})
       .then((data)=>{
         console.log(data,'aaaaaa');

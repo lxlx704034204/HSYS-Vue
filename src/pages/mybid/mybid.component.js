@@ -48,7 +48,7 @@ export default {
     _orderList() {
       //订单列表
       const that = this;
-      this.axios.get("bidding/record/my/list?size=6&current="+ this.pageNum + '&nameOrSkuCode=' + this.value9).then(function (data) {
+      this.axios.get("bidding/record/my/list?size=6&current="+ this.pageNum + '&nameOrSkuCode=' + this.value9 + '&date=' + new Date().getTime()).then(function (data) {
           console.log(data,'9');
             that.orderLists = data.data;
             that.total = data.total;

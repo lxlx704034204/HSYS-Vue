@@ -32,14 +32,14 @@
 						<router-link v-for="(god,index) in goodinf" :key="index" :data="god.id" ref="godId" :to="{path:'productDetail',query: {id:god.id,userId:god.userId}}">
 							<dl>
 								<dt>
-                                    <img :src='god.masterImage' alt="">
-                                </dt>
+										<img :src='god.masterImage' alt="">
+								</dt>
 								<dd>
 									<h3>￥{{god.salePrice}}</h3>
 									<p>{{god.name}}</p>
 									<p>规格：{{god.spec}}</p>
 									<div class="com_bos4">
-										<div class="com_bos5">{{god.producingAreaOneName}}{{god.producingAreaTwoName}}{{god.producingAreaThreeName}}</div>
+										<div class="com_bos5" :title="god.producingAreaOneName+god.producingAreaTwoName+god.producingAreaThreeName">{{god.producingAreaOneName}}{{god.producingAreaTwoName}}{{god.producingAreaThreeName}}</div>
 									</div>
 								</dd>
 							</dl>

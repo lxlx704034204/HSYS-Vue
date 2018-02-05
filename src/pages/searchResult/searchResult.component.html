@@ -11,6 +11,7 @@
    				<!--商品part1-->
    				<div class="ser_res14" v-for="(rec,index) in list_one" key="index" ref="rec" @click="jump(index,rec.customer.id,rec.customer.logoUrl)">
    					<!--左图片-->
+   					<router-link :to="{path:'company',query: {userId:rec.customer.id}}" target="_blank">
    					<div class="ser_res15">
    						<img :src="rec.customer.logoUrl" />
    					</div>
@@ -34,6 +35,7 @@
    							主营产品：{{masterjson[rec.attributes[0].industry]}}
    						</div>
    					</div>
+   					</router-link>
    				</div>
    				<!--查看更多-->
    				<div id="ckm" v-show="nextPage" @click="getNextPage" class="ser_res22">
@@ -59,7 +61,14 @@
 	   				<!--蓝色条-->
 	   				<div class="ser_res28"></div>
 	   				<!--列表-->
-	   				<div class="ser_res29" v-for="(hot,index) in hotcom" :key="index" ref="hotId" @click="jumpto(index,hot.customer.id)">{{hot.customer.name}}</div>
+
+	   				<div class="ser_res29" v-for="(hot,index) in hotcom" :key="index" ref="hotId" @click="jumpto(index,hot.customer.id)">
+	   					<router-link :to="{path:'company',query: {userId:hot.customer.id}}" target="_blank">
+	   						<div class="sr_xiu">{{hot.customer.name}}</div>
+	   					</router-link>
+	   						
+	   				</div>
+
 	   				<div class="ser_res3"></div>
 	   			</div>
    			</div>

@@ -15,7 +15,7 @@
                         <span v-if="!!(this.userInfor.userName)">
                         <!-- <span v-show="isShow"> -->
 	              <router-link to="/home" tag="span" class="span">
-	                <span @click="controllerbtn" v-model="name">您好，{{this.userInfor.userName}}</span>
+	                <span v-model="name">您好，{{this.userInfor.userName}}</span>
                         <!-- <span @click="controllerbtn" v-model='userName'>您好，{{userName}}</span> -->
                         </router-link>&nbsp;&nbsp;|&nbsp;
                         <router-link to="/home" tag="span" class="span">
@@ -79,7 +79,7 @@
                     <div class="hom_srh11">热门推荐：</div>
                     <div class="hom_srh12">
                         <ul v-for="item in keyWord" :key="item.id">
-                            <router-link :to='{path: "/autotrophy", query: {name: item.keyWord}}' tag="li" class="item">{{item.keyWord}}
+                            <router-link :to='{path: "/autotrophy", query: {name: encodeURI(item.keyWord)}}' tag="li" class="item">{{item.keyWord}}
                             </router-link>
                         </ul>
                     </div>
@@ -113,13 +113,16 @@
                             <router-link to="/home" tag="li">首页</router-link>
                             <!-- type-checked-color -->
                             <router-link to="/autotrophy" tag="li">现货商城</router-link>
-                            <!-- <a  target="_blank"  class="su_fin" @click='finanbtn'>塑云金融</a> -->
-                            <li @click="finClick()" class="su_fin">征信金融</li>
-                            <!--<router-link to='/financial' target="_blank" tag="a"  class="su_fin">征信金融</router-link>-->
+                            <!--<li @click="finClick()" class="su_fin">征信金融</li>-->
+                            <router-link to='/financial' target="_blank" tag="a" class="su_fin">
+                                <div class="hdr_xiu">征信金融</div>
+                            </router-link>
                             <router-link to="/customer" tag="li">企业产品库</router-link>
                             <!-- <router-link to="/technician" tag="li">技术专家</router-link> -->
-                            <!--<router-link to='/information' target="_blank" tag="a"  class="su_fin">化塑头条</router-link>-->
-                            <li @click="infClick()" class="su_fin">化塑头条</li>
+                            <router-link id="infor_s" to='/information' target="_blank" tag="a" class="su_fin">
+                                <div class="hdr_xiu">化塑头条</div>
+                            </router-link>
+                            <!--<li @click="infClick()" class="su_fin">化塑头条</li>-->
 
                             <!--<router-link to="/technician" tag="li">技术专家</router-link>-->
                             <router-link to="/auction" tag="li">竞价专区</router-link>
@@ -164,7 +167,7 @@
                     <div class="hom_srh11">热门推荐：</div>
                     <div class="hom_srh12">
                         <ul v-for="item in keyWord" :key="item.id">
-                            <router-link :to='{path: "/autotrophy", query: {name: item.keyWord}}' tag="li" class="item">{{item.keyWord}}
+                            <router-link :to='{path: "/autotrophy", query: {name: encodeURI(item.keyWord)}}' tag="li" class="item">{{item.keyWord}}
                             </router-link>
                         </ul>
                     </div>
@@ -238,7 +241,8 @@
         <!-- banner部分 -->
         <div class="sy-header">
             <div class="pro_hed">
-                <img v-if="$store.state.logoUrl" :src="$store.state.logo" />
+                <!--<img v-if="$store.state.logoUrl" :src="$store.state.logo" />-->
+                <img v-if="logoUrl" :src="logoUrl" />
                 <img v-else src="./images/com_mrlogo.png" />
             </div>
             <div class="pro_hed2">

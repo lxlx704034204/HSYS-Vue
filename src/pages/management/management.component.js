@@ -76,7 +76,7 @@ export default {
             this._managementable()
         },
         _managementable() {
-            var data = 'current=' + this.pageNum + '&size=6' + '&name=' + this.value;
+            var data = 'current=' + this.pageNum + '&size=6' + '&name=' + this.value + '&date=' + new Date().getTime();
             var that = this;
             this.axios.get(`customerproduct/list?${data}`).then(res => {
                 if (typeof res !== 'string') {

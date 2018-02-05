@@ -49,8 +49,8 @@ export default {
     created() {
         var urlId = this.$route.path;
         // if (urlId.indexOf('login') > 0) {
-         this.$store.commit("switchHeaderType",2);
-				 this.$store.commit("switchFooterType", 1);
+        this.$store.commit("switchHeaderType", 2);
+        this.$store.commit("switchFooterType", 1);
         // }
     },
     computed: {},
@@ -265,10 +265,9 @@ export default {
                         return false;
                     }
                     if (typeof res === "string") {
-                        this.$alert(res, '提示', {
-                            confirmButtonText: '确定',
-                            type: 'error'
-                        });
+                        this.verifs = true;
+                        this.verifa = res;
+
                         return false;
                     }
                     if (res != "") {
@@ -284,7 +283,7 @@ export default {
                         location.href = "/#/home"
                     }
                 }, (rej) => {
-                    that.$alert(rej.msg, '提示', {
+                    that.$message(rej.msg, '提示', {
                         confirmButtonText: '确定',
                         type: 'warning'
                     });

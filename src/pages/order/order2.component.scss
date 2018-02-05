@@ -93,4 +93,18 @@
     .el-dialog__headerbtn .el-dialog__close{
         color:#fff;
     }
+    .order_user_message{
+        .el-dialog__wrapper{
+            .el-dialog__header{
+                .el-dialog__title{
+                    color:#fff;
+                    display: inline-block;
+                    padding:17px;
+                }
+            }
+            .el-dialog__body{
+                text-align: left;
+            }
+        }
+    }
 }

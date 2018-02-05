@@ -21,12 +21,13 @@ export default {
 
   	var that = this;
   	var userId = this.$route.query.userId;
-  	that.axios.get("customer/detail/" + userId)
+  	that.axios.get("customer/detail/" + userId + '?date='+new Date().getTime())
 		.then(function(data) {
 			that.commsg = [data];
+      that.$store.state.customerdetail = data;
 			that.addr = data.provinceName + data.cityName + data.areaName + data.address;
 		});
-  	that.axios.get("customerproduct/category?id=" + userId)
+  	that.axios.get("customerproduct/category?id=" + userId + '&date='+new Date().getTime())
 		.then(function(data) {
       if(!data || data.length == 0){
       	that.fle = true;

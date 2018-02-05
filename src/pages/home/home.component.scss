@@ -14,7 +14,7 @@
         width: 100%;height: 420px;background: green;display: none;position: absolute;z-index: 2;background: url("./images/home_lunbo2.png") no-repeat center top;
     }
     .hme_xiu{
-        width: 800px;margin: 0 auto;text-align: center;font-size: 54px;color: #FFF;height: 100px;line-height: 100px;margin-top: 109px;letter-spacing:3px;
+        width: 1000px;margin: 0 auto;text-align: center;font-size: 54px;color: #FFF;height: 100px;line-height: 100px;margin-top: 109px;letter-spacing:3px;
     }
     .hme_xiu1{
         width: 800px;margin: 0 auto;text-align: center;font-size: 18px;color: #FFF;height: 20px;line-height: 20px;margin-top: 22px;
@@ -22,7 +22,14 @@
     .hme_xiu2{
         width: 800px;margin: 0 auto;text-align: center;font-size: 18px;color: #FFF;height: 20px;line-height: 20px;margin-top: 13px;
     }
-    
+    .hom_srh,{
+      img{
+        border:none;
+      }
+    }
+    .logowrap{
+      border:none;
+    }
     .suy_man {
       width: 100%;
       height: 180px;
@@ -321,6 +328,7 @@
     .slider-contaner {
       position: relative;
       cursor: default;
+      width: 100%;overflow: hidden;height: 420px;background: url('./images/lbbj.png');
       ul,
       li {
         list-style: none;

@@ -158,7 +158,7 @@ export default {
         // 获取地区数据
         getAreaData(id = '') {
             return new Promise(resolve => {
-                this.axios.get(`area/list${ id && '?parent='+id }`).then(res => {
+                this.axios.get(`area/list${id && '?parent=' + id}`).then(res => {
                     resolve(res);
                 });
             })
@@ -167,7 +167,7 @@ export default {
         defaultaddress() {
             //    显示默认收货人接口
             var that = this;
-            this.axios.get(`address/defaultaddress`).then(res => {
+            this.axios.get(`address/defaultaddress` + '?t=' + Math.random()).then(res => {
                 if (typeof res !== 'string') {
                     if (res) {
                         that.userInfor = true;
@@ -281,7 +281,7 @@ export default {
         // 获取订单信息
         purchaseOrder() {
             var that = this;
-            this.axios.get(`order/purchase/${ that.ids}`).then(res => {
+            this.axios.get(`order/purchase/${that.ids}` + '?t=' + Math.random()).then(res => {
                 if (typeof res !== 'string') {
                     if (res.customerInfo.customer.status != 'SUCCESS') {
                         that.$alert('公司信息尚未完善', '提示', {
@@ -302,7 +302,7 @@ export default {
                         that.customId = res.customerInfo.customer.id;
                         that.shippingMethod = res.items[0].shippingMethodCode; //配送方式
                         that.userIds = res.items[0].userId;
-                        this.axios.get('sys/user/' + res.items[0].userId)
+                        this.axios.get('sys/user/' + res.items[0].userId + '?t=' + Math.random())
                             .then(function(response) {
                                 if (response) {
                                     that.admin = response.nick;
@@ -455,7 +455,7 @@ export default {
         // <------------------------------------------------other---------------------------------------------------------->
         
         getLimitRuler() {
-            this.axios.get('platform/config').then((res) => {
+            this.axios.get('platform/config' + '?t=' + Math.random()).then((res) => {
                 this.numberDecimal = res.numberDecimal;
                 this.priceDecimal = res.priceDecimal;
             })
@@ -468,7 +468,7 @@ export default {
         changemsg() {
             this.dialogFormVisible1 = true;
             var that = this;
-            this.axios.get('address/init/' + that.addIDS).then(res => {
+            this.axios.get('address/init/' + that.addIDS + '?t=' + Math.random()).then(res => {
                 if (typeof res !== 'string') {
                     that.proIndex1 = true;
                     that.proIndex2 = true;
@@ -483,7 +483,7 @@ export default {
         shamsg() {
             this.dialogFormVisible2 = true;
             var that = this;
-            this.axios.get('address/addressList').then(res => {
+            this.axios.get('address/addressList' + '?t=' + Math.random()).then(res => {
                 if (typeof res !== 'string') {
                     that.adrlist = res;
                 }

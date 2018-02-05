@@ -81,6 +81,7 @@ export default  {
       nowrevers:'',
       serverTime1:0,
       serverTime:0,
+      date:'',
     }
   },
   created() {
@@ -118,7 +119,7 @@ export default  {
     this.unit.forEach(v => {
       json4[v.dictCode] = v.dictName
     })
-    this.unitjson = json4;  // 单位
+    this.unitjson = json4;  // 单 位
   },
   mounted () {
     this.setime = setInterval(()=>{
@@ -142,8 +143,8 @@ export default  {
     auctList(){
       var _this = this;
       if(this.urlid != ''){
-        this.axios.get("bidding/product/info?id=" + this.urlid)
-        .then(function(data){
+        this.axios.get("bidding/product/info?id=" + this.urlid +'&date='+new Date().getTime())
+        .then(data => {
           console.log(data,'datas');
             if(data.biddingStatus.value == 2){
               _this.willtaktime = true;
@@ -254,7 +255,7 @@ export default  {
     // 热门拍卖
     looker(){
       var _this = this;
-      this.axios.get("bidding/product/hot")
+      this.axios.get("bidding/product/hot?date="+new Date().getTime())
       .then(function(data){
           _this.hotlist = data;
           _this.hotlistid = data.biddingProductId;
@@ -304,7 +305,7 @@ export default  {
     },
     //  围观
     hotlooker(){
-      this.axios.get("bidding/product/onlooker?id=" +this.$route.query.id)
+      this.axios.get("bidding/product/onlooker?id=" +this.$route.query.id  +'&date='+new Date().getTime())
       .then(function(data){
       })
       .catch(error => console.log(error))
@@ -317,7 +318,7 @@ export default  {
      // 出价记录
     taking(){
       var _this = this;
-      this.axios.get("bidding/record/list?size=6&current="+ this.pageNo + '&biddingProductId=' + this.$route.query.id)
+      this.axios.get("bidding/record/list?size=6&current="+ this.pageNo + '&biddingProductId=' + this.$route.query.id +'&date='+new Date().getTime())
       .then(function(data){
           _this.loading = false;
           _this.takinglist = data.records;
@@ -333,7 +334,7 @@ export default  {
         this.toread = true;
       }else{
         this.centerDialogVisible = false;
-        this.$router.push('/cash?id='+this.$route.query.id)
+        this.$router.push('/cash?id='+this.$route.query.id+'&date='+new Date().getTime())
       }
      },
 
@@ -394,7 +395,7 @@ export default  {
                   cancelButtonText: '取消',
                   type: 'warning',
                 }).then(() => {
-                  that.$router.push('/companycenter/myfirm')
+                  that.$router.push('/companycenter/myfirm' )
                 }).catch(() => {
 
                 });
@@ -410,7 +411,7 @@ export default  {
     isaddcash(){
       var that = this;
       if(this.token){
-        that.axios.get("bidding/product/check?id="+ that.urlid)      // 是否交保证金
+        that.axios.get("bidding/product/check?id="+ that.urlid + '&date='+new Date().getTime())      // 是否交保证金
         .then(function(data){
           if(data.code == -1){
             return;
@@ -447,7 +448,7 @@ export default  {
 
     submitinf(){
       var that = this;
-        that.axios.get("bidding/product/info?id=" + that.$route.query.id)
+        that.axios.get("bidding/product/info?id=" + that.$route.query.id +'&date='+new Date().getTime())
         .then(function(data){
           console.log(data,'reset');
           that.newprice = data.maxBiddingPrice;
@@ -465,7 +466,7 @@ export default  {
           }
         })
           // 出价
-        that.axios.post("bidding/product/bid", {
+        that.axios.post("bidding/product/bid?date="+new Date().getTime(), {
            "biddingProductId": that.urlid,
             "biddingQuantity": that.auctnum,
             "biddingPrice": that.toauctprice

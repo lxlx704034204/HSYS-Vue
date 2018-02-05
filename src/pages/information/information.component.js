@@ -45,13 +45,13 @@ export default {
 		this.$store.commit("switchHeaderType", 6);
 		this.$store.commit("switchFooterType", 100);
 		var that = this;
-		that.axios.get("dictionary/batch?parentCodes=CHANNEL_CODE")
+		that.axios.get("dictionary/batch?parentCodes=CHANNEL_CODE" + '&date='+new Date().getTime())
 		.then(function(re){
 				var channelCodeinfo = re[0].dictionaries;
 				if(channelCodeinfo){
 					that.channel = channelCodeinfo;
 				}else{
-					that.axios.get('dictionary/batch?parentCodes=CHANNEL_CODE')
+					that.axios.get('dictionary/batch?parentCodes=CHANNEL_CODE' + '&date='+new Date().getTime())
 					.then(function(re){
 							let result = re[0].dictionaries;
 							that.channel = result;
@@ -120,7 +120,7 @@ export default {
 		}
 		,articalist(){
 			var _this = this;
-			this.axios.get("article/list?top=1&recommend="+ _this.recommend +"&channelCode="+_this.channelCode+"&size="+this.size+"&current="+this.current)
+			this.axios.get("article/list?top=1&recommend="+ _this.recommend +"&channelCode="+_this.channelCode+"&size="+this.size+"&current="+this.current + '&date='+new Date().getTime())
 			.then(function(re){
 					if(_this.current>1){
 						if(re.records.length>0)
@@ -146,7 +146,7 @@ export default {
 		,_recommend(){
 			let _this = this;
 			_this.loading = true;
-			this.axios.get("article/list?recommend=1")
+			this.axios.get("article/list?recommend=1" + '&date='+new Date().getTime())
 			.then(function(re){
 					_this.recommendList = re.records;
 				_this.loading = false;
@@ -155,7 +155,7 @@ export default {
 		,_hot(){
 			let _this = this;
 			_this.loading = true;
-			this.axios.get("article/list?hot=1&channelCode="+_this.channelCode)
+			this.axios.get("article/list?hot=1&channelCode="+_this.channelCode + '&date='+new Date().getTime())
 			.then(function(re){
 				_this.hotList = re.records;
 				_this.loading = false;
@@ -163,7 +163,7 @@ export default {
 		}
 		,_top(){
 			let _this = this;
-			this.axios.get("article/list?top=1&channelCode="+_this.channelCode)
+			this.axios.get("article/list?top=1&channelCode="+_this.channelCode + '&date='+new Date().getTime())
 			.then(function(re){
 					_this.hotList = re.records;
 			})
@@ -182,7 +182,7 @@ export default {
 			let _this = this;
 			_this.loading = true;
 			_this.isArticleContent = true;
-			this.axios.get("article/info?id=" + pleasedid)
+			this.axios.get("article/info?id=" + pleasedid + '&date='+new Date().getTime())
 			.then(function(re){
 					_this.articleContent = re;
 					if( re.articleContent != null){

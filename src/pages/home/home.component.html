@@ -4,7 +4,7 @@
 		<loginauct v-on:logining='logining'></loginauct>
 	</div>
 <!--轮播测试-->
-<section class="slider-contaner" style="width: 100%;overflow: hidden;">
+<section class="slider-contaner">
 <ul class="slider">
 <li class="slider-item slider-item1" @mouseover="lunbo1()" style="background-color: #102A44;">
 	<div class="hme_xiu">寻找百家化塑企业孵化计划</div>
@@ -18,8 +18,8 @@
 
 	</div>
 </li>
-<li class="slider-item slider-item2" @mouseover="lunbo2()" style="background-color: #1D4A7C;">
-	<div class="hme_xiu">合作赋能&nbsp;&nbsp;连接未来</div>
+<li class="slider-item slider-item2" @mouseover="lunbo2()">
+	<div class="hme_xiu">构建最具活力的化塑产业链服务平台</div>
 	<div class="hme_xiu1">
 		依托道恩集团雄厚的化塑产业布局，从贸易商向服务商转型
 	</div>
@@ -39,8 +39,8 @@
 		扶持孵化100家化塑加工企业
 	</div>
 </li>
-<li id="b" @mouseleave="guanbi2()" style="background-color: #1D4A7C;">
-	<div class="hme_xiu">合作赋能&nbsp;&nbsp;连接未来</div>
+<li id="b" @mouseleave="guanbi2()">
+	<div class="hme_xiu">构建最具活力的化塑产业链服务平台</div>
 	<div class="hme_xiu1">
 		依托道恩集团雄厚的化塑产业布局，从贸易商向服务商转型
 	</div>
@@ -237,11 +237,11 @@
                 <p>扫码加微信咨询</p>
               </div>
               <div class="right card-info">
-                <h3>{{sale.username}}</h3>
+                <h3>{{sale.nick}}</h3>
                 <p class="position">{{sale.position}}</p>
                 <p>电话：{{sale.mobile}}</p>
-                <p>邮箱：{{sale.email}}</p>
-                <p>微信：{{sale.weixin}}</p>
+                <p :title="sale.email">邮箱：{{sale.email}}</p>
+                <p :title="sale.weixin">微信：{{sale.weixin}}</p>
                 <span class="qq" @click='openQQ(sale.qq)' ref='qq'>
                   <img src="./images/qq.png" alt="">
                 </span>

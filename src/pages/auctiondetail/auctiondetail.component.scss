@@ -156,7 +156,7 @@
 								.aucti_btn{
 									position: absolute;
 									left:145px;
-									top:-2px;
+									top:0px;
 									font-size: 12px;
 									float: left;
 								}
@@ -167,6 +167,7 @@
 								.aucti_btn{
 									width: 42px;
 									border:1px solid #009FE2;
+									box-sizing: border-box;
 									.aucti_btn_top{
 										width: 100%;
 										height: 15px;
@@ -191,7 +192,6 @@
 									left: 185px;
 								}	
 								.btn_2{
-									margin-top: 2px;
 								}
 								.fontleng{
 									letter-spacing:13px;

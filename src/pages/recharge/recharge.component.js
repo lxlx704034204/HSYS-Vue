@@ -24,7 +24,7 @@ export default {
 		// this.$store.state.headerType = 7;
 		this.$store.commit("switchHeaderType", 7);
 		var that = this;
-		that.axios.get("accountapply/recharge")
+		that.axios.get("accountapply/recharge?date="+ new Date().getTime())
 			.then(function(data) {
 				console.log(data, 'oo');
 				that.myacc = data;
@@ -50,7 +50,10 @@ export default {
 	},
 	methods: {
 		handleAvatarSuccess(res, file) {
-			this.imageUrl = URL.createObjectURL(file.raw);
+//			console.log(file,'file');
+//			console.log(URL,'url')
+//			this.imageUrl = URL.createObjectURL(file.raw);
+			this.imageUrl = file.response.data.url;
 		},
 		beforeAvatarUpload(file) {
 			const isJPG = file.type === 'image/jpeg';

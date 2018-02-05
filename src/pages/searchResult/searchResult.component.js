@@ -138,13 +138,13 @@ export default {
             //     type:"logo"  
             // })      
             this.axios.post("customer/browse/" + id).then((res) => {
-                that.$router.push('/company?userId=' + id);
+//              that.$router.push('/company?userId=' + id);
             })
         },
         jumpto(index, id) {
             var that = this;
             this.axios.post("customer/browse/" + id).then((res) => {
-                that.$router.push('/company?userId=' + id)
+//              that.$router.push('/company?userId=' + id)
             })
         }
     }

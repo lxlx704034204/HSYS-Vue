@@ -120,7 +120,7 @@ export default {
   methods: {
     failList(){
       var that = this;
-       this.axios.get("bidding/record/info?id="+this.$route.query.id )
+       this.axios.get("bidding/record/info?id="+this.$route.query.id +'&date=' + new Date().getTime())
        .then(function (data) {
         console.log(data,888);
           that.status = data.biddingStatus.desc;
@@ -158,7 +158,7 @@ export default {
     // 默认收货地址
     defaultadd(){
       var that = this;
-      this.axios.get("address/defaultaddress")
+      this.axios.get("address/defaultaddress?date="+ new Date().getTime())
        .then(function (data) {
         console.log(data,'datadef');
         if( data != null || data != undefined){
@@ -213,18 +213,19 @@ export default {
       manyadd(){
         this.changeAdd = true ;
         var that = this;
-        this.axios.get("address/addressList")
-        .then(function (data) {
-          console.log(data);
-          that.choseaddList = data;
+        this.axios.get("address/addressList?date="+new Date().getTime())
+         .then(res => {
+          if(typeof res != 'string'){
+              that.choseaddList = res;
+
+          }
         })
       },
-      chosethis(event,id){
+      chosethis(index,id){
         var that = this;
-        $('.changadd-wrap').css('border','1px solid #CCC')
-        $(event.path[2]).css('border','1px solid #009EF0');
-        that.defaultid = $(event.path[2]).attr('data');
-        console.log(that.defaultid);
+        $('.changadd-wrap').css('border','1px solid #CCC');
+         $($('.changadd-wrap')[index]).css('border','1px solid #009EF0');
+        that.defaultid = id;
       },
       choseaddress(id){
         var that = this;
@@ -250,7 +251,7 @@ export default {
         that.ruleForm.city='';
         that.ruleForm.country='';
 
-        this.axios.get("area/list?parent=" + this.ruleForm.pro1)
+        this.axios.get("area/list?parent=" + this.ruleForm.pro1 + '&data='+new Date().getTime())
         .then(function (data) {
           console.log(data,'932');
           that.cityname = data
@@ -260,7 +261,7 @@ export default {
         var that = this;
         that.country = [];
         that.ruleForm.country='';
-        this.axios.get("area/list?parent=" + this.ruleForm.city)
+        this.axios.get("area/list?parent=" + this.ruleForm.city + '&data='+new Date().getTime())
         .then(function (data) {
           console.log(data,'932');
           that.country = data

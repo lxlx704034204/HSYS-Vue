@@ -81,6 +81,9 @@
 }
 .ser_res29{
     height: 48px;line-height: 48px;color: #333;margin-left: 13px;width: 214px;border-bottom: 1px dashed #DFE5EE;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 14px;cursor: pointer;
+    a{
+        color: #333;text-decoration: none;
+    }
 }
 .ser_res29:hover{
     color: #999;

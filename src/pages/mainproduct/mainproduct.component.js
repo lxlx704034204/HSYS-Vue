@@ -29,6 +29,10 @@ export default {
 
 	},
 	created() {
+		$('#ph4').css('color', '#333')
+		$('#ph5').css('color', '#009FE2')
+		$('#ph1').css('borderBottom', '#FFF 2px solid')
+		$('#ph2').css('borderBottom', '#009FE2 2px solid')
 		// this.$store.state.headerType = 5;
 		this.$store.commit("switchHeaderType", 5);
 		this.$store.commit("switchFooterType", 100);
@@ -40,13 +44,13 @@ export default {
 		this.compayjson = json; // 公司类型
 		var that = this;
 		this.userId = this.$route.query.userId;
-		that.axios.get("customer/detail/" + this.userId)
+		that.axios.get("customer/detail/" + this.userId + '?date='+new Date().getTime())
 			.then(function(data) {
 				that.cominf = [data];
 				that.addr = data.provinceName + data.cityName + data.areaName + data.address;
 			});
 		//  分类
-		that.axios.get("customerproduct/category?id=" + that.userId, {
+		that.axios.get("customerproduct/category?id=" + that.userId + '&date='+new Date().getTime(), {
 				params: {
 					noInterceptor: 1
 				}
@@ -65,7 +69,7 @@ export default {
 			//  用户产品
 			var that = this;
 			that.cp = false;
-			this.axios.get("customerproduct/all?user_id=" + this.userId + '&size=12&current=' + this.pageNo + '&cid=' + this.cid, {
+			this.axios.get("customerproduct/all?user_id=" + this.userId + '&size=12&current=' + this.pageNo + '&cid=' + this.cid + '&date='+new Date().getTime(), {
 					params: {
 						noInterceptor: 1
 					}

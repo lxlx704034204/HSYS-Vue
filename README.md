@@ -6,7 +6,7 @@
 
 ``` bash
 # install dependencies
-npm install
+cnpm install
 
 # serve with hot reload at localhost:8080
 npm run dev
@@ -19,4 +19,6 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-# dx-el-ui-dev
+
+# 效果预览
+## [IP](http://47.94.12.33)

@@ -5,67 +5,114 @@
     clear: both;
     content: "";
 }
+
 .myaddress {
-    .ada_xiu{
-        display: inline-block;margin-top: 24px;color: #333;margin-left: 9px;
-                position: absolute;
-                font-size: 14px;
+    .ada_xiu {
+        display: inline-block;
+        margin-top: 24px;
+        color: #333;
+        margin-left: 9px;
+        position: absolute;
+        font-size: 14px;
     }
-    .ada_xiu1{
-        position: absolute;z-index: 2;margin-left: -64px;color: red;
+    .ada_xiu1 {
+        position: absolute;
+        z-index: 2;
+        margin-left: -64px;
+        color: red;
     }
-    .ada_xiu11{
-        margin-left: -65px; width: 372px
+    .ada_xiu11 {
+        margin-left: -65px;
+        width: 372px
     }
-    .ada_xiu12{
+    .ada_xiu12 {
         margin-left: 23px;
     }
-    .ada_xiu13{
-        position: absolute;z-index: 2;color: red;margin-left: -79px;
+    .ada_xiu13 {
+        position: absolute;
+        z-index: 2;
+        color: red;
+        margin-left: -79px;
     }
-    .ada_xiu14{
-        margin-left: -79px; width: 372px
+    .ada_xiu14 {
+        margin-left: -79px;
+        width: 372px
     }
-    .ada_xiu15{
-        width: 200px;height: 30px;
+    .ada_xiu15 {
+        width: 200px;
+        height: 30px;
     }
-    .ada_xiu16{
-        margin-top: -30px;margin-left: -84px;position: absolute;z-index: 2;color: red;
+    .ada_xiu16 {
+        margin-top: -30px;
+        margin-left: -84px;
+        position: absolute;
+        z-index: 2;
+        color: red;
     }
-    .ada_xiu17{
-        margin-left: -85px; width: 406px;overflow: hidden;margin-top: 10px;
+    .ada_xiu17 {
+        margin-left: -85px;
+        width: 406px;
+        overflow: hidden;
+        margin-top: 10px;
     }
-    .ada_xiu18{
-        position: absolute;z-index: 2;color: red;margin-left: -78px;
+    .ada_xiu18 {
+        position: absolute;
+        z-index: 2;
+        color: red;
+        margin-left: -78px;
     }
-    .ada_xiu19{
-        width: 115px;height: 40px;border-color: #009FE2;border-radius: 0px;margin-left: -30px;
+    .ada_xiu19 {
+        width: 115px;
+        height: 40px;
+        border-color: #009FE2;
+        border-radius: 0px;
+        margin-left: -30px;
     }
-    .ada_xiu2{
-        width: 115px;height: 40px;background: #009FE2;color: #FFF;border-radius: 0px;margin-left: 40px;
+    .ada_xiu2 {
+        width: 115px;
+        height: 40px;
+        background: #009FE2;
+        color: #FFF;
+        border-radius: 0px;
+        margin-left: 40px;
     }
-    .ada_xiu21{
-
-    }
-    .ada_xiu22{
+    .ada_xiu21 {}
+    .ada_xiu22 {
         color: #009FE2;
-                display: inline-block;
-                position: absolute;
-                right: 5px;
-                margin-top: 26px;
-                font-size: 14PX;
+        display: inline-block;
+        position: absolute;
+        right: 5px;
+        margin-top: 26px;
+        font-size: 14PX;
     }
-    
-    .ada_xiu23{
-        width: 350px;height: 78px;resize: none;border: 1px solid #DCDFE6;border-radius: 3px;outline: none;font-size: 14px;padding: 10px;color: #666; 
-        :hover{
+    .ada_xiu23 {
+        width: 350px;
+        height: 78px;
+        resize: none;
+        border: 1px solid #DCDFE6;
+        border-radius: 3px;
+        outline: none;
+        font-size: 14px;
+        padding: 10px;
+        color: #666;
+         :hover {
             border-color: #009FE2;
         }
     }
-    .ada_xiu24{
-        background: #009FE2;color: #FFF;width: 25px;height: 25px;position: absolute;margin-top: -70px;margin-left: 420px;z-index: 2;line-height: 25px;text-align: center;font-size: 20px;cursor: pointer;
+    .ada_xiu24 {
+        background: #009FE2;
+        color: #FFF;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        margin-top: -70px;
+        margin-left: 420px;
+        z-index: 2;
+        line-height: 25px;
+        text-align: center;
+        font-size: 20px;
+        cursor: pointer;
     }
-    
     .nav {
         line-height: 58px;
     }
@@ -75,8 +122,6 @@
         margin-top: 8px;
         border: 1px solid #ccc;
         .mainaddress {
-
-
             height: 70px;
             margin: 0 9px;
             position: relative;
@@ -137,10 +182,10 @@
     //   width: 523px;
     //   line-height: 30px;
     // }
-//     .el-dialog--center .el-dialog__header {
-//       height: 30px;
-//       line-height: 30px;
-//     }
+    //     .el-dialog--center .el-dialog__header {
+    //       height: 30px;
+    //       line-height: 30px;
+    //     }
 }
 
 .order_hover {

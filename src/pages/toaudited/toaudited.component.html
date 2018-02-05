@@ -16,7 +16,7 @@
         <span>{{number}}</span>
         <span class="isPayment">{{orderStatus}}</span>
       </div>
-      <div v-if="step<7">
+      <div v-if="step<7" class="steps">
         <el-steps align-center class="orderNumber-detail" :active="step" process-status="wait">
           <el-step>
             <p slot="title" class="step-title active">提交订单信息</p>
@@ -111,12 +111,13 @@
     </div>
     <!-- 供应商 -->
     <div class="orderSupplier">
-      <h4 class="orderSupplier-title">供应商：山东道恩集团</h4>
+      <h4>供应商：山东道恩集团</h4>
+      <el-button v-if="step!==1 && step!==2 && step!==7" class="orderSupplier-title" type="text" @click="centerDialogVisible = true">点击查看电子合同</el-button>
       <div>
         <el-table :data="orderTable" border width="100%">
-          <el-table-column prop="items[0].name" label="产品名称" align="center">
+          <el-table-column prop="items[0].name" label="产品名称" align="center" width="110">
           </el-table-column>
-          <el-table-column label="规格/牌号" align="center">
+          <el-table-column label="规格/牌号" align="center" width="110">
             <template slot-scope="scope">
               <span>{{getPhName(scope.row.items[0].gradeCode)}}</span>
             </template>
@@ -151,7 +152,7 @@
               <span>{{admin}}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="total" label="总金额(元)">
+          <el-table-column prop="total" label="总金额(元)"  align="center">
             <template slot-scope="scope">
               <span>{{scope.row.total.toFixed(2)}}</span>
             </template>
@@ -185,32 +186,41 @@
         <a href="" download ref="downfile" v-if="step!==1 && step!==2 && step!==7">
           <el-button class="orderFooter-btn" type="primary">下载合同</el-button>
         </a>
-        <router-link v-if="step===3 && !paymentStatus && payinfovalue == 0"
-        :to="{path: '/payment', query: {id: this.orderid}}" target="_blank">
-        <el-button class="orderFooter-btn">立即付款</el-button>
+        <router-link v-if="step===3 && !paymentStatus && payinfovalue == 0" :to="{path: '/payment', query: {id: this.orderid}}" target="_blank">
+          <el-button class="orderFooter-btn">立即付款</el-button>
         </router-link>
-        <router-link v-if="step===5 && !paymentStatus && payinfovalue == 1"
-          :to="{path: '/payment', query: {id: this.orderid}}" target="_blank">
+        <router-link v-if="step===5 && !paymentStatus && payinfovalue == 1" :to="{path: '/payment', query: {id: this.orderid}}" target="_blank">
           <el-button class="orderFooter-btn">立即付款</el-button>
         </router-link>
         <el-button @click="confirmReceived" class="orderFooter-btn" type="primary" v-if="step===5 && payinfovalue == 0">确定收货</el-button>
         <el-button @click="confirmReceived" class="orderFooter-btn" type="primary" v-if="step===4 && payinfovalue == 1">确定收货</el-button>
+        <!-- 签署电子合同 -->
+        <el-dialog title="华塑产品买卖合同" :visible.sync="centerDialogVisible2" width="730px" top="60px" center class='centerTitle'>
+          <div class="center-box">
+            <img src="./images/contract.png" alt="">
+          </div>
+          <div style="margin-top: 20px;">
+            <div class="check-box">
+              <el-checkbox v-model="agree" @change='toread = false'>我已看过并同意本合同</el-checkbox>
+            </div>
+            <div v-show='toread' class="auc_xiu">请阅读本合同</div>
+            <div slot="footer" class="auc_xiu1">
+              <button type='button' @click="surebtn" class='payup'>签 署 电 子 合 同</button>
+            </div>
+          </div>
+        </el-dialog>
+        <!-- 查看电子合同 -->
+        <el-dialog title="华塑产品买卖合同" :visible.sync="centerDialogVisible" width="730px" center top="60px" class='centerTitle'>
+          <div class="center-box">
+            <img src="./images/contract.png">
+          </div>
+          <div style="margin-top: 20px;">
+            <div slot="footer" class="auc_xiu2">
+              <button type='button' @click="centerDialogVisible = false" class='payup'>已确认电子合同没有异议</button>
+            </div>
+          </div>
+        </el-dialog>
       </div>
     </div>
-    <!-- 签署电子合同 -->
-    <el-dialog title="电子合同" :visible.sync="centerDialogVisible" width="600px" top="60px" center class='centerTitle'>
-      <div style="height: 370px;overflow-y: scroll;">
-        <img src="./images/contract.png" alt="">
-      </div>
-      <div style="margin-top: 10px;">
-        <div>
-          <el-checkbox v-model="agree" @change='toread = false'>我已看过并同意本合同</el-checkbox>
-        </div>
-        <div v-show='toread' class="auc_xiu">请阅读本合同</div>
-        <div slot="footer" class="dialog-footer auc_xiu1">
-          <button type='button' @click="surebtn" class='payup'>签署电子合同</button>
-        </div>
-      </div>
-    </el-dialog>
   </div>
 </section>

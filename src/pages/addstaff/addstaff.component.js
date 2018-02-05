@@ -41,7 +41,7 @@ export default {
 
             } else {
                 // 获取要修改数据
-                this.axios.get("user/init/" + that.mystId).then(function(data) {
+                this.axios.get("user/init/" + that.mystId + '?t=' + Math.random()).then(function(data) {
                         that.submit = false;
                         that.name = data.userName;
                         that.phone = data.mobileNo;
@@ -49,6 +49,7 @@ export default {
                         that.email = data.email;
                         that.value3 = data.active;
                         that.value4 = data.admin;
+
                     })
                     .catch(error => console.log(error))
             }
@@ -84,7 +85,6 @@ export default {
                                 message: '修改成功',
                                 type: 'success'
                             });
-                            // location.href = "#/companycenter/mystaff"
                             that.$router.push("/companycenter/mystaff");
                         } else {
                             that.$message({
@@ -183,7 +183,7 @@ export default {
                                 message: '添加成功',
                                 type: 'success'
                             });
-                            location.href = "#/companycenter/mystaff"
+                            that.$router.push('/companycenter/mystaff')
 
                         } else {
                             that.$message({

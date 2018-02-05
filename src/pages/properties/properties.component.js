@@ -51,6 +51,8 @@ export default {
   created() {
     // this.$store.state.headerType = 1;
     this.$store.commit("switchHeaderType", 1);
+    $('#srbox').css('box-shadow','3px 3px 10px 0px #E6E6E6')
+    
   },
   mounted(){
     this._getProList();
@@ -188,7 +190,7 @@ export default {
     // 产品列表数据
     _getProList() {
       var _this = this;
-       this.axios.get( "baseproduct/findbaseproductbycondition?useCateDetailNames=" +  this.params.useCateDetailCodes + "&craftCateDetailNames=" + this.params.craftCateDetailCodes + "&specialCateDetailNames=" + this.params.specialCateDetailCodes + '&productSign='+ this.params.productSign + '&meltmin='+this.params.meltmin+'&meltmax='+ this.params.meltmax + '&pullupmin='+ this.params.pullupmin+  '&pullupmax='+ this.params.pullupmax+'&bendmin='+ this.params.bendmin+'&bendmax='+ this.params.bendmax+'&impactmin='+ this.params.impactmin+'&impactmax='+ this.params.impactmax+'&size=10'+'&current='+ this.pageNum)
+       this.axios.get( "baseproduct/findbaseproductbycondition?useCateDetailNames=" +  this.params.useCateDetailCodes + "&craftCateDetailNames=" + this.params.craftCateDetailCodes + "&specialCateDetailNames=" + this.params.specialCateDetailCodes + '&productSign='+ encodeURI(this.params.productSign) + '&meltmin='+this.params.meltmin+'&meltmax='+ this.params.meltmax + '&pullupmin='+ this.params.pullupmin+  '&pullupmax='+ this.params.pullupmax+'&bendmin='+ this.params.bendmin+'&bendmax='+ this.params.bendmax+'&impactmin='+ this.params.impactmin+'&impactmax='+ this.params.impactmax+'&size=10'+'&current='+ this.pageNum)
       .then(function(data){
             _this.tableDatas = data.records;
               _this.pageNum = data.current;
@@ -199,7 +201,7 @@ export default {
     //表格点击
     tableClick(row) {
        var routeData = this.$router.resolve({ path: '/properties/propertDetail', query: { id: row.id } });
-       window.open(routeData.href, '_blank')
+         window.open(routeData.href, '_blank')
     },
 
     // 分页

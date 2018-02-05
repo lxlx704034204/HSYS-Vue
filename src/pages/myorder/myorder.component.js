@@ -47,9 +47,10 @@ export default {
       var data = {
         current: that.pageNum,
         size: 6,
-        orderCode: this.value
+        orderCode: this.value,
+        t: Math.random()
       }
-      this.axios.get(`order/my`,{params: data}).then(res => {
+      this.axios.get(`order/my`, { params: data }).then(res => {
         that.orderList = res.records;
         that.total = parseFloat(res.total);
         that.pageNum = res.current;

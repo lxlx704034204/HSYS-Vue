@@ -15,6 +15,9 @@
     margin-bottom: 10px;
   }
 }
+.box-xiu{
+    float: left;background: #FFF;width: 1080px;min-height: 42px;
+}
 
 .xho_shp1 {
   width: 625px;
@@ -109,8 +112,10 @@
 }
 
 .sy-tipbox .qq {
-  right: 0 !important;
   cursor: pointer;
+  position: absolute;
+  margin-left: 0;
+  margin-top: 0;
 }
 
 .filter-ul li {
@@ -126,7 +131,7 @@
 
 .category-box {
   margin-top: -1px;
-
+    background: #f5f5f7;
   border: 1px solid #e6e6e6;
   line-height: 43px;
   font-size: 14px;
@@ -135,7 +140,7 @@
     float: left;
     width: 118px;
     text-indent: 16px;
-    background: #f5f5f7;
+
     color: #666;
   }
   .box-mid{

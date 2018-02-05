@@ -1,196 +1,201 @@
 <section class="auction">
-  <!-- 分类 -->
-  <div class="inner-1200 box-2">
-  	<!-- 筛选 -->
-		  <div class="auction-box">
-		    <div class="box-left" style="margin-top: 3px;">筛选条件:</div>
-		    <ul class="box-right" style="margin-top: 3px;">
-		      <li class="item all-item" @click="remove">
-		        全部结果
-		        <span v-show="categorys || company || city">&gt;</span>
-		      </li>
-		      <li class="item" v-show="categorys" v-for='a in categorys'>
-		        <el-button size="mini" @click="removeFilter(1,a)">
-		          <span class="select-text">{{a.name}}
+	<!-- 分类 -->
+	<div class="inner-1200 box-2">
+		<!-- 筛选 -->
+		<div class="auction-box">
+			<div class="box-left" style="margin-top: 3px;">筛选条件:</div>
+			<ul class="box-right" style="margin-top: 3px;">
+				<li class="item all-item" @click="remove">
+					全部结果
+					<span v-show="categorys || company || city">&gt;</span>
+				</li>
+				<li class="item" v-show="categorys" v-for='a in categorys'>
+					<el-button size="mini" @click="removeFilter(1,a)">
+						<span class="select-text">{{a.name}}
 		            <i class="el-icon-close el-icon-right"></i>
 		          </span>
-		        </el-button>
-		      </li>
-		      <li class="item" v-show="company" v-for='b in company'>
-		        <el-button size="mini" @click="removeFilter(2,b)">
-		          <span class="select-text">{{b}}
+					</el-button>
+				</li>
+				<li class="item" v-show="company" v-for='b in company'>
+					<el-button size="mini" @click="removeFilter(2,b)">
+						<span class="select-text">{{b}}
 		            <i class="el-icon-close el-icon-right"></i>
 		          </span>
-		        </el-button>
-		      </li>
-		      <li class="item" v-show="city" v-for='c in city'>
-		        <el-button size="mini" @click="removeFilter(3,c)">
-		          <span class="select-text">{{c}}
+					</el-button>
+				</li>
+				<li class="item" v-show="city" v-for='c in city'>
+					<el-button size="mini" @click="removeFilter(3,c)">
+						<span class="select-text">{{c}}
 		            <i class="el-icon-close el-icon-right"></i>
 		          </span>
-		        </el-button>
-		      </li>
-		    </ul>
+					</el-button>
+				</li>
+			</ul>
 		</div>
-  </div>
-   
-   <div class='inner-1200 scree-condition' style="margin-top: 21px;">
-  	  <div class="category-box">
-		    <div class="box-left">分类</div>
-		   	<div class="box-mid">
-		   		<ul class="box-right">
-			      <li class="item" v-for="item in category" @click="selectFilter(1,item)">{{item.name}}</li>
-			    </ul>
-		   	</div>
-			   
-		    <div class="show-more-category" v-show="category.length >= typeLen">
-		      <template v-if="category.length == typeLen">
-		      	<button type='button' @click="showAllCat" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
-		      </template>
-		      <template v-else>
-        		<button type='button' @click="hideAllCat" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
-		      </template>
-		    </div>
-		  </div>
-		  <!-- 产地 -->
-		  <div class="category-box city-box">
-		    <div class="box-left">产地</div>
-		    <div class="box-mid">
-			    <ul class="box-right">
-			      <li class="item" v-for="(item,key) in cd" @click="selectFilter(2,$event,key,item)">{{item.dictName}}</li>
-			    </ul>
-			  </div>
-		    <div class="show-more-category" v-show="cd.length >= ficatLen">
-		        <template v-if="cd.length == ficatLen">
+	</div>
 
-		      		<button type='button' @click="showAllCategory" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
-		        </template>
-		      <template v-else>
-		      	<button type='button' @click="hideAllCategory" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
-		      </template>
-		    </div>
+	<div class='inner-1200 scree-condition' style="margin-top: 21px;">
+		<div class="category-box">
+			<div class="box-left">分类</div>
+			<div class="box-xiu">
+				<div class="box-mid">
+					<ul class="box-right">
+						<li class="item" v-for="item in category" @click="selectFilter(1,item)">{{item.name}}</li>
+					</ul>
+				</div>
 
-		  </div>
-		  <!-- 库别 -->
-		  <div class="category-box city-box">
-		    <div class="box-left">库别</div>
-		    <div class="box-mid">
-		    
-			    <ul class="box-right">
-			      <li class="item" v-for="(item,key) in io" @click="selectFilter(3,$event,key,item)">{{item.dictName}}</li>
-			    </ul>
-			  </div>
-		    <div class="show-more-city" v-show="io.length >= ctLen">
-		        <template v-if="io.length == ctLen">
-		      	    <button type='button' @click="showAllCity" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
-		      </template>
+				<div class="show-more-category" v-show="category.length >= typeLen">
+					<template v-if="category.length == typeLen">
+						<button type='button' @click="showAllCat" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+					</template>
+					<template v-else>
+						<button type='button' @click="hideAllCat" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+					</template>
+				</div>
+			</div>
 
-		      <template v-else>
-		      	<button type='button' @click="hideAllCity" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
-		      </template>
-		    </div>
-		  </div>
+		</div>
+		<!-- 产地 -->
+		<div class="category-box city-box">
+			<div class="box-left">产地</div>
+			<div class="box-xiu">
 
-		 
-	  
-		 <!-- 搜索框查询 -->
+				<div class="box-mid">
+					<ul class="box-right">
+						<li class="item" v-for="(item,key) in cd" @click="selectFilter(2,$event,key,item)">{{item.dictName}}</li>
+					</ul>
+				</div>
+				<div class="show-more-category" v-show="cd.length >= ficatLen">
+					<template v-if="cd.length == ficatLen">
+
+						<button type='button' @click="showAllCategory" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+					</template>
+					<template v-else>
+						<button type='button' @click="hideAllCategory" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+					</template>
+				</div>
+			</div>
+
+		</div>
+		<!-- 库别 -->
+		<div class="category-box city-box">
+			<div class="box-left">库别</div>
+			<div class="box-xiu">
+				<div class="box-mid">
+
+					<ul class="box-right">
+						<li class="item" v-for="(item,key) in io" @click="selectFilter(3,$event,key,item)">{{item.dictName}}</li>
+					</ul>
+				</div>
+				<div class="show-more-city" v-show="io.length >= ctLen">
+					<template v-if="io.length == ctLen">
+						<button type='button' @click="showAllCity" class='self-btn'>更多  <i class="el-icon--right el-icon-arrow-down"></i></button>
+					</template>
+
+					<template v-else>
+						<button type='button' @click="hideAllCity" class='self-btn'>收起  <i class="el-icon--right el-icon-arrow-up"></i></button>
+					</template>
+				</div>
+			</div>
+		</div>
+
+		<!-- 搜索框查询 -->
 		<div class="search-box">
-		    <el-row>
-		      <el-col :span="2" class="center">
-		        <span class="label">关键字</span>
-		      </el-col>
-		      <el-col :span="4">
-		        <el-input size="small" clearable @blur="goSearch" v-model.trim="keyword" placeholder="输入产品名称"></el-input>
-		      </el-col>
-		      <el-col :span="2" class="center">
-		        <span class="label">竞价状态</span>
-		      </el-col>
-		      <el-col :span="3">
-		        <el-select popper-class="pop-sendway" class="autoco_input" size="small" v-model="biddstatu" @change="selectSendWay" placeholder="请选择">
-		          <el-option label="竞拍中" :value="2" key="2"></el-option>
-		          <el-option label="未开始" :value="1" key="1"></el-option>
-		          <el-option label="已结束" :value="0" key="0"></el-option>
-		        </el-select>
-		      </el-col>
-		      <el-col :span="10">&nbsp;</el-col>
+			<el-row>
+				<el-col :span="2" class="center">
+					<span class="label">关键字</span>
+				</el-col>
+				<el-col :span="4">
+					<el-input size="small" clearable @blur="goSearch" v-model.trim="keyword" placeholder="输入产品名称"></el-input>
+				</el-col>
+				<el-col :span="2" class="center">
+					<span class="label">竞价状态</span>
+				</el-col>
+				<el-col :span="3">
+					<el-select popper-class="pop-sendway" class="autoco_input" size="small" v-model="biddstatu" @change="selectSendWay" placeholder="请选择">
+						<el-option label="竞拍中" :value="2" key="2"></el-option>
+						<el-option label="未开始" :value="1" key="1"></el-option>
+						<el-option label="已结束" :value="0" key="0"></el-option>
+					</el-select>
+				</el-col>
+				<el-col :span="10">&nbsp;</el-col>
 
-		      <el-col :span="2" class="rightdiv">
-		        <div style="height: 34px;margin-top: 14px;">
-		        	<div class="auc_but1" @click="prevPage"><</div>
-		        	<div class="auc_but2" @click="nextPage">></div>
-		        </div>
-		      </el-col>
-		      <el-col :span="1" class="page-no-box rightdiv2">
-		        <span>{{pageNo}}</span>/{{Math.ceil(total/pageSize)}}
-		      </el-col>
-		    </el-row>
+				<el-col :span="2" class="rightdiv">
+					<div style="height: 34px;margin-top: 14px;">
+						<div class="auc_but1" @click="prevPage">
+							<</div>
+								<div class="auc_but2" @click="nextPage">></div>
+						</div>
+				</el-col>
+				<el-col :span="1" class="page-no-box rightdiv2">
+					<span>{{pageNo}}</span>/{{Math.ceil(total/pageSize)}}
+				</el-col>
+			</el-row>
+			</div>
 		</div>
-    </div>
-  	<div class="inner-1200">
-  		<el-table class="autotro_list" :data="biddlist" row-class-name="row-60" ref="myTable" v-loading="loading" v-show='biddlist.length != ""'>
-   			<el-table-column label="产品名称" prop='productName' width='110'>
-   			</el-table-column>
-   			<el-table-column prop="categoryName" label="分类"  align="center" width='80'></el-table-column>
-   			<el-table-column label="牌号" align="center">
-   				<template slot-scope="scope">
-			        <span>{{phjson[scope.row.gradeCode]}}</span>
-			    </template>
-   			</el-table-column>
-   			<el-table-column label="产地" align="center">
-   				<template slot-scope="scope">
-			        <span>{{cdjson[scope.row.manufacturerCode]}}</span>
-			      </template>
-   			</el-table-column>
-   			<el-table-column label="库别" align="center">
-   				<template slot-scope="scope">
-			        <span>{{iojson[scope.row.warehouseCode]}}</span>
-			      </template>
-			    </el-table-column>
-   			</el-table-column>
-   			<el-table-column  label="竞拍数量 (吨)" align="left" width="110">
-   				<template slot-scope="scope">
-			        <span style="display: inline-block;">{{scope.row.quantity}}{{dwjson[scope.row.unitCode]}}</span>
-			     </template>
-   			</el-table-column>
-   			<el-table-column label="起拍量" align="left" width="80">
-   				<template slot-scope="scope">
-			        <span style="display: inline-block;">{{scope.row.startQuantity}}{{dwjson[scope.row.unitCode]}}</span>
-			     </template>
-   			</el-table-column>
-   			<el-table-column label="起拍价" align="center">
-   				<template slot-scope="scope">
-			        <span style="display: inline-block;width: 100px">￥{{scope.row.startUnitPrice}}</span>
-			     </template>
-   			</el-table-column>
-   			<el-table-column  label="剩余时间" prop='updateStr' align="center">
-   			</el-table-column>
-   			<el-table-column prop="categoryName" label="">
-     			<template slot-scope="scope" class='bidbtn'>
-					<div>
-						<el-button size="small" type="primary" @click="getRowlist(scope.row,1)" v-show='scope.row.biddingStatus.value==2'>竞拍中</el-button>
-	       				<el-button size="small" type="primary" @click="getRowlist(scope.row,2)" v-show='scope.row.biddingStatus.value==1'>未开始</el-button>
-	       				<el-button size="small" type='primary' @click="getRowlist(scope.row,3)" v-show='scope.row.biddingStatus.value==0' disabled>已结束</el-button>
-					</div>
-   				</template>
-   			</el-table-column>
-   		</el-table>
-   		<div v-show='biddlist.length == ""' class="not_inf">
-   			<img src="./images/non_inf.png" alt="">
-   		</div>
-  	</div>
+		<div class="inner-1200">
+			<el-table class="autotro_list" :data="biddlist" row-class-name="row-60" ref="myTable" v-loading="loading" v-show='biddlist.length != ""'>
+				<el-table-column label="产品名称" prop='productName' width='110'>
+				</el-table-column>
+				<el-table-column prop="categoryName" label="分类" align="center" width='80'></el-table-column>
+				<el-table-column label="牌号" align="center">
+					<template slot-scope="scope">
+						<span>{{phjson[scope.row.gradeCode]}}</span>
+					</template>
+				</el-table-column>
+				<el-table-column label="产地" align="center">
+					<template slot-scope="scope">
+						<span>{{cdjson[scope.row.manufacturerCode]}}</span>
+					</template>
+				</el-table-column>
+				<el-table-column label="库别" align="center">
+					<template slot-scope="scope">
+						<span>{{iojson[scope.row.warehouseCode]}}</span>
+					</template>
+				</el-table-column>
+				</el-table-column>
+				<el-table-column label="竞拍数量 (吨)" align="left" width="110">
+					<template slot-scope="scope">
+						<span style="display: inline-block;">{{scope.row.quantity}}{{dwjson[scope.row.unitCode]}}</span>
+					</template>
+				</el-table-column>
+				<el-table-column label="起拍量" align="left" width="80">
+					<template slot-scope="scope">
+						<span style="display: inline-block;">{{scope.row.startQuantity}}{{dwjson[scope.row.unitCode]}}</span>
+					</template>
+				</el-table-column>
+				<el-table-column label="起拍价" align="center">
+					<template slot-scope="scope">
+						<span style="display: inline-block;width: 100px">￥{{scope.row.startUnitPrice}}</span>
+					</template>
+				</el-table-column>
+				<el-table-column label="剩余时间" prop='updateStr' align="center">
+				</el-table-column>
+				<el-table-column prop="categoryName" label="">
+					<template slot-scope="scope" class='bidbtn'>
+						<div>
+							<el-button size="small" type="primary" @click="getRowlist(scope.row,1)" v-show='scope.row.biddingStatus.value==2'>竞拍中</el-button>
+							<el-button size="small" type="primary" @click="getRowlist(scope.row,2)" v-show='scope.row.biddingStatus.value==1'>未开始</el-button>
+							<el-button size="small" type='primary' @click="getRowlist(scope.row,3)" v-show='scope.row.biddingStatus.value==0' disabled>已结束</el-button>
+						</div>
+					</template>
+				</el-table-column>
+			</el-table>
+			<div v-show='biddlist.length == ""' class="not_inf">
+				<img src="./images/non_inf.png" alt="">
+			</div>
+		</div>
 
-  		<div class="pagebox clearfix ">
-		    <div style="height: 30px;"></div>
-		    <!-- 翻页效果 -->
-		    <div class="sy-pagination">
-		      <el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot"
-		        :total="total" :current-page="pageNo">
-		        <slot>
-		          <button class="btn-next">确定</button>
-		        </slot>
-		      </el-pagination>
-		    </div>
-		  </div>
-  
+		<div class="pagebox clearfix ">
+			<div style="height: 30px;"></div>
+			<!-- 翻页效果 -->
+			<div class="sy-pagination">
+				<el-pagination background @current-change="pageChange" prev-text="上一页" next-text="下一页" :page-size="pageSize" layout="prev,pager,next,total,jumper,slot" :total="total" :current-page="pageNo">
+					<slot>
+						<button class="btn-next">确定</button>
+					</slot>
+				</el-pagination>
+			</div>
+		</div>
+
 </section>
-

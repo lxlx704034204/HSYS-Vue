@@ -1,18 +1,91 @@
-.toaudited{
-	.el-table--border td, .el-table--border th {
-	    border-left: 1px solid #dddddd;
-	    border-bottom: 1px solid #dddddd;
-	}
-	.el-table td, .el-table th {
-	    vertical-align: middle !important;
-	    text-align: center !important;
-	}
-	.el-table__body .el-table__row {
-	    height: 50px !important;
-	}
-	.el-table__header-wrapper .el-table__header .has-gutter .is-leaf{
-	    height: 48px !important;
-	    background: #E5E6E6 !important;
-	    border: none !important; 
-	}
+.toaudited {
+  //进度条
+  .steps {
+    .el-step.is-center .el-step__head,
+    .el-step.is-center .el-step__main {
+      text-align: center;
+      width: 126px;
+    }
+  } //电子合同
+  .centerTitle {
+    padding: 20px 0px;
+    .el-dialog--center .el-dialog__header {
+      background-color: #fff;
+      span {
+        color: #333;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+    .el-dialog--center .el-dialog__body {
+      text-align: initial;
+      padding: 20px 10px;
+    }
+    .center-box {
+      height: 380px;
+      overflow-y: scroll;
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .check-box {
+      position: absolute;
+      bottom: 75px;
+      left: 130px;
+    }
+    .auc_xiu {
+      position: absolute;
+      bottom: 55px;
+      left: 154px;
+      color: #f83d46;
+    }
+    .auc_xiu1 {
+      text-align: center;
+      padding-top: 40px;
+      .payup {
+        border: none;
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        color: #fff;
+        background: #009fe2;
+        -webkit-appearance: none;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        outline: 0;
+        -webkit-transition: .1s;
+        transition: .1s;
+        font-weight: 500;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+    }
+    .auc_xiu2 {
+      text-align: center;
+      .payup {
+        border: none;
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        color: #fff;
+        background: #009fe2;
+        -webkit-appearance: none;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        outline: 0;
+        -webkit-transition: .1s;
+        transition: .1s;
+        font-weight: 500;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+    }
+  }
 }

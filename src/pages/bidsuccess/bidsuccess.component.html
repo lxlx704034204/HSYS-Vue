@@ -85,8 +85,8 @@
               :visible.sync="changeAdd"
               width="484px"
               center class='changeadd' style='text-align: left'>
-              <div class="changadd-wrap" v-for='add in choseaddList' ref='selfs' :data='add.id' >
-                <ul class="changeAdd" @click='chosethis($event)' >
+              <div class="changadd-wrap" v-for='(add,index) in choseaddList' ref='selfs'  @click='chosethis(index,add.id)'>
+                <ul class="changeAdd"  >
                   <li>收货人 : {{add.userName}}</li>
                   <li>联系电话 : {{add.primaryPhone}}</li>
                   <li>收货地址 : {{add.provinceName}}{{add.cityName}}{{add.areaName}}{{add.address}}</li>

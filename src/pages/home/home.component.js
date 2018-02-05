@@ -63,6 +63,7 @@ export default {
       this._getProduct();
       $('.out-type-classification').show()
     }
+    $('#srbox').css('box-shadow','none')
   },
   mounted() {},
   methods: {
@@ -71,7 +72,7 @@ export default {
       let that = this;
       that.echartData = [];
       sessionStorage.echartId = row.id;
-      this.axios.get('product/record?id=' + row.id)
+      this.axios.get('product/record?id=' + row.id + '&t=' + Math.random())
         .then((res) => {
           let price = [];
           let time = [];
@@ -88,13 +89,13 @@ export default {
     service(row) {
       var id = row.userId;
       var _this = this;
-      this.axios.get("sys/user/" + id).then((res) => {
+      this.axios.get("sys/user/" + id + '?t=' + Math.random()).then((res) => {
         _this.sale = res || {};
       })
     },
     //商品名称
     _getHomeList() {
-      this.axios.get("product/category?size=5").then(res => {
+      this.axios.get("product/category?size=5" + '&t=' + Math.random()).then(res => {
         if (res && res instanceof Array && res.length > 0) {
           res.unshift({
             name: "最新现货"
@@ -113,7 +114,7 @@ export default {
       const me = this;
       let params = id ? `categoryId=${id}&current=${me.current}&size=5` : "size=5";
 
-      this.axios.get("product/list?" + params).then(res => {
+      this.axios.get("product/list?" + params + '&t=' + Math.random()).then(res => {
         const {
           records = [], pages = 1
         } = res || {};
@@ -141,7 +142,7 @@ export default {
         this.hide = true;
       };
       if (index == 0) {
-        this.axios.get("product/list?params=5").then(res => {
+        this.axios.get("product/list?params=5" + '&t=' + Math.random()).then(res => {
           if (res.code == 0) {
             const {
               records = [], pages = 1
@@ -162,7 +163,7 @@ export default {
         me.prod = [];
         return;
       }
-      this.axios.get("product/collection?" + params).then(res => {
+      this.axios.get("product/collection?" + params + '&t=' + Math.random()).then(res => {
         const {
           records = [], pages = 1
         } = res || {};
@@ -216,7 +217,7 @@ export default {
         } else if (hourC >= 1) {
           updateStr = "1小时前";
         } else if (minC >= 1) {
-          updateStr = "1分钟前";
+          updateStr = parseInt(minC) + "分钟前";
         } else {
           updateStr = "刚刚发表";
         }
@@ -266,7 +267,7 @@ export default {
       if (this.purchaseid != '') {
         //判断企业验证状态
         if (!!userId) {
-          this.axios.get('customer/detail/' + userId)
+          this.axios.get('customer/detail/' + userId + '?t=' + Math.random())
             .then(function (data) {
               if (data != "") {
                 if (data.status !== 'SUCCESS') {
@@ -303,7 +304,7 @@ export default {
       }
       //判断企业验证状态
       if (!!userId) {
-        this.axios.get('customer/detail/' + userId)
+        this.axios.get('customer/detail/' + userId + '?t=' + Math.random())
           .then(function (data) {
             if (data != "") {
               if (data.status !== 'SUCCESS') {
@@ -333,7 +334,7 @@ export default {
     ser(id) {
       var that = this;
       // echat(){
-      this.axios.get('product/record?id=' + id)
+      this.axios.get('product/record?id=' + id + '&t=' + Math.random())
         .then(function (response) {
           if (response.data.code == 0) {
             let chartData = response.data.data;

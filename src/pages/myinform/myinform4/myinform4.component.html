@@ -18,7 +18,7 @@
           <div class="label">
             <span>请输入当前密码:</span>
           </div>
-          <el-input :maxlength="16" class="bidding-pname phone" v-model="pwd" @blur="ph2">
+          <el-input :maxlength="16" type="password" class="bidding-pname phone" v-model="pwd" @blur="ph2">
           </el-input>
           <p class="p-one" v-show="phones1">{{phone1}}</p>
         </template>
@@ -28,7 +28,7 @@
         <div class="label">
           <span>请输入新密码:</span>
         </div>
-        <el-input :maxlength="16" class="bidding-pname phone" v-model="pwd1" @blur="ph3">
+        <el-input :maxlength="16" type="password" class="bidding-pname phone" v-model="pwd1" @blur="ph3">
         </el-input>
         <p class="p-one" v-show="phones2">{{phone2}}</p>
       </template>
@@ -38,7 +38,7 @@
         <div class="label">
           <span>请确认新密码:</span>
         </div>
-        <el-input :maxlength="16" class="bidding-pname phone" v-model="pwd2" @blur="ph4">
+        <el-input :maxlength="16" type="password" class="bidding-pname phone" v-model="pwd2" @blur="ph4">
         </el-input>
         <p class="p-one" v-show="phones3">{{phone3}}</p>
       </template>

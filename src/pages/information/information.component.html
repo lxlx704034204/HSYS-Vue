@@ -14,9 +14,9 @@
 							<div style="height: 25px;"></div>
 							<div v-show="!isArticleContent" class="infor_content  inner-1200" >
 								<div class="infor_content2 clearfix">
-									<div class="infor_conleft">
+									<div class="infor_conleft" style="cursor: pointer;">
 										<img v-if="index == 0" :src="tp.coverImage" v-for='(tp,index) in articleList' :key="index" alt="封面图" @click="setArticleId(tp.id)">
-										<div v-if="index == 0" :src="tp.coverImage" v-for='(tp,index) in articleList' :key="index" class="inf_xiu">{{tp.title}}</div>
+										<div v-if="index == 0" :src="tp.coverImage" v-for='(tp,index) in articleList' :key="index" class="inf_xiu" @click="setArticleId(tp.id)">{{tp.title}}</div>
 										<!--没有内容给默认图片-->
 										<!--<div v-show="tupian" class="inf_xiu1">
 											<div class="inf_xiu2"style=""><img src="./images/non_inf.png"/></div>
@@ -28,14 +28,14 @@
 										</div>
 										<div class="inf_cen" v-for='(tp,index) in hotList' :key="index" v-if="index == 0" :data='tp.id'>
 											<div class="inf_cen1">{{index+=1}}</div>
-											<div class="inf_cen2" @click="setArticleId(tp.id)">
+											<div class="inf_cen2" @click="setArticleId(tp.id)" :title="tp.title">
 												{{tp.title}}
 											</div>
 										</div>
 										<div class="inf_cen7" v-for='(tp,index) in hotList' v-if="index>0&&index<5" :key="index"  :data='tp.id'>
 											<div class="inf_cen4">{{index+1}}</div>
 											<div class="inf_cen5">
-												<div @click="setArticleId(tp.id)" class="inf_cen8" >{{tp.title}}</div>
+												<div @click="setArticleId(tp.id)" class="inf_cen8" :title="tp.title">{{tp.title}}</div>
 											</div>
 											<div class="inf_cen6">{{tp.createBy}}</div>
 										</div>
@@ -70,12 +70,12 @@
 										<div class="infor_rightBtm">
 												<div v-for='(ro,index) in recommendList' :key="index" v-if="index == 0" :data='ro.id' @click="setArticleId(ro.id)" class="infor_rightBtmli clearfix">
 													<i>{{index+=1}}</i>
-													<h4 >{{ro.title}}</h4>
+													<h4 :title="ro.title">{{ro.title}}</h4>
 													<p>{{ro.description}}</p>
 												</div>
 												<div class="infor_rightLi" v-for='(ro,index) in recommendList' :key="index" v-if="index > 0&&index < 10" :data='ro.id'>
 													<i>{{index+1}}</i>
-													<p @click="setArticleId(ro.id)" class="inf_cen8">
+													<p @click="setArticleId(ro.id)" class="inf_cen8" :title="ro.title">
 														{{ro.title}}
 													</p>
 													<span>{{ro.createBy}}</span>
@@ -114,14 +114,14 @@
 									</div>
 									<div class="inf_cen" v-for='(news,index) in hotList' :key="index" v-if="index == 0" :data='news.id' v-loading="loading">
 										<div class="inf_cen1">{{index+=1}}</div>
-										<div class="inf_cen2" @click="setArticleId(news.id)">
+										<div class="inf_cen2" @click="setArticleId(news.id)" :title="news.title">
 											{{news.title}}
 										</div>
 									</div>
 									<div class="inf_cen7" v-for='(news,index) in hotList' :key="index" v-if="index>0&&index<5"  :data='news.id'>
 										<div class="inf_cen4">{{index+1}}</div>
 										<div class="inf_cen5">
-											<div @click="setArticleId(news.id)" class="inf_cen8" >{{news.title}}</div>
+											<div @click="setArticleId(news.id)" class="inf_cen8" :title="news.title">{{news.title}}</div>
 										</div>
 										<div class="inf_cen6">{{news.createBy}}</div>
 									</div>
@@ -136,12 +136,12 @@
 									<div class="infor_rightBtm" v-loading="loading">
 											<div v-for='(news,index) in recommendList' :key="index" v-if="index == 0" :data='news.id' @click="setArticleId(news.id)" class="infor_rightBtmli clearfix">
 												<i>{{index+=1}}</i>
-												<h4>{{news.title}}</h4>
+												<h4 :title="news.title">{{news.title}}</h4>
 												<p>{{news.description}}</p>
 											</div>
 											<div class="infor_rightLi" v-for='(news,index) in recommendList' :key="index" v-if="index > 0&&index < 10" :data='news.id' @click="setArticleId(news.id)">
 												<i>{{index+1}}</i>
-												<p  class="inf_cen8">
+												<p  class="inf_cen8" :title="news.title">
 													{{news.title}}
 												</p>
 												<span>{{news.createBy}}</span>

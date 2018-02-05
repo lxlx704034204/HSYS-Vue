@@ -87,6 +87,12 @@ export default new Vuex.Store({
                 state.logo = logo;
                 state.logoUrl = true;
             }
+        },
+        loginName(state,loginName){
+            state.loginName = loginName;
+        },
+        customerdetail(state,customerdetail){
+            state.customerdetail = customerdetail;
         }
 
     }

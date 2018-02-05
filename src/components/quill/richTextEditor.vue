@@ -104,7 +104,7 @@
           }
           document.getElementById(vm.uniqueId).value=''
             }, false);
-          xhr.open("POST", baseURL + 'upload');//修改成自己的接口
+          xhr.open("POST", this.axios.defaults.baseURL + '/upload');//修改成自己的接口
           xhr.send(fd);
           // url = await vm.uploadImgReq(123)
           // console.log(url)

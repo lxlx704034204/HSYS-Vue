@@ -69,6 +69,8 @@ export default  {
     this.classfy();
     this.comList();
     this.dicCode();
+    $('#srbox').css('box-shadow','3px 3px 10px 0px #E6E6E6')
+    
   },
   mounted () {
   },
@@ -110,7 +112,7 @@ export default  {
     // 分类
     classfy(){
       var that = this;
-        this.axios.get( "product/category")
+        this.axios.get( "product/category?date="+new Date().getTime())
         .then(function(data){
              that.categorya = data;
              // storage.set("categoryParents0", data);
@@ -232,7 +234,7 @@ export default  {
     //公用数据查询  
     comList(){
       var _this = this;
-      this.axios.get( "bidding/product/list?&current="+ this.pageNo + '&size=10' + '&categoryId=' + this.categoryId + "&manufacturerCode=" + this.manufacturerCode + "&warehouseCode=" + this.warehouseCode +'&biddingStatus=' + this.biddstatu + '&nameOrSkuCode=' +  this.keyword)
+      this.axios.get( "bidding/product/list?&current="+ this.pageNo + '&size=10' + '&categoryId=' + this.categoryId + "&manufacturerCode=" + this.manufacturerCode + "&warehouseCode=" + this.warehouseCode +'&biddingStatus=' + this.biddstatu + '&nameOrSkuCode=' +  this.keyword + '&date='+new Date().getTime())
       .then(function(data){
         console.log(data);
             _this.loading = false;

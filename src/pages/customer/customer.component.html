@@ -1,5 +1,5 @@
 <section class='customer-cus'>
-		<div style="width: 100%;overflow: hidden;background: #23282D;">
+		<div style="width: 100%;overflow: hidden;background: #282828;">
 	    <div class="cus_res">
 	        <div class="cus_res1">
 	            <div @mouseleave="clos()">
@@ -113,16 +113,16 @@
                                         <div class="cus_res32">
                                             ￥{{list.salePrice}}
                                         </div>
-                                        <div class="cus_res33">
+                                        <div class="cus_res33" :title="list.name">
                                             {{list.name}}
                                         </div>
                                         <div class="cus_res34">
                                             规格：{{list.spec}}
                                         </div>
                                         <div class="cus_res35">
-                                            <div class="cus_res36">{{list.producingAreaOneName}}{{list.producingAreaTwoName}}{{list.producingAreaThreeName}}</div>
+                                            <div class="cus_res36" :title="list.producingAreaOneName+list.producingAreaTwoName+list.producingAreaThreeName">{{list.producingAreaOneName}}{{list.producingAreaTwoName}}{{list.producingAreaThreeName}}</div>
                                             <router-link :to="{path:'company',query: {id:list.id,userId:list.userId}}" target="_blank" tag="a">
-                                                <div class="cus_res37">{{list.companyName}}</div>
+                                                <div class="cus_res37" :title="list.companyName">{{list.companyName}}</div>
                                             </router-link>
                                         </div>
                                     </div>
@@ -158,10 +158,10 @@
                             <div class="cus_xiu">
                                 <img :src="pro.masterImage" />
                             </div>
-                            <div class="cus_xiu1">产品名称：{{pro.name}}</div>
+                            <div class="cus_xiu1" :title="pro.name">产品名称：{{pro.name}}</div>
                         </router-link>
                         <router-link :to="{path:'company',query: {id:pro.id,userId:pro.userId}}" target="_blank" tag="a" v-if='index<5'>
-                            <div class="cus_xiu2">所属公司：{{pro.companyName}}</div>
+                            <div class="cus_xiu2" :title="pro.companyName">所属公司：{{pro.companyName}}</div>
                         </router-link>
                     </div>
                     <!--如果列表为空-->
@@ -185,9 +185,11 @@
                     </div>
                     <!--列表部分-->
                     <div v-for="(nco,index) in newcom" :key="index">
-                        <div @click="tocym(nco.customer.id)" class="cus_res41">
+                        <router-link :to="{path:'company',query: {userId:nco.customer.id}}" target="_blank">
+                        	<div @click="tocym(nco.customer.id)" class="cus_res41">
                             {{nco.customer.name}}
-                        </div>
+                        	</div>
+                        </router-link>
                     </div>
                     <div v-show="zqiy" class="cus_xiu3">
 			        	<img src="./images/non_inf.png" />

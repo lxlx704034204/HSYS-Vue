@@ -3,7 +3,7 @@
 		<div class="product1">
 			<el-breadcrumb separator-class="el-icon-arrow-right">
 				<el-breadcrumb-item class="det_cla1" :to="{ path: '/customer' }" id="kehu">企业产品库</el-breadcrumb-item>
-				<el-breadcrumb-item class="det_cla">{{companyName}}</el-breadcrumb-item>
+				<el-breadcrumb-item class="det_cla" :to="{ path: '/company?userId=' + userId }">{{companyName}}</el-breadcrumb-item>
 				<el-breadcrumb-item class="det_cla">{{name}}</el-breadcrumb-item>
 			</el-breadcrumb>
 		</div>
@@ -130,13 +130,14 @@
 						<p class="rightBtm_p3">
 							<i></i>
 							<span class="rightBtm_span"> 企业地址 : </span>
-							<span class="rightBtm_span2">{{sell.address}}</span>
+							<span class="rightBtm_span2" :title="sell.address">{{sell.address}}</span>
 						</p>
-
 						<div id="allmap" class="right_address" ref='maps'>
 
 						</div>
-						<el-button class="rightBtm_btn" type="primary" @click="compy()">进入企业主页</el-button>
+						<router-link :to="{path:'company',query: {userId:sell.id}}" target="_blank">
+							<el-button class="rightBtm_btn" type="primary" @click="compy()">进入企业主页</el-button>
+						</router-link>
 						<div style="height: 21px;"></div>
 					</div>
 				</div>
@@ -145,8 +146,10 @@
 					<h4>热销产品</h4>
 					<ul v-for="(rex,index) in rexiao" :key="index" ref="rexid" :data="rex.id">
 						<li class="rightBtm_div" @click="jumpto(index,rex.id)">
-							<div><img :src="rex.masterImage" alt=""></div>
-							<p>{{rex.name}}</p>
+							<router-link :to="{path:'productDetail',query: {id:rex.id,userId:rex.userId}}" target="_blank">
+								<div><img :src="rex.masterImage" alt=""></div>
+								<p :title="rex.name">{{rex.name}}</p>
+							</router-link>
 						</li>
 					</ul>
 					<div style="height: 36px;"></div>

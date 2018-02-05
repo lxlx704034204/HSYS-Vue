@@ -42,6 +42,7 @@
 	        <div style="margin-left: 18px;" v-else>{{secName}}</div>
 	    </h3>
 			<div class="left_main1 clearfixed det_cla2" @click="watch(det.id,det.userId)"  v-for="(det,index) in detlist" v-if="index<10" :data="det.id" :data1="det.userId" ref='de'>
+				<router-link :to="{path:'productDetail',query: {userId:det.userId,id:det.id}}" target="_blank">
 				<div class="main1_img">
 					<img :src="det.masterImage" alt="">
 				</div>
@@ -57,13 +58,14 @@
 						<span>品牌 : {{det.brand}}</span>
 					</p>
 					<P class="clearfixed">
-						<span class="det_cla2">{{det.producingAreaOneName}}{{det.producingAreaTwoName}}{{det.producingAreaThreeName}}</span>
+						<span class="det_cla2" :title="det.producingAreaOneName+det.producingAreaTwoName+det.producingAreaThreeName">{{det.producingAreaOneName}}{{det.producingAreaTwoName}}{{det.producingAreaThreeName}}</span>
 						<!-- <span class="main1_span">{{det.companyName}}</span> -->
 						<router-link :to="{path:'company',query: {userId:det.userId}}" target="_blank" tag="a" class="main1_span">
-							<div class="cus_res37" style="font-size: 14px;">{{det.companyName}}</div>
+							<div class="cus_res37" style="font-size: 14px;" :title="det.companyName">{{det.companyName}}</div>
 						</router-link>
 					</P>
 				</div>
+				</router-link>
 			</div>
 			<div class="nothinginf" v-show='isnothave'>
 				<img src="./images/non_inf.png" />
@@ -102,11 +104,11 @@
 						<div class="cus_xiu">
 							<img :src="pro.masterImage" />
 						</div>
-						<div class="cus_xiu1">产品名称：{{pro.name}}</div>
+						<div class="cus_xiu1" :title="pro.name">产品名称：{{pro.name}}</div>
 					</router-link>
 					<!-- <div class="cus_xiu2">所属公司：{{pro.companyName}}</div> -->
 					<router-link :to="{path:'company',query: {userId:pro.userId}}" target="_blank" tag="a">
-						<div class="cus_res37 cus_res110">公司名称：{{pro.companyName}}</div>
+						<div class="cus_res37 cus_res110" :title="pro.companyName">公司名称：{{pro.companyName}}</div>
 					</router-link>
 
 				</div>
@@ -130,14 +132,11 @@
 				</div>
 				<!--列表部分-->
 				<div v-for="(nco,index) in newcom" :key="index">
-					<!--<router-link :to="{path:'mainproduct',query: {userId:nco.customer.id}}" target="_blank" tag="a" >
-						<div class="cus_res41">
-							{{nco.customer.name}}
-						</div>
-					</router-link>-->
-					<div @click="tocym(nco.customer.id)" class="cus_res41">
-						{{nco.customer.name}}
-					</div>
+					<router-link :to="{path:'company',query: {userId:nco.customer.id}}" target="_blank">
+          	<div @click="tocym(nco.customer.id)" class="cus_res41">
+              {{nco.customer.name}}
+          	</div>
+          </router-link>
 				</div>
 				<div v-show="zqiy" class="cus_xiu3">
 					<img src="./images/non_inf.png" />

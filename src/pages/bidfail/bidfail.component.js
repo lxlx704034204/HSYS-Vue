@@ -66,7 +66,7 @@ export default {
   methods: {
     failList(){
       var that = this;
-       this.axios.get("bidding/record/info?id="+this.$route.query.id )
+       this.axios.get("bidding/record/info?id="+this.$route.query.id + '&date='+ new Date().getTime() )
        .then(function (data) {
         console.log(data,'9');
           that.status = data.biddingStatus.desc;

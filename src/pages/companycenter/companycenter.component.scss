@@ -19,6 +19,7 @@
 }
 .iconimg {
   width: 20px;
+  height: 25px;   
   padding-right: 10px;
   padding-bottom: 4px;
 }
@@ -36,3 +37,10 @@
     background-image: url("./images/logo.jpg");
   }
 }
+.companycenter{
+    .companyright{
+      float: right;
+      
+  }
+}
+

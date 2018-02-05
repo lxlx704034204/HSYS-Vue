@@ -83,7 +83,11 @@
     <div class="btm_right">
       <p class="right_p2" @click="sendinfo">发送付款信息到手机</p>
       <div class="right_file">
-        <el-upload class="avatar-uploader" :action="upload" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+        <el-upload 
+        class="avatar-uploader" 
+        :action="upload" 
+        :show-file-list="false" 
+        :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
           <img v-if="imageUrl" :src="imageUrl" class="avatar">
           <i v-else class="el-icon-upload avatar-uploader-icon"></i>
         </el-upload>
